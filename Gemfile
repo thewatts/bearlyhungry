@@ -40,6 +40,7 @@ end
 
 group :development, :test do
   gem 'jazz_hands'
+  gem 'factory_girl_rails'
 end
 
 group :test do
