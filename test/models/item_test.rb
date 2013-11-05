@@ -30,4 +30,10 @@ class ItemTest < ActiveSupport::TestCase
     refute item3.save
     assert item4.save
   end
+
+  test "image can be added" do
+    item = FactoryGirl.create(:item)
+    item.image = fixture_file_upload('avatar.png', 'image/png')
+    assert_equal 'avatar.png', item.image_file_name
+  end
 end

@@ -1,3 +1,5 @@
+include ActionDispatch::TestProcess # for file upload testing
+
 FactoryGirl.define do
   factory :item do
     title       "PHO"
