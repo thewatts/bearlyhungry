@@ -43,6 +43,7 @@ end
 group :development, :test do
   gem 'jazz_hands'
   gem 'factory_girl_rails'
+  gem 'zeus'
 end
 
 group :test do
