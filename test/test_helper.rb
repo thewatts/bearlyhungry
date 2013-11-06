@@ -10,12 +10,12 @@ require 'rails/test_help'
 require 'minitest/pride'
 require 'capybara/rails'
 
-# include Capybara
-include Capybara::DSL
-include Rails.application.routes.url_helpers
-
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
+
+  include FactoryGirl::Syntax::Methods
+  include Capybara::DSL
+  include Rails.application.routes.url_helpers
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #

@@ -1,5 +1,11 @@
 <%= link_to "New Item", new_item_path %>
 
-<% @items.each do |item| %>
-  <p><%= item.title %></p>
-<% end %>
+<div id='items'>
+  <% @items.each do |item| %>
+    <h2><%= item.title %></h2>
+  <ul>
+    <li><%= item.description %></li>
+    <li><%= number_to_currency(item.price) %></li>
+  </ul>
+  <% end %>
+</div>
