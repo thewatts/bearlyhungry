@@ -2,40 +2,30 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
-    # test "user must exist" do
-    #   user = User.new
-    #   refute user.save
-    # end
+    test "user must exist" do
+      user = FactoryGirl.build(:user, full_name: "")
+      refute user.save
+    end
 
-    # test "user must have valid/uniq email" do
-    #   user1 = User.new(email: "a@a.com").save
-    #   user2 = User.new(email: "a@a.com")
+    test "user must have full name which is not blank" do
+      user1 = FactoryGirl.build(:user, full_name: "")
+      user2 = FactoryGirl.build(:user, full_name: "Jerome Bartholomew")
 
-    #   refute item2.save, "User shouldn't save with dup email"
-    # end
+      refute user1.save
+      assert user2.save
 
-    # test "user must have full name which is not blank" do
-    #   user1 = User.new(first_name: "", last_name: "")
-    #   user2 = User.new(first_name: "Bob", last_name: "")
-    #   user3 = User.new(first_name: "", last_name: "Smith")
-    #   user4 = User.new(first_name: "Bob", last_name: "Smith")
+    end
 
-    #   refute user1.save
-    #   refute user2.save
-    #   refute user3.save
-    #   assert user4.save
-    # end
+    test "user may have display name 32 > size > 2" do
+      user1 = FactoryGirl.build(:user, display_name: "")
+      user2 = FactoryGirl.build(:user, display_name: "A")
+      user3 = FactoryGirl.build(:user, display_name: "asdfghjklqwertyuiopzxcvbnmasdfghj")
+      user4 = FactoryGirl.build(:user, display_name: "Squeaky")
 
-    # test "user may have display name 32 > size > 2" do
-    #   user1 = User.new(display_name: "")
-    #   user2 = User.new(display_name: "A")
-    #   user3 = User.new(display_name: "asdfghjklqwertyuiopzxcvbnmasdfghj")
-    #   user4 = User.new(display_name: "Squeaky")
-
-    #   assert user1.save
-    #   refute user2.save
-    #   refute user3.save
-    #   assert user4.save
-    # end
+      assert user1.save #should still save if no display_name
+      refute user2.save
+      refute user3.save
+      assert user4.save
+    end
 
 end
