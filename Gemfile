@@ -44,6 +44,7 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'factory_girl_rails'
   gem 'zeus'
+  gem 'capybara'
 end
 
 group :test do
