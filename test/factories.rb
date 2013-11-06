@@ -6,4 +6,11 @@ FactoryGirl.define do
     description "This is like.. PHOnaminal!"
     price       20.00
   end
+
+  factory :user do
+    full_name "Jerome Bartholomew"
+    display_name "JB"
+  end
+
+
 end

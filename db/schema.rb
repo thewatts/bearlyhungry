@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20131106171657) do
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "full_name"
+    t.string   "display_name"
   end
 
 end
