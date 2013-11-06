@@ -1,0 +1,5 @@
+<%= link_to "New Item", new_item_path %>
+
+<% @items.each do |item| %>
+  <p><%= item.title %></p>
+<% end %>

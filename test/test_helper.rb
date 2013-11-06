@@ -1,14 +1,18 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 
-if defined? Zeus
-  require 'minitest/unit'
-  MiniTest::Unit.class_variable_set('@@installed_at_exit', true)
-end
+# if defined? Zeus
+#   require 'minitest/unit'
+#   MiniTest::Unit.class_variable_set('@@installed_at_exit', true)
+# end
 
 require 'rails/test_help'
 require 'minitest/pride'
 require 'capybara/rails'
+
+# include Capybara
+include Capybara::DSL
+include Rails.application.routes.url_helpers
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
