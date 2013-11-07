@@ -131,6 +131,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    pg (0.17.0)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
     pry (0.9.12.2)
@@ -235,6 +236,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   paperclip
+  pg
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
