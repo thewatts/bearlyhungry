@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20131107174735) do
 
-
   create_table "items", force: true do |t|
     t.string   "title"
     t.text     "description"
