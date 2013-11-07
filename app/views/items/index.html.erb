@@ -1,11 +1,15 @@
 <%= link_to "New Item", new_item_path %>
+<%= link_to "View Current Order", order_path %>
 
 <div id='items'>
   <% @items.each do |item| %>
     <h2><%= item.title %></h2>
   <ul>
-    <li><%= item.description %></li>
-    <li><%= number_to_currency(item.price) %></li>
+    <li>Description: <%= item.description %></li>
+    <li>Price: <%= number_to_currency(item.price) %></li>
+    <div id='<%= item.id %>'>
+      <%= link_to "Add to Order", order_items_path(item_id: item.id), method: :post %>
+    </div>
   </ul>
   <% end %>
 </div>
