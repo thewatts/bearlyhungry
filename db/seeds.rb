@@ -6,10 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
 
 url = "http://www.pho95noodlehouse.com/pho-95-online-menu.html"
 doc = Nokogiri::HTML(open(url))
