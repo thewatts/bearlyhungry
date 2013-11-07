@@ -1,5 +1,5 @@
 class AddQuantityToOrderItem < ActiveRecord::Migration
   def change
-    change_column :order_items, :quantity, :integer, :default => 0
+    add_column :order_items, :quantity, :integer, :default => 0
   end
 end

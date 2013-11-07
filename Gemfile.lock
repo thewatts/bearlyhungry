@@ -235,6 +235,7 @@ DEPENDENCIES
   jazz_hands
   jbuilder (~> 1.2)
   jquery-rails
+  nokogiri
   paperclip
   pg
   rails (= 4.0.0)
