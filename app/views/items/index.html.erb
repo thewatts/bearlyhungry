@@ -6,6 +6,7 @@
   <ul>
     <li><%= item.description %></li>
     <li><%= number_to_currency(item.price) %></li>
+    <%= button_to "Add to Order", order_items_path(item: item.id) %>
   </ul>
   <% end %>
 </div>
