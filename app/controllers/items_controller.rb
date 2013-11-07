@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   include CurrentOrder
   def index
-    @current_order = set_order
+    @current_order
     @items = Item.all
   end
 

@@ -1,11 +1,25 @@
 <%= link_to "Back to All Items", items_path %>
-<div id='items'>
+<div id='items_for_order'>
   <% @order.order_items.each do |order_item| %>
     <h2><%= order_item.item.title %></h2>
   <ul>
 
+    <li>Desciption: <%= order_item.item.description %></li>
     <li>Price: <%= number_to_currency(order_item.price) %></li>
     <li>Quantity: <%= order_item.quantity %></li>
+    <div id='<%= order_item.item.id %>'>
+      <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
+    <%= form_for order_item do |f| %>
+      <p>
+        <%= f.label :quantity %><br />
+        <%= f.text_field :quantity %>
+
+        <%= f.submit  %>
+      </p>
+    </div>
+    <% end %>
   </ul>
   <% end %>
 </div>
+
+

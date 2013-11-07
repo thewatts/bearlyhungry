@@ -1,11 +1,22 @@
 require './test/test_helper'
+require 'pry'
 
 class AddItemToOrderTest < ActionController::TestCase
 
-  test "it adds an item to an order" do
+  test "it deletes an item from an order" do
+    session[:order_id] = nil
     create_items
 
     visit items_path
+
+    within("#items") do
+      assert page.has_content?("Phonatic")
+      assert page.has_content?("The best soup in town")
+      assert page.has_content?("$10.00")
+      assert page.has_content?("Phonominal")
+      assert page.has_content?("The better soup in town")
+      assert page.has_content?("$20.00")
+    end
 
     within "##{Item.first.id}" do
       click_on "Add to Order"
@@ -17,15 +28,30 @@ class AddItemToOrderTest < ActionController::TestCase
 
     visit order_path
 
+    within "##{Item.first.id}" do
+      click_on "Remove Item"
+    end
+
     within("#items_for_order") do
-      assert page.has_content?("Phonatic")
-      assert page.has_content?("The best soup in town")
-      assert page.has_content?("$10.00")
+      refute page.has_content?("Phonatic")
+      refute page.has_content?("The best soup in town")
+      refute page.has_content?("$10.00")
       assert page.has_content?("Phonominal")
       assert page.has_content?("The better soup in town")
       assert page.has_content?("$20.00")
     end
+
+    visit items_path
+
+    within("#items") do
+      assert page.has_content?("Phonatic")
+      assert page.has_content?("The best soup in town")
+      assert page.has_content?("$10.00")
+    end
+
   end
+
+
 
   def create_items
     visit items_path
