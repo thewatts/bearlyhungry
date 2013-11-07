@@ -1,10 +1,13 @@
 require './test/test_helper'
 require 'pry'
 
-class AddItemToOrderTest < ActionController::TestCase
+class DeleteItemToOrderTest < ActionController::TestCase
+
+  setup do
+    Capybara.reset_sessions!
+  end
 
   test "it deletes an item from an order" do
-    session[:order_id] = nil
     create_items
 
     visit items_path

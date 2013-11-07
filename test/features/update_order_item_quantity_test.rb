@@ -2,6 +2,10 @@ require './test/test_helper'
 
 class UpdateOrderItemQuantityTest < ActionController::TestCase
 
+  setup do
+    Capybara.reset_sessions!
+  end
+
   test "it updates the quantity of an item in an order" do
     create_items
 

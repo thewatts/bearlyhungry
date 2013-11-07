@@ -2,6 +2,10 @@ require './test/test_helper'
 
 class AddItemToOrderTest < ActionController::TestCase
 
+  setup do
+    Capybara.reset_sessions!
+  end
+
   test "it adds an item to an order" do
     create_items
 

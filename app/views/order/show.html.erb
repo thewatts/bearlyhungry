@@ -10,7 +10,7 @@
       <%= form_for order_item do |f| %>
         <p>
           <%= f.label :quantity %><br />
-          <%= f.text_field :quantity %>
+          <%= f.text_field :quantity, :id => 'quantity' %>
 
           <%= f.submit "Update Quantity" %>
         </p>
