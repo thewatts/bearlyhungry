@@ -11,11 +11,11 @@ class AddItemToOrderTest < ActionController::TestCase
 
     visit items_path
 
-    within "##{Item.first.id}" do
+    within "#item-1" do
       click_on "Add to Order"
     end
 
-    within "##{Item.last.id}" do
+    within "#item-2" do
       click_on "Add to Order"
     end
 

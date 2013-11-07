@@ -9,7 +9,7 @@ class UpdateOrderItemQuantityTest < ActionController::TestCase
   test "it updates the quantity of an item in an order" do
     create_items
 
-    within "##{Item.first.id}" do
+    within "#item-1" do
       click_on "Add to Order"
     end
 
@@ -21,7 +21,7 @@ class UpdateOrderItemQuantityTest < ActionController::TestCase
       click_on "Update "
     end
 
-    # within "##{Item.last.id}" do
+    # within "#item-2" do
     #   click_on "Add to Order"
     # end
 

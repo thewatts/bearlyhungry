@@ -16,7 +16,7 @@
         </p>
       <% end %>
     </li>
-    <div id='<%= order_item.item.id %>'>
+    <div id='item-<%= order_item.item.id %>'>
       <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
     </div>
   </ul>
