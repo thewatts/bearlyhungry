@@ -9,12 +9,7 @@ class UpdateOrderItemQuantityTest < ActionController::TestCase
       click_on "Add to Order"
     end
 
-    within "##{Item.last.id}" do
-      click_on "Add to Order"
-    end
-
     visit order_path
-
 
     within "#items_for_order" do
       assert page.has_content?("1")

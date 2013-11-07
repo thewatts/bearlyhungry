@@ -6,9 +6,7 @@
 
     <li>Desciption: <%= order_item.item.description %></li>
     <li>Price: <%= number_to_currency(order_item.price) %></li>
-    <li>Quantity: <%= order_item.quantity %></li>
-    <div id='<%= order_item.item.id %>'>
-      <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
+    <li>
       <%= form_for order_item do |f| %>
         <p>
           <%= f.label :quantity %><br />
@@ -17,6 +15,9 @@
           <%= f.submit "Update Quantity" %>
         </p>
       <% end %>
+    </li>
+    <div id='<%= order_item.item.id %>'>
+      <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
     </div>
   </ul>
   <% end %>
