@@ -4,9 +4,6 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 gem 'thin'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -28,6 +25,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+group :production do
+  gem 'pg'
+end
+
 gem 'paperclip'
 
 group :doc do
@@ -45,6 +46,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'zeus'
   gem 'capybara'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
 group :test do
