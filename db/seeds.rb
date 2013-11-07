@@ -22,7 +22,7 @@
 #                                {category: "Popular Wines"}
 #                               ])
 
-# user = Users.create([{full_name: "Franklin Webber", display_name: "", password_digest: "password",  email: "demo+franklin@jumpstartlab.com" }, {full_name: "Jeff", display_name: "j3", password_digest: "password", email: "demo+jeff@jumpstartlab.com"}, {full_name: "Katrina Owen", display_name: "kytrinyx", password_digest: "password", email: "demo+katrina@jumpstartlab.com"}])
+user = Users.create([{full_name: "Franklin Webber", display_name: "", password_digest: "password",  email: "demo+franklin@jumpstartlab.com" }, {full_name: "Jeff", display_name: "j3", password_digest: "password", email: "demo+jeff@jumpstartlab.com"}, {full_name: "Katrina Owen", display_name: "kytrinyx", password_digest: "password", email: "demo+katrina@jumpstartlab.com"}])
 
 
 
