@@ -5,21 +5,30 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+categories = Category.create([{category: "Appetizers"},
+                               {category: "House Specials"},
+                               {category: "Deserts"},
+                               {category: "Traditional Pho Soup"},
+                               {category: "Extras"},
+                               {category: "Vietnamese Noodle Bowls"},
+                               {category: "Traditional Dishes"},
+                               {category: "Boba Smoothies"},
+                               {category: "Specialty Cocktails"},
+                               {category: "Specialty Martinis"},
+                               {category: "Regular Happy Hour (Monday-Friday)"},
+                               {category: "Specialty Beers"},
+                               {category: "Popular Wines"}
+                              ])
+
+user = Users.create([{full_name: "Franklin Webber", display_name: "", password_digest: "password",  email: "demo+franklin@jumpstartlab.com" }, {full_name: "Jeff", display_name: "j3", password_digest: "password", email: "demo+jeff@jumpstartlab.com"}, {full_name: "Katrina Owen", display_name: "kytrinyx", password_digest: "password", email: "demo+katrina@jumpstartlab.com"}])
+
+
 
 require 'nokogiri'
 require 'open-uri'
 
 url = "http://www.pho95noodlehouse.com/pho-95-online-menu.html"
 doc = Nokogiri::HTML(open(url))
-
-#   def initialize(title,description, price)
-#     @title = title
-#     @description = description
-#     @price = price
-#   end
-
-#   attr_reader :title, :description, :price
-# end
 
 items_data = doc.css("table.item")
 items = items_data.map do |item|
@@ -32,10 +41,8 @@ items = items_data.map do |item|
   end
 end.compact
 
-items.each do |item|
-  puts item.title
-  puts item.description
-  puts item.price
-  puts "---"
-end
+
+
+
+
 
