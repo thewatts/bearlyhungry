@@ -1,0 +1,11 @@
+<%= link_to "Back to All Items", items_path %>
+<div id='items'>
+  <% @order.order_items.each do |order_item| %>
+    <h2><%= order_item.item.title %></h2>
+  <ul>
+
+    <li>Price: <%= number_to_currency(order_item.price) %></li>
+    <li>Quantity: <%= order_item.quantity %></li>
+  </ul>
+  <% end %>
+</div>

@@ -4,7 +4,8 @@ class OrderItemsController < ApplicationController
   before_action :set_order, only: :create
 
   def create
-    @current_order.add_item(params[:item_id])
+    set_order.add_item(params[:item_id])
+    redirect_to items_path
   end
 
 end
