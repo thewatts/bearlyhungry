@@ -17,7 +17,6 @@ class OrderItemsController < ApplicationController
   def update
     order_item = OrderItem.find(params[:id])
     order_item.quantity = params[:order_item][:quantity]
-    fail
     order_item.save
     redirect_to order_path
   end
