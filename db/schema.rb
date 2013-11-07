@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20131107174735) do
 
+
   create_table "items", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -23,6 +24,22 @@ ActiveRecord::Schema.define(version: 20131107174735) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "order_items", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "item_id"
+    t.integer  "order_id"
+  end
+
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+
+  create_table "orders", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "users", force: true do |t|

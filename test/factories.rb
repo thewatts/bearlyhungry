@@ -11,4 +11,6 @@ FactoryGirl.define do
     full_name "Jerome Bartholomew"
     display_name "JB"
   end
+
+
 end
