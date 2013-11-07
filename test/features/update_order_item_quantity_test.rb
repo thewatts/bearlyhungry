@@ -2,19 +2,18 @@ require './test/test_helper'
 
 class UpdateOrderItemQuantityTest < ActionController::TestCase
 
+  setup do
+    Capybara.reset_sessions!
+  end
+
   test "it updates the quantity of an item in an order" do
     create_items
 
-    within "##{Item.first.id}" do
-      click_on "Add to Order"
-    end
-
-    within "##{Item.last.id}" do
+    within "#item-1" do
       click_on "Add to Order"
     end
 
     visit order_path
-
 
     within "#items_for_order" do
       assert page.has_content?("1")
@@ -22,7 +21,7 @@ class UpdateOrderItemQuantityTest < ActionController::TestCase
       click_on "Update "
     end
 
-    # within "##{Item.last.id}" do
+    # within "#item-2" do
     #   click_on "Add to Order"
     # end
 
