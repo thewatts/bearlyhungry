@@ -1,5 +1,6 @@
-require './test/test_helper'
+require './test/features/test_helper'
 
+# class AddItemToOrderTest < FeatureTest
 class AddItemToOrderTest < ActionController::TestCase
 
   setup do
@@ -7,10 +8,12 @@ class AddItemToOrderTest < ActionController::TestCase
   end
 
   test "it adds an item to an order" do
-    create_items
+    first_item = create_item("Phonatic","The best soup in town",10.00)
+    second_item = create_item("Phonominal!","The better soup in town",20.00)
 
     visit items_path
 
+    # within dom_id(first_item) do
     within "#item-1" do
       click_on "Add to Order"
     end
@@ -31,26 +34,30 @@ class AddItemToOrderTest < ActionController::TestCase
     end
   end
 
-  def create_items
+  # if we are sub-class of FeatureTest we don't need this
+  # include WTPhoFeatureHelpers
+
+  # test_helper.rb local to feature
+  def create_item(title,description,price)
     visit items_path
 
     click_on "New Item"
 
-    fill_in "title", :with => "Phonatic"
-    fill_in "description", :with => "The best soup in town"
-    fill_in "price", :with => 10.00
+    fill_in "title", :with => title
+    fill_in "description", :with => description
+    fill_in "price", :with => price
 
     click_on "Save Item"
 
-    visit items_path
+    # NOTE: this might not work because most tests run in a transaction
+    # Idea.last
+    # OR
+    # Find the last item just add to the index
+  end
 
-    click_on "New Item"
-
-    fill_in "title", :with => "Phonominal!"
-    fill_in "description", :with => "The better soup in town"
-    fill_in "price", :with => 20.00
-
-    click_on "Save Item"
+  # test_helper.rb
+  def dom_id(model)
+    "##{model.class.name.downcase}-#{model.id}"
   end
 
 end
