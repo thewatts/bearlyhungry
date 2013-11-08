@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  include CurrentOrder
+  # include CurrentOrder
 
   before_action :set_order, only: :create
 

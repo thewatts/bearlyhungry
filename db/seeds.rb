@@ -2,6 +2,8 @@ user = User.create([{full_name: "Franklin Webber", display_name: "", password_di
 
 require 'csv'
 
+images = File.open "./app/assets/images"
+
 contents = CSV.open "./db/db_seed.csv", headers: true, header_converters: :symbol
 
 contents.each do |row|
@@ -11,7 +13,7 @@ contents.each do |row|
   price       = row[:price]
   category    = row[:category]
 
-  category_object = Category.create(title: category)
+  category_object = Category.find_or_create_by(title: category, type_of: 'main_menu')
   item = Item.create(title: title, description: description, price: price)
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
