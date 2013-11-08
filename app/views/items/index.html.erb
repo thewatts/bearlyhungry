@@ -2,14 +2,24 @@
 <%= link_to "View Current Order", order_path %>
 
 <div id='items'>
-  <% @items.each do |item| %>
-    <h2><%= link_to item.title, item_path(item) %></h2>
-  <ul>
-    <li>Description: <%= item.description %></li>
-    <li>Price: <%= number_to_currency(item.price) %></li>
-    <div id='item-<%= item.id %>'>
-      <%= link_to "Add to Order", order_items_path(item_id: item.id), method: :post %>
-    </div>
-  </ul>
+
+  <% @main_categories.each do |category| %>
+
+    <h2 id='cat-<%= category.id %>'><b><%= category.title %></b></h2>
+
+    <% category.items.each do |item| %>
+      <ul>
+        <li>
+          <h3><%= link_to item.title, item_path(item) %></h3>
+          <ul>
+            <li>Description: <%= item.description %></li>
+            <li>Price: <%= number_to_currency(item.price) %></li>
+            <div id='item-<%= item.id %>'>
+              <%= link_to "Add to Order", order_items_path(item_id: item.id), method: :post %>
+            </div>
+          </ul>
+        </li>
+      </ul>
+    <% end %>
   <% end %>
 </div>

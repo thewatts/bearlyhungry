@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
+
   include ItemsHelper
   include CurrentOrder
 
-
   def index
     @current_order
+    @main_categories = Category.where(type_of: 'main_menu')
     @items = Item.all
   end
 
