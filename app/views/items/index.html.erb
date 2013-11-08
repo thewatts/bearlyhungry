@@ -1,9 +1,9 @@
-<%= link_to "New Item", new_item_path %>
+
 <%= link_to "View Current Order", order_path %>
 
 <div id='items'>
   <% @items.each do |item| %>
-    <h2><%= item.title %></h2>
+    <h2><%= link_to item.title, item_path(item) %></h2>
   <ul>
     <li>Description: <%= item.description %></li>
     <li>Price: <%= number_to_currency(item.price) %></li>
