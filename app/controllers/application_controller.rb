@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   def set_order
     if session[:order_id]
       @current_order = Order.find(session[:order_id])
-      # create_order
     else
       create_order
     end
@@ -17,4 +16,15 @@ class ApplicationController < ActionController::Base
      session[:order_id] = order.id
      order
   end
+
+  def current_user
+    @current_user ||= lookup_user
+  end
+
+  def lookup_user
+    if session[:user_id]
+      User.find(session[:user_id])
+    end
+  end
+
 end

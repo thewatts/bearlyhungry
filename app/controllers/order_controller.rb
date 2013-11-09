@@ -1,7 +1,12 @@
 class OrderController < ApplicationController
-  # include CurrentOrder
+
   def show
     @order = set_order
-    # @order_categories = @order.items.map {|i| i.categories.where(type_of: 'main_menu')}
+    if current_user
+      @order.user_id = current_user.id
+      @order.status = "in progress"
+      @order.save
+    end
   end
+
 end

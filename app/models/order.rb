@@ -8,10 +8,20 @@ class Order < ActiveRecord::Base
     found_item = Item.find(item_id)
     if !items.include? found_item
       items << found_item
+      order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
+      order_item.save
+    else
+      order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
+      order_item.quantity += 1
+      order_item.save
     end
-    order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
-    order_item.quantity += 1
-    order_item.price = found_item.price
-    order_item.save
+  end
+
+  def subtotal
+    total = 0
+    order_items.each do |order_item|
+      total += order_item.subtotal
+    end
+    total
   end
 end

@@ -1,13 +1,26 @@
+<h1>Login Status</h1>
+
+<% if current_user %>
+  <% if current_user.display_name.empty? %>
+    Welcome, <%= current_user.full_name %>
+  <% else %>
+    Welcome, <%= current_user.display_name %>
+  <% end %>
+  <%= link_to "Logout", logout_path, :method => :delete %>
+<% else %>
+  <h3>Login Now:</h3>
+  <%= form_for :session, :url => session_path do |f| %>
+    <%= f.text_field :email %>
+    <%= f.password_field :password %>
+    <%= f.submit "Login" %>
+  <% end %>
+<% end %>
 
 <%= link_to "View Current Order", order_path %>
 
 <div id='items'>
 
-  <% @main_categories.each do |category| %>
-
-    <h2 id='cat-<%= category.id %>'><b><%= category.title %></b></h2>
-
-    <% category.items.each do |item| %>
+    <% @items.each do |item| %>
       <ul>
         <li>
           <h3><%= link_to item.title, item_path(item) %></h3>
@@ -21,5 +34,6 @@
         </li>
       </ul>
     <% end %>
-  <% end %>
 </div>
+
+<p><%= link_to "Create New Item", new_item_path %></p>
