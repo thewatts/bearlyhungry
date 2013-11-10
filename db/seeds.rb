@@ -19,9 +19,10 @@ contents.each do |row|
   description = row[:description]
   price       = row[:price]
   category    = row[:category]
+  image_file_name = row[:image_file_name]
 
   category_object = Category.find_or_create_by(title: category, type_of: 'main_menu')
-  item = Item.create(title: title, description: description, price: price)
+  item = Item.create(title: title, description: description, price: price, image_file_name: image_file_name)
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
 end

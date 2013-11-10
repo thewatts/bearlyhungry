@@ -1,5 +1,5 @@
-title,description,price,category
-Spring Rolls with Shrimp & Pork,"Shrimp, pork, rice noodels, lettuce, and herbs are wrapped in a rice paper and server with peanut or fish sauce.  Other combinations available.",3.95,Appetizers
+title,description,price,category,image_file_name
+Spring Rolls with Shrimp & Pork,"Shrimp, pork, rice noodels, lettuce, and herbs are wrapped in a rice paper and server with peanut or fish sauce.  Other combinations available.",3.95,Appetizers,"spring-rolls-with-shrimp.jpg"
 Vietnamese Egg Roll,"Shrimp, pork, vermicelli noodles, lettuce and herbs are wrapped in a rice paper and served with peanut sauce or fish sauce.",6.95,Appetizers
 Shrimp and Coconut Milk,Battered shrimp fried to perfection topped with a creamy coconut milk sauce.,6.95,Appetizers
 BBQ Short Ribs,BBQ Short Ribs slowly grilled and topped with Spring Onions.,7.95,Appetizers
