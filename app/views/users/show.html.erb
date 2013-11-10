@@ -1,0 +1,7 @@
+<h1><%= @user.full_name %></h1>
+<p><%= @user.display_name %></p>
+<p><%= @user.email %></p>
+<p><%= link_to "Edit", edit_user_path(@user) %></p>
+<p><%= link_to "Remove your account", user_path(@user), method: :delete, data: {confirm:"Really DELETE your account?"}%></p>
+<p><%= link_to "Create New Account", new_user_path %></p>
+<p><%= link_to "<< Back to Menu", items_path %></p>

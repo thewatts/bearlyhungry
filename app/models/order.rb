@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
 
   has_many :order_items
   has_many :items, through: :order_items
+  belongs_to :user
 
   def add_item(item_id)
     found_item = Item.find(item_id)
