@@ -2,8 +2,8 @@ Wtpho::Application.routes.draw do
   resources :items
   resources :order_items
   resource  :session
-  resources  :users
+  resources :users
+  resources :orders
 
-  get "order" => "orders#show"
   delete 'session' => 'sessions#destroy', as: :logout
 end

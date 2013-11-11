@@ -10,6 +10,9 @@ class SessionsController < ApplicationController
       result = user.authenticate(password)
       if result
         session[:user_id] = user.id
+        set_order.user_id = user.id
+        set_order.status = "in progress"
+        set_order.save
         redirect_to items_path
       else
         render :text => "Incorrect email or password."
@@ -20,8 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
-    session[:order_id] = nil
+    reset_session
     redirect_to items_path
   end
 
