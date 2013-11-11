@@ -12,7 +12,12 @@ module ApplicationHelper
 
   def current_order
     if session[:order_id]
-      @current_order = Order.find(session[:order_id])
+      order = Order.find_by(id: session[:order_id])
+      if order
+        @current_order = order
+      else
+        create_order
+      end
     else
       create_order
     end
