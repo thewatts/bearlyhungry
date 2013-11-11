@@ -3,7 +3,12 @@ class ApplicationController < ActionController::Base
 
   def set_order
     if session[:order_id]
-      @current_order = Order.find(session[:order_id])
+      if Order.find(session[:order_id])
+        @current_order = Order.find(session[:order_id])
+      else
+        reset_session
+        create_order
+      end
     else
       create_order
     end
