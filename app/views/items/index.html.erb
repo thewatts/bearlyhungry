@@ -18,7 +18,7 @@
 
 
 <%= link_to "Sign Up", new_user_path %>
-<div><%= link_to "View Current Order", order_path %></div>
+<div><%= link_to "View Current Order", order_path(current_order.id) %></div>
 
 <div id='items'>
 
