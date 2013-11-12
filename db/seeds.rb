@@ -28,6 +28,49 @@ contents.each do |row|
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
 end
+Category.create(title: "House Special", type_of: 'main_menu')
+
+ItemCategory.create([{ item_id: 9, category_id: 6},
+                      { item_id: 10, category_id: 6},
+                      { item_id: 16, category_id: 6},
+                      { item_id: 12, category_id: 6},
+                      { item_id: 38, category_id: 6}])
+
+Order.create([{ status: "pending"},
+              { status: "pending"},
+              { status: "in progress", user_id: 1},
+              { status: "in progress", user_id: 2},
+              { status: "paid", user_id: 3},
+              { status: "paid", user_id: 1},
+              { status: "completed", user_id: 2},
+              { status: "completed", user_id: 3},
+              { status: "cancelled", user_id: 1},
+              { status: "cancelled", user_id: 2}])
+
+OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
+                  { item_id: 16, order_id: 1},
+                  { item_id: 24, order_id: 1, quantity: 2},
+                  { item_id: 30, order_id: 2, quantity: 3},
+                  { item_id: 16, order_id: 2},
+                  { item_id: 12, order_id: 2, quantity: 2},
+                  { item_id: 1, order_id: 3},
+                  { item_id: 16, order_id: 3, quantity: 2},
+                  { item_id: 17, order_id: 3, quantity: 3},
+                  { item_id: 1, order_id: 4, quantity: 2},
+                  { item_id: 16, order_id: 4, quantity: 2},
+                  { item_id: 35, order_id: 4, quantity: 3},
+                  { item_id: 2, order_id: 5, quantity: 2},
+                  { item_id: 16, order_id: 5},
+                  { item_id: 3, order_id: 6},
+                  { item_id: 16, order_id: 6, quantity: 3},
+                  { item_id: 30, order_id: 6, quantity: 3},
+                  { item_id: 1, order_id: 7},
+                  { item_id: 7, order_id: 8},
+                  { item_id: 16, order_id: 9, quantity: 2},
+                  { item_id: 4, order_id: 10, quantity: 5},
+                  { item_id: 16, order_id: 10, quantity: 3},
+                  { item_id: 31, order_id: 10, quantity: 7}])
+
 
 
 
