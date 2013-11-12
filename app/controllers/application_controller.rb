@@ -30,6 +30,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def formatted_category(param)
+    if param
+      param.split('_').map {|c| c.capitalize}.join(' ')
+    end
+  end
+
   before_filter :authorize
 
   delegate :allow?, to: :current_permission

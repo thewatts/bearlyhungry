@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_many :orders
 
   def admin?
-    true
-    # false
+    self.admin_status
   end
 end

@@ -1,0 +1,10 @@
+
+<%= form_for @user do |f| %>
+<p>Full Name:      <%= f.text_field :full_name, :id => 'full_name' %></p>
+<p>Display Name:   <%= f.text_area :display_name, :id => 'display_name' %></p>
+<p>Email:          <%= f.email_field :email, :id => 'email' %></p>
+
+
+  <%= f.submit "Save Your Account", :id => 'save' %>
+<% end %>
+

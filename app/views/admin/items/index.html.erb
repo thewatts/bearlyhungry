@@ -1,0 +1,16 @@
+<p><%= link_to "Create New Item", new_admin_item_path %></p>
+<% @items.each do |item| %>
+  <ul>
+    <li>
+      <h3><%= link_to item.title, item_path(item) %></h3>
+      <ul>
+        <li>Description: <%= item.description %></li>
+        <li>Price: <%= number_to_currency(item.price) %></li>
+        <div id='item-<%= item.id %>'>
+          <%= link_to "Edit Item", edit_admin_item_path(item) %>
+        </div>
+      </ul>
+    </li>
+  </ul>
+<% end %>
+

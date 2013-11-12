@@ -18,6 +18,20 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def self.user_orders
+    all.select {|order| !order.user_id.nil?}
+  end
+
+  def self.by_status
+    all.group_by {|order| order.status}
+  end
+
+  def self.count_by_status
+    by_status.each_with_object({}) do |key, hash|
+      hash[key.first] = key.last.count
+    end
+  end
+
   def subtotal
     total = 0
     order_items.each do |order_item|
