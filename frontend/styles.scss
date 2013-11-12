@@ -1,10 +1,19 @@
 $font: 'Open Sans', sans-serif;
 
+html {
+  background: url(images/bg-items2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   font-family: $font;
   font-size: 62.5% !important;
   position: relative;
-  background: #222;
+  //background: #222;
+  background: transparent;
 }
 
 .row {
@@ -12,7 +21,7 @@ body {
 }
 
 .wrapper {
-  background: #efefef;
+  //background: #efefef;
   //margin-left: -25%;
   position: relative;
   z-index: 999;
@@ -48,8 +57,9 @@ h1,h2,h3,h4,h5 {
 }
 
 .header {
-  background: black;
+  //background: black;
   .header-bg {
+    display: none;
     width: 100%;
     position: fixed;
     top: -40px;
@@ -167,13 +177,25 @@ h1,h2,h3,h4,h5 {
   border: solid 2px red;
   overflow: hidden;
   background: #222;
-  border: solid 1px;
+  border: solid 20px;
   position: absolute;
   width: 35% !important;
   min-width: 0 !important;
   z-index: 10;
   top: 0;
   right: 0;
+  opacity: 0;
+  -webkit-transition: opacity .45s ease-in-out;
+  -moz-transition: opacity .45s ease-in-out;
+  -o-transition: opacity .45s ease-in-out;
+  transition: opacity .45s ease-in-out;
+  &.visible {
+    opacity: 1;
+    -webkit-transition: opacity .45s ease-in-out;
+    -moz-transition: opacity .45s ease-in-out;
+    -o-transition: opacity .45s ease-in-out;
+    transition: opacity .45s ease-in-out;
+  }
   .my-order {
     .label {
       float: left;

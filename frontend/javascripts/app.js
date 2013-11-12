@@ -25,6 +25,7 @@
     $('#nav-order').on('click', function() {
       $('.wrapper').toggleClass('slide');
       $('.header-bg').toggleClass('bg-slide');
+      $('.order.row').toggleClass('visible');
     });
 
 
