@@ -14,12 +14,5 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    order = Order.find(params[:id])
-    order.user_id = params[:order][:user_id]
-    order.status = params[:order][:status]
-    order.save
-    redirect_to admin_order_index_path
-  end
 
 end

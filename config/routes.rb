@@ -2,6 +2,7 @@ Wtpho::Application.routes.draw do
   get '/menu' => 'items#index'
   get '/menu/:category' => 'items#index'
   get '/current_order' => 'orders#show'
+  get '/my_orders' => 'orders#index'
   put '/order/:id' => 'admin/orders#update'
 
 
@@ -14,11 +15,11 @@ Wtpho::Application.routes.draw do
     delete 'user' => 'users#destroy'
   end
 
-  resources :items
+  resources :items, only: [:index, :show]
   resources :order_items
   resource  :session
   resources :users
-  resources :orders
+  # resources :orders, only: [:show]
 
   get '/' => "items#index"
 

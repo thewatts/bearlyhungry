@@ -17,11 +17,7 @@ class OrderItemsController < ApplicationController
     order_item = OrderItem.find(params[:id])
     order_item.quantity = params[:order_item][:quantity]
     order_item.save
-    if current_user.admin?
-      redirect_to admin_order_index_path
-    else
-      redirect_to order_path
-    end
+    redirect_to order_path
   end
 
 end
