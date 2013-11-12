@@ -1,0 +1,16 @@
+
+<%= form_for(@item, html: {multipart: true}) do |f| %>
+<p>Title:      <%= f.text_field :title, :id => 'title' %></p>
+<p>Description:<%= f.text_area :description, :id => 'description' %></p>
+<p>Price:      <%= f.text_field :price, :id => 'price' %></p>
+<p>
+  <%= f.label :image, "Attach an Image" %><br />
+  <%= f.file_field :image %>
+</p>
+
+  <%= f.submit "Save Item", :id => 'edit' %>
+<% end %>
+
+
+
+

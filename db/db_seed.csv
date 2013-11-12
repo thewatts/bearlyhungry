@@ -1,38 +1,38 @@
-title,description,price,category
-Spring Rolls with Shrimp & Pork,"Shrimp, pork, rice noodels, lettuce, and herbs are wrapped in a rice paper and server with peanut or fish sauce.  Other combinations available.",3.95,Appetizers
-Vietnamese Egg Roll,"Shrimp, pork, vermicelli noodles, lettuce and herbs are wrapped in a rice paper and served with peanut sauce or fish sauce.",6.95,Appetizers
-Shrimp and Coconut Milk,Battered shrimp fried to perfection topped with a creamy coconut milk sauce.,6.95,Appetizers
-BBQ Short Ribs,BBQ Short Ribs slowly grilled and topped with Spring Onions.,7.95,Appetizers
-Slowly Grilled Lamb Chop Plater,Slowly Grilled Lamb Chops topped with onions and served with curry peanut sauce.,10.95,Appetizers
-Soft Shell Crab with Vegetables,Fried soft shell crab served with vegetables.,15.95,Appetizers
-Pho 95 Special,"Grilled beef, pork, chicken, fried soft shell crab and vegetables served with rice paper.",22.95,Appetizers
-House Special Lambchop Plate,Slow grilled lamb chops topped with Spring Onions and served with curry peanut sauce.,17.95,House Specials
-Wild Salmon House Special,"Fresh Wild Salmon marinated with ginger and topped with grean leaf lettuce and tomatoes. Served with sesame soy sauce, green beans and radish.",16.95,House Specials
-Deep-Fried Bananna,Fresh banannas deep-fried in a light batter topped with chocolate sauce and powdered sugar. ,6.95,Desserts
-Fried Banana with Coconut Milk and Sesame.,Fried Ice Cream topped with coconut milk and sesame seeds.,5.95,Desserts
-Fried Ice Cream,Fried Ice Cream (Strawberry or Green Tea.),7.95,Desserts
-Thai Fruit Cocktail,A delcious fruit cocktail.,3.75,Desserts
-Vietnamese Coffee,Vietnamese coffee served with a glass of ice.,3.45,Desserts
-Pho Soup Combination,"Well-done brisket, flank, tendon & tripe in our signature beef broth with noodles and medoly of vegetables and herbs.",8.95,Traditional Pho Soup
-Kids Pho Soup,"Choose from a variety of different pho-soup combinations to fit your childs needs; Chicken, rare steak, meatball or plain.",3.75,Traditional Pho Soup
-Rare Steak,Extra side of rare steak.,1.5,Extras
-Fresh Vegetables & Herbs,A medley of fresh vegetables and herbs.,3.99,Extras
-Combination Bowl,"Grilled beef, pork, chicken, shrimp and eggrolls on top of vermicelli noodles and a variety of vegetables and herbs.  Fish sauce served on the side.",11.95,Vietnamese Noodle Bowls
-Beef Noodle Bowl with Egg Rolls,Grilled beef and eggrolls on top of vermicelli noodles and a variety of vegetables and herbs.  Fish sauce served on the side.,10.95,Vietnamese Noodle Bowls
-Grilled Shimp and Lemongrass Bowl,Grilled Shimp in Lemongrass,10.95,Vietnamese Noodle Bowls
-Pan Fried Noodles with Sauteed Seafood and Vegetables,"Pan fried noodles topped with a savory sauce, seafood and vegetables.",10.95,Traditional Dishes
-Pork Chop Plate,"Pork chops cooked to perfection served with white rice, vegetables and herbs.",8.95,Traditional Dishes
-Chow Mein Combination,"Pho 95 special chow mein combination with beef, pork, chicken and seafood.",11.95,Traditional Dishes
-Grilled Shrimp Plate,Grilled shrimp served with a medley of vegetables and white rice.,8.95,Traditional Dishes
-BBQ Short Ribs Plate,BBQ Short Ribs slowly grilled and topped with Spring Onions,8.95,Traditional Dishes
-Combination Rice Plate,"Combination rice plate with grilled beef, pork, chicken, shrimp & egg roll.",11.95,Traditional Dishes
-Honeydew Boba,A delicious blend of honeydew smoothie with bobas.,3.99,Boba Smoothies
-Mango Boba,A delicious blend of Mango smoothie with bobas.,3.99,Boba Smoothies
-Strawberry Boba,A delicious blend of strawberry smoothie with bobas.,3.99,Boba Smoothies
-Taro Boba,A delicious blend of honeydew smoothie with bobas.,3.99,Boba Smoothies
-Black Cherry Mojito,"Black Cherry Rum, Fresh Mint, Cherries and Club Soda.",7.99,Specialty Cocktails
-Vietnam Mojito,"Light Rum, Mint, Fresh Ginger & Club Soda.",7.99,Specialty Cocktails
-Vietnam Rum Punch,"Rum, Malibu Rum, Campari Rum and Pineapple Juice.",8.99,Specialty Cocktails
-Vietnam Coast,"Malibu Black, Blue Curacao, Orange juice and Pineapple juice.",8.99,Specialty Cocktails
-Vietnam Sunrise,"Dark Rum, Spice Rum, Orange Juice and Pineapple Juice.",8.99,Specialty Cocktails
-Asian Pear Martini,Fresh Asian Pear Slice and Sake.,8.99,Specialty Martinis
+title,description,price,category,image_file_name
+Spring Rolls with Shrimp & Pork,"Shrimp, pork, rice noodels, lettuce, and herbs are wrapped in a rice paper and server with peanut or fish sauce.  Other combinations available.",3.95,Appetizers,"spring-rolls-with-shrimp.jpg"
+Vietnamese Egg Roll,"Shrimp, pork, vermicelli noodles, lettuce and herbs are wrapped in a rice paper and served with peanut sauce or fish sauce.",6.95,Appetizers,"vietnamese-egg-roll.jpg"
+Shrimp and Coconut Milk,Battered shrimp fried to perfection topped with a creamy coconut milk sauce.,6.95,Appetizers,"shrimp-and-coconut-milk.jpg"
+BBQ Short Ribs,BBQ Short Ribs slowly grilled and topped with Spring Onions.,7.95,Appetizers,"bbq-short-ribs.jpg"
+Slowly Grilled Lamb Chop Platter,Slowly Grilled Lamb Chops topped with onions and served with curry peanut sauce.,10.95,Appetizers,"slowly-grilled-lamb-chop-platter.jpg"
+Soft Shell Crab with Vegetables,Fried soft shell crab served with vegetables.,15.95,Appetizers,"soft-shell-crab-with-vegetables.jpg"
+Pho 95 Special,"Grilled beef, pork, chicken, fried soft shell crab and vegetables served with rice paper.",22.95,Appetizers,"pho-95-special.jpg"
+House Special Lambchop Plate,Slow grilled lamb chops topped with Spring Onions and served with curry peanut sauce.,17.95,House Specials,"house-special-lambchop-plate.jpg"
+Wild Salmon House Special,"Fresh Wild Salmon marinated with ginger and topped with grean leaf lettuce and tomatoes. Served with sesame soy sauce, green beans and radish.",16.95,House Specials,"wild-salmon-house-special.jpg"
+Deep-Fried Bananna,Fresh banannas deep-fried in a light batter topped with chocolate sauce and powdered sugar. ,6.95,Desserts,"deep-fried-bananna.jpg"
+Fried Banana with Coconut Milk and Sesame.,Fried Ice Cream topped with coconut milk and sesame seeds.,5.95,Desserts,"fried-banana-with-coconut-milk-and-sesame.jpg"
+Fried Ice Cream,Fried Ice Cream (Strawberry or Green Tea.),7.95,Desserts,"fried-ice-cream.jpg"
+Thai Fruit Cocktail,A delcious fruit cocktail.,3.75,Desserts,"thai-fruit-cocktail.jpg"
+Vietnamese Coffee,Vietnamese coffee served with a glass of ice.,3.45,Desserts,"vietnamese-coffee.jpg"
+Pho Soup Combination,"Well-done brisket, flank, tendon & tripe in our signature beef broth with noodles and medoly of vegetables and herbs.",8.95,Traditional Pho Soup,"pho-soup-combination.jpg"
+Kids Pho Soup,"Choose from a variety of different pho-soup combinations to fit your childs needs; Chicken, rare steak, meatball or plain.",3.75,Traditional Pho Soup,"kids-pho-soup.jpg"
+Rare Steak,Extra side of rare steak.,1.5,Extras,"rare-steak.jpg"
+Fresh Vegetables & Herbs,A medley of fresh vegetables and herbs.,3.99,Extras,"fresh-vegetables-herbs.jpg"
+Combination Bowl,"Grilled beef, pork, chicken, shrimp and eggrolls on top of vermicelli noodles and a variety of vegetables and herbs.  Fish sauce served on the side.",11.95,Vietnamese Noodle Bowls,"combination-bowl.jpg"
+Beef Noodle Bowl with Egg Rolls,Grilled beef and eggrolls on top of vermicelli noodles and a variety of vegetables and herbs.  Fish sauce served on the side.,10.95,Vietnamese Noodle Bowls,"beef-noodle-bowl-with-egg-rolls.jpg"
+Grilled Shrimp and Lemongrass Bowl,Grilled Shimp in Lemongrass,10.95,Vietnamese Noodle Bowls,"grilled-shrimp-and-lemongrass-bowl.jpg"
+Pan Fried Noodles with Sauteed Seafood and Vegetables,"Pan fried noodles topped with a savory sauce, seafood and vegetables.",10.95,Traditional Dishes,"pan-fried-noodles-with-sauteed-seafood-and-vegetables.jpg"
+Pork Chop Plate,"Pork chops cooked to perfection served with white rice, vegetables and herbs.",8.95,Traditional Dishes,"pork-chop-plate.jpg"
+Chow Mein Combination,"Pho 95 special chow mein combination with beef, pork, chicken and seafood.",11.95,Traditional Dishes,"chow-mein-combination.jpg"
+Grilled Shrimp Plate,Grilled shrimp served with a medley of vegetables and white rice.,8.95,Traditional Dishes,"grilled-shrimp-plate.jpg"
+BBQ Short Ribs Plate,BBQ Short Ribs slowly grilled and topped with Spring Onions,8.95,Traditional Dishes,"bbq-short-ribs-plate.jpg"
+Combination Rice Plate,"Combination rice plate with grilled beef, pork, chicken, shrimp & egg roll.",11.95,Traditional Dishes,"combination-rice-plate.jpg"
+Honeydew Boba,A delicious blend of honeydew smoothie with bobas.,3.99,Boba Smoothies,"honeydew-boba.jpg"
+Mango Boba,A delicious blend of Mango smoothie with bobas.,3.99,Boba Smoothies,"mango-boba.jpg"
+Strawberry Boba,A delicious blend of strawberry smoothie with bobas.,3.99,Boba Smoothies,"strawberry-boba.jpg"
+Taro Boba,A delicious blend of honeydew smoothie with bobas.,3.99,Boba Smoothies,"taro-boba.jpg"
+Black Cherry Mojito,"Black Cherry Rum, Fresh Mint, Cherries and Club Soda.",7.99,Specialty Cocktails,"black-cherry-mojito.jpg"
+Vietnam Mojito,"Light Rum, Mint, Fresh Ginger & Club Soda.",7.99,Specialty Cocktails,"vietnam-mojito.jpg"
+Vietnam Rum Punch,"Rum, Malibu Rum, Campari Rum and Pineapple Juice.",8.99,Specialty Cocktails,"vietnam-rum-punch.jpg"
+Vietnam Coast,"Malibu Black, Blue Curacao, Orange juice and Pineapple juice.",8.99,Specialty Cocktails,"vietnam-coast.jpg"
+Vietnam Sunrise,"Dark Rum, Spice Rum, Orange Juice and Pineapple Juice.",8.99,Specialty Cocktails,"vietnam-sunrise.jpg"
+Asian Pear Martini,Fresh Asian Pear Slice and Sake.,8.99,Specialty Martinis,"asian-pear-martini.jpg"

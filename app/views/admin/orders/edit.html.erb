@@ -1,0 +1,20 @@
+<p class="flash"><%= flash.notice %></p>
+<H1> Edit Order '<%= @order.id %>' </H1>
+<p>User Full Name: <%= @order.user.full_name %></p>
+<p>User ID:        <%= @order.user_id %></p>
+<p>Email: <%= @order.user.email %></p>
+<p>Order Subtotal: <%= number_to_currency(@order.subtotal) %></p>
+<p>Status: <%= @order.status %></p>
+<p>Created At: <%= @order.created_at %></p>
+
+<% if @order.status == 'in progress' %>
+  <%= render partial: "form" %>
+<% else %> 
+  <% @order.order_items.each do |order_item| %>
+    <p>Item Name:     <%= order_item.item.title %></p>
+    <p>Quantity:     <%= order_item.quantity %></p>
+    <p>Item Price:     <%= order_item.item.price %></p>
+    <p>Subtotal:     <%= number_to_currency(order_item.subtotal) %></p>
+    <p>Created At: <%= order_item.created_at %></p>
+  <% end %>
+<% end %>

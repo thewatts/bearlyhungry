@@ -5,12 +5,12 @@
   <ul>
 
     <li>Desciption: <%= order_item.item.description %></li>
-    <li>Price: <%= number_to_currency(order_item.price) %></li>
+    <li>Price: <%= number_to_currency(order_item.item.price) %></li>
     <li>
       <%= form_for order_item do |f| %>
         <p>
           <%= f.label :quantity %><br />
-          <%= f.text_field :quantity, :id => 'quantity' %>
+          <%= f.number_field :quantity, :id => 'quantity' %>
 
           <%= f.submit "Update Quantity" %>
         </p>
@@ -23,6 +23,9 @@
     </div>
   </ul>
   <% end %>
+</div>
+<div id='order_subtotal' >
+  <h3>Order Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
 </div>
 
 
