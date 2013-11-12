@@ -1,17 +1,23 @@
 class ItemsController < ApplicationController
 
   include ItemsHelper
-  include CurrentOrder
 
   def index
-    @current_order
-    @main_categories = Category.where(type_of: 'main_menu')
-    @items = Item.all
+    @category = Category.find_by(title: formatted_category(params[:category]))
+    if params[:category] && !@category.nil?
+      @items = @category.items
+    else
+      @items = Item.all
+    end
   end
 
   def show
     @item = Item.find(params[:id])
   end
+
+  # def show_by_category
+
+  # end
 
   def new
     @item = Item.new
@@ -20,7 +26,7 @@ class ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     item.save
-    redirect_to items_path(@item)
+    redirect_to admin_items_path
   end
 
   def edit
@@ -30,13 +36,15 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.update(item_params)
-    redirect_to items_path(@item)
+    redirect_to admin_items_path
   end
 
   def destroy
     @item = Item.find(params[:id])
     item.destroy
-    redirect_to items_path
+    redirect_to admin_items_path
   end
+
+
 end
 

@@ -10,13 +10,14 @@
       <%= form_for order_item do |f| %>
         <p>
           <%= f.label :quantity %><br />
-          <%= f.text_field :quantity, :id => 'quantity' %>
+
+          <%= f.number_field :quantity, :id => 'quantity' %>
 
           <%= f.submit "Update Quantity" %>
         </p>
       <% end %>
     </li>
-    
+
     <%= link_to "Back to All Items", items_path %>
     <div id='item-<%= order_item.item.id %>'>
       <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
@@ -25,7 +26,7 @@
   <% end %>
 </div>
 <div id='order_subtotal' >
-  <h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
+  <h3>Order Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
 </div>
 
 
