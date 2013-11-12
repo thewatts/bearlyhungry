@@ -17,8 +17,11 @@
           </li>
           <li>
             <span id="nav-order">
-              View Order (<span class="nav-order-item-count">0 items</span>)
-              <span class="nav-order-total">$0.00</span>
+              View Order
+              (<span class="nav-order-item-count"><%= current_order.total_items %> items</span>)
+              <span class="nav-order-total">
+                <%= number_to_currency(current_order.subtotal) %>
+              </span>
             </span>
           </li>
         </ul>

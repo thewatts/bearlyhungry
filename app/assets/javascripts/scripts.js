@@ -36,6 +36,8 @@
         console.log('testing');
         $(this).val(1);
         console.log(this);
+      } else {
+        $(this).val(val);
       }
     });
 

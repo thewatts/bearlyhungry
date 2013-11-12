@@ -3,7 +3,7 @@ class OrderItemsController < ApplicationController
   before_action :set_order, only: :create
 
   def create
-    set_order.add_item(params[:item_id])
+    set_order.add_item(params[:order_item][:item_id], params[:order_item][:quantity])
     redirect_to items_path
   end
 
