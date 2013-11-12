@@ -7,6 +7,7 @@
     Welcome, <%= current_user.display_name %>
   <% end %>
   <%= link_to "Logout", logout_path, :method => :delete %>
+  <div><%= link_to "Past Orders (#{current_user.orders.count})", my_orders_path %></div>
 <% else %>
   <h3>Login Now:</h3>
   <%= form_for :session, :url => session_path do |f| %>
@@ -14,11 +15,11 @@
     <%= f.password_field :password %>
     <%= f.submit "Login" %>
   <% end %>
+    <%= link_to "Sign Up", new_user_path %>
 <% end %>
 
 
-<%= link_to "Sign Up", new_user_path %>
-<div><%= link_to "View Current Order", my_orders_path %></div>
+<div><%= link_to "View Current Order", current_order_path %></div>
 
 <div id='items'>
 

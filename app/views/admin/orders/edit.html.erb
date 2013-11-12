@@ -11,10 +11,10 @@
 <p>Status: <%= @order.status %></p>
 <p>Created At: <%= @order.created_at %></p>
 
-  <p>Items: 
-    <% if @order.order_items.count == 0 %>
-      <p><em>There are currently no items for this order.</em></p>
-    <% else %>
-      <%= render partial: "form" %>
-    <% end %>
+<h2>Items: </h2>
+<% if @order.order_items.count == 0 %>
+  <p><em>There are currently no items for this order.</em></p>
+<% else %>
+  <%= render partial: "admin/order_items/form" %>
+<% end %>
 
