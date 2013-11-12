@@ -18,16 +18,6 @@
     $.fn.foundationClearing         ? $doc.foundationClearing() : null;
 
     $.fn.placeholder                ? $('input, textarea').placeholder() : null;
-
-    // toggle order
-    var showOrder = false;
-
-    $('#nav-order').on('click', function() {
-      $('.wrapper').toggleClass('slide');
-      $('.header-bg').toggleClass('bg-slide');
-    });
-
-
   });
 
   // UNCOMMENT THE LINE YOU WANT BELOW IF YOU WANT IE8 SUPPORT AND ARE USING .block-grids
@@ -44,4 +34,10 @@
       }, 0);
     });
   }
+
+  // toggle order
+  $('#nav-order').on('click', function() {
+    alert('testing');
+  )};
+
 })(jQuery, this);
