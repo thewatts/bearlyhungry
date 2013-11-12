@@ -1,6 +1,6 @@
 Wtpho::Application.routes.draw do
   get '/menu' => 'items#index'
-  get '/menu/:category' => 'items#index'
+  get '/menu/:category' => 'items#index', as: "menu_category"
   get '/current_order' => 'orders#show'
   put '/order/:id' => 'admin/orders#update'
 
@@ -22,5 +22,6 @@ Wtpho::Application.routes.draw do
 
   get '/' => "items#index"
 
+  get '/login'     => 'sessions#create', as: :login
   delete 'session' => 'sessions#destroy', as: :logout
 end

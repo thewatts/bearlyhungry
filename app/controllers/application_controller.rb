@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
   def formatted_category(param)
     if param
-      param.split('_').map {|c| c.capitalize}.join(' ')
+      param.split('-').map {|c| c.capitalize}.join(' ')
     end
   end
 

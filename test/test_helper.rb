@@ -9,6 +9,8 @@ end
 require 'rails/test_help'
 require 'minitest/pride'
 require 'capybara/rails'
+require 'simplecov'
+SimpleCov.start 'rails'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!

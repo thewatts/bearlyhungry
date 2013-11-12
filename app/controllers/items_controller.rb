@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   include ItemsHelper
 
   def index
+    @categories = Category.all
     @category = Category.find_by(title: formatted_category(params[:category]))
     if params[:category] && !@category.nil?
       @items = @category.items

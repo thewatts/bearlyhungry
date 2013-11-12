@@ -1,44 +1,24 @@
-<h1>Login Status</h1>
-
-<% if current_user %>
-  <% if current_user.display_name.empty? %>
-    Welcome, <%= current_user.full_name %>
-  <% else %>
-    Welcome, <%= current_user.display_name %>
-  <% end %>
-  <%= link_to "Logout", logout_path, :method => :delete %>
-<% else %>
-  <h3>Login Now:</h3>
-  <%= form_for :session, :url => session_path do |f| %>
-    <%= f.text_field :email %>
-    <%= f.password_field :password %>
-    <%= f.submit "Login" %>
-  <% end %>
-<% end %>
-
-
-<%= link_to "Sign Up", new_user_path %>
-<div><%= link_to "View Current Order", current_order_path %></div>
-
-<div id='items'>
-
+<div class="menu-title twelve columns">
   <% if @category %>
     <h2><%= @category.title %></h2>
+    <h3>The real deal folks...</h3>
   <% end %>
-
-    <% @items.each do |item| %>
-      <ul>
-        <li>
-          <h3><%= link_to item.title, item_path(item) %></h3>
-          <ul>
-            <li>Description: <%= item.description %></li>
-            <li>Price: <%= number_to_currency(item.price) %></li>
-            <div id='item-<%= item.id %>'>
-              <%= link_to "Add to Order", order_items_path(item_id: item.id), method: :post %>
-            </div>
-          </ul>
-        </li>
-      </ul>
-    <% end %>
 </div>
 
+<div class="menus-nav three columns">
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <%= link_to category.title, menu_category_path(category.slug)  %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="items nine columns">
+  <div class="row">
+    <% @items.each do |item| %>
+      <%= render "items/single_item_menu", :item => item %>
+    <% end %>
+  </div>
+</div>

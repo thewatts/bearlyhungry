@@ -1,0 +1,324 @@
+$font: 'Open Sans', sans-serif;
+
+html {
+  background: image-url("bg-items2.jpg") no-repeat left center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  font-family: $font;
+  font-size: 62.5% !important;
+  position: relative;
+  background: #222;
+  background: transparent;
+}
+
+.row {
+  width: 1000px;
+}
+
+.notifications {
+  border: solid 1px #ddd;
+  padding: 18px 20px;
+  text-align: center;
+  background: #efefef;
+  border-radius: 2px;
+  span {
+    font-size: 1.2em;
+  }
+  .notification-close {
+    border: solid 1px white;
+    padding: 5px 10px;
+    border-radius: 50em;
+    font-size: 1em;
+    display: inline-block;
+    float: right;
+  }
+}
+
+.notifications.success {
+  background: #92ad26;
+  color: #fff;
+}
+
+.notifications.error {
+  background: red;
+  color: #fff;
+}
+
+
+.wrapper {
+  //background: #efefef;
+  //margin-left: -25%;
+  position: relative;
+  z-index: 999;
+  width: 100%;
+    -webkit-transition: margin-left .45s ease-in-out;
+    -moz-transition: margin-left .45s ease-in-out;
+    -o-transition: margin-left .45s ease-in-out;
+    transition: margin-left .45s ease-in-out;
+  &.slide {
+    margin-left: -35%;
+    -webkit-transition: margin-left .45s ease-in-out;
+    -moz-transition: margin-left .45s ease-in-out;
+    -o-transition: margin-left .45s ease-in-out;
+    transition: margin-left .45s ease-in-out;
+  }
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: $font;
+}
+
+.block {
+  display: block;
+}
+
+.button {
+  background: #222;
+  color: #fafafa;
+  font-weight: 500;
+  font-size: .9em;
+  padding: 8px 12px;
+  border-radius: 2px;
+}
+
+.main-header {
+  //background: black;
+  .header-bg {
+    display: none;
+    width: 100%;
+    position: fixed;
+    top: -40px;
+    z-index: 0;
+    left: 0%;
+    -webkit-transition: left .45s ease-in-out;
+    -moz-transition: left .45s ease-in-out;
+    -o-transition: left .45s ease-in-out;
+    transition: left .45s ease-in-out;
+
+    &.bg-slide {
+      left: -35%;
+      -webkit-transition: left .45s ease-in-out;
+      -moz-transition: left .45s ease-in-out;
+      -o-transition: left .45s ease-in-out;
+      transition: left .45s ease-in-out;
+    }
+  }
+  .logo {
+    margin-top: 40px;
+  }
+  height: 200px;
+}
+
+.main-nav {
+  margin-top: 30px;
+  li {
+    list-style-type: none;
+    display: inline-block;
+    a {
+      padding: 10px;
+      color: #fff;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 1.1em;
+    }
+  }
+  #nav-order {
+    padding: 10px;
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.1em;
+  }
+}
+
+.content {
+  margin-top: 30px;
+  position: relative;
+  z-index: 100;
+  background: #fefefe;
+  border: solid 1px #ccc;
+  padding-bottom: 40px;
+  border-radius: 2px;
+}
+
+.menus-nav {
+  margin-top: 20px;
+  text-align: right;
+  li {
+    list-style-type: none;
+    font-style: italic;
+    font-family: "Georgia", serif;
+    a {
+      font-size: 1.4em;
+      color: #222;
+      padding: 10px 0;
+      display: block;
+      padding-right: 50px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.item:last-child {
+  float: left !important;
+}
+
+.item-info {
+  min-height: 460px;
+  float: left;
+  margin-bottom: 10px;
+  position: relative;
+  .image-price {
+    position: relative;
+    img {
+      width: 100%;
+      background: #fff;
+      padding: 2px;
+      border: solid 1px #ddd;
+      border-radius: 50em;
+    }
+    span {
+      background: #222;
+      padding: 7px 8px;
+      color: #fefefe;
+      display: block;
+      position: absolute;
+      z-index: 100;
+      right: 0;
+      bottom: 20px;
+      font-size: 1.3em;
+    }
+  }
+  .title {
+    font-weight: 500;
+    margin-top: 5px;
+    font-size: 1.2em;
+    line-height: 1.3;
+  }
+  .description p {
+    margin-top: -3px;
+    font-size: .9em;
+  }
+  .quantity-order {
+    div {
+      display: inline-block;
+    }
+    text-align: center;
+    position: absolute;
+    bottom: 35px;
+    width: 85%;
+    overflow: hidden;
+    .quantity {
+      float: left;
+      width: 30px;
+      margin-right: 10px;
+    }
+    .add-item {
+      float: left;
+      font-size: 1em;
+    }
+  }
+}
+
+.order.row {
+  border: solid 2px red;
+  overflow: hidden;
+  background: #222;
+  border: solid 20px;
+  position: absolute;
+  width: 35% !important;
+  min-width: 0 !important;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: opacity .45s ease-in-out;
+  -moz-transition: opacity .45s ease-in-out;
+  -o-transition: opacity .45s ease-in-out;
+  transition: opacity .45s ease-in-out;
+  &.visible {
+    opacity: 1;
+    -webkit-transition: opacity .45s ease-in-out;
+    -moz-transition: opacity .45s ease-in-out;
+    -o-transition: opacity .45s ease-in-out;
+    transition: opacity .45s ease-in-out;
+  }
+  .my-order {
+    .label {
+      float: left;
+    }
+    .value {
+      float: right;
+    }
+    .modify {
+      clear: both;
+    }
+  }
+}
+
+#nav-order {
+  cursor: pointer;
+}
+
+.header {
+  overflow: hidden;
+}
+
+.logo {
+  float: left;
+}
+
+.main-nav {
+  float: right;
+}
+
+.menu-title {
+  margin-bottom: 20px;
+  text-align: center;
+  h2 {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 3.5em;
+  }
+  h3 {
+    font-family: "Georgia", serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.3em;
+    text-transform: lowercase;
+  }
+}
+
+
+.order-item {
+  list-style-type: none;
+  padding: 5px 0;
+  border-bottom: solid 1px #eee;
+  overflow: hidden;
+  color: #fefefe;
+  .order-item-info {
+    float: left;
+    width: 75%;
+    .item-title {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+    .item-quantity-price {
+      font-size: .9em;
+    }
+  }
+  .order-item-price {
+    width: 25%;
+    text-align: right;
+    float: right;
+    background: #eee;
+  }
+}
+

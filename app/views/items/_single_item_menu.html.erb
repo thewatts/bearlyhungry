@@ -1,0 +1,26 @@
+<div class="item four columns">
+  <div class="row">
+    <div class="item-info twelve columns">
+      <div class="image-price">
+        <img src="<%= item.image %>">
+        <span class="price">
+          <%= number_to_currency(item.price) %>
+        </span>
+      </div>
+      <h3 class="title">
+        <%= item.title %>
+      </h3>
+      <div class="description">
+        <p>
+          <%= item.description %>
+        </p>
+      </div>
+      <div class="quantity-order">
+        <div>
+          <input class="quantity" type="text" placeholder="quantity" value="1">
+          <a class="add-item button" href="#" title="Add { item.name } to your Order">Add to Order</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
