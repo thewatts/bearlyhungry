@@ -6,20 +6,10 @@
 
     <li>Desciption: <%= order_item.item.description %></li>
     <li>Price: <%= number_to_currency(order_item.item.price) %></li>
-    <li>
-      <%= form_for order_item do |f| %>
-        <p>
-          <%= f.label :quantity %><br />
-
-          <%= f.number_field :quantity, :id => 'quantity' %>
-
-          <%= f.submit "Update Quantity" %>
-        </p>
-      <% end %>
-    </li>
-
-    <%= link_to "Back to All Items", items_path %>
     
+    <li>Quantity: <%= order_item.quantity %></li>
+    
+
     <div id='item-<%= order_item.item.id %>'>
       <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
     </div>

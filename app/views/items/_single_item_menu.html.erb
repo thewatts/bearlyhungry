@@ -17,8 +17,12 @@
       </div>
       <div class="quantity-order">
         <div>
-          <input class="quantity" type="text" placeholder="quantity" value="1">
-          <a class="add-item button" href="#" title="Add { item.name } to your Order">Add to Order</a>
+          <%= form_for :order_item, url: order_items_path do |f| %>
+            <%= f.text_field :quantity, :class => "quantity", :value => 1 %>
+            <%= f.hidden_field :item_id, { :value => item.id } %>
+            <%= link_to "Add to Order", "#", class: "add-item button" %>
+            <%#= f.submit "Add to Order" %>
+          <% end %>
         </div>
       </div>
     </div>

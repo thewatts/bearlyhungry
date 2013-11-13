@@ -5,15 +5,16 @@ class Order < ActiveRecord::Base
   has_many :items, through: :order_items
   belongs_to :user
 
-  def add_item(item_id)
+  def add_item(item_id, quantity = 1)
     found_item = Item.find(item_id)
     if !items.include? found_item
       items << found_item
       order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
+      order_item.quantity = quantity.to_i
       order_item.save
     else
       order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
-      order_item.quantity += 1
+      order_item.quantity += quantity.to_i
       order_item.save
     end
   end
@@ -38,5 +39,9 @@ class Order < ActiveRecord::Base
       total += order_item.subtotal
     end
     total
+  end
+
+  def total_items
+    order_items.inject(0) { |sum, item| sum + item.quantity }
   end
 end

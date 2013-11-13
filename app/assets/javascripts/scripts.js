@@ -36,7 +36,14 @@
         console.log('testing');
         $(this).val(1);
         console.log(this);
+      } else {
+        $(this).val(val);
       }
+    });
+
+    $('.add-item').on('click', function(event) {
+      event.preventDefault();
+      $(this).parent().submit();
     });
 
     var footer = $('.footer')

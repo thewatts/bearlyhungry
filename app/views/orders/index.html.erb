@@ -1,0 +1,28 @@
+<h2>Your Order History:</h2>
+
+<% if @orders.nil? %>
+  <em>You have no past orders on record.</em>
+<% else %>
+  <% @orders.each do |order| %>
+
+  <p>Order ID: <%= order.id %></p>
+  <p>Status: <%= order.status %></p>
+  <p>Order Subtotal: <%= number_to_currency(order.subtotal) %></p>
+  <p>Created At: <%= order.created_at %></p>
+      <%= link_to "Add To Current Order", current_order_path, method: :put %>
+  <%= link_to "View Details", order_path(order) %>
+    <p>Items: 
+      <% if order.order_items.count == 0 %>
+        <p><em>There are currently no items for this order.</em>
+      <% end %>
+    </p>
+    <% order.order_items.each do |order_item| %>
+      <h3><%= link_to order_item.item.title, item_path(order_item.item) %></h3>
+      <p>Quantity:     <%= order_item.quantity %></p>
+      <p>Item Price:   <%= order_item.item.price %></p>
+      <p>Subtotal:     <%= number_to_currency(order_item.subtotal) %></p>
+      <p>Created At: <%= order_item.created_at %></p>
+    <% end %>
+  <% end %>
+<% end %>
+  <%= link_to "Main Menu", menu_path %>

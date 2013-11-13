@@ -3,7 +3,9 @@ class OrderItemsController < ApplicationController
   before_action :set_order, only: :create
 
   def create
-    set_order.add_item(params[:item_id])
+    set_order.add_item(params[:order_item][:item_id], params[:order_item][:quantity])
+    item = Item.find(params[:order_item][:item_id])
+    flash[:notice] = "Enjoy your #{item.title}!"
     redirect_to items_path
   end
 
@@ -17,11 +19,7 @@ class OrderItemsController < ApplicationController
     order_item = OrderItem.find(params[:id])
     order_item.quantity = params[:order_item][:quantity]
     order_item.save
-    if current_user.admin?
-      redirect_to admin_order_index_path
-    else
-      redirect_to order_path
-    end
+    redirect_to order_path
   end
 
 end
