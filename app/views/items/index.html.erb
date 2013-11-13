@@ -13,7 +13,7 @@
 
 <div class="menus-nav three columns">
   <ul>
-    <% @categories.each do |category| %>
+    <% categories.each do |category| %>
       <li>
         <%= link_to category.title, menu_category_path(category.slug)  %>
       </li>

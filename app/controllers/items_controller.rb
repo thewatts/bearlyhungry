@@ -3,14 +3,12 @@ class ItemsController < ApplicationController
   include ItemsHelper
 
   def index
-    @categories = Category.all
     @category = Category.find_by_slug(params[:category])
     if params[:category] && !@category.nil?
       @items = @category.items.available_items
     else
       @items = Item.available_items
     end
-    fail
   end
 
   def show
