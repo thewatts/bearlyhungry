@@ -9,4 +9,8 @@ class Item < ActiveRecord::Base
   has_many :item_categories
   has_many :categories, :through => :item_categories
 
+
+  def self.available_items
+    all.select {|item| item.available?}
+  end
 end

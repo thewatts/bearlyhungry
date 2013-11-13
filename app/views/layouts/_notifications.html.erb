@@ -10,3 +10,8 @@
     <% end %>
   </div>
 <% end %>
+<% if flash[:item_error] %>
+  <div class="notifications error row">
+    <span><%= flash[:item_error] %></span>
+  </div>
+<% end %>

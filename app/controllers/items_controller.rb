@@ -9,12 +9,15 @@ class ItemsController < ApplicationController
     if params[:category] && !@category.nil?
       @items = @category.items
     else
-      @items = Item.all
+      @items = Item.available_items
     end
   end
 
   def show
     @item = Item.find(params[:id])
+    if !@item.available?
+      flash[:item_error] = "This item is no longer available."
+    end
   end
 
   # def show_by_category

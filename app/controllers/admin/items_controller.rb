@@ -31,6 +31,12 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    if params[:item][:available] == '0'
+      @item.available = false
+    else
+      @item.available = true
+    end
+    @item.save
     @item.update(item_params)
     redirect_to item_path
   end
