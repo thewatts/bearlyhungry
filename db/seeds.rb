@@ -30,7 +30,7 @@ contents.each do |row|
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
 end
-category = Category.create(title: "House Special", type_of: 'main_menu')
+category = Category.create(title: "House Specials", type_of: 'main_menu')
 
 ItemCategory.create([{ item_id: 9, category_id: category.id},
                       { item_id: 10, category_id: category.id},
