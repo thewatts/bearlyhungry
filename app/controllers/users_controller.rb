@@ -16,12 +16,20 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
+      current_order.update(user_id: user.id, status: "in_progress")
+      session[:user_id] = user.id
+      redirect_to :back
       UserMailer.welcome_email(@user).deliver
 
         format.html { redirect_to(@user, notice: 'User was successfully created.') }
 
      redirect_to user_path(user)
-    else flash.notice = "Unable to save your account, please try again"
+    else
+      # user.errors.each do |error|
+      #   logger.info " =========> #{error}"
+      # end
+      flash[:error] = user.errors.full_messages
+      # fail
       redirect_to new_user_path
     end
   end

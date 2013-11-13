@@ -1,0 +1,40 @@
+<div id="exampleModal" class="reveal-modal">
+
+  <dl class="tabs">
+    <dd class="active"><a href="#login">Login</a></dd>
+    <dd><a href="#signup">Signup</a></dd>
+  </dl>
+
+  <ul class="tabs-content">
+    <li class="active" id="loginTab">
+      <div>
+        <%= form_for :session, :url => session_path do |f| %>
+          <%= f.text_field :email, placeholder: "Email" %>
+          <%= f.password_field :password, placeholder: "Password" %>
+          <%= f.submit "Login" %>
+        <% end %>
+      </div>
+    </li>
+    <li id="signupTab">
+      <div>
+        <%= form_for :user, url: { controller: "users", action: "create" } do |f| %>
+          <%= f.text_field :full_name, :id => "full_name",
+                         :placeholder => "Full Name", :required => true %>
+          <%= f.email_field :email, :id => "email",
+                            :placeholder => "Email Address",
+                            :required => true %>
+          <%= f.text_field :display_name, :id => "display_name",
+                           :placeholder => "Display Name (optional)" %>
+          <%= f.password_field :password, :id => "password",
+                           :placeholder => "Password",
+                           :required => true %>
+          <%= f.password_field :password_confirmation, :id => "password-confirmation",
+                           :placeholder => "Password Confirmation",
+                           :required => true %>
+          <%= f.submit "Signup!" %>
+        <% end %>
+      </div>
+    </li>
+  </ul>
+  <a class="close-reveal-modal">×</a>
+</div>

@@ -11,4 +11,13 @@ class User < ActiveRecord::Base
   def admin?
     self.admin_status
   end
+
+  def current_order
+    orders.last
+  end
+
+  def past_orders
+    order_list = orders.select {|order| order.id != current_order.id}
+    order_list.sort_by {|order| order.created_at}.reverse
+  end
 end
