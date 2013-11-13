@@ -5,9 +5,9 @@ class ItemsController < ApplicationController
   def index
     @category = Category.find_by_slug(params[:category])
     if params[:category] && !@category.nil?
-      @items = @category.items.available_items
+      @items = @category.items.available
     else
-      @items = Item.available_items
+      @items = Item.available
     end
   end
 

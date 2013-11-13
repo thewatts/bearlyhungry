@@ -9,8 +9,7 @@ class Item < ActiveRecord::Base
   has_many :item_categories
   has_many :categories, :through => :item_categories
 
-
-  def self.available_items
-    where(:available => "true")
+  def self.available
+    where(:available => true)
   end
 end
