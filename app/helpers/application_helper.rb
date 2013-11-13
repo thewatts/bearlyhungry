@@ -29,4 +29,8 @@ module ApplicationHelper
      order
   end
 
+  def order_subtotal
+    current_order.subtotal
+  end
+
 end
