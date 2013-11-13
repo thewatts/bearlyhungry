@@ -1,0 +1,127 @@
+/* Artfully masterminded by ZURB  */
+/* --------------------------------------------------
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+body {
+  font-size: 62.5%;
+  background: #f7f7f7;
+  font-family: 'Open Sans', sans-serif; }
+
+/* -----------------------------------------
+  Header
+----------------------------------------- */
+.row {
+  width: 100%; }
+
+.row .row {
+  width: auto !important;
+  margin: 0; }
+
+.table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%; }
+  .table thead {
+    border-top: solid 1px #ddd; }
+    .table thead tr th {
+      text-align: left;
+      padding-top: 5px;
+      padding-left: 10px;
+      font-size: .8em;
+      text-transform: uppercase;
+      font-weight: bold; }
+      .table thead tr th:last-child {
+        text-align: right; }
+  .table tbody tr:first-child td {
+    padding-top: 45px; }
+  .table tbody td {
+    padding: 25px 10px 20px;
+    border-bottom: solid 1px #eee; }
+    .table tbody td:first-child {
+      padding-right: 50px; }
+    .table tbody td:last-child {
+      text-align: right; }
+
+.button {
+  border: solid 1px #888;
+  background: #96bf48;
+  color: #fefefe;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px #888;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  border-radius: 4px;
+  opacity: .9; }
+  .button:hover {
+    opacity: 1;
+    color: #fff; }
+
+.admin-header.row {
+  width: 100% !important; }
+  .admin-header.row > .columns {
+    padding: 0; }
+    .admin-header.row > .columns .top-bar {
+      margin-bottom: 0; }
+
+/* -----------------------------------------
+ * Sidebar
+----------------------------------------- */
+.sidebar.two {
+  width: 12%; }
+  .sidebar.two ul {
+    margin-top: 20px; }
+    .sidebar.two ul li {
+      list-style-type: none;
+      border-bottom: solid 1px #ddd;
+      border-top: solid 1px #eee; }
+      .sidebar.two ul li:first-child {
+        border-top: none; }
+      .sidebar.two ul li a {
+        font-weight: 300;
+        color: #444;
+        padding: 20px 20px 10px 20px;
+        display: block; }
+        .sidebar.two ul li a:hover {
+          color: #000; }
+
+/* -----------------------------------------
+ * content
+----------------------------------------- */
+.content.ten {
+  width: 88%;
+  background: #ffffff;
+  border: solid 1px #eee;
+  padding: 30px 30px 50px 30px;
+  border-bottom-left-radius: 4px;
+  margin-bottom: 20px; }
+
+.header-bar.row {
+  margin-bottom: 50px;
+  overflow: hidden; }
+  .header-bar.row h3 {
+    font-weight: 300;
+    float: left; }
+  .header-bar.row .add, .header-bar.row .cancel {
+    margin-top: 10px;
+    float: right;
+    font-size: .9em; }
+  .header-bar.row .add:before {
+    content: "+ "; }
+  .header-bar.row .cancel {
+    background: #ccc; }
+
+.logo {
+  background: url(images/admin-logo.png) top left no-repeat;
+  text-indent: -9999px;
+  width: 168px;
+  height: 32px;
+  margin-top: 6px;
+  margin-left: 10px; }
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
