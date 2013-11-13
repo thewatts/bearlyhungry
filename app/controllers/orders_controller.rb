@@ -20,8 +20,11 @@ class OrdersController < ApplicationController
   end
 
   def update_current_order
-    order_items = set_order.order_items
-    fail
+    order = Order.find(params[:order_id])
+    order.order_items.each do |order_item|
+      set_order.add_item(order_item.item.id)
+      set_order.save
+    end
     redirect_to current_order_path
   end
 

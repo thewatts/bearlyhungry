@@ -9,7 +9,7 @@
   <p>Status: <%= order.status %></p>
   <p>Order Subtotal: <%= number_to_currency(order.subtotal) %></p>
   <p>Created At: <%= order.created_at %></p>
-      <%= link_to "Add To Current Order", current_order_path, method: :put %>
+      <%= link_to "Add To Current Order", current_order_path(order_id: order.id),method: :put %>
   <%= link_to "View Details", order_path(order) %>
     <p>Items: 
       <% if order.order_items.count == 0 %>
