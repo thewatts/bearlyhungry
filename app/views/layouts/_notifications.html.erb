@@ -1,3 +1,5 @@
-<div class="notifications success row">
-  <span>Thanks for submitting your order!</span>
-</div>
+<% if flash[:notice] %>
+  <div class="notifications success row">
+    <span><%= flash[:notice] %></span>
+  </div>
+<% end %>

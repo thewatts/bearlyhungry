@@ -4,6 +4,8 @@ class OrderItemsController < ApplicationController
 
   def create
     set_order.add_item(params[:order_item][:item_id], params[:order_item][:quantity])
+    item = Item.find(params[:order_item][:item_id])
+    flash[:notice] = "Enjoy your #{item.title}!"
     redirect_to items_path
   end
 
