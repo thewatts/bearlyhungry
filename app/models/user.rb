@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   def past_orders
     orders.where("id != ?", current_order.id)
   end
+
+  def total_spent
+    orders.completed.map(&:subtotal).reduce(:+) || 0
+  end
 end

@@ -11,25 +11,66 @@
   <meta name="viewport" content="width=device-width" />
 
   <title>Admin | What The Pho</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "admin" %>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
+
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div class="wrapper">
+<body class="admin">
 
-    <%= render "layouts/header" %>
+  <div class="admin-header row">
+    <div class="twelve columns">
+      <nav class="top-bar">
+        <ul>
+          <li class="name">
+            <h1>
+              <a class="logo" href="/admin">
+                Admin Dashboard
+              </a>
+            </h1>
+          </li>
+         </ul>
 
-    <%= render "layouts/notifications" %>
-
-    <div class="content row">
+         <section>
+           <ul class="right">
+             <li class="divider show-for-medium-and-up"></li>
+            <li class="has-dropdown">
+             <a href="#"><%= current_user.full_name %></a>
+              <ul class="dropdown">
+                <li><label>User Settings</label></li>
+                <li><a href="#" class="">Level 1</a></li>
+                <li><a href="#">Dropdown Option</a></li>
+                <li><a href="#">Dropdown Option</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <nav class="sidebar two columns">
+      <ul>
+        <li>
+          <a href="#">Dashboard</a>
+        </li>
+        <li>
+          <a href="#">Items</a>
+        </li>
+        <li>
+          <a href="#">Users</a>
+        </li>
+        <li>
+          <a href="#">Orders</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="content ten columns">
       <%= yield %>
     </div>
-
-    <%= render "layouts/footer" %>
-
   </div>
-
-  <%= render "layouts/order" %>
 </body>
 </html>
