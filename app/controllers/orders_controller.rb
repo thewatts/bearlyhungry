@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_user
-      @orders = current_user.orders
+      @orders = current_user.past_orders
     else
       redirect_to current_order_path
     end
@@ -22,10 +22,9 @@ class OrdersController < ApplicationController
   def update_current_order
     order = Order.find(params[:order_id])
     order.order_items.each do |order_item|
-      set_order.add_item(order_item.item.id)
-      set_order.save
+      set_order.add_item(order_item.item_id, order_item.quantity)
     end
-    redirect_to current_order_path
+    redirect_to my_orders_path
   end
 
   def current_order

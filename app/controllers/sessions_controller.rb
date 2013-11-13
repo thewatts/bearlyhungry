@@ -10,9 +10,8 @@ class SessionsController < ApplicationController
       result = user.authenticate(password)
       if result
         session[:user_id] = user.id
-        set_order.user_id = user.id
-        set_order.status = "in progress"
-        set_order.save
+        set_order.update(user_id: user.id, status: "in progress")
+        new_order = set_order
         redirect_to items_path
       else
         render :text => "Incorrect email or password."
