@@ -3,3 +3,10 @@
     <span><%= flash[:notice] %></span>
   </div>
 <% end %>
+<% if flash[:error] %>
+  <div class="notifications error row">
+    <% flash[:error].each do |error| %>
+      <span><%= error %></span>
+    <% end %>
+  </div>
+<% end %>

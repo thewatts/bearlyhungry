@@ -19,7 +19,12 @@ class UsersController < ApplicationController
       current_order.update(user_id: user.id, status: "in_progress")
       session[:user_id] = user.id
       redirect_to :back
-    else flash.notice = "Unable to save your account, please try again"
+    else
+      user.errors.each do |error|
+        logger.info " =========> #{error}"
+      end
+      flash[:error] = user.errors.full_messages
+      fail
       redirect_to new_user_path
     end
   end
