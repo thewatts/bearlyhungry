@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  <title>Admin | What The Pho</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="wrapper">
+
+    <%= render "layouts/header" %>
+
+    <%= render "layouts/notifications" %>
+
+    <div class="content row">
+      <%= yield %>
+    </div>
+
+    <%= render "layouts/footer" %>
+
+  </div>
+
+  <%= render "layouts/order" %>
+</body>
+</html>
