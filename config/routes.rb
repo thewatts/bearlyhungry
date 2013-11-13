@@ -24,6 +24,6 @@ Wtpho::Application.routes.draw do
 
   get '/' => "items#index"
 
-  get '/login'     => 'sessions#create', as: :login
-  delete 'session' => 'sessions#destroy', as: :logout
+  get '/login'  => 'sessions#create', as: :login
+  get '/logout' => 'sessions#destroy', as: :logout
 end
