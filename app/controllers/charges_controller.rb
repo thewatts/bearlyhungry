@@ -5,10 +5,10 @@ class ChargesController < ApplicationController
   def validate_order
     @amount = set_order.subtotal
     if @amount == 0
-      flash.now[:error] = ["Please add items to your order before proceeding."]
+      flash[:error] = ["Please add items to your order before proceeding."]
       redirect_to menu_path
     elsif session[:user_id].nil?
-      flash.now[:error] = ["You must login or sign up before paying."]
+      flash[:error] = ["You must login or sign up before paying."]
       redirect_to menu_path
     end
   end
