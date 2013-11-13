@@ -44,4 +44,10 @@ class Order < ActiveRecord::Base
   def total_items
     order_items.inject(0) { |sum, item| sum + item.quantity }
   end
+
+  def status_options
+    values = {'in progress' => ['mark as paid', 'cancelled'],
+      'paid' => 'mark as completed'}
+    values[self.status]
+  end
 end

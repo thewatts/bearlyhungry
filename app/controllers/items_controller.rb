@@ -15,6 +15,9 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    if !@item.available?
+      flash[:item_error] = "This item is no longer available."
+    end
   end
 
   # def show_by_category

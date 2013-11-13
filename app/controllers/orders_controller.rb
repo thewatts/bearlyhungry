@@ -22,7 +22,12 @@ class OrdersController < ApplicationController
   def update_current_order
     order = Order.find(params[:order_id])
     order.order_items.each do |order_item|
-      set_order.add_item(order_item.item_id, order_item.quantity)
+      if !order_item.item.available?
+        flash[:item_error] = ["Some items you selected are no longer available
+                         and were not added to your order."]
+      else
+        set_order.add_item(order_item.item_id, order_item.quantity)
+      end
     end
     redirect_to my_orders_path
   end
