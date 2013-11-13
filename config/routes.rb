@@ -4,7 +4,7 @@ Wtpho::Application.routes.draw do
   get '/current-order' => 'orders#current_order', as: "current_order"
   get '/my-orders' => 'orders#index', as: "my_orders"
   put '/order/:id' => 'admin/orders#update'
-
+  get '/review-my-order' => 'charges#new'
   put '/current-order' => 'orders#update_current_order', as: "update_current_order"
 
   namespace "admin" do
@@ -19,7 +19,7 @@ Wtpho::Application.routes.draw do
   resources :items, only: [:index, :show]
   resources :order_items
   resource  :session
-  resources :users
+  resources :users,  only: [:new, :create, :show, :edit]
   resources :orders, only: [:index, :show]
 
   get '/' => "items#index"

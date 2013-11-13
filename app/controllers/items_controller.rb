@@ -3,26 +3,20 @@ class ItemsController < ApplicationController
   include ItemsHelper
 
   def index
-    @categories = Category.all
-    @category = Category.find_by(title: formatted_category(params[:category]))
-    # category find by slug in model
+    @category = Category.find_by_slug(params[:category])
     if params[:category] && !@category.nil?
-      @items = @category.items.available_items
+      @items = @category.items.available
     else
-      @items = Item.available_items
+      @items = Item.available
     end
   end
 
   def show
     @item = Item.find(params[:id])
     if !@item.available?
-      flash[:item_error] = "This item is no longer available."
+      flash.now[:item_error] = "This item is no longer available."
     end
   end
-
-  # def show_by_category
-
-  # end
 
   def new
     @item = Item.new
@@ -45,7 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
+    item = Item.find(params[:id])
     item.destroy
     redirect_to admin_items_path
   end

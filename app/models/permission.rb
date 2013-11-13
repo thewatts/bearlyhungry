@@ -1,4 +1,3 @@
-
 class Permission < Struct.new(:user)
   def allow?(controller, action)
     return true if controller == "sessions"
@@ -15,7 +14,7 @@ class Permission < Struct.new(:user)
       return true if controller == "items" && action.in?(%w[index show])
       return true if controller == "order_items"
     end
-    false
+    return false
   end
 end
 

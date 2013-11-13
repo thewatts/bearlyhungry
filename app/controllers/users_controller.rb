@@ -19,12 +19,12 @@ class UsersController < ApplicationController
       set_order.update(user_id: user.id, status: "in_progress")
       session[:user_id] = user.id
       UserMailer.welcome_email(user).deliver
-     redirect_to user_path(user)
+      redirect_to user_path(user)
     else
       # user.errors.each do |error|
       #   logger.info " =========> #{error}"
       # end
-      flash[:error] = user.errors.full_messages
+      flash.now[:error] = user.errors.full_messages
       # fail
       redirect_to new_user_path
     end

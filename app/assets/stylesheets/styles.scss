@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
 $font: 'Open Sans', sans-serif;
 
 html {
@@ -89,6 +90,34 @@ h1,h2,h3,h4,h5 {
   border-radius: 2px;
 }
 
+.main-header.sticky-header {
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  height: 60px;
+  top: 0;
+  opacity: 1 !important;
+  -webkit-transition: opacity .45s ease-in-out;
+  -moz-transition: opacity .45s ease-in-out;
+  -o-transition: opacity .45s ease-in-out;
+  transition: opacity .45s ease-in-out;
+  .logo {
+    margin-top: 20px;
+  }
+}
+
+.main-header.sticky-header > div {
+    background: #222;
+    .left-indent {
+      left: -35%;
+      -webkit-transition: left .45s ease-in-out;
+      -moz-transition: left .45s ease-in-out;
+      -o-transition: left .45s ease-in-out;
+      transition: left .45s ease-in-out;
+    }
+}
+
 .main-header {
   //background: black;
   .header-bg {
@@ -102,7 +131,6 @@ h1,h2,h3,h4,h5 {
     -moz-transition: left .45s ease-in-out;
     -o-transition: left .45s ease-in-out;
     transition: left .45s ease-in-out;
-
     &.bg-slide {
       left: -35%;
       -webkit-transition: left .45s ease-in-out;
@@ -115,6 +143,13 @@ h1,h2,h3,h4,h5 {
     margin-top: 40px;
   }
   height: 200px;
+  &.hidden-header {
+    opacity: 0;
+    -webkit-transition: opacity .45s ease-in-out;
+    -moz-transition: opacity .45s ease-in-out;
+    -o-transition: opacity .45s ease-in-out;
+    transition: opacity .45s ease-in-out;
+  }
 }
 
 .main-nav {
@@ -147,6 +182,9 @@ h1,h2,h3,h4,h5 {
   border: solid 1px #ccc;
   padding-bottom: 40px;
   border-radius: 2px;
+  &.sticky-header {
+    margin-top: 230px;
+  }
 }
 
 .menus-nav {
@@ -235,7 +273,7 @@ h1,h2,h3,h4,h5 {
   overflow: hidden;
   background: #222;
   border: solid 20px;
-  position: absolute;
+  position: fixed;
   width: 35% !important;
   min-width: 0 !important;
   z-index: 10;

@@ -1,0 +1,30 @@
+<div class="item four columns">
+  <div class="row">
+    <div class="item-info twelve columns">
+      <div class="image-price">
+        <img src="<%= item.image %>">
+        <span class="price">
+          <%= number_to_currency(item.price) %>
+        </span>
+      </div>
+      <h3 class="title">
+        <%= item.title %>
+      </h3>
+      <div class="description">
+        <p>
+          <%= item.description %>
+        </p>
+      </div>
+      <div class="quantity-order">
+        <div>
+          <%= form_for :order_item, url: order_items_path do |f| %>
+            <%= f.text_field :quantity, :class => "quantity", :value => 1 %>
+            <%= f.hidden_field :item_id, { :value => item.id } %>
+            <%= link_to "Add to Order", "#", class: "add-item button" %>
+            <%#= f.submit "Add to Order" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
