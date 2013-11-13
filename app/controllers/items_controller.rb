@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     if params[:category] && !@category.nil?
       @items = @category.items
     else
-      @items = Item.all
+      @items = Item.available_items
     end
   end
 
