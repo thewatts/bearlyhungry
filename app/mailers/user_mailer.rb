@@ -4,7 +4,6 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     @url = 'http://wtpho.herokuapp.com/login'
-    # email_with_name = "#{@user.full_name} <@{@user.email}>"
     mail( {to: @user.email,
           from: 'wtphok@gmail.com',
           subject: 'Welcome to What the Pho'})
