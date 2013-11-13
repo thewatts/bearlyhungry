@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(set_order.id)
+    @order = Order.find(params[:id])
     # fail
     if current_user
       @order.user_id = current_user.id
