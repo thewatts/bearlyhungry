@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Thank you for your order, your order details are below:</h2>
+
+<h3>Order '<%= @order.id %>':</h3>
+
+<% if @order.user_id %>
+  <p>User Full Name: <%= @order.user.full_name %></p>
+  <p>User ID:        <%= @order.user_id %></p>
+  <p>Email: <%= @order.user.email %></p>
+<% else %>
+  <p><em>There is no user assigned to this order</em></p>
+<% end %>
+<p>Order Subtotal: <%= number_to_currency(@order.subtotal) %></p>
+<p>Status: <%= @order.status %></p>
+<p>Created At: <%= @order.created_at %></p>
+
+  <p>Items:
+    <% if @order.order_items.count == 0 %>
+      <p><em>There are currently no items for this order.</em>
+    <% end %>
+  </p>
+  <% @order.order_items.each do |order_item| %>
+    <h3><%= link_to order_item.item.title, item_path(order_item.item) %></h3>
+    <p>Quantity:     <%= order_item.quantity %></p>
+    <p>Item Price:   <%= order_item.item.price %></p>
+    <p>Subtotal:     <%= number_to_currency(order_item.subtotal) %></p>
+    <p>Created At: <%= order_item.created_at %></p>
+  <% end %>
+
+  </body>
+</html>
