@@ -19,7 +19,7 @@ Wtpho::Application.routes.draw do
   resources :items, only: [:index, :show]
   resources :order_items
   resource  :session
-  resources :users,  only: [:show, :edit]
+  resources :users,  only: [:create, :show, :edit]
   resources :orders, only: [:index, :show]
 
   get '/' => "items#index"

@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     else
       @items = Item.available_items
     end
+    fail
   end
 
   def show
