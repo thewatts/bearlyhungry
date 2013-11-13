@@ -15,3 +15,8 @@
     <span><%= flash[:item_error] %></span>
   </div>
 <% end %>
+<% if flash[:successful_transaction] %>
+  <div class="notifications success row">
+    <span><%= flash[:successful_transaction] %></span>
+  </div>
+<% end %>

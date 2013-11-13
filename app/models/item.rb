@@ -11,6 +11,6 @@ class Item < ActiveRecord::Base
 
 
   def self.available_items
-    all.select {|item| item.available?}
+    where(:available => true)
   end
 end

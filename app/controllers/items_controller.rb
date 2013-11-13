@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
     @category = Category.find_by(title: formatted_category(params[:category]))
     # category find by slug in model
     if params[:category] && !@category.nil?
-      @items = @category.items
+      @items = @category.items.available_items
     else
       @items = Item.available_items
     end
