@@ -1,8 +1,10 @@
 <div class="menu-title twelve columns">
   <% if @category %>
     <h2><%= @category.title %></h2>
-    <h3>The real deal folks...</h3>
+  <% else %>
+    <h2>Full Menu</h2>
   <% end %>
+  <h3>The real deal folks...</h3>
 </div>
 
 <div class="menus-nav three columns">
@@ -17,8 +19,6 @@
 
 <div class="items nine columns">
   <div class="row">
-    <% @items.each do |item| %>
-      <%= render "items/single_item_menu", :item => item %>
-    <% end %>
+    <%= render partial: "items/item", collection: @items %>
   </div>
 </div>
