@@ -28,13 +28,13 @@ contents.each do |row|
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
 end
-Category.create(title: "House Special", type_of: 'main_menu')
+category = Category.create(title: "House Special", type_of: 'main_menu')
 
-ItemCategory.create([{ item_id: 9, category_id: 6},
-                      { item_id: 10, category_id: 6},
-                      { item_id: 16, category_id: 6},
-                      { item_id: 12, category_id: 6},
-                      { item_id: 38, category_id: 6}])
+ItemCategory.create([{ item_id: 9, category_id: category.id},
+                      { item_id: 10, category_id: category.id},
+                      { item_id: 16, category_id: category.id},
+                      { item_id: 12, category_id: category.id},
+                      { item_id: 38, category_id: category.id}])
 
 Order.create([{ status: "pending"},
               { status: "pending"},
