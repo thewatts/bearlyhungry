@@ -18,11 +18,10 @@
       <div class="quantity-order">
         <div>
           <%= form_for :order_item, url: order_items_path do |f| %>
-            <%= f.text_field :quantity, :class => "quantity" %>
+            <%= f.text_field :quantity, :class => "quantity", :value => 1 %>
             <%= f.hidden_field :item_id, { :value => item.id } %>
-            <%#= link_to "Add to Order", order_items_path(item_id: item.id),
-                        method: :post, class: "add-item button" %>
-            <%= f.submit "Add to Order" %>
+            <%= link_to "Add to Order", "#", class: "add-item button" %>
+            <%#= f.submit "Add to Order" %>
           <% end %>
         </div>
       </div>

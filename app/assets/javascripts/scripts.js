@@ -41,6 +41,11 @@
       }
     });
 
+    $('.add-item').on('click', function(event) {
+      event.preventDefault();
+      $(this).parent().submit();
+    });
+
     var footer = $('.footer')
     var footerTop = footer.position().top;
     var footerHeight = footer.outerHeight();
