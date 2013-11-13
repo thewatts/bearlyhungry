@@ -1,3 +1,7 @@
+Review Your Order:
+
+<%= render partial: "orders/order", locals: {order: current_order} %>
+
 <%= form_tag charges_path do %>
   <article>
     <label class="amount">
