@@ -1,10 +1,5 @@
-<p>Items: 
-  <% if @order.order_items.count == 0 %>
-    <p><em>There are currently no items for this order.</em></p>
-  <% end %>
-
-  <% @order.order_items.each do |order_item| %>
-  <%= form_for order_item do |fa| %>   
+<% @order.order_items.each do |order_item| %>
+  <%= form_for order_item, url: admin_order_item_path(order_item_id: order_item.id) do |fa| %>   
     <h3><%= link_to order_item.item.title, item_path(order_item.item) %></h3>
     <p>Quantity:     <%= fa.number_field :quantity, :id => 'quantity' %></p>
     <p>Item Price:     <%= order_item.item.price %></p>
@@ -14,15 +9,6 @@
       <%= link_to "Remove Item", admin_order_item_path(id: order_item.id), method: :delete %>
     </div>
 
-    <%= fa.submit "Save Changes", :id => 'save' %>
+    <%= fa.submit "Save Changes"%>
   <% end %>
-  <% end %>
-
-
-
-
-
-
-
-
-
+<% end %>
