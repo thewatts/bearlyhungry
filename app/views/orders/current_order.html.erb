@@ -1,21 +1,10 @@
+
 <%= link_to "Back to All Items", items_path %>
+
 <div id='items_for_order'>
-  <% @order.order_items.each do |order_item| %>
-    <h2><%= order_item.item.title %></h2>
-  <ul>
-
-    <li>Desciption: <%= order_item.item.description %></li>
-    <li>Price: <%= number_to_currency(order_item.item.price) %></li>
-    
-    <li>Quantity: <%= order_item.quantity %></li>
-    
-
-    <div id='item-<%= order_item.item.id %>'>
-      <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
-    </div>
-  </ul>
-  <% end %>
+    <%= render partial: "order_item", collection: @order.order_items %>
 </div>
+
 <div id='order_subtotal' >
   <h3>Order Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
 </div>

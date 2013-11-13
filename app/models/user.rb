@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   end
 
   def past_orders
-    order_list = orders.select {|order| order.id != current_order.id}
-    order_list.sort_by {|order| order.created_at}.reverse
+    # order_list = orders.select {|order| order.id != current_order.id}
+    orders.sort_by {|order| order.created_at}.reverse
   end
 
   def total_spent

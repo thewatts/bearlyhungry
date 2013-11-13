@@ -15,7 +15,7 @@ Wtpho::Application.routes.draw do
     resources :orders, as: :order
     delete 'user' => 'users#destroy'
   end
-
+  resources :charges
   resources :items, only: [:index, :show]
   resources :order_items
   resource  :session

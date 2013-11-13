@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(set_order.id)
+    @order = Order.find(params[:id])
     # fail
     if current_user
       @order.user_id = current_user.id
@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
         set_order.add_item(order_item.item_id, order_item.quantity)
       end
     end
+    flash[:notice] = "Your items have been added to your order."
     redirect_to my_orders_path
   end
 

@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def create_order
-    order = Order.create(status: "pending")
-    session[:order_id] = order.id
-    order
+    @current_order = Order.create(status: "pending")
+    session[:order_id] = @current_order.id
+    @current_user
   end
 
   def current_user
