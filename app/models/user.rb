@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
   def admin?
     self.admin_status
   end
+
+  def current_order
+    orders.last
+  end
+
+  def past_orders
+    orders.where("id != ?", current_order.id)
+  end
 end
