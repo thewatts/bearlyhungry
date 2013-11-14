@@ -10,8 +10,12 @@
 <% end %>
 <% if flash[:error] %>
   <div class="notifications error row">
-    <% flash[:error].each do |error| %>
-      <span><%= error %></span>
+    <% if flash[:error].class == Array %>
+      <% flash[:error].each do |error| %>
+        <span><%= error %></span>
+      <% end %>
+    <% else %>
+      <span><%= flash[:error] %></span>
     <% end %>
   </div>
 <% end %>
