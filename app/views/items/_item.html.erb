@@ -20,7 +20,7 @@
           <%= form_for :order_item, remote: true, html: { class: "asdf"}, url: order_items_path do |f| %>
             <%= f.text_field :quantity, :class => "quantity", :value => 1 %>
             <%= f.hidden_field :item_id, { :value => item.id } %>
-            <%= f.submit "SUBMIT THAT MOTHA!", class: "add-item button" %>
+            <%= f.submit "Add to Cart", class: "add-item button" %>
           <% end %>
         </div>
       </div>
