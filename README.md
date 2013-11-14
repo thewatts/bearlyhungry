@@ -1,28 +1,29 @@
-== README
+# What The Pho
+## Best Pho Restaurant Around!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was a collaboration between @Asiegart, @benhorne44, and @thewatts -
+all students of [gSchool](http://gschool.it) under the teaching of @jcasimir.
 
-Things you may want to cover:
+The project requirements can be found here: [Dinner
+Dash](http://tutorials.jumpstartlab.com/projects/dinner_dash.html).
 
-* Ruby version
+To checkout this project:
 
-* System dependencies
+`git clone git@github.com:Agsiegert/wtpho.git`
 
-* Configuration
+`cd wtpho`
 
-* Database creation
+`bundle`
 
-* Database initialization
+`rake db:setup`
+`rake db:migrate`
+`rake db:seed`
 
-* How to run the test suite
+and finally...
 
-* Services (job queues, cache servers, search engines, etc.)
+`rails s`
 
-* Deployment instructions
+*Images from [Pho95 Noodle House](http://pho95noodlehouse.com)*
+*Project built on Rails 4.0.0, and uses Foundation 3*
 
-* ...
 
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
