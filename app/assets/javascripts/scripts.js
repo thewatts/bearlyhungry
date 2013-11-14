@@ -20,9 +20,9 @@
     $.fn.placeholder                ? $('input, textarea').placeholder() : null;
 
     // toggle order
-    var showOrder = false;
+    var showOrder    = false;
     var headerBottom = $('.main-header').outerHeight();
-    var header = $('.main-header');
+    var header       = $('.main-header');
 
     $('#nav-order').on('click', function() {
       $('.wrapper').toggleClass('slide');
@@ -58,24 +58,86 @@
       var val = $(this).val();
       var digitCheck = /^\d+$/;
       if ((val <= 0) || (! digitCheck.test(val)))  {
-        console.log('testing');
         $(this).val(1);
-        console.log(this);
       } else {
         $(this).val(val);
       }
     });
 
+    var generate_line_item = function(data) {
+      var output = "";
+      output += '<li class="order-item order-item-' + data.order_item.id + '">';
+      output += '  <div class="order-item-info">';
+      output += '    <div class="order-item-title-total">';
+      output += '      <span class="order-item-title block">';
+      output += '        ' + data.item.title;
+      output += '      </span>';
+      output += '      <span class="order-item-total block">';
+      output += '        ' + data.order_item.subtotal;
+      output += '      </span>';
+      output += '    </div><!-- //order-item-title-total -->';
+      output += '    <div class="item-quantity-modify">';
+      output += '      <div class="quantity-price">';
+      output += '        <span class="label">';
+      output += '          Quantity';
+      output += '        </span>';
+      output += '        <span class="value">';
+      output += '          ' + data.order_item.quantity + ' x ' + data.item.price;
+      output += '        </span>';
+      output += '      </div><!-- //quantity-price -->';
+      output += '      <div class="modify">';
+      output += '        <a href="#">Edit</a>';
+      output += '        <a class="remove-order-item" data-method="delete" data-confirm="Are you sure?" href="/order_items/' + data.order_item.id + '" rel="nofollow">Remove</a>';
+      output += '      </div><!-- //modify -->';
+      output += '    </div><!-- item-quantity-price -->';
+      output += '  </div><!-- order-item-info -->';
+      output += '</li>';
+
+      return output;
+    };
+
     $('.add-item').closest('form').on('ajax:success', function(event, data) {
+      window.data = data
       $('.nav-order-item-count').text(data.order.total_items + " items");
       $('.nav-order-total').text(data.order.subtotal);
+      if ( $('.no-order').length > 0 ) {
+        $('.no-order').remove();
+        $('.my-order').append('<ul class="my-order-items"></ul>');
+        $('.my-order').append('<div class="order-total"><span class="label">Total</span><span class="value"></span></div>');
+        $('.my-order').append('<div class="checkout"><a class="order-checkout" href="/review-my-order">Checkout</a></div>');
+      }
+      console.log('.order-item-' + data.order_item.id);
+      if ($('.order-item-' + data.order_item.id).length > 0) {
+        $('.order-item-' + data.order_item.id + ' .order-item-total').text(data.order_item.subtotal);
+        $('.order-item-' + data.order_item.id + ' .order-item-quantity').text(data.order_item.quantity);
+      } else {
+        var new_line_item = generate_line_item(data);
+        $('.my-order-items').append(new_line_item);
+      }
+      $('.order-total .value').text(data.order.subtotal);
     });
+
+    if ( $('.remove-order-item').length > 0 ) {
+      $('.remove-order-item').on('ajax:success', function(event, data) {
+        window.order_data = data;
+        $(this).closest('.order-item').fadeOut();
+        $('.order-total .value').text(data.order.subtotal);
+        $('.nav-order-item-count').text(data.order.total_items + " items");
+        $('.nav-order-total').text(data.order.subtotal);
+        if (data.order.total_items === 0) {
+          $('.my-order').prepend('<p class="no-order">Sorry, it looks like you have not added any items yet!</p>');
+          $('.my-order-items').remove();
+          $('.checkout').remove();
+          $('.order-total').remove();
+          $('.order-checkout').remove();
+        }
+      });
+    }
 
     var footer = $('.footer');
     var footerTop = footer.position().top;
     var footerHeight = footer.outerHeight();
     var documentHeight = footerTop + footerHeight + 5
-    console.log(documentHeight);
     $('.order.row').css({'height':documentHeight});
 
 

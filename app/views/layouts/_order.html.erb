@@ -9,12 +9,12 @@
       <div class="my-order twelve columns">
         <% if current_order.items.count == 0 %>
           <p class="no-order">
-            Sorry, it looks like you haven't added any items yet!
+            Sorry, it looks like you have not added any items yet!
           </p>
         <% else %>
           <ul class="my-order-items">
             <% current_order.order_items.each do |order_item| %>
-              <li class="order-item">
+              <li class="order-item order-item-<%= order_item.id %>">
                 <div class="order-item-info">
                   <div class="order-item-title-total">
                     <span class="order-item-title block">
@@ -30,12 +30,17 @@
                         Quantity
                       </span>
                       <span class="value">
-                        <%= order_item.quantity %> x <%= number_to_currency(order_item.item.price) %>
+                        <span class="order-item-quantity">
+                          <%= order_item.quantity %>
+                        </span> x
+                        <%= number_to_currency(order_item.item.price) %>
                       </span>
                     </div><!-- //quantity-price -->
                     <div class="modify">
                       <a href="#">Edit</a>
-                      <a href="#">Remove</a>
+                      <%= link_to "Remove", order_item_path(order_item.id),
+                        class: 'remove-order-item', method: :delete, data: { confirm: "Are you sure?" }
+                      %>
                     </div><!-- //modify -->
                   </div><!-- item-quantity-price -->
                 </div><!-- order-item-info -->
@@ -51,14 +56,6 @@
           </div>
         <% end %>
       </div><!-- //my-order -->
-
-      <div class="my-promotions twelve columns">
-        <h4 class="top-label">Promotions</h4>
-        <p>Yay for fun promotions!</p>
-        <ul class="promotion">
-          <li>20% off all purchases</li>
-        </ul>
-      </div><!-- //my-promotions -->
 
     </div>
   </div><!-- //sidebar -->

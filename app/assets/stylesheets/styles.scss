@@ -1,6 +1,16 @@
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
 $font: 'Open Sans', sans-serif;
 
+:-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
 html {
   background: image-url("bg-items2.jpg") no-repeat left center fixed;
   -webkit-background-size: cover;

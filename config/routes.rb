@@ -2,14 +2,14 @@ Wtpho::Application.routes.draw do
 
   root "items#index"
 
-  get '/menu' => 'items#index'
-  get '/menu/:category' => 'items#index', as: "menu_category"
-  get '/current-order' => 'orders#current_order', as: "current_order"
-  get '/my-orders' => 'orders#index', as: "my_orders"
-  put '/order/:id' => 'admin/orders#update'
+  get '/menu'            => 'items#index'
+  get '/menu/:category'  => 'items#index', as: "menu_category"
+  get '/current-order'   => 'orders#current_order', as: "current_order"
+  get '/my-orders'       => 'orders#index', as: "my_orders"
+  put '/order/:id'       => 'admin/orders#update'
   get '/review-my-order' => 'charges#new', as: "review_order"
-  put '/current-order' => 'orders#update_current_order', as: "update_current_order"
-  get '/clear-order' => 'orders#clear_order'
+  put '/current-order'   => 'orders#update_current_order', as: "update_current_order"
+  get '/clear-order'     => 'orders#clear_order'
 
   namespace "admin" do
     resources :items

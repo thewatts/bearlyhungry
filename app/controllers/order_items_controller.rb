@@ -12,8 +12,15 @@ class OrderItemsController < ApplicationController
     respond_to do |format|
       format.json do
         render json: {
-          order_item: order_item,
-          item: order_item.item,
+          order_item: {
+            id: order_item.id,
+            quantity: order_item.quantity,
+            subtotal: to_currency(order_item.subtotal)
+          },
+          item: {
+            title: order_item.item.title,
+            price: to_currency(order_item.item.price)
+          },
           order: {
             total_items: set_order.total_items,
             subtotal: to_currency(set_order.subtotal)
@@ -25,8 +32,10 @@ class OrderItemsController < ApplicationController
 
   def destroy
     order_item = OrderItem.find(params[:id])
+    item = order_item.item.title
     order_item.destroy
-    redirect_to order_path
+    flash[:success] = "Removed #{item} from your Order."
+    redirect_to menu_path
   end
 
   def update
