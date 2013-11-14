@@ -1,0 +1,72 @@
+<h4>Full Name:      <%= @user.full_name %></h4>
+<p>Display Name:   <%= @user.display_name %></p>
+<p>Email:          <%= @user.email %></p>
+<p>Account created at: <%= @user.created_at %></p>
+
+<%= link_to "Edit this account", edit_admin_user_path(@user) %>
+
+<% if @user.orders.count != 0 %>
+  <div class="row">
+  <div class="twelve columns">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Order ID
+          </th>
+          <th>
+            User 
+          </th>
+          <th>
+            Created At
+          </th>
+          <th>
+            Order Total
+          </th>
+          <th>
+            Status
+          </th>
+          <th colspan=2>
+            Edit
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user.orders.each do |order| %>
+          <tr>
+            <td>
+              <%= link_to order.id, admin_order_path(order) %>
+            </td>
+            <td>
+              <% if order.user %>
+                <%= link_to order.user.id, admin_user_path(order.user) %>
+              <% else %>
+                --
+              <% end %>
+            </td>
+            <td>
+              <%= order.created_at %>
+            </td>
+            <td>
+              <%= number_to_currency(order.subtotal) %>
+            </td>
+            <td>
+              <%= order.status %>
+            </td>
+
+            <td>
+              <%= link_to "Edit", edit_admin_order_path(order) %>
+            </td>
+            <td>
+              <%= link_to "Delete", admin_order_path(order), method: :delete,
+                data: { confirm: "Are you sure you want to delete order #{order.id}?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<% else %>  
+  <p><em>There are no orders assigned to this user</em></p>
+<% end %>

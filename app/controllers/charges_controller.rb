@@ -34,7 +34,7 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    flash.now[:successful_transaction] = "Thank you! Your order number is '#{set_order.id}.' A receipt was sent to #{customer.email}. We'll email you when your order is completed."
+    flash[:successful_transaction] = "Thank you! Your order number is '#{set_order.id}.' A receipt was sent to #{customer.email}. We'll email you when your order is completed."
     @current_order.update(status: "paid")
     session[:order_id] = nil
     redirect_to menu_path

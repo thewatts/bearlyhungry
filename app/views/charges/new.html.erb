@@ -1,6 +1,14 @@
-Review Your Order:
+<h2>Review Your Order:</h2>
 
-<%= render partial: "orders/order", locals: {order: current_order} %>
+<h3>Your Order ID: <%= current_order.id %></h3>
+<p>Order Total: <%= number_to_currency(current_order.subtotal) %></p>
+
+<p>Items: 
+
+<%= render partial: "orders/order_item", collection: current_order.order_items %>
+</p>
+
+
 
 <%= form_tag charges_path do %>
   <article>

@@ -14,15 +14,18 @@
                 <li class="parent">
                   <%= link_to "Account", user_path(current_user) %>
                   <ul class="children">
-                    <li class="child">
-                      <%= link_to "Account Info", user_path(current_user) %>
-                    </li>
+
                     <li class="child">
                       <%= link_to "Order History", my_orders_path %>
                     </li>
                     <li class="child">
                       <%= link_to "Logout", logout_path %>
                     </li>
+                    <% if current_user.admin? %>
+                    <li class="child">
+                      <%= link_to "Admin Dashboard", admin_order_index_path %>
+                    </li>
+                    <% end %>
                   </ul>
                 </li>
               </ul>

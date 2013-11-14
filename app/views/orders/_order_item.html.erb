@@ -1,7 +1,7 @@
 <h2><%= link_to order_item.item.title, item_path(order_item.item) %></h2>
 
 <% if !order_item.item.available? %>
-  <em>This item is no longer available to order.</em>
+  <p><em>This item is no longer available to order.</em></p>
 <% end %>
 
 <ul>
