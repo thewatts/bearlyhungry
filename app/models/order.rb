@@ -50,15 +50,4 @@ class Order < ActiveRecord::Base
     order_items.inject(0) { |sum, item| sum + item.quantity }
   end
 
-  def status_hash
-    { 'in progress' => ['mark as paid', 'cancelled'],
-      'paid'        => ['mark as completed'],
-      'cancelled'   => nil,
-      'pending'     => nil,
-      'completed'   => nil}
-  end
-
-  def status_options
-    status_hash[status]
-  end
 end

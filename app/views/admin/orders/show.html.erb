@@ -7,11 +7,9 @@
 <% else %>
   <p><em>There is no user assigned to this order</em></p>
 <% end %>
-
-
-
-<%= link_to "Edit this Order", edit_admin_order_path %>
-<%= link_to "Back to all Orders", admin_order_index_path %>
+<p>Order Subtotal: <%= number_to_currency(@order.subtotal) %></p>
+<p>Status: <%= @order.status %></p>
+<p>Created At: <%= @order.created_at %></p>
 
 <div class="row">
   <div class="twelve columns">

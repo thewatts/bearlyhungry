@@ -36,5 +36,10 @@ class OrdersController < ApplicationController
     @order = set_order
   end
 
+  def clear_order
+    current_order.order_items.destroy_all
+    redirect_to menu_path
+  end
+
 
 end

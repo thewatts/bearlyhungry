@@ -9,6 +9,7 @@ Wtpho::Application.routes.draw do
   put '/order/:id' => 'admin/orders#update'
   get '/review-my-order' => 'charges#new', as: "review_order"
   put '/current-order' => 'orders#update_current_order', as: "update_current_order"
+  get '/clear-order' => 'orders#clear_order'
 
   namespace "admin" do
     resources :items
@@ -16,6 +17,8 @@ Wtpho::Application.routes.draw do
     resource  :session
     resources :users
     resources :orders, as: :order
+    put '/order-status/:status' => 'orders#update_status'
+
     delete 'user' => 'users#destroy'
   end
 
