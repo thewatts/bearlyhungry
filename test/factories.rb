@@ -25,6 +25,12 @@ FactoryGirl.define do
     title "Entrees"
   end
 
+  factory :order_item do
+    quantity 1
+    item_id 1
+    order_id 1
+  end
+
   sequence :email do |n|
     "phoking#{n}@sob.com"
   end
