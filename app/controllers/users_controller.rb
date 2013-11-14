@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       # user.errors.each do |error|
       #   logger.info " =========> #{error}"
       # end
-      flash.now[:error] = user.errors.full_messages
+      flash[:error] = user.errors.full_messages
       # fail
       redirect_to new_user_path
     end

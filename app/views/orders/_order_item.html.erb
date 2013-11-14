@@ -14,7 +14,7 @@
 
   <p>Subtotal: <%= number_to_currency(order_item.subtotal) %></p>
   
-  <p>Created At: <%= order_item.created_at %></p>
+  <p>Created At: <%= order_item.created_at.to_s(:long) %></p>
   
 
   <div id='item-<%= order_item.item.id %>'>

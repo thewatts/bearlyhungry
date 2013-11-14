@@ -1,7 +1,7 @@
 <h3>Order ID: <%= order.id %></h3>
 <p>Current Status: <%= order.status %></p>
 <p>Order Total: <%= number_to_currency(order.subtotal) %></p>
-<p>Submitted At: <%= order.created_at %></p>
+<p>Submitted At: <%= order.created_at.to_s(:long) %></p>
 
 <%= link_to "Add To Current Order", current_order_path(order_id: order.id),method: :put %>
 <%= link_to "View Details", order_path(order) %>
