@@ -1,5 +1,5 @@
 Wtpho::Application.configure do
-  ActionMailer.delivery_method = :smtp
+  ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
