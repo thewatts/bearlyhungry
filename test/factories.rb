@@ -1,6 +1,7 @@
 include ActionDispatch::TestProcess # for file upload testing
 
 FactoryGirl.define do
+
   factory :item do
     title       "PHO"
     description "This is like.. PHOnaminal!"
@@ -14,6 +15,16 @@ FactoryGirl.define do
     display_name "JB"
     email
   end
+
+  factory :order do
+    status "pending"
+    user_id 1
+  end
+
+  factory :category do
+    title "Entrees"
+  end
+
   sequence :email do |n|
     "phoking#{n}@sob.com"
   end

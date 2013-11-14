@@ -5,7 +5,7 @@ class Category < ActiveRecord::Base
   has_many :items, through: :item_categories
 
   def slug
-    title.downcase.gsub(' ', '-')
+    title.downcase.strip.gsub(/^ \W/, '').gsub(' ', '-')
   end
 
   def self.find_by_slug(param)

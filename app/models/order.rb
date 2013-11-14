@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
   belongs_to :user
 
   def self.user_orders
-    all.select {|order| !order.user_id.nil?}
+    where('user_id IS NOT NULL')
   end
 
   def self.by_status
@@ -37,13 +37,8 @@ class Order < ActiveRecord::Base
     end
   end
 
-
   def subtotal
-    total = 0
-    order_items.each do |order_item|
-      total += order_item.subtotal
-    end
-    total
+    order_items.map(&:subtotal).inject(:+)
   end
 
   def total_items
