@@ -35,7 +35,7 @@
               <%= link_to user.full_name, admin_user_path(user) %>
             </td>
             <td>
-              <%= user.created_at %>
+              <%= user.created_at.to_s(:long) %>
             </td>
             <td>
               <%= number_to_currency(user.total_spent) %>

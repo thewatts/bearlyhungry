@@ -11,7 +11,7 @@
             Order ID
           </th>
           <th>
-            User 
+            User
           </th>
           <th>
             Created At
@@ -41,7 +41,7 @@
               <% end %>
             </td>
             <td>
-              <%= order.created_at %>
+              <%= order.created_at.to_s(:long) %>
             </td>
             <td>
               <%= number_to_currency(order.subtotal) %>

@@ -18,6 +18,7 @@ Wtpho::Application.routes.draw do
     resources :users
     resources :orders, as: :order
     put '/order-status/:status' => 'orders#update_status'
+    patch '/item-availability' => 'items#toggle_availability', as: 'update_item_availability'
 
     delete 'user' => 'users#destroy'
   end

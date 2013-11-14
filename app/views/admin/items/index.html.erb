@@ -35,22 +35,26 @@
               <%= number_to_currency(item.price) %>
             </td>
             <td>
-              <%= item.created_at %>
+              <%= item.created_at.to_s(:long) %>
             </td>
             <td>
               <% if item.available %>
                 true
               <% else %>
-                 
+                --
               <% end %>
             </td>
-
             <td>
-              <%= link_to "Edit", edit_admin_item_path(item) %>
+              <% if item.available? %>
+                <%= link_to "Disable", admin_update_item_availability_path(item_id: item.id, available: false), method: :patch,
+                  data: { confirm: "Are you sure you want to disable #{item.title}?" } %>
+              <% else %>
+                <%= link_to "Activate", admin_update_item_availability_path(item_id: item.id, available: true), method: :patch,
+                  data: { confirm: "Are you sure you want to activate #{item.title}?" } %>
+              <% end %>
             </td>
             <td>
-              <%= link_to "Delete", admin_item_path(item), method: :delete,
-                data: { confirm: "Are you sure you want to delete order #{item.id}?" } %>
+              <%= link_to "Edit", edit_admin_item_path(item) %>
             </td>
           </tr>
         <% end %>

@@ -37,6 +37,13 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
+  def toggle_availability
+    @item = Item.find(params[:item_id])
+    @item.update(available: params[:available])
+    flash.now[:success] = "Success!"
+    redirect_to admin_items_path
+  end
+
   def destroy
     item = Item.find(params[:id])
     item.destroy
