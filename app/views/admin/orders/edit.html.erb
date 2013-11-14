@@ -1,6 +1,6 @@
 <p class="flash"><%= flash.notice %></p>
 <H1> Edit Order '<%= @order.id %>' </H1>
-<% if @order.user_id %>
+<% if @order.user %>
   <p>User Full Name: <%= @order.user.full_name %></p>
   <p>User ID:        <%= @order.user_id %></p>
   <p>Email: <%= @order.user.email %></p>
@@ -11,10 +11,65 @@
 <p>Status: <%= @order.status %></p>
 <p>Created At: <%= @order.created_at %></p>
 
-<h2>Items: </h2>
-<% if @order.order_items.count == 0 %>
-  <p><em>There are currently no items for this order.</em></p>
-<% else %>
-  <%= render partial: "admin/order_items/form" %>
-<% end %>
+<% if @order.items.count != 0 %>
+  <div class="row">
+    <div class="twelve columns">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Item
+            </th>
+            <th>
+              Subtotal
+            </th>
+            <th>
+              Quantity
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Available
+            </th>
+            <th colspan=2>
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |order_item| %>
+            <tr>
+              <td>
+                <%= link_to order_item.item.title, item_path(order_item.item) %>
+              </td>
+              <td>
+                <%= number_to_currency(order_item.subtotal) %>
+              </td>
+              <td>
+                <%= order_item.quantity %>
+              </td>
+              <td>
+                <%= number_to_currency(order_item.item.price) %>
+              </td>
+              <td>
+                <% if order_item.item.available %>
+                  true
+                <% else %>
+                   
+                <% end %>
+              </td>
 
+              <td>
+                <%= link_to "Remove", admin_order_item_path(order_item), method: :delete,
+                  data: { confirm: "Are you sure you want to delete this item from the order?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div> 
+<% else %>  
+  <p><em>There are no assigned to this order</em></p>
+<% end %>

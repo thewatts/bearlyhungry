@@ -1,11 +1,12 @@
 class Admin::OrderItemsController < ApplicationController
-
+  layout "admin"
   def create
     # set_order.add_item(params[:item_id])
     redirect_to admin_order_path
   end
 
   def destroy
+    fail
     order_item = OrderItem.find_by(id: params[:id])
     order_item.destroy
     redirect_to admin_order_path
@@ -20,6 +21,6 @@ class Admin::OrderItemsController < ApplicationController
 
       order_item.save!
     end
-    redirect_to edit_admin_order_path
+    redirect_to admin_order_path
   end
 end
