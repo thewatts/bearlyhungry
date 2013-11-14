@@ -1,11 +1,38 @@
-<h1><%= @item.title %></h1>
-<p><%= image_tag @item.image.url %></p>
-<p><%= @item.description %></p>
-<p><%= number_to_currency(@item.price) %></p>
-<p><%= @item.created_at.to_s(:long) %></p>
-
-<p><%= link_to "<< Back to Item List", items_path %></p>
-
-<%if allow? "items", "edit" %>
-  <%= link_to "Edit Item", edit_admin_item_path %>
-<% end %>
+<div class="four columns">
+</div>
+<div class="item four columns">
+  <div class="row">
+    <div class="item-info twelve columns">
+      <div class="image-price">
+        <img src="<%= @item.image %>">
+        <span class="price">
+          <%= number_to_currency(@item.price) %>
+        </span>
+      </div>
+      <h3 class="title">
+        <%= @item.title %>
+      </h3>
+      <div class="description">
+        <p>
+          <%= @item.description %>
+        </p>
+      </div>
+      <div class="quantity-order">
+        <div>
+          <%= form_for :order_item, remote: true, html: { class: "asdf"}, url: order_items_path do |f| %>
+            <%= f.text_field :quantity, :class => "quantity", :value => 1 %>
+            <%= f.hidden_field :item_id, { :value => @item.id } %>
+            <%= f.submit "Add to Cart", class: "add-item button" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="four columns">
+</div>
+<div style="text-align: center;" class="twelve columns">
+  <% if allow?("item", "edit") %>
+    <%= link_to "Edit #{@item.title}", edit_admin_item_path(@item) %>
+  <% end %>
+</div>

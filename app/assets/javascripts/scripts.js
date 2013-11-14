@@ -86,7 +86,6 @@
       output += '        </span>';
       output += '      </div><!-- //quantity-price -->';
       output += '      <div class="modify">';
-      output += '        <a href="#">Edit</a>';
       output += '        <a class="remove-order-item" data-method="delete" data-confirm="Are you sure?" href="/order_items/' + data.order_item.id + '" rel="nofollow">Remove</a>';
       output += '      </div><!-- //modify -->';
       output += '    </div><!-- item-quantity-price -->';

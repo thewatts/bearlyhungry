@@ -1,21 +1,14 @@
 <h2>Review Your Order:</h2>
 
 <h3>Your Order ID: <%= current_order.id %></h3>
-<p>Order Total: <%= number_to_currency(current_order.subtotal) %></p>
 
-<p>Items: 
-
+<h3>Items:</h3>
 <%= render partial: "orders/order_item", collection: current_order.order_items %>
-</p>
 
 
-
+<hr>
+<h3>Order Total: <em><%= number_to_currency(current_order.subtotal) %></h3>
 <%= form_tag charges_path do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= number_to_currency(@amount) %></span>
-    </label>
-  </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
