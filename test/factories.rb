@@ -13,7 +13,7 @@ FactoryGirl.define do
     password "password"
     password_confirmation "password"
     display_name "JB"
-    email
+    email "asdf@asdf.com"
   end
 
   factory :order do
