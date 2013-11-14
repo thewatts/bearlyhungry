@@ -202,15 +202,57 @@ h1,h2,h3,h4,h5 {
 
 .main-nav {
   margin-top: 30px;
+  li.parent {
+    padding-top: 5px;
+    position: relative;
+    &:hover {
+      background: rgba(255, 255, 255, 1);
+      & > a {
+        color: #222;
+      }
+      .children {
+        display: block;
+      }
+    }
+    ul.children {
+      display: none;
+      background: rgba(255, 255, 255, 1);
+      width: 200px;
+      position: absolute;
+      top: 29px;
+      left: -20px;
+      padding: 5px 0 2px;
+      li {
+        display: block;
+        float: none;
+        a {
+          display: block;
+          padding: 5px 8px;
+          color: #222;
+          font-weight: 600;
+          opacity: .7;
+          text-transform: capitalize;
+          border-bottom: solid 1px #eee;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
   li {
     list-style-type: none;
     display: inline-block;
     a {
+      opacity: .8;
       padding: 10px;
       color: #fff;
       font-weight: 800;
       text-transform: uppercase;
       font-size: 1.1em;
+      &:hover {
+        opacity: 1;
+      }
     }
   }
   #nav-order {
@@ -219,6 +261,10 @@ h1,h2,h3,h4,h5 {
     font-weight: 800;
     text-transform: uppercase;
     font-size: 1.1em;
+    opacity: .8;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
