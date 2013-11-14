@@ -23,12 +23,15 @@ class OrdersController < ApplicationController
     order = Order.find(params[:order_id])
     order.order_items.each do |order_item|
       if !order_item.item.available?
-        flash.now[:item_error] = "Some items you selected are no longer available and were not added to your order."
       else
         set_order.add_item(order_item.item_id, order_item.quantity)
       end
     end
-    flash.now[:notice] = "Your items have been added to your order."
+    if order.order_items.any? {|order_item| !order_item.item.available?}
+      flash[:item_error] = "Some items you selected are no longer available and were not added to your order."
+    else
+      flash[:notice] = "Your items have been added to your order."
+    end
     redirect_to my_orders_path
   end
 

@@ -12,9 +12,9 @@
     <li><strong>Subtotal:</strong> <%= number_to_currency(order_item.subtotal) %></li>
   </ul>
 
-    <% if order_item.order.id == current_order.id %>
-      <div id='item-<%= order_item.item.id %>'>
-        <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
-      </div>
-    <% end %>
+  <% if order_item.order.id == current_order.id %>
+    <div id='item-<%= order_item.item.id %>'>
+      <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
+    </div>
+  <% end %>
 </div>
