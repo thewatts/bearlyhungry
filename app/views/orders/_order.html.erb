@@ -1,17 +1,17 @@
-<h3>Order ID: <%= order.id %></h3>
-<p>Current Status: <%= order.status %></p>
-<p>Order Total: <%= number_to_currency(order.subtotal) %></p>
-<p>Submitted At: <%= order.created_at %></p>
+<div class="full-order">
+  <h3>Order ID: <%= order.id %></h3>
+  <p><strong>Status:</strong> <%= order.status %></p>
+  <p><strong>Order Total:</strong> <%= number_to_currency(order.subtotal) %></p>
+  <p><strong>Submitted On:</strong> <%= order.created_at.to_s(:long) %></p>
 
-<%= link_to "Add To Current Order", current_order_path(order_id: order.id),method: :put %>
-<%= link_to "View Details", order_path(order) %>
+  <%= link_to "Add To Current Order", current_order_path(order_id: order.id),method: :put if order.id != current_order.id %>
+  <%= link_to "View Details", order_path(order) %>
 
-<p>Items: 
-  <% if order.order_items.count == 0 %>
-    <p><em>There are currently no items for this order.</em>
-  <% end %>
+  <h4>Items:</h4>
+    <% if order.order_items.count == 0 %>
+      <p><em>There are currently no items for this order.</em>
+    <% end %>
 
-<%= render partial: "orders/order_item", collection: order.order_items %>
-</p>
-
+  <%= render partial: "orders/order_item", collection: order.order_items %>
+</div>
 

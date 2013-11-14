@@ -1,11 +1,16 @@
 <h2>Your Order History:</h2>
 
+
 <% if @orders.nil? %>
 
   <em>You have no past orders on record.</em>
 
 <% else %>
 
+  <h3>Current Order</h3>
+  <%= render partial: "order", locals: {order: current_order} %>
+
+  <h3>Past Orders</h3>
   <%= render partial: "order", collection: @orders %>
 
 <% end %>

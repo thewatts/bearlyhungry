@@ -1,23 +1,20 @@
-<h2><%= link_to order_item.item.title, item_path(order_item.item) %></h2>
+<div class="full-order-item">
+  <h2><%= link_to order_item.item.title, item_path(order_item.item) %></h2>
 
-<% if !order_item.item.available? %>
-  <p><em>This item is no longer available to order.</em></p>
-<% end %>
+  <% if !order_item.item.available? %>
+    <p><em>This item is no longer available to order.</em></p>
+  <% end %>
 
-<ul>
+  <ul>
+    <li><strong>Desciption:</strong> <%= order_item.item.description %></li>
+    <li><strong>Item Price:</strong> <%= number_to_currency(order_item.item.price) %></li>
+    <li><strong>Quantity:</strong> <%= order_item.quantity %></li>
+    <li><strong>Subtotal:</strong> <%= number_to_currency(order_item.subtotal) %></li>
+  </ul>
 
-  <li>Desciption: <%= order_item.item.description %></li>
-
-  <li>Item Price: <%= number_to_currency(order_item.item.price) %></li>
-  
-  <li>Quantity: <%= order_item.quantity %></li>
-
-  <p>Subtotal: <%= number_to_currency(order_item.subtotal) %></p>
-  
-  <p>Created At: <%= order_item.created_at %></p>
-  
-
-  <div id='item-<%= order_item.item.id %>'>
-    <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
-  </div>
-</ul>
+    <% if order_item.order.id == current_order.id %>
+      <div id='item-<%= order_item.item.id %>'>
+        <%= link_to "Remove Item", order_item_path(id: order_item.id), method: :delete %>
+      </div>
+    <% end %>
+</div>

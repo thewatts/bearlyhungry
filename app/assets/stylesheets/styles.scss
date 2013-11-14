@@ -268,12 +268,44 @@ h1,h2,h3,h4,h5 {
   }
 }
 
+.full-order {
+  overflow: hidden;
+  background: #f5f5f5;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  padding-top: 0;
+  h3 {
+    background: #222;
+    color: #fafafa;
+    padding: 10px;
+    border-radius: 2px;
+    font-weight: 300;
+    margin: 0 -10px 10px;
+  }
+}
+
+.full-order-item {
+  padding: 0 20px 20px;
+  border-bottom: solid 1px #fefefe;
+  h2 {
+    font-size: 1.3em;
+  }
+  li {
+    list-style-type: none;
+    margin-bottom: 2px;
+  }
+}
+
 .content {
   margin-top: 30px;
   position: relative;
   z-index: 100;
   background: #fefefe;
   border: solid 1px #ccc;
+  padding: 30px;
   padding-bottom: 40px;
   border-radius: 2px;
   &.sticky-header {
@@ -552,3 +584,10 @@ h1,h2,h3,h4,h5 {
   }
 }
 
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  background: #fafafa;
+  padding: 10px 30px;
+  font-style: italic;
+}
