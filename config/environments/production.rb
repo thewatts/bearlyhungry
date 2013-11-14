@@ -1,13 +1,13 @@
 Wtpho::Application.configure do
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+  ActionMailer::Base.smtp_settings = {
+    address:              'smtp.sendgrid.net',
     port:                 587,
-    domain:               'gmail.com',
-    user_name:            'wtphok',
-    password:             'Antony12',
+    domain:               'heroku.com',
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
     authentication:       'plain',
-    enable_starttls_auto: true  }
+    enable_starttls_auto: true
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
