@@ -26,7 +26,7 @@ Wtpho::Application.routes.draw do
   resources :items, only: [:index, :show]
   resources :order_items
   resource  :session
-  resources :users,  only: [:new, :create, :show, :edit]
+  resources :users,  only: [:new, :create, :show, :edit, :update]
   resources :orders, only: [:index, :show]
 
   get '/login'  => 'sessions#create', as: :login
