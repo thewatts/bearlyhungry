@@ -1,6 +1,5 @@
 <div class="header-bar row">
   <h3>Orders</h3>
-  <%= link_to "New Order", new_admin_order_path, class: "add button" %>
 </div>
 
 <div class="row">
@@ -10,6 +9,9 @@
         <tr>
           <th>
             Order ID
+          </th>
+          <th>
+            User 
           </th>
           <th>
             Created At
@@ -30,6 +32,13 @@
           <tr>
             <td>
               <%= link_to order.id, admin_order_path(order) %>
+            </td>
+            <td>
+              <% if order.user %>
+                <%= link_to order.user.id, admin_user_path(order.user) %>
+              <% else %>
+                --
+              <% end %>
             </td>
             <td>
               <%= order.created_at %>
