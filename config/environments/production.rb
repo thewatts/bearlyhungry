@@ -1,6 +1,6 @@
 Wtpho::Application.configure do
   ActionMailer.delivery_method = :smtp
-  ActionMailer.smtp_settings = {
+  ActionMailer::Base.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
     domain:               'wtpho.herokuapp.com',
