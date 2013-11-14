@@ -9,8 +9,7 @@
       <nav class="main-nav">
         <ul>
           <li>
-            <% if !current_user %>
-              <% current_user = 5 %>
+            <% if current_user %>
               <ul>
                 <li class="parent">
                   <%= link_to "Account", user_path(current_user) %>
