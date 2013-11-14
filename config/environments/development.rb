@@ -1,4 +1,10 @@
 Wtpho::Application.configure do
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :address => "localhost",
+    :port => 1025,
+    :domain => "everydayrails.com" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -26,4 +32,5 @@ Wtpho::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
 end
