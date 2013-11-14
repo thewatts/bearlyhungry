@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+  <div class="notifications success row">
+    <span><%= flash[:notice] %></span>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="notifications error row">
+    <% flash[:error] %>
+  </div>
+<% end %>
+<% if flash[:item_error] %>
+  <div class="notifications error row">
+    <span><%= flash[:item_error] %></span>
+  </div>
+<% end %>
+<% if flash[:successful_transaction] %>
+  <div class="notifications success row">
+    <span><%= flash[:successful_transaction] %></span>
+  </div>
+<% end %>
