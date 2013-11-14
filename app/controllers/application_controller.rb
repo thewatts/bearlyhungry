@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def to_currency(value)
+    ActionController::Base.helpers.number_to_currency(value)
+  end
+
   def create_order
     @current_order = Order.create(status: "pending")
     session[:order_id] = @current_order.id

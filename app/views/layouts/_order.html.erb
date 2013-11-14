@@ -1,44 +1,56 @@
 <div class="order row">
   <div class="sidebar twelve columns">
-    <h4 class="top-label">My Order</h4>
+    <div class="order-title-cancel">
+      <h4 class="top-label">My Order</h4>
+      <a class="cancel-order" href="#">Cancel Order</a>
+    </div>
+    <hr>
     <div class="row">
       <div class="my-order twelve columns">
-        <h2 style="color: white"><%= current_order.id %></h2>
         <% if current_order.items.count == 0 %>
-          <p>YOU DON't HAVE AN ORDER</p>
+          <p class="no-order">
+            Sorry, it looks like you haven't added any items yet!
+          </p>
         <% else %>
           <ul class="my-order-items">
             <% current_order.order_items.each do |order_item| %>
               <li class="order-item">
                 <div class="order-item-info">
-                  <span class="item-title block">
-                    <%= order_item.item.title %>
-                  </span>
-                  <div class="item-quantity-price">
-                    <span class="label">
-                      Quantity
+                  <div class="order-item-title-total">
+                    <span class="order-item-title block">
+                      <%= order_item.item.title %>
                     </span>
-                    <span class="value">
-                      <%= order_item.quantity %> x <%= number_to_currency(order_item.item.price) %>
+                    <span class="order-item-total block">
+                      <%= number_to_currency(order_item.subtotal) %>
                     </span>
-                  </div>
-                  <div class="modify">
-                    <a href="#">Change</a>
-                    <a href="#">Remove</a>
-                  </div>
-                </div>
-                <span class="order-item-price">
-                  <%= number_to_currency(order_item.subtotal) %>
-                </span>
+                  </div><!-- //order-item-title-total -->
+                  <div class="item-quantity-modify">
+                    <div class="quantity-price">
+                      <span class="label">
+                        Quantity
+                      </span>
+                      <span class="value">
+                        <%= order_item.quantity %> x <%= number_to_currency(order_item.item.price) %>
+                      </span>
+                    </div><!-- //quantity-price -->
+                    <div class="modify">
+                      <a href="#">Edit</a>
+                      <a href="#">Remove</a>
+                    </div><!-- //modify -->
+                  </div><!-- item-quantity-price -->
+                </div><!-- order-item-info -->
               </li>
             <% end %>
           </ul>
           <div class="order-total">
             <span class="label">Total</span>
-            <span class="value"><%= current_order.subtotal %></span>
+            <span class="value"><%= number_to_currency(current_order.subtotal) %></span>
+          </div>
+          <div class="checkout">
+            <%= link_to "Checkout", review_order_path, class: "order-checkout" %>
           </div>
         <% end %>
-      </div>
+      </div><!-- //my-order -->
 
       <div class="my-promotions twelve columns">
         <h4 class="top-label">Promotions</h4>

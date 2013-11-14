@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  validates_uniqueness_of :title
+
   has_many :item_categories
   has_many :items, through: :item_categories
 
