@@ -1,15 +1,19 @@
 class ChargesController < ApplicationController
-  def new
-    # fail
+
+  before_action :validate_order
+
+  def validate_order
     @amount = set_order.subtotal
-    if session[:user_id] && @amount == 0
+    if @amount == 0
       flash[:error] = ["Please add items to your order before proceeding."]
       redirect_to menu_path
-    end
-    if session[:user_id].nil?
+    elsif session[:user_id].nil?
       flash[:error] = ["You must login or sign up before paying."]
       redirect_to menu_path
     end
+  end
+
+  def new
     @order_number = set_order.id
   end
 
@@ -30,7 +34,7 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    flash[:successful_transaction] = "Thank you! Your order number is '#{set_order.id}.' A receipt was sent to #{customer.email}. We'll email you when your order is completed."
+    flash.now[:successful_transaction] = "Thank you! Your order number is '#{set_order.id}.' A receipt was sent to #{customer.email}. We'll email you when your order is completed."
     @current_order.update(status: "paid")
     session[:order_id] = nil
     redirect_to menu_path

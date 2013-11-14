@@ -3,6 +3,7 @@ require 'bcrypt'
 unencrypted_password = "password"
 encrypted_password = BCrypt::Password.create(unencrypted_password)
 
+puts "Creating Users"
 user = User.create([{full_name: "Franklin Webber", display_name: "Franky", password: unencrypted_password, password_confirmation: unencrypted_password,   email: "demo+franklin@jumpstartlab.com" },
                     {full_name: "Jeff", display_name: "j3", password: unencrypted_password, password_confirmation: unencrypted_password, email: "demo+jeff@jumpstartlab.com"},
                     {full_name: "Katrina Owen", display_name: "kytrinyx", password: unencrypted_password, password_confirmation: unencrypted_password, email: "demo+katrina@jumpstartlab.com", admin_status: true }])
@@ -13,6 +14,7 @@ require 'csv'
 
 images = File.open "./app/assets/images"
 
+puts "Creating Items, Categories, and ItemCategories"
 contents = CSV.open "./db/db_seed.csv", headers: true, header_converters: :symbol
 
 contents.each do |row|
@@ -28,7 +30,7 @@ contents.each do |row|
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
 end
-category = Category.create(title: "House Special", type_of: 'main_menu')
+category = Category.create(title: "House Specials", type_of: 'main_menu')
 
 ItemCategory.create([{ item_id: 9, category_id: category.id},
                       { item_id: 10, category_id: category.id},
@@ -36,6 +38,7 @@ ItemCategory.create([{ item_id: 9, category_id: category.id},
                       { item_id: 12, category_id: category.id},
                       { item_id: 38, category_id: category.id}])
 
+puts "Creating Orders"
 Order.create([{ status: "pending"},
               { status: "pending"},
               { status: "in progress", user_id: 1},
@@ -47,6 +50,7 @@ Order.create([{ status: "pending"},
               { status: "cancelled", user_id: 1},
               { status: "cancelled", user_id: 2}])
 
+puts "Creating Orders Items"
 OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
                   { item_id: 16, order_id: 1},
                   { item_id: 24, order_id: 1, quantity: 2},
@@ -70,7 +74,3 @@ OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
                   { item_id: 4, order_id: 10, quantity: 5},
                   { item_id: 16, order_id: 10, quantity: 3},
                   { item_id: 31, order_id: 10, quantity: 7}])
-
-
-
-

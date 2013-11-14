@@ -1,6 +1,6 @@
 <%= render "layouts/login_signup" %>
 
-<header class="main-header">
+<header class="main-header default">
   <div class="row">
     <div class="twelve columns">
       <a class="logo" href="/" title="Home | What The Pho">
@@ -10,8 +10,23 @@
         <ul>
           <li>
             <% if current_user %>
-              <%= link_to "Account", user_path(current_user) %>
-            <% else %>
+              <ul>
+                <li class="parent">
+                  <%= link_to "Account", user_path(current_user) %>
+                  <ul class="children">
+                    <li class="child">
+                      <%= link_to "Account Info", user_path(current_user) %>
+                    </li>
+                    <li class="child">
+                      <%= link_to "Order History", my_orders_path %>
+                    </li>
+                    <li class="child">
+                      <%= link_to "Logout", logout_path %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+          <% else %>
               <%= link_to "Login", "#", data: { :"reveal-id" => "exampleModal" }  %>
             <% end %>
           </li>

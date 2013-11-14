@@ -248,6 +248,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionmailer
   bcrypt-ruby (~> 3.0.0)
   better_errors
   binding_of_caller

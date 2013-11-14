@@ -2,16 +2,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_order
-    if session[:order_id]
-      order = Order.find_by(id: session[:order_id])
-      if order
-        @current_order = order
-      else
-        create_order
-      end
+    order = Order.find_by(id: session[:order_id])
+    if order
+      @current_order = order
     else
       create_order
     end
+  end
+
+  def to_currency(value)
+    ActionController::Base.helpers.number_to_currency(value)
   end
 
   def create_order
@@ -30,11 +30,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def formatted_category(param)
-    if param
-      param.split('-').map {|c| c.capitalize}.join(' ')
+  def validate_order
+    @amount = set_order.subtotal
+    if session[:user_id] && @amount == 0
+      flash.now[:error] = ["Please add items to your order before proceeding."]
+      redirect_to menu_path
     end
+    if session[:user_id].nil?
+      flash.now[:error] = ["You must login or sign up before paying."]
+      redirect_to menu_path
+
+    end
+    fail
   end
+
+
 
   before_filter :authorize
 

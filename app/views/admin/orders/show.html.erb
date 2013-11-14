@@ -7,9 +7,65 @@
 <% else %>
   <p><em>There is no user assigned to this order</em></p>
 <% end %>
+<p>Order Subtotal: <%= number_to_currency(@order.subtotal) %></p>
+<p>Status: <%= @order.status %></p>
+<p>Created At: <%= @order.created_at %></p>
 
-<%= render partial: "orders/order", locals: {order: @order} %>
+<div class="row">
+  <div class="twelve columns">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Item
+          </th>
+          <th>
+            Subtotal
+          </th>
+          <th>
+            Quantity
+          </th>
+          <th>
+            Price
+          </th>
+          <th>
+            Available
+          </th>
+          <th colspan=2>
+            Edit
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.order_items.each do |order_item| %>
+          <tr>
+            <td>
+              <%= link_to order_item.item.title, item_path(order_item.item) %>
+            </td>
+            <td>
+              <%= number_to_currency(order_item.subtotal) %>
+            </td>
+            <td>
+              <%= order_item.quantity %>
+            </td>
+            <td>
+              <%= number_to_currency(order_item.item.price) %>
+            </td>
+            <td>
+              <% if order_item.item.available %>
+                true
+              <% else %>
+                 
+              <% end %>
+            </td>
 
-
-<%= link_to "Edit this Order", edit_admin_order_path %>
-<%= link_to "Back to all Orders", admin_order_index_path %>
+            <td>
+              <%= link_to "Remove", admin_order_item_path(order_item), method: :delete,
+                data: { confirm: "Are you sure you want to delete this item from the order?" } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
