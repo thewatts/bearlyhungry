@@ -109,8 +109,18 @@ h1,h2,h3,h4,h5 {
   width: 100%;
   z-index: 9999;
   height: 60px;
-  top: 0;
+  top: 0%;
   opacity: 1 !important;
+
+  &.default {
+    left: 0;
+    -webkit-transition: left .45s ease-in-out;
+    -moz-transition: left .45s ease-in-out;
+    -o-transition: left .45s ease-in-out;
+    transition: left .45s ease-in-out;
+  }
+
+
   -webkit-transition: opacity .45s ease-in-out;
   -moz-transition: opacity .45s ease-in-out;
   -o-transition: opacity .45s ease-in-out;
@@ -118,17 +128,17 @@ h1,h2,h3,h4,h5 {
   .logo {
     margin-top: 20px;
   }
+  &.left-indent {
+    left: -35%;
+    -webkit-transition: left .45s ease-in-out;
+    -moz-transition: left .45s ease-in-out;
+    -o-transition: left .45s ease-in-out;
+    transition: left .45s ease-in-out;
+  }
 }
 
 .main-header.sticky-header > div {
-    background: #222;
-    .left-indent {
-      left: -35%;
-      -webkit-transition: left .45s ease-in-out;
-      -moz-transition: left .45s ease-in-out;
-      -o-transition: left .45s ease-in-out;
-      transition: left .45s ease-in-out;
-    }
+  background: #222;
 }
 
 .main-header {

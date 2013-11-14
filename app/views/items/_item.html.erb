@@ -17,11 +17,10 @@
       </div>
       <div class="quantity-order">
         <div>
-          <%= form_for :order_item, url: order_items_path do |f| %>
+          <%= form_for :order_item, remote: true, html: { class: "asdf"}, url: order_items_path do |f| %>
             <%= f.text_field :quantity, :class => "quantity", :value => 1 %>
             <%= f.hidden_field :item_id, { :value => item.id } %>
-            <%= link_to "Add to Order", "#", class: "add-item button" %>
-            <%#= f.submit "Add to Order" %>
+            <%= f.submit "SUBMIT THAT MOTHA!", class: "add-item button" %>
           <% end %>
         </div>
       </div>
