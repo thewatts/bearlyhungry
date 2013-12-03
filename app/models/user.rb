@@ -24,4 +24,11 @@ class User < ActiveRecord::Base
   def total_spent
     orders.completed.map(&:subtotal).reduce(:+) || 0
   end
+
+  def self.find_and_authenticate(session_params)
+    user = find_by(email: session_params[:email])
+    if user && user.authenticate(session_params[:password])
+      user
+    end
+  end
 end

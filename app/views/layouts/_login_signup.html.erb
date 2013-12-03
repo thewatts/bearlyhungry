@@ -9,9 +9,9 @@
     <li class="active" id="loginTab">
       <div>
         <%= form_for :session, :url => session_path do |f| %>
-          <%= f.text_field :email, placeholder: "Email" %>
-          <%= f.password_field :password, placeholder: "Password" %>
-          <%= f.submit "Login" %>
+          <%= f.text_field :email, placeholder: "Email", id: 'login-email' %>
+          <%= f.password_field :password, placeholder: "Password", id: 'login-password' %>
+          <%= f.submit "Login", id: "login-submit" %>
         <% end %>
       </div>
     </li>
