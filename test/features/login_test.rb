@@ -23,7 +23,7 @@ class UserLoginTest < ActionController::TestCase
 
    test "a user can't login with incorrect info" do
      page.visit root_path
-     fill_in "login-email",    with: "test@example.com"
+     fill_in "login-email",    with: "1test@example.com"
      fill_in "login-password", with: "INCORRECT"
      click_on "login-submit"
      assert_equal root_path, page.current_path

@@ -45,10 +45,10 @@ class Order < ActiveRecord::Base
     order_items.inject(0) { |sum, item| sum + item.quantity }
   end
 
-  #def make_valid!(id)
-  #  user_id = id
-  #  status  = "in progress"
-  #  save
-  #end
+  def add_user(user)
+    self.user_id = user.id
+    self.status  = "in progress"
+    self.save
+  end
 
 end

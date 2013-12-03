@@ -69,4 +69,12 @@ class OrderTest < ActiveSupport::TestCase
     assert_equal [order1, order2, order4], Order.user_orders
   end
 
+  test "adds a user to itself, and updates status to in progress" do
+    order = FactoryGirl.create(:order, user_id: nil)
+    user = FactoryGirl.create(:user)
+    order.add_user(user)
+    assert_equal "in progress", order.status
+    assert_equal user.id, order.user_id
+  end
+
 end
