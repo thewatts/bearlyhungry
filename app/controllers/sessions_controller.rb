@@ -4,12 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_and_authenticate(params[:session])
-
-    if user
-      assign_current_user_to(user)
-      @current_order.add_user(user)
-    end
-
+    assign_current_user_and_update_order_for(user) if user
     flash[:notice] = message_for(user)
     redirect_to destination_for(user)
   end
@@ -18,6 +13,11 @@ class SessionsController < ApplicationController
     reset_session
     flash[:notice] = "You have successfully logged out."
     redirect_to root_path
+  end
+
+  def assign_current_user_and_update_order_for(user)
+    assign_current_user_to(user)
+    @current_order.add_user(user)
   end
 
   def assign_current_user_to(user)
