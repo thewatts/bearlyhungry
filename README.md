@@ -1,29 +1,33 @@
-# What The Pho
-## Best Pho Restaurant Around!
+<img src="http://2.bp.blogspot.com/_xdJi9JqFNxo/SQfkirxWZMI/AAAAAAAAAiE/tFK7BcPVmls/s1600/hungrybear.jpg" width="233" height="233" />
 
-This project was a collaboration between @Asiegart, @benhorne44, and @thewatts -
-all students of [gSchool](http://gschool.it) under the teaching of @jcasimir.
+# Welcome to BearyHungry
 
-The project requirements can be found here: [Dinner
-Dash](http://tutorials.jumpstartlab.com/projects/dinner_dash.html).
+A restaurant depot for all hungry clients.  This site contains ordering information for ten restaurants 
 
+## Cloning the project
 To checkout this project:
-
+Get the code:
 `git clone git@github.com:Agsiegert/wtpho.git`
 
-`cd wtpho`
+Go into the bearlyhungry directory:
+`cd bearlyhungry`
 
+Install all of the gems:
 `bundle`
 
+Set up the databases:
 `rake db:setup`
 `rake db:migrate`
 `rake db:seed`
 
-and finally...
+and finally... start the server
 
 `rails s`
 
-*Images from [Pho95 Noodle House](http://pho95noodlehouse.com)*
+Go to 'localhost:3000' to checkout the site. 
+
 *Project built on Rails 4.0.0, and uses Foundation 3*
 
+This project was a collaboration between @MappingKat, @LukeMartinez, and @thewatts - all students of [gSchool](http://gschool.it) under the teaching of @jcasimir.
 
+The project requirements can be found here: [Fourth Meal](http://tutorials.jumpstartlab.com/projects/fourth_meal.html).
