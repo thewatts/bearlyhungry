@@ -18,9 +18,9 @@
     <li id="signupTab">
       <div>
         <%= form_for :user, url: { controller: "users", action: "create" } do |f| %>
-          <%= f.text_field :full_name, :id => "full_name",
+          <%= f.text_field :full_name, :id => "full-name",
                          :placeholder => "Full Name", :required => true %>
-          <%= f.email_field :email, :id => "email",
+          <%= f.email_field :email, :id => "email-address",
                             :placeholder => "Email Address",
                             :required => true %>
           <%= f.text_field :display_name, :id => "display_name",
@@ -31,7 +31,7 @@
           <%= f.password_field :password_confirmation, :id => "password-confirmation",
                            :placeholder => "Password Confirmation",
                            :required => true %>
-          <%= f.submit "Signup!" %>
+          <%= f.submit "Signup!", id: 'signup-submit' %>
         <% end %>
       </div>
     </li>
