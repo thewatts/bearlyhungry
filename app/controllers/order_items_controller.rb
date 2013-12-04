@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
 
   respond_to :json, only: :create
 
-  before_action :set_order, only: :create
+  before_action :set_order, only: [:create, #:update]
 
   def create
     item_id = params[:order_item][:item_id]
