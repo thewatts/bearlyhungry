@@ -35,3 +35,5 @@ The project requirements can be found here: [Fourth Meal](http://tutorials.jumps
 Logos were gathered from http://www.designyourway.net/drb/some-of-the-best-logo-designs-made-for-restaurants-44-logos/.
 Menus were based on these logos. 
 
+http://cargocollective.com/type08/Animalogos-1
+
