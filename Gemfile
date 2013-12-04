@@ -49,6 +49,7 @@ end
 group :development, :test do
   gem 'jazz_hands'
   gem 'factory_girl_rails'
+  gem 'rspec-rails'
   gem 'zeus'
   gem 'capybara'
   # Use sqlite3 as the database for Active Record
@@ -58,6 +59,8 @@ end
 group :test do
   gem 'guard'
   gem 'guard-minitest'
+  gem 'guard-rspec', require: false
+  gem 'guard-rspec'
   gem 'simplecov'
 end
 

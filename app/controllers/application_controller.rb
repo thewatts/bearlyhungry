@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_order
+    @current_order ||= set_order
+  end
+
   def to_currency(value)
     ActionController::Base.helpers.number_to_currency(value)
   end
