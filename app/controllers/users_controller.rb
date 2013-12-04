@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include UsersHelper
 
   def index
 
@@ -44,5 +43,11 @@ class UsersController < ApplicationController
     user = User.find(current_user)
     user.destroy
     redirect_to items_path
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :full_name, :display_name, :email, :password, :password_confirmation
+    )
   end
 end
