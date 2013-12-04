@@ -31,3 +31,7 @@ Go to 'localhost:3000' to checkout the site.
 This project was a collaboration between @MappingKat, @LukeMartinez, and @thewatts - all students of [gSchool](http://gschool.it) under the teaching of @jcasimir.
 
 The project requirements can be found here: [Fourth Meal](http://tutorials.jumpstartlab.com/projects/fourth_meal.html).
+
+Logos were gathered from http://www.designyourway.net/drb/some-of-the-best-logo-designs-made-for-restaurants-44-logos/.
+Menus were based on these logos. 
+
