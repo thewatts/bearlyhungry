@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-
-  end
-
   def show
     @user = User.find(current_user.id)
   end
@@ -14,20 +10,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    if user.save
-      set_order.update(user_id: user.id, status: "in_progress")
-      session[:user_id] = user.id
-      UserMailer.welcome_email(user).deliver
-      redirect_to user_path(user)
-    else
-      # user.errors.each do |error|
-      #   logger.info " =========> #{error}"
-      # end
-      flash[:error] = user.errors.full_messages
-      # fail
-      redirect_to new_user_path
-    end
+    assign_current_user_and_update_order_for(user) if user.save
+    creation_response_for(user)
   end
+
 
   def edit
     @user = User.find(current_user.id)
@@ -45,9 +31,22 @@ class UsersController < ApplicationController
     redirect_to items_path
   end
 
+  private
+
   def user_params
     params.require(:user).permit(
       :full_name, :display_name, :email, :password, :password_confirmation
     )
   end
+
+  def creation_response_for(user)
+    if user.save
+      flash[:notice] = "Successfully Signed Up!"
+      redirect_to user_path(user)
+    else
+      flash[:error] = user.errors.full_messages
+      redirect_to new_user_path
+    end
+  end
+
 end

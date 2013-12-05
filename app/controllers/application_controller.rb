@@ -48,7 +48,14 @@ class ApplicationController < ActionController::Base
     fail
   end
 
+  def assign_current_user_and_update_order_for(user)
+    assign_current_user_to(user)
+    current_order.add_user(user)
+  end
 
+  def assign_current_user_to(user)
+    session[:user_id] = user.id
+  end
 
   before_filter :authorize
 
