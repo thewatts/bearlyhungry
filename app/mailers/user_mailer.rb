@@ -4,9 +4,10 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     @url = 'http://wtpho.herokuapp.com/login'
-    mail({to: @user.email,
-          from: 'wtphok@gmail.com',
-          subject: 'Welcome to What the Pho'})
+    mail({
+      to: @user.email,
+      from: 'wtphok@gmail.com',
+      subject: 'Welcome to What the Pho'})
   end
 
   # def order_email(user, order_id)

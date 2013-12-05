@@ -30,6 +30,7 @@ Wtpho::Application.routes.draw do
   resources :users,  only: [:new, :create, :show, :edit, :update]
   resources :orders, only: [:index, :show]
 
-  get '/login'  => 'sessions#create', as: :login
-  get '/logout' => 'sessions#destroy', as: :logout
+  get '/login'  => 'sessions#index'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 end
