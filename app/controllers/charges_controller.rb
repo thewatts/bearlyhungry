@@ -2,21 +2,12 @@ class ChargesController < ApplicationController
 
   before_action :validate_order
 
-  def validate_order
-    @amount = set_order.subtotal
-    if @amount == 0
-      flash[:error] = ["Please add items to your order before proceeding."]
-    elsif session[:user_id].nil?
-      flash[:error] = ["You must login or sign up before paying."]
-    end
-    redirect_to menu_path
-  end
-
   def new
     @order_number = set_order.id
   end
 
   def create
+    @amount = (set_order.subtotal * 100).to_i
     customer = Stripe::Customer.create(
       :email => current_user.email,
       :card  => params[:stripeToken]
@@ -24,7 +15,7 @@ class ChargesController < ApplicationController
 
     charge = Stripe::Charge.create(
       :customer    => customer.id,
-      :amount      => (set_order.subtotal*100).to_i,
+      :amount      => @amount,
       :description => 'BearyHungry customer',
       :currency    => 'usd'
     )
@@ -37,6 +28,18 @@ class ChargesController < ApplicationController
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
+    redirect_to menu_path
+  end
+
+  private
+
+  def validate_order
+    @amount = set_order.subtotal
+    if @amount == 0
+      flash[:error] = ["Please add items to your order before proceeding."]
+    elsif session[:user_id].nil?
+      flash[:error] = ["You must login or sign up before paying."]
+    end
     redirect_to menu_path
   end
 end
