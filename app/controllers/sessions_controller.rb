@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 
   before_action :set_order
 
+  def index
+  end
+
   def create
     user = User.find_and_authenticate(params[:session])
     assign_current_user_and_update_order_for(user) if user
@@ -16,15 +19,6 @@ class SessionsController < ApplicationController
   end
 
   private
-
-  def assign_current_user_and_update_order_for(user)
-    assign_current_user_to(user)
-    current_order.add_user(user)
-  end
-
-  def assign_current_user_to(user)
-    session[:user_id] = user.id
-  end
 
   def destination_for(user)
     if user.nil?
