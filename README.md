@@ -1,4 +1,4 @@
-<img src="http://2.bp.blogspot.com/_xdJi9JqFNxo/SQfkirxWZMI/AAAAAAAAAiE/tFK7BcPVmls/s1600/hungrybear.jpg" width="233" height="233" />
+<img src="http://2.bp.blogspot.com/_xdJi9JqFNxo/SQfkirxWZMI/AAAAAAAAAiE/tFK7BcPVmls/s1600/hungrybear.jpg" width="233" height="250" />
 
 # Welcome to BearyHungry
 
@@ -7,15 +7,19 @@ A restaurant depot for all hungry clients.  This site contains ordering informat
 ## Cloning the project
 To checkout this project:
 Get the code:
+
 `git clone git@github.com:Agsiegert/wtpho.git`
 
 Go into the bearlyhungry directory:
+
 `cd bearlyhungry`
 
 Install all of the gems:
+
 `bundle`
 
 Set up the databases:
+
 `rake db:setup`
 `rake db:migrate`
 `rake db:seed`
