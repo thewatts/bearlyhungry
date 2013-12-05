@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, if: "!password.nil?"
   has_secure_password
 
+  after_create :send_welcome_email
+
   has_many :orders
 
   def admin?
@@ -23,6 +25,10 @@ class User < ActiveRecord::Base
 
   def total_spent
     orders.completed.map(&:subtotal).reduce(:+) || 0
+  end
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 
   def self.find_and_authenticate(session_params)
