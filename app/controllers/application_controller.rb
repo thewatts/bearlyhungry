@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_filter :create_guest_if_needed
+  
+  def create_guest_if_needed
+    return if session[:user_id] 
+    @user = User.new_guest
+    @user.save
+    session[:user_id] = @user.id
+    # do anything else you need here...
+  end
 
   def set_order
     order = Order.find_by(id: session[:order_id])
@@ -40,11 +49,10 @@ class ApplicationController < ActionController::Base
       flash.now[:error] = ["Please add items to your order before proceeding."]
       redirect_to menu_path
     end
-    if session[:user_id].nil?
-      flash.now[:error] = ["You must login or sign up before paying."]
-      redirect_to menu_path
-
-    end
+    # if session[:user_id].nil?
+    #   user.new_guest
+    #   redirect_to review_order_path
+    # end
     fail
   end
 
@@ -69,7 +77,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    if !current_permission.allow?(params[:controller], params[:action])
+    unless current_permission.allow?(params[:controller], params[:action])
       redirect_to items_path, alert: "Not authorized."
     end
   end

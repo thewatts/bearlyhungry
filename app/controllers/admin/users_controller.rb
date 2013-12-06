@@ -19,7 +19,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    # user = User.new(user_params)
+    user = params[:user] ? User.new(params[:user]) : User.new_guest
     if user.save
       user.admin_status = params[:user][:admin_status]
       user.save

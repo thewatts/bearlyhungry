@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131113043343) do
+ActiveRecord::Schema.define(version: 20131206022253) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -64,6 +64,11 @@ ActiveRecord::Schema.define(version: 20131113043343) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
+  create_table "static_pages", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -72,6 +77,7 @@ ActiveRecord::Schema.define(version: 20131113043343) do
     t.string   "email"
     t.string   "password_digest"
     t.boolean  "admin_status",    default: false
+    t.boolean  "guest"
   end
 
 end

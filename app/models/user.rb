@@ -9,6 +9,16 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   has_many :orders
+  
+
+  def self.new_guest
+      new { |u| u.guest = true }
+  end
+
+  def move_to(user)
+    order_items.update_all(user_id: user.id)
+    orders.update_all(user_id: user.id)
+  end
 
   def admin?
     self.admin_status
