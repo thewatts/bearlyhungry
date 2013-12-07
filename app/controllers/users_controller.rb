@@ -26,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    user = User.find(current_user)
-    user.destroy
+    session[:user_id] = nil
+    current_user.destroy
     redirect_to items_path
   end
 

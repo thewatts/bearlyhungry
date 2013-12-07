@@ -20,14 +20,14 @@ Wtpho::Application.routes.draw do
     put '/order-status/:status' => 'orders#update_status'
     patch '/item-availability' => 'items#toggle_availability', as: 'update_item_availability'
 
-    delete 'user' => 'users#destroy'
+    #delete 'user' => 'users#destroy'
   end
 
   resources :charges
   resources :items, only: [:index, :show]
   resources :order_items
   resource  :session
-  resources :users,  only: [:new, :create, :show, :edit, :update]
+  resources :users,  only: [:new, :create, :show, :edit, :update, :destroy]
   resources :orders, only: [:index, :show]
 
   get '/login'  => 'sessions#index'
