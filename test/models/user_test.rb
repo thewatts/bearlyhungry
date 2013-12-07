@@ -16,6 +16,8 @@ class UserTest < ActiveSupport::TestCase
     test "a user may be a guest" do
       user1 = FactoryGirl.build(:user, guest: true)
       assert user1.save
+      user1 = FactoryGirl.build(:user, guest: false)
+      refute user1.save
     end
 
     test "user must have full name which is not blank" do
@@ -64,5 +66,4 @@ class UserTest < ActiveSupport::TestCase
       refute non_admin.admin?
       assert admin.admin?
     end
-
 end
