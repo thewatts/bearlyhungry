@@ -64,11 +64,6 @@ ActiveRecord::Schema.define(version: 20131206022253) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
-  create_table "static_pages", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -44,6 +44,15 @@ body {
   width: 1000px;
 }
 
+#login-submit,
+#signup-submit,
+#continue {
+background: #2B8BCB;
+border-radius: 1000px;
+font-weight: bold;
+font-size: 16px;
+}
+
 .notifications {
   border: solid 1px #ddd;
   padding: 18px 20px;
@@ -277,6 +286,10 @@ h1,h2,h3,h4,h5 {
   margin-bottom: 20px;
   border-radius: 4px;
   padding-top: 0;
+  #guest-login {
+    color: red;
+  }
+
   h3 {
     background: #222;
     color: #fafafa;
@@ -286,7 +299,6 @@ h1,h2,h3,h4,h5 {
     margin: 0 -10px 10px;
   }
 }
-
 .full-order-item {
   padding: 0 20px 20px;
   border-bottom: solid 1px #fefefe;
@@ -309,8 +321,10 @@ h1,h2,h3,h4,h5 {
   padding-bottom: 40px;
   border-radius: 2px;
   &.sticky-header {
+
     margin-top: 230px;
   }
+  
 }
 
 .menus-nav {
@@ -528,6 +542,7 @@ h1,h2,h3,h4,h5 {
     text-transform: lowercase;
   }
 }
+
 
 .order-item {
   list-style-type: none;

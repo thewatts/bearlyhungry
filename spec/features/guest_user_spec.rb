@@ -11,9 +11,9 @@ describe "Guest User" do
   it "can review order and see 'continue as guest button'" do
     page.visit menu_path
     click_on 'Add to Cart'
-    click_on "Checkout"
+    click_on 'Checkout'
     expect(page.current_path).to eq(review_order_path)
-    expect(page).to have_content "Continue As Guest"
+    expect(page).to have_button "Continue as Guest"
   end
 
   it "can checkout as a guest user" do
