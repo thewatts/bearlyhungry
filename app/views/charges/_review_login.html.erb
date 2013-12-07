@@ -1,4 +1,5 @@
 <dl class="tabs">
+  <% if current_user.nil? %>
   <dd class="active"><a href="#login2">Login</a></dd>
   <dd><a href="#signup2">Signup</a></dd>
   <dd><a href="#guest">Continue as Guest</a></dd>
@@ -43,12 +44,15 @@
         <%= f.email_field :email, :id => "guest-email",
                           :placeholder => "Email Address",
                           :required => true %>
-        <!-- add phone number field....  -->
+        <%= f.text_field  :phone_number, :id => "guest-phone-number",
+                          :placeholder => "Phone Number",
+                          :required => true %>                  
         <%= f.submit "Checkout as Guest", id: 'signup-submit', class: "radius button" %>
       <% end %>
+      <% end %>
+
       <!-- guest must be true -->
     </div>
   </li>
 </ul>
-<hr>
-<hr>
+
