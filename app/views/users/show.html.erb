@@ -1,7 +1,36 @@
+<dl class="tabs">
+  <dd class="active"><a href="#account">Account Details</a></dd>
+  <dd><a href="#edit">Edit Account</a></dd>
+  <dd><a href="#delete">Delete Account</a></dd>
+</dl>
 
-<h3>Full name: <%= @user.full_name %></h3>
-<p>Display name: <%= @user.display_name %></p>
-<p>Email: <%= @user.email %></p>
-<p><%= link_to "Edit", edit_user_path(@user) %></p>
-<p><%= link_to "Remove your account", user_path(params[:user]), method: :delete, data: {confirm:"Really DELETE your account?"}%></p>
+<ul class="tabs-content">
+  <li class="active" id="accountTab">
+    <h3>Full name: <%= @user.full_name %></h3>
+    <h4>Display name: <%= @user.display_name %></h4>
+    <h4>Email: <%= @user.email %></h4>
+    <!-- if phone exists then add phone Number: ... -->
+    </li>
+  <li id="editTab">
+    <p class="flash"><%= flash.notice %></p>
+    <h2> Edit Your Account </h2>
+      <%= form_for @user do |f| %>
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+        <p>Full Name:      <%= f.text_field :full_name, :id => 'full_name' %></p>
+        <p>Display Name:   <%= f.text_area :display_name, :id => 'display_name' %></p>
+        <p>Email:          <%= f.email_field :email, :id => 'email' %></p>
+        <p>Password:       <%= f.password_field :password, :id => 'password' %></p>
+        <p>Password Confirmation:    <%= f.password_field :password_confirmation, :id => 'password_confirmation' %></p>
+        <%= f.submit "Save Your Account", :id => 'save' %>
+      <% end %>
+</li>
+  <li id="deleteTab">
+  <p><%= link_to "Remove your account", user_path(params[:user]), method: :delete, data: {confirm:"Really DELETE your account?"}%></p>
+  </li>
+<hr>
+<hr>
 <p><%= link_to "<< Back to Menu", items_path %></p>
