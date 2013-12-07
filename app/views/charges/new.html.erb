@@ -13,5 +13,13 @@
     <hr>
     <h3>Order Total: <em><%= number_to_currency(current_order.subtotal) %></h3>
     
+  
+  <%= form_tag charges_path do %>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Order Number: <%= @order_number %>"
+          data-amount="<%= @amount*100 %>"></script>
+  <% end %>
   </div>
 </div>
