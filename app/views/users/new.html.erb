@@ -1,3 +1,16 @@
 <p class="flash"><%= flash.notice %></p>
-<H1> Create a New Account </H1>
-<%= render partial: "form" %>
+<h1> Create a New Account </h1>
+  <%= form_for @user do |f| %>
+  <ul>
+    <% @user.errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+  <p>Full Name:      <%= f.text_field :full_name, :id => 'full_name' %></p>
+  <p>Display Name:   <%= f.text_area :display_name, :id => 'display_name' %></p>
+  <p>Email: <%= f.email_field :email, :id => 'email' %></p>
+  <p>Password: <%= f.password_field :password, :id => 'password' %></p>
+  <p>Password Confirmation:    <%= f.password_field :password_confirmation, :id => 'password_confirmation' %></p>
+
+  <%= f.submit "Save Your Account", :id => 'continue', class: 'radius button'  %>
+<% end %>

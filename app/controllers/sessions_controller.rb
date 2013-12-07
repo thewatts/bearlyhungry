@@ -21,12 +21,10 @@ class SessionsController < ApplicationController
   private
 
   def destination_for(user)
-    if user.nil?
-      :back
-    elsif user.admin?
+    if user.admin?
       admin_items_path
     else
-      menu_path
+      review_order_path
     end
   end
 

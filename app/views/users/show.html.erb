@@ -25,12 +25,12 @@
         <p>Email:          <%= f.email_field :email, :id => 'email' %></p>
         <p>Password:       <%= f.password_field :password, :id => 'password' %></p>
         <p>Password Confirmation:    <%= f.password_field :password_confirmation, :id => 'password_confirmation' %></p>
-        <%= f.submit "Save Your Account", :id => 'save' %>
+        <%= f.submit "Save Your Account", :id => 'continue', class: 'radius button'  %>
       <% end %>
 </li>
   <li id="deleteTab">
-  <p><%= link_to "Remove your account", user_path(params[:user]), method: :delete, data: {confirm:"Really DELETE your account?"}%></p>
+  <p><%= link_to "DANGER!  DANGER! Remove your account? ", user_path(params[:user]), method: :post, data: {confirm:"Really DELETE your account?"}, :id => 'delete', class: 'radius button' %></p>
   </li>
 <hr>
 <hr>
-<p><%= link_to "<< Back to Menu", items_path %></p>
+<p><%= link_to "Return to Menu", items_path, :id => 'menu', class: 'radius button'  %></p>
