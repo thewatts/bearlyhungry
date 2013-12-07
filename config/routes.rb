@@ -23,7 +23,8 @@ Wtpho::Application.routes.draw do
     #delete 'user' => 'users#destroy'
   end
 
-  resources :charges
+  resources :charges, only: [:create]
+  get '/order-payment' => "charges#new", as: "order_payment"
   resources :items, only: [:index, :show]
   resources :order_items
   resource  :session

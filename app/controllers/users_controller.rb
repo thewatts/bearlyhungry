@@ -9,7 +9,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(user_params)
+    unless params[:user][:guest].nil?
+      user = Guest.new(user_params)
+    else
+      user = User.new(user_params)
+    end
     assign_current_user_and_update_order_for(user) if user.save
     creation_response_for(user)
   end
@@ -35,14 +39,16 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :full_name, :display_name, :email, :password, :password_confirmation
-    )
+      :full_name, :display_name, :email, :password, :password_confirmation, :guest)
   end
 
   def creation_response_for(user)
-    if user.save
+    if user.save && !user.guest?
       flash[:notice] = "Successfully Signed Up!"
       redirect_to user_path(user)
+    elsif user.save && user.guest?
+      flash[:notice] = "Please complete your order"
+      redirect_to order_payment_path
     else
       flash[:error] = user.errors.full_messages
       redirect_to new_user_path

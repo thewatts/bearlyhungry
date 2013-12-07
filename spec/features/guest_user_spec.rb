@@ -10,20 +10,23 @@ describe "Guest User" do
 
   it "can review order and see 'continue as guest button'" do
     page.visit menu_path
+    expect(page).to have_content @item.title
     click_on 'Add to Cart'
     click_on 'Checkout'
     expect(page.current_path).to eq(review_order_path)
-    expect(page).to have_button "Continue as Guest"
+    expect(page).to have_button "Checkout as Guest"
   end
 
   it "can checkout as a guest user" do
-    pending
-    click_on "Continue As Guest"
-    fill_in 'full-name',             with: 'Test User'
-    fill_in 'email-address',         with: 'test@example.com'
-    fill_in 'phone-number',          with: '1234567890'
-    click_on 'proceed'
-    #credit card thingy
+    page.visit menu_path
+    expect(page).to have_content @item.title
+    click_on 'Add to Cart'
+    click_on 'Checkout'
+    fill_in 'guest-name',             with: 'Test User'
+    fill_in 'guest-email',         with: 'test@example.com'
+    fill_in 'guest-phone-number',          with: '1234567890'
+    click_on 'Checkout as Guest'
+    expect(page.current_path).to eq(order_payment_path)
   end
 
   # it "can't signup a user with incorrect attributes" do

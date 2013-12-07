@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   def create_guest_if_needed
     return if session[:user_id] 
-    @user = User.new_guest
+    @user = Guest.new
     @user.save
     session[:user_id] = @user.id
     # do anything else you need here...
