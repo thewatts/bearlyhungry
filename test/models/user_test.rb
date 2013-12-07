@@ -1,4 +1,4 @@
-require 'test_helper'
+require './test/test_helper'
 
 class UserTest < ActiveSupport::TestCase
 
@@ -7,8 +7,15 @@ class UserTest < ActiveSupport::TestCase
                                       email: "asdf@example.com",
                                       password: "password",
                                       password_confirmation: "password",
-                                      display_name: "A DAWG")
+                                      display_name: "A DAWG",
+                                      phone_number: "7742398699"
+                                      )
       assert user.save
+    end
+
+    test "a user may be a guest" do
+      user1 = FactoryGirl.build(:user, guest: true)
+      assert user1.save
     end
 
     test "user must have full name which is not blank" do
