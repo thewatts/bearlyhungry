@@ -5,6 +5,7 @@ class ChargesController < ApplicationController
   def new
     @order_number = current_order.id
     @amount = current_order.subtotal
+    total = (current_order.subtotal * 100).to_i
   end
 
   def create
@@ -12,7 +13,6 @@ class ChargesController < ApplicationController
       :email => current_user.email,
       :card  => params[:stripeToken]
     )
-
     charge = Stripe::Charge.create(
       :customer    => customer.id,
       :amount      => (current_order.subtotal * 100).to_i,
@@ -20,7 +20,8 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    flash[:successful_transaction] = "Thank you! Your order number is '#{current_order.id}.' A receipt was sent to #{customer.email}. We'll email you when your order is completed."
+    flash[:successful_transaction] = "Thanks! You paid $#{current_order.subtotal}. 
+    Your order number is '#{current_order.id}.' A receipt was sent to #{customer.email}. We'll email or text you when your order is completed."
    
     current_order.update(status: "paid")
     session[:order_id] = nil
