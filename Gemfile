@@ -18,11 +18,15 @@ gem 'newrelic_rpm'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+<<<<<<< HEAD
 gem 'jquery-rails'
 gem 'zurb-foundation', '~> 4.3.2'
 gem 'paperclip'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+=======
+
+>>>>>>> f19777d900c2ec4d709345a65fbbbfa2979c1ffb
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -64,8 +68,13 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+<<<<<<< HEAD
 # Use unicorn as the app server
 # gem 'unicorn'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 # gem 'debugger', group: [:development, :test]
+=======
+# Ruby Version for Heroku
+ruby "2.0.0"
+>>>>>>> f19777d900c2ec4d709345a65fbbbfa2979c1ffb

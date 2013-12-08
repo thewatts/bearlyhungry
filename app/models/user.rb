@@ -1,20 +1,15 @@
 class User < UserBase
-  validates :display_name, allow_blank: true, length: { in: 2..32, message: "Display name should be between 2 and 32 characters, please." }
+  validates :display_name, allow_blank: true, length: {
+    in: 2..32,
+    message: "Display name should be between 2 and 32 characters, please." }
   validates :email, uniqueness: true
-  # unless self.new_guest do 
-  #   validates :password_confirmation, presence: true, if: "!password.nil?"
-  # end
-  has_secure_password 
+  has_secure_password
 
   after_create :send_welcome_email
-
-  
 
   def admin?
     self.admin_status
   end
-
- 
 
   def past_orders
     orders.sort_by {|order| order.created_at}.reverse
