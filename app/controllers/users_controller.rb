@@ -53,7 +53,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(user).deliver
       redirect_to user_path(user)
     elsif user.save && user.guest?
-      flash[:notice] = "Please complete your order"
+      flash[:notice] = "Please review and pay for your order"
       redirect_to order_payment_path
     else
       flash[:error] = user.errors.full_messages
