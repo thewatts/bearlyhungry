@@ -32,10 +32,9 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'zeus'
   gem 'capybara'
-  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'poltergeist'
 end
 
 group :test do
@@ -44,8 +43,8 @@ group :test do
   gem 'guard-rspec', require: false
   gem 'guard-rspec'
   gem 'simplecov'
-end
-
+  gem 'database_cleaner'
+end 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
