@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   def creation_response_for(user)
     if user.save && !user.guest?
       flash[:notice] = "Successfully Signed Up!"
+      UserMailer.welcome_email(user).deliver
       redirect_to user_path(user)
     elsif user.save && user.guest?
       flash[:notice] = "Please complete your order"
