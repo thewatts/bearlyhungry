@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
   def new
     @order_number = current_order.id
     @amount = current_order.subtotal
-    total = (current_order.subtotal * 100).to_i
   end
 
   def create

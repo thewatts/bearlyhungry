@@ -1,5 +1,5 @@
 class AddPhoneNumberToUser < ActiveRecord::Migration
   def change
-    add_column :users, :phone_number, :number
+    add_column :users, :phone_number, :integer
   end
 end

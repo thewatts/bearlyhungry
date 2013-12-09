@@ -6,5 +6,4 @@ class Guest < UserBase
   def set_guest
     self.guest = true
   end
-
 end

@@ -19,7 +19,7 @@
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Order Number: <%= @order_number %>"
-          data-amount="<%= (@amount*100).to_i %>"></script>
+          data-amount="<%= (@amount * 100).to_i %>"></script>
   <% end %>
   </div>
 </div>

@@ -6,7 +6,6 @@ class UserBase < ActiveRecord::Base
 
   has_many :orders
 
-
   def current_order
     orders.last
   end

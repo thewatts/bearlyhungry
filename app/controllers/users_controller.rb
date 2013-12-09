@@ -9,15 +9,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    unless params[:user][:guest].nil?
-      user = Guest.new(user_params)
-    else
-      user = User.new(user_params)
-    end
+    user = create_new_user_with(user_params)
     assign_current_user_and_update_order_for(user) if user.save
     creation_response_for(user)
   end
-
 
   def edit
     @user = User.find(current_user.id)
@@ -39,7 +34,17 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :full_name, :display_name, :email, :password, :password_confirmation, :guest)
+      :full_name, :display_name, :email, :password,
+      :password_confirmation, :guest
+    )
+  end
+
+  def create_new_user_with(user_params)
+    unless params[:user][:guest].nil?
+      user = Guest.new(user_params)
+    else
+      user = User.new(user_params)
+    end
   end
 
   def creation_response_for(user)
