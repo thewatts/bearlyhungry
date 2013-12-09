@@ -14,6 +14,7 @@ describe "User Checkout" do
     it "prompts to login", js: true do
       visit menu_path
       click_on "Add to Cart"
+      find("#nav-order").click
       click_on "Checkout"
       expect(page).to have_content "Review Your Order:"
     end
