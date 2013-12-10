@@ -46,7 +46,7 @@
             <td>
               <%= number_to_currency(order.subtotal) %>
             </td>
-            <td>
+            <td id='customDropdown'>
               <%= select_tag "status", options_for_select([
                 ['Pending', 'pending'],
                 ['Paid', 'paid'],

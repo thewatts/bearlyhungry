@@ -1,11 +1,12 @@
 class Admin::OrdersController < ApplicationController
   layout "admin"
+
   def index
     if params[:status]
       @orders = Order.find_all_by_status(params[:status])
     else
-    @status_counts = Order.count_by_status
-    @orders = Order.all
+      @status_counts = Order.count_by_status
+      @orders = Order.all
     end
   end
 
@@ -31,5 +32,4 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id]) 
   end
-
 end

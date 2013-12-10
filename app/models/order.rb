@@ -1,29 +1,30 @@
 class Order < ActiveRecord::Base
-  include AASM
   include Rails.application.routes.url_helpers
-
   validates :status, presence: true
-
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
+  
+  # include AASM
+  # status do
+  #   state :pending, initial: :true
+  #   state :confirmed
+  #   state :paid
+  #   state :ready_for_delivery
+  #   state :cancelled
+  # end
 
-  aasm do
-    state :pending, initial: :true
-    state :confirmed
-    state :paid
-    state :ready_for_delivery
-    state :cancelled
+  # event :confirm
+  #   transition from: :pending, to: [:confirmed, :cancelled]
+  # end
 
-  event :confirm
-    transition from: :pending, to: [:confirmed, :cancelled]
-  end
+  # event :paid
+  #   transition from: :confirmed, to: :paid
+  # end
 
-  event
-    transition from: :confirmed, to: :paid
-  end
-
-  transition from: :paid, to: :ready_for_delivery
+  # event :ready_for_delivery
+  #   transition from: :paid, to: :ready_for_delivery
+  # end
 
   def self.user_orders
     where('user_id IS NOT NULL')
@@ -45,7 +46,7 @@ class Order < ActiveRecord::Base
 
   def add_item(item_id, quantity = 1)
     found_item = Item.find(item_id)
-    if !items.include? found_item
+    unless items.include? found_item
       items << found_item
       order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
       order_item.quantity = quantity.to_i
@@ -92,5 +93,4 @@ class Order < ActiveRecord::Base
 
     SMS.send_message(user.phone_number, body)
   end
-
 end
