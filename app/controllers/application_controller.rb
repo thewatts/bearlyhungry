@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def create_order
     @current_order = Order.create(status: "pending")
     session[:order_id] = @current_order.id
-    @current_user
+    @current_order
   end
 
   def current_user

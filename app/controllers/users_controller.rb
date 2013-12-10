@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def new
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(current_user.id)
+    @user = current_user
   end
 
   def update
@@ -41,9 +41,9 @@ class UsersController < ApplicationController
 
   def create_new_user_with(user_params)
     unless params[:user][:guest].nil?
-      user = Guest.new(user_params)
+      Guest.new(user_params)
     else
-      user = User.new(user_params)
+      User.new(user_params)
     end
   end
 
