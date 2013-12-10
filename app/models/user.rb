@@ -12,11 +12,13 @@ class User < UserBase
   end
 
   def past_orders
-    orders.sort_by {|order| order.created_at}.reverse
+    @orders.sort_by {|order| order.created_at}.reverse unless guest
   end
 
   def total_spent
-    orders.completed.map(&:subtotal).reduce(:+) || 0
+    if @user
+     @orders.completed.map(&:subtotal).reduce(:+) || 0 
+    end
   end
 
   def send_welcome_email

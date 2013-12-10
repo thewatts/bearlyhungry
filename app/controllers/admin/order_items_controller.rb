@@ -6,7 +6,6 @@ class Admin::OrderItemsController < ApplicationController
   end
 
   def destroy
-    fail
     order_item = OrderItem.find_by(id: params[:id])
     order_item.destroy
     redirect_to admin_order_path
