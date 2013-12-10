@@ -25,6 +25,17 @@ class Order < ActiveRecord::Base
     where(status: "completed")
   end
 
+  def host(environment)
+    case environment
+    when "staging"
+      "staging.bearlyhungry.com"
+    when "production"
+      "bearlyhungry.com"
+    else
+      "localhost:3000"
+    end
+  end
+
   def add_item(item_id, quantity = 1)
     found_item = Item.find(item_id)
     if !items.include? found_item
@@ -68,7 +79,9 @@ class Order < ActiveRecord::Base
   end
 
   def send_owner_submitted_sms
-    url = Rails.application.routes.url_helpers.admin_order_url(id, host: "localhost:3000")
+    url = Rails.application.routes.url_helpers.admin_order_url(
+      id, host: host(Rails.env)
+    )
     body = "A new order was just submitted!\n"
     body << "Find more info here: #{url}"
 
