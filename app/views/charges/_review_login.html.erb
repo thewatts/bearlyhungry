@@ -50,8 +50,8 @@
         <%= f.text_field  :phone_number, :id => "guest-phone-number",
                           :placeholder => "Phone Number (if you want to receive texts)",
                           :required => false %>
-        <%= f.hidden_field  :guest, :value => true %>               
-        <%= f.submit "Checkout as Guest", id: 'signup-submit', class: "radius button" %>
+        <%= f.hidden_field  :guest, :value => true %>
+        <%= f.submit "Checkout as Guest", id: 'guest-signup-submit', class: "radius button" %>
       <% end %>
       <% end %>
 

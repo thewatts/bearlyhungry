@@ -12,8 +12,8 @@
 
     <hr>
     <h3>Order Total: <em><%= number_to_currency(current_order.subtotal) %></h3>
-    
-  
+
+
   <%= form_tag charges_path do %>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"

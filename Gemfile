@@ -36,6 +36,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'poltergeist'
   gem 'selenium-webdriver'
+  gem 'launchy'
 end
 
 group :test do
