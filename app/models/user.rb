@@ -27,14 +27,12 @@ class User < UserBase
     end
   end
 
-  def sms
+  def confirmation_sms_for(order)
     number_to_send_to = phone_number.to_i
-    twilio_sid = 'ACcbcc01e57687a227d75edf4874e76e08'
-    twilio_token = 'f38445947e7bc841d5bc6b0e65cdc0a8'
-    twilio_phone_number = '15177217715'
-    order_id = 1
+    item_count = order.items.count
+    body = "Thanks, #{full_name}, for your order of #{item_count} items!"
+    body << "We'll send you another text when it's ready for pickup!"
 
-    body = "Order #{order_id} is ready!  Pipping hot, ready to serve."
     SMS.send_message(number_to_send_to, body)
   end
 end
