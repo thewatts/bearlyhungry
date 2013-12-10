@@ -35,7 +35,7 @@ group :development, :test do
   gem 'capybara'
   gem 'sqlite3'
   gem 'poltergeist'
-  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :test do
