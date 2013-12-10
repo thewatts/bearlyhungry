@@ -7,7 +7,8 @@ class SMS
   attr_reader :recipient, :message
 
   def initialize(recipient, message)
-    @recipient = recipient
+    #@recipient = recipient
+    @recipient = "5172434516"
     @message = message
   end
 
