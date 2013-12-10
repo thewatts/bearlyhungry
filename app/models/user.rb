@@ -5,8 +5,6 @@ class User < UserBase
   validates :email, uniqueness: true
   has_secure_password
 
-  after_create :send_welcome_email
-
   def admin?
     self.admin_status
   end
@@ -29,4 +27,5 @@ class User < UserBase
       user
     end
   end
+
 end

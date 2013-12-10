@@ -1,5 +1,4 @@
 class Guest < UserBase
-  self.table_name = :users
 
   before_create :set_guest
 

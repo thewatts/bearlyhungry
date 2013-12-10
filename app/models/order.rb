@@ -51,4 +51,18 @@ class Order < ActiveRecord::Base
     self.save
   end
 
+  def send_user_confirmation_sms
+    body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
+    body << "We'll send you another text when it's ready for pickup!"
+
+    SMS.send_message(user.phone_number, body)
+  end
+
+  def send_user_pickup_sms
+    body = "Success, #{user.full_name}!\n"
+    body << "Your order is officially ready for pickup!"
+
+    SMS.send_message(user.phone_number, body)
+  end
+
 end

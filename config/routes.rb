@@ -34,4 +34,5 @@ Wtpho::Application.routes.draw do
   get '/login'  => 'sessions#index'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
 end
