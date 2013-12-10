@@ -11,9 +11,9 @@ class SendTextController < ApplicationController
     @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
 
     @twilio_client.account.sms.messages.create(
-    :from => '+1+#{twilio_phone_number}',
+    :from => "+1+#{twilio_phone_number},
     :to => number_to_send_to,
-    :body => "Order #{order_id} is ready!  Pipping hot, ready to serve."
+    :body => "Order #{order_id} is ready!  Piping hot, ready to serve."
     )
   end
 end

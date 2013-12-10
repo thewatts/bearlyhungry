@@ -4,9 +4,6 @@ class User < UserBase
     message: "Display name should be between 2 and 32 characters, please." }
   validates :email, uniqueness: true
   has_secure_password
-
-  after_create :send_welcome_email
-
   def admin?
     self.admin_status
   end
@@ -28,5 +25,21 @@ class User < UserBase
     if user && user.authenticate(session_params[:password])
       user
     end
+  end
+
+  def sms
+    number_to_send_to = phone_number.to_i
+    twilio_sid = 'ACcbcc01e57687a227d75edf4874e76e08'
+    twilio_token = 'f38445947e7bc841d5bc6b0e65cdc0a8'
+    twilio_phone_number = '15177217715'
+    order_id = 1
+
+    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+    @twilio_client.account.sms.messages.create(
+      :from => "+15177217715",
+      :to => number_to_send_to,
+      :body => "Order #{order_id} is ready!  Pipping hot, ready to serve."
+    )
   end
 end
