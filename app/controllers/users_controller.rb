@@ -14,10 +14,6 @@ class UsersController < ApplicationController
     creation_response_for(user)
   end
 
-  def edit
-    @user = current_user
-  end
-
   def update
     user = User.find(current_user.id)
     user.update(user_params)
@@ -27,6 +23,7 @@ class UsersController < ApplicationController
   def destroy
     session[:user_id] = nil
     current_user.destroy
+    flash[:notice] = "User has been deleted."
     redirect_to items_path
   end
 
