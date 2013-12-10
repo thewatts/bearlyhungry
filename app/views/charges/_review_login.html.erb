@@ -1,5 +1,4 @@
 <dl class="tabs">
-  <% if current_user.nil? %>
   <dd class="active"><a href="#login2">Login</a></dd>
   <dd><a href="#signup2">Signup</a></dd>
   <dd><a href="#guest">Continue as Guest</a></dd>
@@ -8,55 +7,56 @@
 <ul class="tabs-content">
   <li class="active" id="login2Tab">
     <div>
+
       <%= form_for :session, :url => session_path do |f| %>
         <%= f.text_field :email, placeholder: "Email", id: 'login-email' %>
         <%= f.password_field :password, placeholder: "Password", id: 'login-password' %>
         <%= f.submit "Login", id: "login-submit", class: "radius button" %>
       <% end %>
+
     </div>
   </li>
   <li id="signup2Tab">
     <div>
+
       <%= form_for :user, url: { controller: "users", action: "create" } do |f| %>
         <%= f.text_field :full_name, :id => "full-name",
-                       :placeholder => "Full Name", :required => true %>
+        :placeholder => "Full Name", :required => true %>
         <%= f.text_field :display_name, :id => "display_name",
-                         :placeholder => "Display Name (optional)" %>
+        :placeholder => "Display Name (optional)" %>
         <%= f.email_field :email, :id => "email-address",
-                          :placeholder => "Email Address",
-                          :required => true %>
-         <%= f.text_field  :phone_number, :id => "phone-number",
-                          :placeholder => "Phone Number (if you want to receive texts)",
-                          :required => false %>
+        :placeholder => "Email Address",
+        :required => true %>
+        <%= f.text_field  :phone_number, :id => "phone-number",
+        :placeholder => "Phone Number (if you want to receive texts)",
+        :required => false %>
         <%= f.password_field :password, :id => "password",
-                         :placeholder => "Password",
-                         :required => true %>
+        :placeholder => "Password",
+        :required => true %>
         <%= f.password_field :password_confirmation, :id => "password-confirmation",
-                         :placeholder => "Password Confirmation",
-                         :required => true %>
+        :placeholder => "Password Confirmation",
+        :required => true %>
         <%= f.submit "Signup!", id: 'signup-submit', class: "radius button" %>
       <% end %>
+
       <!-- guest should be false and add phone number -->
     </div>
   </li>
   <li id="guestTab">
     <div>
+
       <%= form_for :user, url: { controller: "users", action: "create" } do |f| %>
         <%= f.text_field :full_name, :id => "guest-name",
-                       :placeholder => "Full Name", :required => true %>
+          :placeholder => "Full Name", :required => true %>
         <%= f.email_field :email, :id => "guest-email",
-                          :placeholder => "Email Address",
-                          :required => true %>
+          :placeholder => "Email Address", :required => true %>
         <%= f.text_field  :phone_number, :id => "guest-phone-number",
-                          :placeholder => "Phone Number (if you want to receive texts)",
-                          :required => false %>
+          :placeholder => "Phone Number (if you want to receive texts)",
+          :required => false %>
         <%= f.hidden_field  :guest, :value => true %>
-        <%= f.submit "Checkout as Guest", id: 'guest-signup-submit', class: "radius button" %>
-      <% end %>
+        <%= f.submit "Checkout as Guest", id: 'signup-submit', class: "radius button" %>
       <% end %>
 
-      <!-- guest must be true -->
     </div>
   </li>
 </ul>
-

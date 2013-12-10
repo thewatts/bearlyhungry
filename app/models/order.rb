@@ -1,4 +1,6 @@
 class Order < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
+
   validates :status, presence: true
 
   has_many :order_items
@@ -51,16 +53,24 @@ class Order < ActiveRecord::Base
     self.save
   end
 
-  def send_user_confirmation_sms
+  def send_customer_confirmation_sms
     body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
     body << "We'll send you another text when it's ready for pickup!"
 
     SMS.send_message(user.phone_number, body)
   end
 
-  def send_user_pickup_sms
+  def send_customer_pickup_sms
     body = "Success, #{user.full_name}!\n"
     body << "Your order is officially ready for pickup!"
+
+    SMS.send_message(user.phone_number, body)
+  end
+
+  def send_owner_submitted_sms
+    url = Rails.application.routes.url_helpers.admin_order_url(id, host: "localhost:3000")
+    body = "A new order was just submitted!\n"
+    body << "Find more info here: #{url}"
 
     SMS.send_message(user.phone_number, body)
   end
