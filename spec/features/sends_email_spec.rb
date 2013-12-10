@@ -1,28 +1,34 @@
 require './spec/spec_helper'
-
-describe UserMailer do
-
-  it "should send welcoming email" do
-    visit root_path
-    click_on "Sign Up"
-      fill_in 'email',    with: 'asdf@asdf.com'
-      fill_in 'password', with: 'password'
-      click_on 'login-submit'
-      expect(page).to have_content "Logout"
-      click_on "Add to Cart"
-      click_on "Checkout"
-      expect(page).not_to have_content "You must login or sign up before paying."
-      expect(page).to have_content "Review Your Order"
-      expect(page.current_path).to eq(review_order_path)
-    within "#signup" do
-      fill_in "Name", with: "Bobcat G."
-      fill_in "Email", with: "question_guy@example.com"
-      fill_in "Subject", with: "Question"
-      fill_in "Comment", with: "Is America is one of the finest countries anyone ever stole?"
-      click_button "Enter"
-    end
-    assert_content page, 'Thanks for your message!'
-    assert_equal "Question", last_email.subject
+#mailer spec... 
+describe User do
+  before :each do
+    @user = FactoryGirl.build(:user, full_name: "Antony THEMAN",
+                                      email: "asdf@example.com",
+                                      password: "password",
+                                      password_confirmation: "password",
+                                      display_name: "A DAWG",
+                                      phone_number: "7742398699"
+                                      )
   end
-
+ 
+  it "sends a e-mail" do
+    @user.send_welcome_email(user)
+    ActionMailer::Base.deliveries.last.to.should == [user.email]
+  end
 end
+
+#   it "should send welcoming email" do
+#     visit menu_path
+#      within('#exampleModal') do
+#       click_on "Signup"
+#       # fill_in "full_name", :with => "Pho King"
+#       fill_in "display_name", :with => "Phoking"
+#       # fill_in "email", :with => "phoking@sob.com"
+#       fill_in "password", :with => "password"
+#       fill_in "password-confirmation", :with => "password"
+#     end
+#     click_on "Signup"
+#     assert_content page, 'Welcome to Beary Hungry', email.body
+#     assert_equal "Welcome to Bearly Hungry", email.subject
+#   end
+# end
