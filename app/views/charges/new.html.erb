@@ -13,6 +13,6 @@
     <hr>
     <h3>Order Total: <em><%= number_to_currency(current_order.subtotal) %></h3>
 
-    <%= render partial "payment_form" unless current_user.nil? %>
+    <%= render partial: "payment_form" unless current_user.nil? %>
   </div>
 </div>

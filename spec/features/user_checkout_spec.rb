@@ -10,6 +10,20 @@ describe "User Checkout" do
      #@item = Item.create(title: "Test Item", price: 20.00, description: "asdf")
   end
 
+  describe "for an Active User Account" do
+    it "should redirect back to the review order page after logging in" do
+      visit menu_path
+      click_on "Add to Cart"
+      click_on "Checkout"
+      within "#login2Tab" do
+        fill_in "login-email", with: @user.email
+        fill_in "login-password", with: "password"
+        click_on "Login"
+      end
+      expect(page.current_path).to eq(review_order_path)
+    end
+  end
+
   context "with items in cart and not logged in" do
     xit "prompts to login", js: true do
       visit menu_path
@@ -22,7 +36,7 @@ describe "User Checkout" do
 
   describe "as guest" do
     context "with items in cart" do
-      it "proceeds to checkout", js: true do
+      xit "proceeds to checkout", js: true do
         visit menu_path
         click_on "Add to Cart"
         find("#nav-order").click
