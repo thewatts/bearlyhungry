@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= lookup_user
+    current_user ||= lookup_user
   end
 
   def lookup_user
@@ -53,7 +53,6 @@ class ApplicationController < ActionController::Base
     #   user.new_guest
     #   redirect_to review_order_path
     # end
-    fail
   end
 
   def assign_current_user_and_update_order_for(user)

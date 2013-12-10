@@ -1,9 +1,28 @@
 class Order < ActiveRecord::Base
+  include AASM
+
   validates :status, presence: true
 
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
+
+  aasm do
+    state :pending, initial: :true
+    state :confirmed
+    state :paid
+    state :ready_for_delivery
+    state :cancelled
+
+  event :confirm
+    transition from: :pending, to: [:confirmed, :cancelled]
+  end
+
+  event
+    transition from: :confirmed, to: :paid
+  end
+
+  transition from: :paid, to: :ready_for_delivery
 
   def self.user_orders
     where('user_id IS NOT NULL')

@@ -1,5 +1,4 @@
 class Admin::OrdersController < ApplicationController
-  
   layout "admin"
   def index
     if params[:status]

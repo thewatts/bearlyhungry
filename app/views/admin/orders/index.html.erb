@@ -47,7 +47,7 @@
               <%= number_to_currency(order.subtotal) %>
             </td>
             <td>
-              <%= select_tag "status", options_for_select([ 
+              <%= select_tag "status", options_for_select([
                 ['Pending', 'pending'],
                 ['Paid', 'paid'],
                 ['Ready for Pickup', 'ready for pickup']]) %>
