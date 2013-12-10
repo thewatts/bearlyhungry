@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  
   layout "admin"
   def index
     if params[:status]
@@ -29,7 +30,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id])
+    @order = Order.find(params[:id]) 
   end
 
 end
