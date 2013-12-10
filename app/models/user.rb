@@ -34,12 +34,7 @@ class User < UserBase
     twilio_phone_number = '15177217715'
     order_id = 1
 
-    @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-
-    @twilio_client.account.sms.messages.create(
-      :from => "+15177217715",
-      :to => number_to_send_to,
-      :body => "Order #{order_id} is ready!  Pipping hot, ready to serve."
-    )
+    body = "Order #{order_id} is ready!  Pipping hot, ready to serve."
+    SMS.send_message(number_to_send_to, body)
   end
 end
