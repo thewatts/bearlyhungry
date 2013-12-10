@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
       :full_name, :display_name, :email, :password,
-      :password_confirmation, :guest
+      :password_confirmation, :guest, :phone_number
     )
   end
 
@@ -47,11 +47,10 @@ class UsersController < ApplicationController
   def creation_response_for(user)
     if user.save && !user.guest?
       flash[:notice] = "Successfully Signed Up!"
-      UserMailer.welcome_email(user).deliver
-      redirect_to user_path(user)
+      redirect_to :back
     elsif user.save && user.guest?
       flash[:notice] = "Please review and pay for your order"
-      redirect_to order_payment_path
+      redirect_to :back
     else
       flash[:error] = user.errors.full_messages
       redirect_to new_user_path

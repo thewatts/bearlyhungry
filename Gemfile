@@ -5,7 +5,7 @@ gem 'thin'
 gem 'nokogiri'
 gem 'actionmailer'
 gem 'paperclip'
-gem 'twilio'
+gem 'twilio-ruby'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -33,10 +33,11 @@ group :development, :test do
   gem 'jazz_hands'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
-  gem 'zeus'
   gem 'capybara'
-  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'launchy'
 end
 
 group :test do
@@ -45,8 +46,8 @@ group :test do
   gem 'guard-rspec', require: false
   gem 'guard-rspec'
   gem 'simplecov'
-end
-
+  gem 'database_cleaner'
+end 
 group :production do
   gem 'pg'
   gem 'rails_12factor'

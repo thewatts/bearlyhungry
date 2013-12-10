@@ -1,6 +1,6 @@
 require './spec/spec_helper'
 
-describe Mailer do
+describe UserMailer do
 
   it "should send welcoming email" do
     visit root_path

@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   include AASM
+  include Rails.application.routes.url_helpers
 
   validates :status, presence: true
 
@@ -68,6 +69,28 @@ class Order < ActiveRecord::Base
     self.user_id = user.id
     self.status  = "in progress"
     self.save
+  end
+
+  def send_customer_confirmation_sms
+    body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
+    body << "We'll send you another text when it's ready for pickup!"
+
+    SMS.send_message(user.phone_number, body)
+  end
+
+  def send_customer_pickup_sms
+    body = "Success, #{user.full_name}!\n"
+    body << "Your order is officially ready for pickup!"
+
+    SMS.send_message(user.phone_number, body)
+  end
+
+  def send_owner_submitted_sms
+    url = Rails.application.routes.url_helpers.admin_order_url(id, host: "localhost:3000")
+    body = "A new order was just submitted!\n"
+    body << "Find more info here: #{url}"
+
+    SMS.send_message(user.phone_number, body)
   end
 
 end

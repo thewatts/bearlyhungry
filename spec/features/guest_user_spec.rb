@@ -22,11 +22,11 @@ describe "Guest User" do
     expect(page).to have_content @item.title
     click_on 'Add to Cart'
     click_on 'Checkout'
-    fill_in 'guest-name',             with: 'Test User'
-    fill_in 'guest-email',         with: 'test@example.com'
-    fill_in 'guest-phone-number',          with: '1234567890'
+    fill_in 'guest-name',         with: 'Test User'
+    fill_in 'guest-email',        with: 'test@example.com'
+    fill_in 'guest-phone-number', with: '1234567890'
     click_on 'Checkout as Guest'
-    expect(page.current_path).to eq(order_payment_path)
+    expect(page.current_path).to eq(review_order_path)
   end
 
   # it "can't signup a user with incorrect attributes" do

@@ -31,4 +31,5 @@ class User < UserBase
       user
     end
   end
+
 end

@@ -7,29 +7,60 @@ describe "User Checkout" do
   before do
      @item = FactoryGirl.create(:item, title: "Test Item")
      @user = FactoryGirl.create(:user)
+     #@item = Item.create(title: "Test Item", price: 20.00, description: "asdf")
+  end
+
+  describe "for an Active User Account" do
+    it "should redirect back to the review order page after logging in" do
+      visit menu_path
+      click_on "Add to Cart"
+      click_on "Checkout"
+      within "#login2Tab" do
+        fill_in "login-email", with: @user.email
+        fill_in "login-password", with: "password"
+        click_on "Login"
+      end
+      expect(page.current_path).to eq(review_order_path)
+    end
   end
 
   context "with items in cart and not logged in" do
-    it "prompts to login" do
+    xit "prompts to login", js: true do
       visit menu_path
       click_on "Add to Cart"
+      find("#nav-order").click
       click_on "Checkout"
       expect(page).to have_content "Review Your Order:"
     end
   end
 
-  context "with items in cart and are logged in" do
-    it "proceeds to checkout" do
-      visit menu_path
-      fill_in 'login-email',    with: 'asdf@asdf.com'
-      fill_in 'login-password', with: 'password'
-      click_on 'login-submit'
-      expect(page).to have_content "Logout"
-      click_on "Add to Cart"
-      click_on "Checkout"
-      expect(page).not_to have_content "You must login or sign up before paying."
-      expect(page).to have_content "Review Your Order"
-      expect(page.current_path).to eq(review_order_path)
+  describe "as guest" do
+    context "with items in cart" do
+      xit "proceeds to checkout", js: true do
+        visit menu_path
+        click_on "Add to Cart"
+        find("#nav-order").click
+        click_on "Checkout"
+        expect(page).to have_content "Review Your Order:"
+
+        click_on "Continue as Guest"
+        fill_in "guest-name", with: "Guest User"
+        fill_in "guest-email", with: "example@example.com"
+        fill_in "guest-phone-number", with: "123-123-1234"
+        click_on "guest-signup-submit"
+        expect(page.current_path).to eq(order_payment_path)
+
+        click_on "Pay with Card"
+        within_frame('stripe_checkout_app') do
+          fill_in "email", with: "example@example.com"
+          fill_in "card_number", with: "4242424242424242"
+          fill_in "cc-exp", with: "1014"
+          fill_in "cc-csc", with: "123"
+          find("button").click
+        end
+        sleep 2
+        expect(page).to have_content "Thanks!"
+      end
     end
   end
 end
