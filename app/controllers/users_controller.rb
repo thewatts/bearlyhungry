@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     user = create_new_user_with(user_params)
     assign_current_user_and_update_order_for(user) if user.save
+    UserMailer.welcome_email(user).deliver
     creation_response_for(user)
   end
 

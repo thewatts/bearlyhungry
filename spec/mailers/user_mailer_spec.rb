@@ -12,7 +12,7 @@ describe User do
                                       display_name: "A DAWG",
                                       phone_number: "7742398699"
                                       )
-    @user.send_welcome_email
+    
   end
 
   after(:each) do
@@ -20,10 +20,14 @@ describe User do
   end
 
   it 'should send an email' do
+    @user.send_welcome_email
     ActionMailer::Base.deliveries.count.should == 1
   end
 
   it 'renders the receiver email' do
-      ActionMailer::Base.deliveries.first.to.should.to_s == @user.email
+    @user.send_welcome_email
+    ActionMailer::Base.deliveries.first.to.should.to_s == @user.email
   end
+
+  it 'sends a '
 end
