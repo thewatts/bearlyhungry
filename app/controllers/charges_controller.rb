@@ -25,8 +25,12 @@ class ChargesController < ApplicationController
     current_order.update(status: "submitted")
     current_order.send_customer_confirmation_sms
     current_order.send_owner_submitted_sms
-    session[:order_id] = nil
-    redirect_to menu_path
+    # session[:order_id] = nil
+    redirect_to order_confirmation_path
+
+
+
+
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

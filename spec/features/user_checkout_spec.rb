@@ -36,7 +36,7 @@ describe "User Checkout" do
 
   describe "as guest" do
     context "with items in cart" do
-      xit "proceeds to checkout", js: true do
+      it "proceeds to checkout", js: true do
         visit menu_path
         click_on "Add to Cart"
         find("#nav-order").click
@@ -48,7 +48,7 @@ describe "User Checkout" do
         fill_in "guest-email", with: "example@example.com"
         fill_in "guest-phone-number", with: "123-123-1234"
         click_on "guest-signup-submit"
-        expect(page.current_path).to eq(order_payment_path)
+        expect(page.current_path).to eq(review_order_path)
 
         click_on "Pay with Card"
         within_frame('stripe_checkout_app') do
@@ -60,6 +60,8 @@ describe "User Checkout" do
         end
         sleep 2
         expect(page).to have_content "Thanks!"
+        expect(page.current_path).to eq(order_confirmation_path)
+        expect(page).to have_content "Register this account"
       end
     end
   end

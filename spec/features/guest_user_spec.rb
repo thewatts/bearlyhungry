@@ -14,6 +14,7 @@ describe "Guest User" do
     click_on 'Add to Cart'
     click_on 'Checkout'
     expect(page.current_path).to eq(review_order_path)
+    
     expect(page).to have_button "Checkout as Guest"
   end
 
