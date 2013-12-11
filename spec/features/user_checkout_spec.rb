@@ -1,4 +1,4 @@
-require 'spec_helper'
+require './spec/spec_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
@@ -60,6 +60,7 @@ describe "User Checkout" do
         end
         sleep 2
         expect(page).to have_content "Thanks!"
+        expect(ActionMailer::Base.deliveries.last.subject).to eq("Thank you for your order from Bearly Hungry")
       end
     end
   end
