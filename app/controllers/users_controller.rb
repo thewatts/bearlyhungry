@@ -11,11 +11,8 @@ class UsersController < ApplicationController
   def create
     user = create_new_user_with(user_params)
     assign_current_user_and_update_order_for(user) if user.save
+    UserMailer.welcome_email(user).deliver
     creation_response_for(user)
-  end
-
-  def edit
-    @user = current_user
   end
 
   def update
@@ -27,6 +24,7 @@ class UsersController < ApplicationController
   def destroy
     session[:user_id] = nil
     current_user.destroy
+    flash[:notice] = "User has been deleted."
     redirect_to items_path
   end
 

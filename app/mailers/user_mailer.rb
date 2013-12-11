@@ -1,21 +1,28 @@
 class UserMailer < ActionMailer::Base
-  default from: 'wtphok@gmail.com'
+  default from: 'admin@bearlyhungry.com'
 
   def welcome_email(user)
     @user = user
-    @url = 'http://wtpho.herokuapp.com/login'
+    @url = 'http://bearlyhungry.com'
     mail({
       to: @user.email,
-      from: 'wtphok@gmail.com',
-      subject: 'Welcome to What the Pho'})
+      subject: 'Welcome to Bearly Hungry' })
   end
 
   # def order_email(user, order_id)
-  #   @order_id = order_id
   #   @user = user
-  #   @url = 'http://wtpho.herokuapp.com/login', :text => 'What the Pho.com'
-  #   email_with_name = "#{@user.full_name} <@{@user.email}>"
-  #   mail(to: @user.email, subject: 'Thank you for your order from What the Pho')
+  #   @url = 'http://bearlyhungry.com'
+  #   @order = order_id
+  #   # email_with_name = "#{@user.full_name} <@{@user.email}>"
+  #   mail(to: @user.email, subject: 'Thank you for your order from Bearly Hungry')
   # end
 
+  # def order_ready_email(user, order_id)
+  #   @user = user
+  #   @url = 'http://bearlyhungry.com'
+  #   @order = order_id
+  #   order_details
+  # #   email_with_name = "#{@user.full_name} <@{@user.email}>"
+  # #   mail(to: @user.email, subject: 'Thank you for your order from What the Pho')
+  # end
 end

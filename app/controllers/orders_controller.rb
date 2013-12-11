@@ -10,7 +10,6 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    # fail
     if current_user
       @order.user_id = current_user.id
       @order.status = "in progress"
@@ -39,6 +38,4 @@ class OrdersController < ApplicationController
     current_order.order_items.destroy_all
     redirect_to menu_path
   end
-
-
 end
