@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def guest_to_user
-    fail
     if params[:password] != params[:password_confirmation]
       flash[:notice] = "Password and Password Confirmation must match"
       redirect_to new_user_path
@@ -40,7 +39,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.guest?
+
+    if current_user.guest? && !passwords_match?
+      
+      flash[:notice] = "Password and Password Confirmation must match"
+      redirect_to :back
+    elsif current_user.guest? && passwords_match?
       user = User.find(current_user.id)
       user.update(password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
 
@@ -82,6 +86,10 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages
       redirect_to new_user_path
     end
+  end
+
+  def passwords_match?
+    params[:user][:password] == params[:user][:password_confirmation]
   end
 
 end
