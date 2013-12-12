@@ -48,9 +48,9 @@
             </td>
             <td>
               <%= select_tag "status", options_for_select([
-                ['Pending', 'pending'],
-                ['Paid', 'paid'],
-                ['Ready for Pickup', 'ready for pickup']]) %>
+                ['Pending', <% current_order.update(status: "pending")%>],
+                ['Paid', <% current_order.update(status: "paid")%>],
+                ['Completed', '<% current_order.update(status: "completed")%>']]) %>
             </td>
 
             <td>

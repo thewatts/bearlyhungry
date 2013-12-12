@@ -1,6 +1,6 @@
 require './spec/spec_helper'
-  
-describe User do
+
+describe Order do
   before(:each) do
     I18n.enforce_available_locales = false
     ActionMailer::Base.delivery_method = :test
@@ -21,8 +21,13 @@ describe User do
     ActionMailer::Base.deliveries.clear
   end
 
-  it 'should send a sign up email' do
-    @user.send_welcome_email
+  it 'should send an order confirmation email' do
+    @order.send_order_confirmation_email
+    ActionMailer::Base.deliveries.first.to.should.to_s == @user.email
+  end
+
+  it 'sends an order ready email' do
+    @order.send_order_ready_email
     ActionMailer::Base.deliveries.count.should == 1
   end
 end

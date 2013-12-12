@@ -31,5 +31,6 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id]) 
+    current_order.update(status: "completed")
   end
 end

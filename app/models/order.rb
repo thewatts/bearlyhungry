@@ -1,30 +1,26 @@
 class Order < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+
   validates :status, presence: true
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
   
-  # include AASM
-  # status do
-  #   state :pending, initial: :true
-  #   state :confirmed
-  #   state :paid
-  #   state :ready_for_delivery
-  #   state :cancelled
-  # end
+  def self.pending
+    where(status: "pending")
+  end
 
-  # event :confirm
-  #   transition from: :pending, to: [:confirmed, :cancelled]
-  # end
+  def self.completed
+    where(status: "completed")
+  end
 
-  # event :paid
-  #   transition from: :confirmed, to: :paid
-  # end
+  def self.paid
+    where(status: "paid")
+  end
 
-  # event :ready_for_delivery
-  #   transition from: :paid, to: :ready_for_delivery
-  # end
+  def update_status(new_status)
+    Order.update(status: new_status)
+  end
 
   def self.user_orders
     where('user_id IS NOT NULL')
@@ -38,10 +34,6 @@ class Order < ActiveRecord::Base
     by_status.each_with_object({}) do |key, hash|
       hash[key.first] = key.last.count
     end
-  end
-
-  def self.completed
-    where(status: "completed")
   end
 
   def add_item(item_id, quantity = 1)
@@ -75,14 +67,14 @@ class Order < ActiveRecord::Base
   def send_customer_confirmation_sms
     body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
     body << "We'll send you another text when it's ready for pickup!"
-    @user.send_order_confirmation_email
+    @order.send_order_confirmation_email
     SMS.send_message(user.phone_number, body)
   end
 
   def send_customer_pickup_sms
     body = "Success, #{user.full_name}!\n"
     body << "Your order is officially ready for pickup!"
-    @user.send_order_ready_email
+    # @order.send_order_ready_email
     SMS.send_message(user.phone_number, body)
   end
 
@@ -92,5 +84,13 @@ class Order < ActiveRecord::Base
     body << "Find more info here: #{url}"
 
     SMS.send_message(user.phone_number, body)
+  end
+
+  def send_order_confirmation_email
+    OrderMailer.order_confirmation_email(self, @user).deliver
+  end
+
+  def send_order_ready_email
+    OrderMailer.order_ready_email(self, @user).deliver
   end
 end
