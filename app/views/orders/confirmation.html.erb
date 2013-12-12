@@ -15,7 +15,7 @@
   </div>
   <div id ="guest-sign-up" class ="3 columns">
   <% if current_user.guest? %>
-  <%= form_for :user,url: { controller: "users", action: "create_user_from_guest" } do |f| %>
+  <%= form_for :user,url: { controller: "users", action: "update" } do |f| %>
         <p><strong>Full Name:</strong> <%= current_user.full_name %></p>
         <p><strong>E-Mail:</strong> <%= current_user.email%></p>
 

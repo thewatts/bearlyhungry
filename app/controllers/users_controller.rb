@@ -9,9 +9,30 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = create_new_user_with(user_params)
-    assign_current_user_and_update_order_for(user) if user.save
-    creation_response_for(user)
+    if params[:password] != params[:password_confirmation]
+      flash[:notice] = "Password and Password Confirmation must match"
+      redirect_to new_user_path
+      
+    else
+      user = create_new_user_with(user_params)
+     
+      assign_current_user_and_update_order_for(user) if user.save
+      creation_response_for(user)
+    end
+  end
+
+  def guest_to_user
+    fail
+    if params[:password] != params[:password_confirmation]
+      flash[:notice] = "Password and Password Confirmation must match"
+      redirect_to new_user_path
+      
+    else
+      user = create_new_user_with(user_params)
+     
+      assign_current_user_and_update_order_for(user) if user.save
+      creation_response_for(user)
+    end
   end
 
   def edit
@@ -19,9 +40,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = User.find(current_user.id)
-    user.update(user_params)
-    redirect_to user_path(user)
+    if current_user.guest?
+      user = User.find(current_user.id)
+      user.update(password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
+
+      redirect_to order_confirmation_path
+    else
+      user = User.find(current_user.id)
+      user.update(user_params)
+      redirect_to user_path(user)
+    end
   end
 
   def destroy

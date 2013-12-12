@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   validates :full_name, presence: { message: "Please enter your full name." }
   validates :email, presence: true
-  validates :password_digest, presence: true, unless: :guest?
+  validates :password, :presence => {:on => :create}, :confirmation => true, unless: :guest?
 
   validates :display_name, allow_blank: true, length: {
     in: 2..32,

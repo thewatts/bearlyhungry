@@ -11,6 +11,9 @@ Wtpho::Application.routes.draw do
   put 'current-order'   => 'orders#update_current_order', as: "update_current_order"
   get 'clear-order'     => 'orders#clear_order'
   get 'order-confirmation' => 'orders#confirmation', as: "order_confirmation"
+  post 'order-confirmation' => 'users#update', as: "user_to_guest"
+  post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
+
 
   namespace "admin" do
     resources :items
