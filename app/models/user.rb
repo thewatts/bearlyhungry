@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     in: 2..32,
     message: "Display name should be between 2 and 32 characters, please." }
   validates :email, uniqueness: true
+  
   has_secure_password validations:false
 
   has_many :orders
