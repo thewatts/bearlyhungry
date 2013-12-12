@@ -9,16 +9,35 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = create_new_user_with(user_params)
-    assign_current_user_and_update_order_for(user) if user.save
-    UserMailer.welcome_email(user).deliver
-    creation_response_for(user)
+    if params[:password] != params[:password_confirmation]
+      flash[:notice] = "Password and Password Confirmation must match"
+      redirect_to new_user_path
+      
+    else
+      user = create_new_user_with(user_params)
+     
+      assign_current_user_and_update_order_for(user) if user.save
+      creation_response_for(user)
+    end
   end
 
   def update
-    user = User.find(current_user.id)
-    user.update(user_params)
-    redirect_to user_path(user)
+
+    if current_user.guest? && !passwords_match?
+      
+      flash[:notice] = "Password and Password Confirmation must match"
+      redirect_to :back
+    elsif current_user.guest? && passwords_match?
+      user = User.find(current_user.id)
+      user.update(password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
+      flash[:notice] = "Your account has been created!"
+      current_user.send_welcome_email
+      redirect_to order_confirmation_path
+    else
+      user = User.find(current_user.id)
+      user.update(user_params)
+      redirect_to user_path(user)
+    end
   end
 
   def destroy
@@ -38,11 +57,7 @@ class UsersController < ApplicationController
   end
 
   def create_new_user_with(user_params)
-    unless params[:user][:guest].nil?
-      Guest.new(user_params)
-    else
       User.new(user_params)
-    end
   end
 
   def creation_response_for(user)
@@ -56,6 +71,10 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages
       redirect_to new_user_path
     end
+  end
+
+  def passwords_match?
+    params[:user][:password] == params[:user][:password_confirmation]
   end
 
 end

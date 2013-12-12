@@ -3,7 +3,7 @@ class Permission < Struct.new(:user)
     return true if controller == "sessions"
     return true if controller == "users" && action.in?(%w[new create destroy])
     return true if controller == "items" && action.in?(%w[index show show_by_category])
-    return true if controller == "orders" && action.in?(%w[show clear_order])
+    return true if controller == "orders" && action.in?(%w[show clear_order confirmation])
     return true if controller == "charges"
     return true if controller == "order_items"
     if user

@@ -8,7 +8,7 @@ class SMS
 
   def initialize(recipient, message)
     #@recipient = recipient
-    @recipient = "5172434516"
+    @recipient = "5204005693"
     @message = message
   end
 

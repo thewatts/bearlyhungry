@@ -1,0 +1,37 @@
+<div class="row" >
+  <div id = "receipt-order-info" class="nine columns">
+
+    <h2>Your Receipt:</h2>
+
+    <h3>Your Order ID: <%= current_order.id %></h3>
+
+    <h3>Items:</h3>
+    <%= render partial: "orders/confirmation_order_item", collection: @receipt.order_items, as: :order_item %>
+
+    <hr>
+    <h3>Order Total: <em><%= number_to_currency(current_order.subtotal) %></h3>
+
+  </div>
+
+  <div id ="guest-sign-up" class ="3 columns">
+    <% if current_user.guest? %>
+      Register Account
+      <%= form_for :user,url: { controller: "users", action: "update" } do |f| %>
+            <p><strong>Full Name:</strong> <%= current_user.full_name %></p>
+            <p><strong>E-Mail:</strong> <%= current_user.email%></p>
+
+       
+            <%= f.text_field  :phone_number, :id => "phone-number",
+            :placeholder => "Phone Number (if you want to receive texts)",
+            :required => false %>
+            <%= f.password_field :password, :id => "password",
+            :placeholder => "Password",
+            :required => true %>
+            <%= f.password_field :password_confirmation, :id => "password-confirmation",
+            :placeholder => "Password Confirmation",
+            :required => true %>
+            <%= f.submit "Register Account", id: 'signup-submit', class: "radius button" %>
+          <% end %>
+      <% end %>
+    </div>
+</div>
