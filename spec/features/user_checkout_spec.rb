@@ -36,7 +36,7 @@ describe "User Checkout" do
 
   describe "as guest" do
     context "with items in cart" do
-      it "proceeds to checkout", js: true do
+      xit "proceeds to checkout", js: true do
         visit menu_path
         click_on "Add to Cart"
         find("#nav-order").click
@@ -61,8 +61,39 @@ describe "User Checkout" do
         sleep 2
         expect(page).to have_content "Thanks!"
         expect(page.current_path).to eq(order_confirmation_path)
-        expect(page).to have_content "Register this account"
+        expect(page).to have_content "Register Account"
       end
     end
   end
+  it "registers guest account", js: true do
+        visit menu_path
+        click_on "Add to Cart"
+        find("#nav-order").click
+        click_on "Checkout"
+        expect(page).to have_content "Review Your Order:"
+
+        click_on "Continue as Guest"
+        fill_in "guest-name", with: "Guest User"
+        fill_in "guest-email", with: "example@example.com"
+        fill_in "guest-phone-number", with: "123-123-1234"
+        click_on "guest-signup-submit"
+        expect(page.current_path).to eq(review_order_path)
+
+        click_on "Pay with Card"
+        within_frame('stripe_checkout_app') do
+          fill_in "email", with: "example@example.com"
+          fill_in "card_number", with: "4242424242424242"
+          fill_in "cc-exp", with: "1014"
+          fill_in "cc-csc", with: "123"
+          find("button").click
+        end
+        sleep 2
+        fill_in "password", with: "asdf"
+        fill_in "password-confirmation", with: "asdf"
+        click_on "signup-submit"
+        expect(page.current_path).to eq(order_confirmation_path)
+        expect(page).to have_content "Your account has been created!" 
+      end
+
+
 end
