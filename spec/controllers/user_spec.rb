@@ -57,11 +57,11 @@ describe UsersController do
     end
   end
 
-  describe "#update" do 
+  describe "#update" do
     it "responds to PUT" do
-      put :update, { id: '6', full_name: "darth vader", 
-        email: "lukesgottheforce@luke.com", 
-        password: "asdfmeh", 
+      put :update, { id: '6', full_name: "darth vader",
+        email: "lukesgottheforce@luke.com",
+        password: "asdfmeh",
         password_confirmation: "asdfmeh" }
       expect(response).to be_redirect
       expect(:flash).to_not be_nil
