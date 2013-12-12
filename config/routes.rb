@@ -23,6 +23,8 @@ Wtpho::Application.routes.draw do
     #delete 'user' => 'users#destroy'
   end
 
+  resources :restaurants, except: [:new]
+  get '/new-restaurant' => "restaurants#new", as: "new_restaurant"
   resources :charges, only: [:create]
   get '/order-payment' => "charges#new", as: "order_payment"
   resources :items, only: [:index, :show]

@@ -1,0 +1,5 @@
+<%= form_for @restaurant do |restaurant| %>
+  <%= restaurant.label :name, "Your Restaurant Name" %>
+  <%= restaurant.text_field :name %>
+  <%= restaurant.submit "Start My Restaurant Now" %>
+<% end %>
