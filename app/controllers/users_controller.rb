@@ -40,11 +40,7 @@ class UsersController < ApplicationController
   end
 
   def create_new_user_with(user_params)
-    unless params[:user][:guest].nil?
-      Guest.new(user_params)
-    else
       User.new(user_params)
-    end
   end
 
   def creation_response_for(user)
