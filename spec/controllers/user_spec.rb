@@ -48,6 +48,7 @@ describe UsersController do
 
     context "creating a guest" do
       it "creates a guest" do
+        request.env["HTTP_REFERER"] = menu_path
         post :create, user: {full_name: "lala", email: "luke@luke.com", guest: 'true' }
         expect(User.last.full_name).to eq("lala")
         expect(response).to be_redirect
