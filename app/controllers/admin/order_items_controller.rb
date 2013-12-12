@@ -17,7 +17,7 @@ class Admin::OrderItemsController < ApplicationController
       one = order_item.quantity
       order_item.quantity = params[:order_item][:quantity].to_i
       two = order_item.quantity
-
+      
       order_item.save!
     end
     redirect_to admin_order_path

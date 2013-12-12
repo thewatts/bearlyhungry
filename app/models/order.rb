@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
   end
 
   def update_status(new_status)
-    Order.update(status: new_status)
+    self.status  = "new_status"
   end
 
   def self.user_orders
@@ -67,14 +67,14 @@ class Order < ActiveRecord::Base
   def send_customer_confirmation_sms
     body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
     body << "We'll send you another text when it's ready for pickup!"
-    @order.send_order_confirmation_email
+    
     SMS.send_message(user.phone_number, body)
   end
 
   def send_customer_pickup_sms
     body = "Success, #{user.full_name}!\n"
     body << "Your order is officially ready for pickup!"
-    # @order.send_order_ready_email
+  
     SMS.send_message(user.phone_number, body)
   end
 

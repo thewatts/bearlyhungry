@@ -31,7 +31,7 @@ class ChargesController < ApplicationController
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to menu_path
-    Order.status
+    current_order.update_status("cancelled")
   end
 
   private

@@ -1,4 +1,4 @@
- require 'spec_helper'
+require 'spec_helper'
 
 describe OrderItemsController do
 
@@ -6,10 +6,9 @@ describe OrderItemsController do
     before do
       @order1 = FactoryGirl.create(:order)
       @order2 = FactoryGirl.create(:order)
-      @item   = FactoryGirl.create(:item, title: "Test Item")
     end
 
-    context "a valid order" do
+    context "order status defaults to pending" do
       it "adds an order item" do
         session[:order_id] = 1
         expect(@order1.order_items.count).to eq(0)
