@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :create_guest_if_needed
-  
+
+  helper_method :current_order
+  helper_method :current_user
+
   def create_guest_if_needed
-    return if session[:user_id] 
+    return if session[:user_id]
     @user = Guest.new
     @user.save
     session[:user_id] = @user.id
@@ -28,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def create_order
-    @current_order = Order.create(status: "pending")
+    @current_order = Order.create(status: "pending", user_id: current_user.id)
     session[:order_id] = @current_order.id
     @current_order
   end
