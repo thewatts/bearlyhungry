@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    
+    @receipt = current_order
+    session[:order_id] = nil
   end
 end
