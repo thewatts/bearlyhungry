@@ -17,11 +17,12 @@ Wtpho::Application.routes.draw do
     resource  :session
     resources :users
     resources :orders, as: :order
+    resources :restaurants
     put '/order-status/:status' => 'orders#update_status'
-    patch '/item-availability' => 'items#toggle_availability', as: 'update_item_availability'
-
-    #delete 'user' => 'users#destroy'
+    patch '/item-availability' => 'items#toggle_availability',
+      as: 'update_item_availability'
   end
+
 
   resources :restaurants, except: [:new]
   get '/new-restaurant' => "restaurants#new", as: "new_restaurant"
@@ -36,5 +37,9 @@ Wtpho::Application.routes.draw do
   get '/login'  => 'sessions#index'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  scope ":restaurant_slug" do
+    get '/' => 'restaurants#show', :as => 'restaurant_root'
+  end
 
 end

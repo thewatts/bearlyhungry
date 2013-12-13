@@ -1,0 +1,61 @@
+<div class="header-bar row">
+  <h3>Restaurants</h3>
+  <%= link_to "New Item", new_admin_item_path, class: "add button" %>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            Owner Email
+          </th>
+          <th>
+            Created At
+          </th>
+          <th>
+            Status 
+          </th>
+          <th>
+            Homepage
+          </th>
+          <th colspan=2>
+            Edit
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @restaurants.each do |restaurant| %>
+          <tr>
+            <td>
+              <%= link_to restaurant.name, restaurant_path(restaurant) %>
+            </td>
+            <td>
+              <%= restaurant.user.email %>
+            </td>
+            <td>
+              <%= restaurant.created_at.to_s(:long) %>
+            </td>
+            <td>
+              <%= link_to restaurant_path(restaurant) %>
+            </td>
+            <td>
+              <% if restaurant.approved? %>
+                Approved 
+              <% else %>
+                Pending 
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_admin_restaurant_path(restaurant) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
