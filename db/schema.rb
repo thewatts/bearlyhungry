@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213024239) do
+ActiveRecord::Schema.define(version: 20131213031232) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20131213024239) do
     t.string   "slug"
     t.boolean  "approved",   default: false
   end
+
+  add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
 
   create_table "users", force: true do |t|
     t.datetime "created_at"

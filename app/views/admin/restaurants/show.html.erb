@@ -1,0 +1,14 @@
+<div class="header-bar row">
+  <h3><%= @restaurant.name %></h3>
+  <%= link_to "New Item", new_admin_item_path, class: "add button" %>
+</div>
+
+<div class="row">
+  <div class="twelve columns">
+    <% if @restaurant.approved? %>
+      Approved
+    <% else %>
+      Pending
+    <% end %>
+  </div>
+</div>

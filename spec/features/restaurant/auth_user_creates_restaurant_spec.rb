@@ -14,7 +14,7 @@ feature "Auth User Restaurant Creation" do
     fill_in "Your Restaurant Name", with: "Test Restaurant"
     #and I click "Create Restaurant"
     click_on "Start My Restaurant Now"
-    expect(page.current_url).to eq admin_restaurant_path
+    expect(page.current_path).to eq admin_restaurant_path(1)
     #then the platform admin receives an email notification
     #and I receive an email notification
     #and the new restaurant is listed as pending in the admin interface

@@ -18,10 +18,10 @@
             Created At
           </th>
           <th>
-            Status 
+            Homepage
           </th>
           <th>
-            Homepage
+            Status
           </th>
           <th colspan=2>
             Edit
@@ -35,19 +35,19 @@
               <%= link_to restaurant.name, restaurant_path(restaurant) %>
             </td>
             <td>
-              <%= restaurant.user.email %>
+              <%#= restaurant.user.email %>
             </td>
             <td>
               <%= restaurant.created_at.to_s(:long) %>
             </td>
             <td>
-              <%= link_to restaurant_path(restaurant) %>
+              <%= link_to "Homepage", restaurant_root_path(restaurant.slug) %>
             </td>
             <td>
               <% if restaurant.approved? %>
-                Approved 
+                Approved
               <% else %>
-                Pending 
+                Pending
               <% end %>
             </td>
             <td>

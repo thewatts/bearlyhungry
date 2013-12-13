@@ -7,8 +7,11 @@ class Permission < Struct.new(:user)
     return true if controller == "charges"
     return true if controller == "order_items"
     return true if controller == "restaurants"
+    return true if controller == "admin/restaurants"
+
     if user
       return true if user.admin?
+      return true if controller == "restaurants"
       return true if controller == "charges"
       return true if controller == "orders" && action.in?(%w[index show edit update_current_order clear_order])
       return true if controller == "users" && action.in?(%w[edit update show])

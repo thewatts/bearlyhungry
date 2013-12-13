@@ -2,6 +2,8 @@ Wtpho::Application.routes.draw do
 
   root "items#index"
 
+  resources :restaurants
+
   get '/menu'            => 'items#index'
   get '/menu/:category'  => 'items#index', as: "menu_category"
   get '/current-order'   => 'orders#current_order', as: "current_order"
@@ -11,33 +13,42 @@ Wtpho::Application.routes.draw do
   put '/current-order'   => 'orders#update_current_order', as: "update_current_order"
   get '/clear-order'     => 'orders#clear_order'
 
+  # Platform Admin
   namespace "admin" do
     resources :items
     resources :order_items
     resource  :session
     resources :users
     resources :orders, as: :order
-    resources :restaurants
     put '/order-status/:status' => 'orders#update_status'
     patch '/item-availability' => 'items#toggle_availability',
       as: 'update_item_availability'
+    resources :restaurants
   end
 
-
-  resources :restaurants, except: [:new]
-  get '/new-restaurant' => "restaurants#new", as: "new_restaurant"
+  # Charges
   resources :charges, only: [:create]
   get '/order-payment' => "charges#new", as: "order_payment"
+
+  # Items
   resources :items, only: [:index, :show]
+
+  # Order Items
   resources :order_items
-  resource  :session
-  resources :users,  only: [:new, :create, :show, :edit, :update, :destroy]
+
+  # Orders
   resources :orders, only: [:index, :show]
 
+  # Users
+  resources :users,  only: [:new, :create, :show, :edit, :update, :destroy]
+
+  # Session
+  resource  :session
   get '/login'  => 'sessions#index'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
+  # Restaurant Pages
   scope ":restaurant_slug" do
     get '/' => 'restaurants#show', :as => 'restaurant_root'
   end
