@@ -11,6 +11,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
+      @restaurant.add_owner(current_user)
       flash[:notice] = "Your Restaurant has been submitted for approval"
       redirect_to admin_restaurant_path(@restaurant.id)
     else

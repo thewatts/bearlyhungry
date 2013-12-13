@@ -8,10 +8,13 @@ class User < ActiveRecord::Base
     in: 2..32,
     message: "Display name should be between 2 and 32 characters, please." }
   validates :email, uniqueness: true
-  
+
   has_secure_password validations:false
 
   has_many :orders
+  has_many :jobs
+  has_many :restaurants, through: :jobs
+  has_many :roles, through: :jobs
 
   after_create :send_welcome_email
 
@@ -29,12 +32,16 @@ class User < ActiveRecord::Base
 
   def total_spent
     if @user
-     @orders.completed.map(&:subtotal).reduce(:+) || 0 
+     @orders.completed.map(&:subtotal).reduce(:+) || 0
     end
   end
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver
+  end
+
+  def owner_for?(restaurant)
+    jobs.any? { |job| job.restaurant_id == restaurant.id }
   end
 
   def self.find_and_authenticate(session_params)
