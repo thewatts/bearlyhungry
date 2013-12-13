@@ -73,11 +73,17 @@ class Order < ActiveRecord::Base
     SMS.send_message(user.phone_number, body)
   end
 
-  def send_order_confirmation_email
+  def send_order_confirmation_email 
     OrderMailer.order_confirmation_email(self, @user).deliver
   end
 
   def send_order_ready_email
     OrderMailer.order_ready_email(self, @user).deliver
+    email_data = {
+      user_email: user.email,
+      user_name: user.full_name,
+      order_total: subtotal
+    }
+    OrderMailer.order_confirmation_email(email_data).deliver
   end
 end

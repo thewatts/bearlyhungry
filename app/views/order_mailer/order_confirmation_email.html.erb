@@ -4,7 +4,25 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks <%= @user.full_name %>!  Your order is on its way!</h1>
-  
+    <h1>Thanks <%= :full_name %>!  Your order is on its way!</h1>
+  </body>
+    <h2>Thank you for your order, your order details are below:</h2>
+
+    <h3>Order '<%= :order_id %>':</h3>
+
+    <p>User Full Name: <%= :full_name %></p>
+    <p>User ID:        <%= :user_id %></p>
+    <p>Email: <%= :user_email %></p>
+    <p>Order Subtotal: <%= :order_total %></p>
+    <p>Status: <%= :order_status %></p>
+    <p>Created At: <%= :created_at %></p>
+
+      <p>Items:</p>
+      <% @email_data[:order_items].each  do |order_item| %>
+        <p>Item:         <%= order_item.title %></p>
+        <p>Description   <%= order_item.description %></p>  
+        <p>Quantity:     <%= order_item.quantity %></p>
+        <p>Item Price:   <%= order_item.item.price %></p>
+      <% end %>
   </body>
 </html>
