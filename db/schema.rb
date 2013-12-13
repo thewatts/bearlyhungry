@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213031232) do
+ActiveRecord::Schema.define(version: 20131213153709) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20131213031232) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "available",                                   default: true
+  end
+
+  create_table "jobs", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "order_items", force: true do |t|
@@ -73,6 +81,12 @@ ActiveRecord::Schema.define(version: 20131213031232) do
   end
 
   add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
