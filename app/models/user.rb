@@ -1,14 +1,26 @@
-class User < UserBase
+class User < ActiveRecord::Base
+
+  validates :full_name, presence: { message: "Please enter your full name." }
+  validates :email, presence: true
+  validates :password, :presence => {:on => :create}, :confirmation => true, unless: :guest?
+
   validates :display_name, allow_blank: true, length: {
     in: 2..32,
     message: "Display name should be between 2 and 32 characters, please." }
   validates :email, uniqueness: true
-  has_secure_password
+  
+  has_secure_password validations:false
+
+  has_many :orders
 
   after_create :send_welcome_email
 
   def admin?
     self.admin_status
+  end
+
+  def set_guest
+    self.guest = true
   end
 
   def past_orders

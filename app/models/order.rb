@@ -5,34 +5,19 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
-  
-  def self.pending
-    where(status: "pending")
-  end
 
   def self.completed
     where(status: "completed")
   end
 
-  def self.paid
-    where(status: "paid")
-  end
-
-  def update_status(new_status)
-    self.status  = "new_status"
-  end
-
-  def self.user_orders
-    where('user_id IS NOT NULL')
-  end
-
-  def self.by_status
-    all.group_by {|order| order.status}
-  end
-
-  def self.count_by_status
-    by_status.each_with_object({}) do |key, hash|
-      hash[key.first] = key.last.count
+  def host(environment)
+    case environment
+    when "staging"
+      "staging.bearlyhungry.com"
+    when "production"
+      "bearlyhungry.com"
+    else
+      "localhost:3000"
     end
   end
 
@@ -79,7 +64,9 @@ class Order < ActiveRecord::Base
   end
 
   def send_owner_submitted_sms
-    url = Rails.application.routes.url_helpers.admin_order_url(id, host: "localhost:3000")
+    url = Rails.application.routes.url_helpers.admin_order_url(
+      id, host: host(Rails.env)
+    )
     body = "A new order was just submitted!\n"
     body << "Find more info here: #{url}"
 
