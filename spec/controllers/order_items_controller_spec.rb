@@ -18,6 +18,7 @@ describe OrderItemsController do
         expect(@order1.order_items.count).to eq(1)
       end
     end
+    
     context "an invalid order" do
       it "adds an order item" do
         session[:order_id] = 2

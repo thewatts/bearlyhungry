@@ -43,7 +43,4 @@ class ItemsController < ApplicationController
     item.destroy
     redirect_to admin_items_path
   end
-
-
 end
-

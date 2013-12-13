@@ -4,27 +4,6 @@ class Order < ActiveRecord::Base
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
-  
-  # include AASM
-  # status do
-  #   state :pending, initial: :true
-  #   state :confirmed
-  #   state :paid
-  #   state :ready_for_delivery
-  #   state :cancelled
-  # end
-
-  # event :confirm
-  #   transition from: :pending, to: [:confirmed, :cancelled]
-  # end
-
-  # event :paid
-  #   transition from: :confirmed, to: :paid
-  # end
-
-  # event :ready_for_delivery
-  #   transition from: :paid, to: :ready_for_delivery
-  # end
 
   def self.user_orders
     where('user_id IS NOT NULL')
