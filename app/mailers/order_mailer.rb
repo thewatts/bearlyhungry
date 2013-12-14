@@ -14,10 +14,11 @@ class OrderMailer < ActionMailer::Base
     mail(to: @user_email, subject: 'Thank you for your order from Bearly Hungry')
   end
 
-  def order_ready_email(user, order_id)
-    @order = order_id
-    @user = user
+  def order_ready_email(email_data)
+    @order = email_data[:order_id]
+    @user = email_data[:user_name]
+    @user_email = email_data[:user_email]
     @url = 'http://bearlyhungry.com'
-    mail(to: @user.email, subject: 'Get Excited!  Your order is ready')
+    mail(to: @user_email, subject: 'Get Excited!  Your order is ready')
   end
 end

@@ -99,5 +99,13 @@ class Order < ActiveRecord::Base
 
   #TODO
   def send_order_ready_email
+    @email_data = {
+      user_email:  user.email,
+      user_name: user.full_name,
+      order_id: id
+
+    }
+    
+    OrderMailer.order_ready_email(@email_data).deliver
   end
 end

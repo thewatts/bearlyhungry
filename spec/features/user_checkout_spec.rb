@@ -118,7 +118,7 @@ describe "User Checkout" do
         fill_in "cc-csc", with: "123"
         find("button").click
       end
-      sleep 2
+      sleep 10
       fill_in "password", with: "asdf"
       fill_in "password-confirmation", with: "fdsa"
       click_on "signup-submit"

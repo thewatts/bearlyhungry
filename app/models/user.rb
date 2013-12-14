@@ -37,6 +37,39 @@ class User < ActiveRecord::Base
     UserMailer.welcome_email(self).deliver
   end
 
+  def send_new_restaurant_confirmation_email
+    ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
+
+    @email_data = {
+      user_email: email,
+      user_name: full_name,
+
+    }
+    RestaurantMailer.new_restaurant_confirmation_email(@email_data).deliver
+  end
+
+  def send_new_restaurant_rejection_email
+    ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
+
+    @email_data = {
+      user_email: email,
+      user_name: full_name,
+
+    }
+    RestaurantMailer.new_restaurant_rejection_email(@email_data).deliver
+  end
+
+  def send_new_restaurant_approval_email
+        ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
+
+    @email_data = {
+      user_email: email,
+      user_name: full_name,
+
+    }
+    RestaurantMailer.new_restaurant_approval_email(@email_data).deliver
+  end
+
   def self.find_and_authenticate(session_params)
     user = find_by(email: session_params[:email])
     if user && user.authenticate(session_params[:password])

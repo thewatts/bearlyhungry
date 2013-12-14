@@ -66,10 +66,6 @@ describe UsersController do
       expect(response).to be_redirect
       expect(:flash).to_not be_nil
     end
-
-    it "requires the :id parameter" do
-      expect { put :update }.to raise_error(ActionController::RoutingError)
-    end
   end
 
   describe "#destroy" do

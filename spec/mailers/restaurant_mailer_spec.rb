@@ -7,24 +7,27 @@ describe Order do
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
     @user = FactoryGirl.create(:user, :guest => false, :email => "asdf@sdg.com")
-    @order = FactoryGirl.create(:order, :user_id => @user.id)
-    @item = FactoryGirl.create(:item, :id => 1, :price => 10.00)
-    @order_item = FactoryGirl.create(:order_item, :order_id => @order.id, :item_id => 1)
   end
 
   after(:each) do
     ActionMailer::Base.deliveries.clear
   end
 
-  it 'should send an order confirmation email' do
+  it 'should send a restaurant confirmation email' do
 
-    @order.send_order_confirmation_email
+    @user.send_new_restaurant_confirmation_email
     ActionMailer::Base.deliveries.first.to.should == [@user.email]
-    ActionMailer::Base.deliveries.count.should == 2
   end
 
-  it 'sends an order ready email' do
-    @order.send_order_ready_email
-    ActionMailer::Base.deliveries.count.should == 2
+  it 'sends a restaurant approval email' do
+    @user.send_new_restaurant_approval_email
+    ActionMailer::Base.deliveries.first.to.should == [@user.email]
+
+  end
+
+  it 'sends a restaurant rejection email' do
+    @user.send_new_restaurant_rejection_email
+    ActionMailer::Base.deliveries.first.to.should == [@user.email]
+
   end
 end
