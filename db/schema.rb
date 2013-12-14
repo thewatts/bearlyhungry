@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20131214075453) do
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
+    t.string   "status",     default: "pending"
     t.integer  "user_id"
   end
 

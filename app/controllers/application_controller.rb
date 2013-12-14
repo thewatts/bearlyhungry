@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def set_guest
     current_user.guest = true
   end
-  
+
   def current_order
     @current_order ||= set_order
   end

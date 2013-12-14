@@ -1,4 +1,4 @@
-require 'spec_helper'
+require './spec/spec_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
@@ -60,6 +60,7 @@ describe "User Checkout" do
         end
         sleep 2
         expect(page).to have_content "Thanks!"
+        expect(ActionMailer::Base.deliveries.last.subject).to eq("Thank you for your order from Bearly Hungry")
         expect(page.current_path).to eq(order_confirmation_path)
         expect(page).to have_content "Register Account"
       end
@@ -117,7 +118,7 @@ describe "User Checkout" do
         fill_in "cc-csc", with: "123"
         find("button").click
       end
-      sleep 2
+      sleep 10
       fill_in "password", with: "asdf"
       fill_in "password-confirmation", with: "fdsa"
       click_on "signup-submit"

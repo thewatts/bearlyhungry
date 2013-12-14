@@ -13,8 +13,8 @@ Wtpho::Application.routes.draw do
   put 'current-order'   => 'orders#update_current_order', as: "update_current_order"
   get 'clear-order'     => 'orders#clear_order'
   get 'order-confirmation' => 'orders#confirmation', as: "order_confirmation"
-  post 'order-confirmation' => 'users#update', as: "user_to_guest"
-  post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
+  post 'order-confirmation' => 'users#update', as: "guest_to_user"
+  # post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
 
   # Platform Admin
   namespace "admin" do
@@ -41,10 +41,11 @@ Wtpho::Application.routes.draw do
   resources :order_items
 
   # Orders
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show, :confirmation]
 
   # Users
-  resources :users,  only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :users,  only: [:new, :create, :show, :destroy]
+  put '/user' => 'users#update'
 
   # Session
   resource  :session

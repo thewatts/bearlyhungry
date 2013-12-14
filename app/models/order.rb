@@ -1,23 +1,10 @@
 class Order < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+
   validates :status, presence: true
   has_many :order_items
   has_many :items, through: :order_items
   belongs_to :user
-
-  def self.user_orders
-    where('user_id IS NOT NULL')
-  end
-
-  def self.by_status
-    all.group_by {|order| order.status}
-  end
-
-  def self.count_by_status
-    by_status.each_with_object({}) do |key, hash|
-      hash[key.first] = key.last.count
-    end
-  end
 
   def self.completed
     where(status: "completed")
@@ -65,14 +52,14 @@ class Order < ActiveRecord::Base
   def send_customer_confirmation_sms
     body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
     body << "We'll send you another text when it's ready for pickup!"
-
+    
     SMS.send_message(user.phone_number, body)
   end
 
   def send_customer_pickup_sms
     body = "Success, #{user.full_name}!\n"
     body << "Your order is officially ready for pickup!"
-
+  
     SMS.send_message(user.phone_number, body)
   end
 
@@ -84,5 +71,41 @@ class Order < ActiveRecord::Base
     body << "Find more info here: #{url}"
 
     SMS.send_message(user.phone_number, body)
+  end
+
+
+  def send_order_confirmation_email
+    @receipt_items = order_items.map do |order_item|
+      {
+        title: order_item.item.title,
+        price: order_item.item.price,
+        description: order_item.item.description,
+        quantity: order_item.quantity
+      }
+    end
+    
+    @email_data = {
+      user_email: user.email,
+      user_name: user.full_name,
+      order_total: subtotal,
+      order_id: id,
+      user_id: user.id,
+      order_status: status,
+      created_at: created_at,
+      order_items: @receipt_items
+    }
+    OrderMailer.order_confirmation_email(@email_data).deliver
+  end
+
+  #TODO
+  def send_order_ready_email
+    @email_data = {
+      user_email:  user.email,
+      user_name: user.full_name,
+      order_id: id
+
+    }
+    
+    OrderMailer.order_ready_email(@email_data).deliver
   end
 end
