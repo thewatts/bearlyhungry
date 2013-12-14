@@ -58,14 +58,11 @@ Wtpho::Application.routes.draw do
     scope :path => "admin", :as => "owner" do
       resources :items
       resources :order_items
-      resource  :session
-      resources :users
+      resources :customers, :controller => "users"
       resources :orders, as: :order
       put '/order-status/:status' => 'orders#update_status'
       patch '/item-availability' => 'items#toggle_availability',
         as: 'update_item_availability'
-
-      resources :restaurants, :param => :slug
     end
   end
 
