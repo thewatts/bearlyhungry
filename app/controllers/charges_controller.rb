@@ -25,6 +25,7 @@ class ChargesController < ApplicationController
     current_order.update(status: "paid")
     current_order.send_customer_confirmation_sms
     current_order.send_owner_submitted_sms
+    current_order.send_order_confirmation_email
     redirect_to order_confirmation_path
 
 
