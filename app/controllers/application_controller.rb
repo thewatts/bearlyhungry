@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   end
 
   def create_order
-    @current_order = Order.create(status: "pending", user_id: current_user.id)
+    @current_order = Order.create(status: "pending")
+    @current_order.update(user_id: current_user.id) if current_user
     session[:order_id] = @current_order.id
     @current_order
   end

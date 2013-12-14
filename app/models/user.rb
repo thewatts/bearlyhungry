@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     UserMailer.welcome_email(self).deliver
   end
 
-  def owner_for?(restaurant)
+  def owner_of?(restaurant)
     jobs.any? { |job| job.restaurant_id == restaurant.id }
   end
 
@@ -50,5 +50,4 @@ class User < ActiveRecord::Base
       user
     end
   end
-
 end

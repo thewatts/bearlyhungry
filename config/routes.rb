@@ -26,7 +26,8 @@ Wtpho::Application.routes.draw do
     put '/order-status/:status' => 'orders#update_status'
     patch '/item-availability' => 'items#toggle_availability',
       as: 'update_item_availability'
-    resources :restaurants
+
+    resources :restaurants, :param => :slug
   end
 
   # Charges
@@ -52,7 +53,7 @@ Wtpho::Application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # Restaurant Pages
-  scope ":restaurant_slug" do
+  scope ":slug" do
     get '/' => 'restaurants#show', :as => 'restaurant_root'
   end
 

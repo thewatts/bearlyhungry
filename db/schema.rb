@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131213153709) do
+ActiveRecord::Schema.define(version: 20131214075453) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20131213153709) do
   end
 
   create_table "jobs", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "restaurant_id"
-    t.integer  "role_id"
+    t.integer  "user_id",       null: false
+    t.integer  "restaurant_id", null: false
+    t.integer  "role_id",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

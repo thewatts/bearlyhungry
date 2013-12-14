@@ -5,17 +5,16 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find_by(slug: params[:restaurant_slug])
+    @restaurant = Restaurant.find_by(slug: params[:slug])
   end
 
   def create
-    @restaurant = Restaurant.new(restaurant_params)
-    if @restaurant.save
-      @restaurant.add_owner(current_user)
-      flash[:notice] = "Your Restaurant has been submitted for approval"
-      redirect_to admin_restaurant_path(@restaurant.id)
-    else
-      flash[:error] = "Something went wrong"
+    begin
+      @restaurant = Restaurant.create_with_owner(restaurant_params, current_user)
+      flash[:notice] = "Successfully Created your Restaurant"
+      redirect_to admin_restaurant_path(@restaurant.slug)
+    rescue ActiveRecord::RecordInvalid => e
+      @restaurant = e.record
       render :new
     end
   end

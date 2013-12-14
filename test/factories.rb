@@ -35,5 +35,9 @@ FactoryGirl.define do
     "phoking#{n}@sob.com"
   end
 
+  factory :role do
+    name "Owner"
+  end
+
 
 end
