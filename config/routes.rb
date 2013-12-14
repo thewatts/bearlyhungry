@@ -55,6 +55,18 @@ Wtpho::Application.routes.draw do
   # Restaurant Pages
   scope ":slug" do
     get '/' => 'restaurants#show', :as => 'restaurant_root'
+    scope :path => "admin", :as => "owner" do
+      resources :items
+      resources :order_items
+      resource  :session
+      resources :users
+      resources :orders, as: :order
+      put '/order-status/:status' => 'orders#update_status'
+      patch '/item-availability' => 'items#toggle_availability',
+        as: 'update_item_availability'
+
+      resources :restaurants, :param => :slug
+    end
   end
 
 end
