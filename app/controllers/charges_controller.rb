@@ -22,18 +22,16 @@ class ChargesController < ApplicationController
     flash[:successful_transaction] = "Thanks! You paid $#{current_order.subtotal}.
     Your order number is '#{current_order.id}.' A receipt was sent to #{customer.email}. We'll email or text you when your order is completed."
 
-    current_order.update(status: "submitted")
+    current_order.update(status: "paid")
     current_order.send_customer_confirmation_sms
     current_order.send_owner_submitted_sms
     redirect_to order_confirmation_path
 
 
-
-
-
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to menu_path
+    current_order.update(status: "cancelled")
   end
 
   private

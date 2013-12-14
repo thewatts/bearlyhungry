@@ -8,9 +8,6 @@ class AddItemToOrderTest < ActionController::TestCase
   end
 
   test "it adds an item to an order" do
-    first_item = create_item("Phonatic","The best soup in town",10.00)
-    second_item = create_item("Phonominal!","The better soup in town",20.00)
-
     visit items_path
 
     # within dom_id(first_item) do
