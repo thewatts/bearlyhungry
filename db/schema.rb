@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214075453) do
+ActiveRecord::Schema.define(version: 20131214223025) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20131214075453) do
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",     default: "pending"
     t.integer  "user_id"
+    t.string   "status",     default: "pending"
   end
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20131214075453) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
-    t.boolean  "approved",   default: false
+    t.string   "status",     default: "pending"
   end
 
   add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20131214075453) do
     t.string   "password_digest"
     t.boolean  "admin_status",    default: false
     t.boolean  "guest",           default: false
-    t.decimal  "phone_number"
+    t.integer  "phone_number"
     t.boolean  "deleted"
   end
 

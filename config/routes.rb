@@ -1,6 +1,6 @@
 Wtpho::Application.routes.draw do
 
-  root "items#index"
+  root "home_page#index"
 
   resources :restaurants
 
@@ -10,14 +10,15 @@ Wtpho::Application.routes.draw do
   get 'my-orders'       => 'orders#index', as: "my_orders"
   put 'order/:id'       => 'admin/orders#update'
   get 'review-my-order' => 'charges#new', as: "review_order"
-  put 'current-order'   => 'orders#update_current_order', as: "update_current_order"
+  put 'current-order'   => 'orders#update_current_order', 
+    as: "update_current_order"
   get 'clear-order'     => 'orders#clear_order'
   get 'order-confirmation' => 'orders#confirmation', as: "order_confirmation"
   post 'order-confirmation' => 'users#update', as: "guest_to_user"
   # post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
 
-  # Platform Admin
-  namespace "admin" do
+  # Platform Admin // Super
+  scope :path => "admin", :as => "super" do
     resources :items
     resources :order_items
     resource  :session
@@ -26,7 +27,6 @@ Wtpho::Application.routes.draw do
     put '/order-status/:status' => 'orders#update_status'
     patch '/item-availability' => 'items#toggle_availability',
       as: 'update_item_availability'
-
     resources :restaurants, :param => :slug
   end
 
@@ -55,8 +55,12 @@ Wtpho::Application.routes.draw do
 
   # Restaurant Pages
   scope ":slug" do
+    # Restaurant Home
     get '/' => 'restaurants#show', :as => 'restaurant_root'
-    scope :path => "admin", :as => "owner" do
+
+    # Restaurant Admin
+    namespace "admin" do
+      resources :restaurants
       resources :items
       resources :order_items
       resources :customers, :controller => "users"

@@ -39,5 +39,10 @@ FactoryGirl.define do
     name "Owner"
   end
 
+  factory :restaurant do
+    name "McDonalds"
+    slug "mcdonalds"
+  end
+
 
 end

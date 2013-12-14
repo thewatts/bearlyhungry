@@ -1,5 +1,6 @@
 class Permission < Struct.new(:user)
   def allow?(controller, action)
+    return true if controller == "home_page"
     return true if controller == "sessions"
     return true if controller == "users" && action.in?(%w[new create destroy])
     return true if controller == "items" && action.in?(%w[index show show_by_category])
