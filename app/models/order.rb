@@ -87,13 +87,26 @@ class Order < ActiveRecord::Base
   end
 
   def send_order_confirmation_email
+    @receipt_items = order_items.map do |order_item|
+      {
+        title: order_item.item.title,
+        price: order_item.item.price,
+        description: order_item.item.description,
+        quantity: order_item.quantity
+      }
+    end
     
-    email_data = {
+    @email_data = {
       user_email: user.email,
       user_name: user.full_name,
-      order_total: subtotal
+      order_total: subtotal,
+      order_id: id,
+      user_id: user.id,
+      order_status: status,
+      created_at: created_at,
+      order_items: @receipt_items
     }
-    OrderMailer.order_confirmation_email(email_data).deliver
+    OrderMailer.order_confirmation_email(@email_data).deliver
   end
 
   def send_order_ready_email
