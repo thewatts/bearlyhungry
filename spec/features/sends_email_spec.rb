@@ -3,13 +3,6 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 describe "User Mail" do
-  # before(:each) do
-  #   ActionMailer::Base.delivery_method = :test
-  #   ActionMailer::Base.perform_deliveries = true
-  #   ActionMailer::Base.deliveries = []
-  #   I18n.enforce_available_locales = false
-  # end
-
   it "should send welcoming email" do
     visit menu_path
     first(:link, "Login").click

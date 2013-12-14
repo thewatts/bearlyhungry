@@ -12,6 +12,8 @@
 <p>Status: <%= @order.status %></p>
 <p>Created At: <%= @order.created_at %></p>
 
+ <%= link_to "Complete", admin_order_path(@order), method: :put } %>
+
 <div class="row">
   <div class="twelve columns">
     <table class="table">

@@ -11,7 +11,6 @@ class OrderMailer < ActionMailer::Base
     @created_at = email_data[:created_at]
     @order_items = email_data[:order_items]
     @url = 'http://bearlyhungry.com'
-    # email_with_name = "#{@user.full_name} <@{@user.email}>"
     mail(to: @user_email, subject: 'Thank you for your order from Bearly Hungry')
   end
 
@@ -19,7 +18,6 @@ class OrderMailer < ActionMailer::Base
     @order = order_id
     @user = user
     @url = 'http://bearlyhungry.com'
-  #   email_with_name = "#{@user.full_name} <@{@user.email}>"
     mail(to: @user.email, subject: 'Get Excited!  Your order is ready')
   end
 end
