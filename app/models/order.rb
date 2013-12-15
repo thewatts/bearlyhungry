@@ -1,10 +1,11 @@
 class Order < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
-  validates :status, presence: true
-  has_many :order_items
-  has_many :items, through: :order_items
+  validates  :status, presence: true
+
   belongs_to :user
+  has_many   :order_items
+  has_many   :items, through: :order_items
 
   def self.completed
     where(status: "completed")
@@ -36,7 +37,7 @@ class Order < ActiveRecord::Base
   end
 
   def subtotal
-    order_items.map(&:subtotal).inject(:+)
+    order_items.map(&:subtotal).inject(:+) || 0
   end
 
   def total_items

@@ -31,7 +31,7 @@ class SMS
   def send
     client.account.sms.messages.create(
       :from => from,
-      :to => recipient,
+      :to   => recipient,
       :body => message
     )
   end

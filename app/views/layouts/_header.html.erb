@@ -3,9 +3,13 @@
 <header class="main-header default">
   <div class="row">
     <div class="twelve columns">
-      <a class="logo" href="/" title="Home | What The Pho">
-        <%= image_tag "logo.png", alt: "What The Pho Logo" %>
-      </a>
+      <% if current_restaurant %>
+        <a class="logo" href="/<%= current_restaurant.slug %>" title="<%= current_restaurant.name %>">
+          <%= current_restaurant.name %>
+        </a>
+      <% else %>
+        <a href="/">BEARLY HUNGRY</a>
+      <% end %>
       <nav class="main-nav">
         <ul>
           <li>

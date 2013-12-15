@@ -1,57 +1,54 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_filter :authorize
+
+  delegate :allow?, to: :current_permission
+
+  helper_method :allow?
   helper_method :current_order
   helper_method :current_user
+  helper_method :current_restaurant
 
-  def set_order
-    order = Order.find_by(id: session[:order_id])
-    if order
-      @current_order = order
-    else
-      create_order
-    end
-  end
-
-  def set_guest
-    current_user.guest = true
+  def current_user
+    @current_user ||= lookup_user
   end
 
   def current_order
     @current_order ||= set_order
   end
 
+  def current_restaurant
+    if current_restaurant_set_and_correct?
+      @current_restaurant
+    else
+      @current_restaurant = restaurant_from_slug
+    end
+  end
+
+  def current_restaurant_set_and_correct?
+    @current_restaurant &&
+    params[:slug] &&
+    @current_restaurant.slug = params[:slug]
+  end
+
+  def restaurant_from_slug 
+    Restaurant.find_by(:slug => params[:slug])
+  end
+
+  def set_guest
+    current_user.guest = true
+  end
+
   def to_currency(value)
     ActionController::Base.helpers.number_to_currency(value)
   end
 
-  def create_order
-    @current_order = Order.create(status: "pending")
-    @current_order.update(user_id: current_user.id) if current_user
-    session[:order_id] = @current_order.id
-    @current_order
-  end
-
-  def current_user
-    current_user ||= lookup_user
-  end
-
-  def lookup_user
-    if session[:user_id]
-      User.find_by(id: session[:user_id]) || session[:user_id] = nil
-    end
-  end
-
   def validate_order
-    @amount = set_order.subtotal
-    if session[:user_id] && @amount == 0
+    if session[:user_id] && current_order.subtotal.zero?
       flash.now[:error] = ["Please add items to your order before proceeding."]
       redirect_to menu_path
     end
-    # if session[:user_id].nil?
-    #   user.new_guest
-    #   redirect_to review_order_path
-    # end
   end
 
   def assign_current_user_and_update_order_for(user)
@@ -63,12 +60,26 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
-  before_filter :authorize
-
-  delegate :allow?, to: :current_permission
-  helper_method :allow?
-
   private
+
+  def lookup_user
+    if session[:user_id]
+      User.find_by(id: session[:user_id]) || session[:user_id] = nil
+    end
+  end
+
+  def set_order
+    order = Order.find_by(id: session[:order_id])
+    return order unless order.nil?
+    create_order
+  end
+
+  def create_order
+    order = Order.create(status: "pending")
+    order.update(user_id: current_user.id) if current_user
+    session[:order_id] = order.id
+    order 
+  end
 
   def current_permission
     @current_permission ||= Permission.new(current_user)

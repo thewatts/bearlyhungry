@@ -18,7 +18,7 @@ feature "Home Page" do
                               :href => restaurant_root_path(@burgerking.slug))
   end
 
-  scenario "user clicks on a restaurant and gets sent to the restaurant page" do
+  scenario "user clicks on restaurant and gets sent to restaurant's root" do
     visit root_path
     click_link @mcdonalds.name
     expect(page).to have_content @mcdonalds.name
