@@ -19,7 +19,7 @@ Wtpho::Application.routes.draw do
   # post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
 
   # Platform Admin // Super
-  scope :path => "admin", :as => "super" do
+  scope :path => "admin", :as => "overlord" do
     resources :items
     resources :order_items
     resource  :session
