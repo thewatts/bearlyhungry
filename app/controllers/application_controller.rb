@@ -29,21 +29,26 @@ class ApplicationController < ActionController::Base
   end
 
   def current_restaurant
-    if current_restaurant_set_and_correct?
+    if current_restaurant_no_slug? || current_restaurant_and_correct?
       @current_restaurant
     else
       @current_restaurant = restaurant_from_slug
     end
   end
 
-  def current_restaurant_set_and_correct?
+  def current_restaurant_no_slug?
+    @current_restaurant && params[:slug].nil?
+  end
+
+  def current_restaurant_and_correct?
     @current_restaurant &&
     params[:slug] &&
     @current_restaurant.slug = params[:slug]
   end
 
   def restaurant_from_slug
-    Restaurant.find_by(:slug => params[:slug])
+    restaurant = Restaurant.find_by(:slug => params[:slug])
+    restaurant
   end
 
   def set_guest
@@ -99,9 +104,17 @@ class ApplicationController < ActionController::Base
     @current_permission ||= Permission.new(current_user)
   end
 
+  def root_or_menu_path
+    if current_restaurant
+      restaurant_menu_path(current_restaurant.slug)
+    else
+      root_path
+    end
+  end
+
   def authorize
     unless current_permission.allow?(params[:controller], params[:action])
-      redirect_to items_path, alert: "Not authorized."
+      redirect_to root_or_menu_path, alert: "Not authorized."
     end
   end
 

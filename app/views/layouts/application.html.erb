@@ -31,6 +31,6 @@
 
   </div>
 
-  <%= render "layouts/order" %>
+  <%= render "layouts/order" unless current_restaurant.nil? %>
 </body>
 </html>

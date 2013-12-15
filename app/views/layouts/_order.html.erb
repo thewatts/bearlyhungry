@@ -38,7 +38,7 @@
                       </span>
                     </div><!-- //quantity-price -->
                     <div class="modify">
-                      <%= link_to "Remove", order_item_path(order_item.id),
+                      <%= link_to "Remove", restaurant_order_item_path(id: order_item.id, slug: current_restaurant.slug),
                         class: 'remove-order-item', method: :delete, data: { confirm: "Are you sure?" }
                       %>
                     </div><!-- //modify -->
@@ -52,7 +52,7 @@
             <span class="value"><%= number_to_currency(current_order.subtotal) %></span>
           </div>
           <div class="checkout">
-            <%= link_to "Checkout", review_order_path, class: "order-checkout" %>
+            <%= link_to "Checkout", restaurant_review_order_path, class: "order-checkout" %>
           </div>
         <% end %>
       </div><!-- //my-order -->

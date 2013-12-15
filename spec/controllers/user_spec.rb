@@ -5,6 +5,7 @@ describe UsersController do
   before do
     @order = FactoryGirl.create(:order)
     @user = FactoryGirl.create(:user)
+    request.env["HTTP_REFERER"] = root_path
   end
 
   teardown do
@@ -21,7 +22,7 @@ describe UsersController do
   describe "#show" do
     it "responds to GET" do
       get :show, {:id => "8"}
-      expect(response.body).to eq "<html><body>You are being <a href=\"http://test.host/items\">redirected</a>.</body></html>"
+      expect(response.body).to eq "<html><body>You are being <a href=\"http://test.host/\">redirected</a>.</body></html>"
     end
 
     it "requires the :id parameter" do
@@ -32,7 +33,6 @@ describe UsersController do
   describe "#create" do
     context "creating a registered user" do
       it "creates a registered user" do
-        request.env["HTTP_REFERER"] = menu_path
         post :create, user: {
           full_name: "luke",
           email: "luke@luke.com",
@@ -48,7 +48,6 @@ describe UsersController do
 
     context "creating a guest" do
       it "creates a guest" do
-        request.env["HTTP_REFERER"] = menu_path
         post :create, user: {full_name: "lala", email: "luke@luke.com", guest: 'true' }
         expect(User.last.full_name).to eq("lala")
         expect(response).to be_redirect

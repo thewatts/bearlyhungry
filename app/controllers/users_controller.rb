@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     current_user.destroy
     session[:user_id] = nil
     flash[:notice] = "User has been deleted."
-    redirect_to items_path
+    redirect_to root_or_menu_path
   end
 
   private

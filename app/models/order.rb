@@ -24,7 +24,9 @@ class Order < ActiveRecord::Base
   end
 
   def add_item(item_id, quantity = 1)
-    found_item = Item.find(item_id)
+    found_item = available_items.find_by(id: item_id)
+    return if found_item.nil?
+
     unless items.include? found_item
       items << found_item
       order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
@@ -35,6 +37,10 @@ class Order < ActiveRecord::Base
       order_item.quantity += quantity.to_i
       order_item.save
     end
+  end
+
+  def available_items
+    restaurant.items
   end
 
   def subtotal

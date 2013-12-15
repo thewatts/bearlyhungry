@@ -10,7 +10,6 @@ Wtpho::Application.routes.draw do
   get 'current-order'   => 'orders#current_order', as: "current_order"
   get 'my-orders'       => 'orders#index', as: "my_orders"
   put 'order/:id'       => 'admin/orders#update'
-  get 'review-my-order' => 'charges#new', as: "review_order"
   put 'current-order'   => 'orders#update_current_order', 
     as: "update_current_order"
   get 'clear-order'     => 'orders#clear_order'
@@ -35,12 +34,6 @@ Wtpho::Application.routes.draw do
   resources :charges, only: [:create]
   get '/order-payment' => "charges#new", as: "order_payment"
 
-  # Items
-  resources :items, only: [:index, :show]
-
-  # Order Items
-  resources :order_items
-
   # Orders
   resources :orders, only: [:index, :show, :confirmation]
 
@@ -60,6 +53,15 @@ Wtpho::Application.routes.draw do
     # Restaurant Home & Menu
     get '/' => 'items#index', :as => 'root'
     get '/menu' => 'items#index', :as => 'menu'
+
+    # Payment
+    get 'review-my-order' => 'charges#new', as: "review_order"
+
+    # Items
+    resources :items, only: [:index, :show]
+
+    # Order Items
+    resources :order_items
 
     # Restaurant Admin
     namespace "admin" do
