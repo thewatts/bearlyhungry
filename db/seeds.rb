@@ -74,3 +74,5 @@ OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
                   { item_id: 4, order_id: 10, quantity: 5},
                   { item_id: 16, order_id: 10, quantity: 3},
                   { item_id: 31, order_id: 10, quantity: 7}])
+
+Role.create([{ name: "Owner"}])
