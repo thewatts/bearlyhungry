@@ -34,7 +34,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "Menu", menu_path %>
+            <%= link_to "Menu", restaurant_menu_path unless current_page?(root_path)%>
           </li>
           <li>
             <span id="nav-order">

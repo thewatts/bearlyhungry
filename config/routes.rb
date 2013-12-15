@@ -1,10 +1,11 @@
 Wtpho::Application.routes.draw do
-
+  
+  # Home & Static Pages
   root "home_page#index"
 
   resources :restaurants
 
-  get 'menu'            => 'items#index'
+ # get 'menu'            => 'items#index'
   get 'menu/:category'  => 'items#index', as: "menu_category"
   get 'current-order'   => 'orders#current_order', as: "current_order"
   get 'my-orders'       => 'orders#index', as: "my_orders"
@@ -54,9 +55,11 @@ Wtpho::Application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # Restaurant Pages
-  scope ":slug" do
-    # Restaurant Home
-    get '/' => 'restaurants#show', :as => 'restaurant_root'
+  scope :path => ":slug", :as => "restaurant" do
+
+    # Restaurant Home & Menu
+    get '/' => 'items#index', :as => 'root'
+    get '/menu' => 'items#index', :as => 'menu'
 
     # Restaurant Admin
     namespace "admin" do

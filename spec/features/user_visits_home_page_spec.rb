@@ -1,5 +1,4 @@
 require 'spec_helper'
-require './spec/spec_helper'
 
 feature "Home Page" do
   
