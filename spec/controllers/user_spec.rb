@@ -6,6 +6,7 @@ describe UsersController do
     @order = FactoryGirl.create(:order)
     @user = FactoryGirl.create(:user)
     request.env["HTTP_REFERER"] = root_path
+    session[:user_id] = @user.id
   end
 
   teardown do
@@ -20,7 +21,7 @@ describe UsersController do
   end
 
   describe "#show" do
-    it "responds to GET" do
+    xit "responds to GET" do
       get :show, {:id => "8"}
       expect(response.body).to eq "<html><body>You are being <a href=\"http://test.host/\">redirected</a>.</body></html>"
     end
@@ -48,7 +49,8 @@ describe UsersController do
 
     context "creating a guest" do
       it "creates a guest" do
-        post :create, user: {full_name: "lala", email: "luke@luke.com", guest: 'true' }
+        post :create, user: {
+          full_name: "lala", email: "luke@luke.com", guest: 'true' }
         expect(User.last.full_name).to eq("lala")
         expect(response).to be_redirect
         expect(:flash).to_not be_nil
@@ -58,11 +60,14 @@ describe UsersController do
 
   describe "#update" do
     it "responds to PUT" do
-      put :update, { id: '6', full_name: "darth vader",
+      session[:user_id] = @user.id
+      put :update, :user => { full_name: "darth vader",
         email: "lukesgottheforce@luke.com",
         password: "asdfmeh",
         password_confirmation: "asdfmeh" }
       expect(response).to be_redirect
+      user = User.find_by(@user.id)
+      expect(user.full_name).to eq("darth vader")
       expect(:flash).to_not be_nil
     end
   end

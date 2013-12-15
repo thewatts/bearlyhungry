@@ -28,15 +28,13 @@ class UsersController < ApplicationController
       flash[:notice] = "Password and Password Confirmation must match"
       redirect_to :back
     elsif current_user.guest? && passwords_match?
-      user = User.find(current_user.id)
-      user.update(password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
+      current_user.update(password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
       flash[:notice] = "Your account has been created!"
       current_user.send_welcome_email
       redirect_to order_confirmation_path
     else
-      user = User.find(current_user.id)
-      user.update(user_params)
-      redirect_to user_path(user)
+      current_user.update(user_params)
+      redirect_to user_path(current_user)
     end
   end
 

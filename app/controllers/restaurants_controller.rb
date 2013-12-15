@@ -12,7 +12,7 @@ class RestaurantsController < ApplicationController
     begin
       @restaurant = Restaurant.create_with_owner(restaurant_params, current_user)
       flash[:notice] = "Successfully Created your Restaurant"
-      redirect_to admin_restaurant_path(@restaurant.slug)
+      redirect_to restaurant_admin_restaurants_path(@restaurant.slug)
     rescue ActiveRecord::RecordInvalid => e
       @restaurant = e.record
       render :new

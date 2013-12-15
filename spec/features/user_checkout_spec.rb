@@ -22,7 +22,7 @@ describe "User Checkout" do
         fill_in "login-password", with: "password"
         click_on "Login"
       end
-      expect(page.current_path).to eq(review_order_path)
+      expect(page.current_path).to eq(restaurant_review_order_path(@restaurant.slug))
     end
   end
 
