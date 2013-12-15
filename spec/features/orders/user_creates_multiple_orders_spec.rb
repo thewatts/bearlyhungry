@@ -1,25 +1,26 @@
 require 'spec_helper'
 
-feature "User Order Creation" do
+feature "User Multiple Order Creation" do
 
-  scenario "creates restaurant from new restaurant page" do
-    #As an authenticated user
-    sign_in(user)
-    #when I visit the new restaurant page
-    visit new_restaurant_path
-    #and I click "Create A New Restaurant"
-    #and I fill in the name
-    fill_in "Your Restaurant Name", with: "Test Restaurant"
-    fill_in "The URL of your restaurant", with: "test"
-    #and I click "Create Restaurant"
-    click_on "Start My Restaurant Now"
-    expect(page.current_path).to eq admin_restaurant_path("test")
-    #then the platform admin receives an email notification
-    #and I receive an email notification
-    #and the new restaurant is listed as pending in the admin interface
-    expect(page).to have_content "Pending"
-    #and the restaurant is not visible to customers
-    visit restaurant_root_path("test")
-    expect(page).to have_content "Sorry,"
+  before do
+    @mcdonalds   = FactoryGirl.create(:restaurant, :status => "approved")
+    @burgerking  = FactoryGirl.create(:restaurant, :name => "BurgerKing",
+                                                   :slug => "burgerking")
+  end
+
+  scenario "creates multiple orders" do
+    visit root_url
+    click_link @mcdonalds.name
+    mcdonalds_order = current_order
+    expect(mcdonalds_order.restaurant).to eq @mcdonalds
+
+    visit root_url
+    click_link @burgerking.name
+    expect(page.current_path).to eq restaurant_root_path(@burgerking.slug)
+
+    burgerking_order = current_order
+    expect(burgerking_order.restaurant).not_to eq @mcdonalds
+    expect(burgerking_order.restaurant).to eq @burgerking
+    expect(burgerking_order).not_to eq mcdonalds_order
   end
 end

@@ -39,6 +39,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'selenium-webdriver'
   gem 'launchy'
+  gem 'rack_session_access'
 end
 
 group :test do

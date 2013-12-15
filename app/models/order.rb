@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
   validates  :status, presence: true
 
   belongs_to :user
+  belongs_to :restaurant
   has_many   :order_items
   has_many   :items, through: :order_items
 

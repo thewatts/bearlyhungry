@@ -1,8 +1,9 @@
 class Restaurant < ActiveRecord::Base
 
-  validates :name, :slug, uniqueness: true, presence: true 
+  validates :name, :slug, uniqueness: true, presence: true
 
   has_many :items
+  has_many :orders
   has_many :jobs
   has_many :users, through: :jobs
 

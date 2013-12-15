@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature "Restaurant Home Page (menu)" do
-  
+
   before do
     @mcdonalds   = FactoryGirl.create(:restaurant, :status => "approved")
     @burgerking  = FactoryGirl.create(:restaurant, :name => "BurgerKing",

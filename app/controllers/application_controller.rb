@@ -15,7 +15,17 @@ class ApplicationController < ActionController::Base
   end
 
   def current_order
-    @current_order ||= set_order
+    if current_order_for_current_restaurant?
+      @current_order
+    else
+      @current_order = set_order if current_restaurant
+    end
+  end
+
+  def current_order_for_current_restaurant?
+    @current_order &&
+    current_restaurant &&
+    @current_order.restaurant_id == current_restaurant.id
   end
 
   def current_restaurant
@@ -32,7 +42,7 @@ class ApplicationController < ActionController::Base
     @current_restaurant.slug = params[:slug]
   end
 
-  def restaurant_from_slug 
+  def restaurant_from_slug
     Restaurant.find_by(:slug => params[:slug])
   end
 
@@ -69,16 +79,20 @@ class ApplicationController < ActionController::Base
   end
 
   def set_order
-    order = Order.find_by(id: session[:order_id])
+    order = Order.find_by(id: session[current_order_key])
     return order unless order.nil?
     create_order
   end
 
+  def current_order_key
+    "#{current_restaurant.slug}_order_id".to_sym if current_restaurant
+  end
+
   def create_order
-    order = Order.create(status: "pending")
+    order = Order.create(status: "pending", restaurant: current_restaurant)
     order.update(user_id: current_user.id) if current_user
-    session[:order_id] = order.id
-    order 
+    session[current_order_key] = order.id
+    order
   end
 
   def current_permission

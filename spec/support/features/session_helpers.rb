@@ -1,6 +1,20 @@
 module Features
   module SessionHelpers
 
+    def current_restaurant
+      slug = page.current_path.split('/')[1]
+      Restaurant.find_by(slug: slug)
+    end
+
+    def current_order
+      order_id = page.get_rack_session_key(current_order_key)
+      Order.find_by(id: order_id)
+    end
+
+    def current_order_key
+      "#{current_restaurant.slug}_order_id"
+    end
+
     def sign_up_with(email, password)
       visit root_url
       within '#signupTab' do
