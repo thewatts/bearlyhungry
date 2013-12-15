@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   validates :full_name, presence: { message: "Please enter your full name." }
   validates :email,     presence: true
+  validates :phone_number, presence: true,  if: :text?
   validates :password,  presence: { on: :create }, 
                         confirmation: true, unless: :guest?
   validates :email,     uniqueness: true
