@@ -52,7 +52,7 @@
             <span class="value"><%= number_to_currency(current_order.subtotal) %></span>
           </div>
           <div class="checkout">
-            <%= link_to "Checkout", restaurant_review_order_path, class: "order-checkout" %>
+            <%= link_to "Checkout", restaurant_review_order_path(slug: current_restaurant.slug), class: "order-checkout" %>
           </div>
         <% end %>
       </div><!-- //my-order -->

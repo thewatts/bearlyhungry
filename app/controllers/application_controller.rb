@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_restaurant
+    #@current_restaurant ||= Restaurant.find_by(session[:current_restaurant])
     if current_restaurant_no_slug? || current_restaurant_and_correct?
       @current_restaurant
     else
@@ -48,6 +49,7 @@ class ApplicationController < ActionController::Base
 
   def restaurant_from_slug
     restaurant = Restaurant.find_by(:slug => params[:slug])
+    session[:current_restaurant] = restaurant.id if restaurant
     restaurant
   end
 

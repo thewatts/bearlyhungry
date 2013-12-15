@@ -72,8 +72,9 @@ class Order < ActiveRecord::Base
   end
 
   def send_owner_submitted_sms
-    url = Rails.application.routes.url_helpers.admin_order_url(
-      id, host: host(Rails.env)
+    url = Rails.application.routes.url_helpers.restaurant_admin_order_url(
+      slug: restaurant.slug,
+      id: id, host: host(Rails.env)
     )
     body = "A new order was just submitted!\n"
     body << "Find more info here: #{url}"

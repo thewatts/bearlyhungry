@@ -17,7 +17,9 @@ feature "Restaurant Home Page (menu)" do
 
   scenario "user selects restaurant and sees menu" do
     visit root_path
-    click_link @mcdonalds.name
+    within '.content' do
+      click_link @mcdonalds.name
+    end
 
     expect(page).to have_content @big_mac.title
     expect(page).to have_content @mcnuggets.title

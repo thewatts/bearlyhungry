@@ -10,12 +10,16 @@ feature "User Multiple Order Creation" do
 
   scenario "creates multiple orders" do
     visit root_url
-    click_link @mcdonalds.name
+    within '.content' do
+      click_link @mcdonalds.name
+    end
     mcdonalds_order = current_order
     expect(mcdonalds_order.restaurant).to eq @mcdonalds
 
     visit root_url
-    click_link @burgerking.name
+    within '.content' do
+      click_link @burgerking.name
+    end
     expect(page.current_path).to eq restaurant_root_path(@burgerking.slug)
 
     burgerking_order = current_order

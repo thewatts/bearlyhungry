@@ -20,7 +20,7 @@
                   <ul class="children">
 
                     <li class="child">
-                      <%= link_to "Order History", my_orders_path %>
+                      <%= link_to "Order History", restaurant_order_history_path(slug: current_restaurant.slug) if current_restaurant %>
                     </li>
                     <li class="child">
                       <%= link_to "Logout", logout_path %>

@@ -1,6 +1,7 @@
 
 <div class="full-order-item" >
-  <h2><%= link_to order_item.item.title, item_path(order_item.item) %></h2>
+  <h2><%= link_to order_item.item.title, restaurant_item_path(id: order_item.item.id, 
+    slug: current_restaurant.slug) %></h2>
 
   <ul>
     <li><strong>Desciption:</strong> <%= order_item.item.description %></li>
