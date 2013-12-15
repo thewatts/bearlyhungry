@@ -6,7 +6,7 @@ class OrderItemsController < ApplicationController
     current_order.add_item(item_id, quantity)
     item = Item.find(item_id)
     flash[:notice] = "Added #{item.title} to cart."
-    redirect_to menu_path
+    redirect_to :back
   end
 
   def destroy
@@ -17,7 +17,7 @@ class OrderItemsController < ApplicationController
     else
       flash[:error] = "Sorry, something went wrong."
     end
-    redirect_to menu_path
+    redirect_to restaurant_menu_path(current_restaurant.slug)
   end
 
   def update

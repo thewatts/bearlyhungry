@@ -5,11 +5,12 @@ require 'capybara/rspec'
 describe "Adding an Item to the Cart" do
 
   before do
-    @item = FactoryGirl.create(:item, title: "Item 1")
+    @restaurant = FactoryGirl.create(:restaurant)
+    @item = FactoryGirl.create(:item, title: "Item 1", restaurant: @restaurant)
   end
 
   it "can add an item to the cart" do
-    page.visit menu_path
+    page.visit restaurant_menu_path(@restaurant.slug)
     within '.main-nav' do
       expect(page).to have_content "0 items"
     end

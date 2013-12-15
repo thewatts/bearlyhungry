@@ -1,0 +1,4 @@
+<h1>BearlyHungry</h1>
+<% @restaurants.each do |restaurant| %>
+  <%= link_to restaurant.name, restaurant_root_path(restaurant.slug) %>
+<% end %>

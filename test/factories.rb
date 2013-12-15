@@ -35,5 +35,14 @@ FactoryGirl.define do
     "phoking#{n}@sob.com"
   end
 
+  factory :role do
+    name "Owner"
+  end
+
+  factory :restaurant do
+    name "McDonalds"
+    slug "mcdonalds"
+  end
+
 
 end

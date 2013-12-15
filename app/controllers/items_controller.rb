@@ -3,11 +3,14 @@ class ItemsController < ApplicationController
   include ItemsHelper
 
   def index
-    @category = Category.find_by_slug(params[:category])
-    if params[:category] && !@category.nil?
-      @items = @category.items.available
-    else
-      @items = Item.available
+    restaurant = Restaurant.find_by(slug: params[:slug])
+    if restaurant
+      @category = Category.find_by_slug(params[:category])
+      if params[:category] && !@category.nil?
+        @items = @category.items.available
+      else
+        @items = restaurant.items.available
+      end
     end
   end
 

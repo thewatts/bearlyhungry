@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212042950) do
+ActiveRecord::Schema.define(version: 20131215085340) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20131212042950) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "available",                                   default: true
+    t.integer  "restaurant_id"
+  end
+
+  add_index "items", ["restaurant_id"], name: "index_items_on_restaurant_id"
+
+  create_table "jobs", force: true do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "restaurant_id", null: false
+    t.integer  "role_id",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "order_items", force: true do |t|
@@ -58,11 +69,29 @@ ActiveRecord::Schema.define(version: 20131212042950) do
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status",     default: "pending"
     t.integer  "user_id"
+    t.string   "status",        default: "pending"
+    t.integer  "restaurant_id"
   end
 
+  add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "restaurants", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "status",     default: "pending"
+  end
+
+  add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
@@ -73,7 +102,7 @@ ActiveRecord::Schema.define(version: 20131212042950) do
     t.string   "password_digest"
     t.boolean  "admin_status",    default: false
     t.boolean  "guest",           default: false
-    t.decimal  "phone_number"
+    t.integer  "phone_number"
     t.boolean  "deleted"
   end
 

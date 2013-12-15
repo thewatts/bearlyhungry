@@ -1,4 +1,4 @@
-<%= form_tag charges_path do %>
+<%= form_tag restaurant_charges_path do %>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
           data-description="Order Number: <%= @order_number %>"

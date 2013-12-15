@@ -11,7 +11,7 @@
   <ul>
     <% categories.each do |category| %>
       <li>
-        <%= link_to category.title, menu_category_path(category.slug)  %>
+        <%= link_to category.title, restaurant_menu_category_path(category: category.slug, slug: current_restaurant.slug) if current_restaurant %>
       </li>
     <% end %>
   </ul>

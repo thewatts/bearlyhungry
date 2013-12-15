@@ -1,10 +1,12 @@
 class Order < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
-  validates :status, presence: true
-  has_many :order_items
-  has_many :items, through: :order_items
+  validates  :status, presence: true
+
   belongs_to :user
+  belongs_to :restaurant
+  has_many   :order_items
+  has_many   :items, through: :order_items
 
   def self.completed
     where(status: "completed")
@@ -22,7 +24,9 @@ class Order < ActiveRecord::Base
   end
 
   def add_item(item_id, quantity = 1)
-    found_item = Item.find(item_id)
+    found_item = available_items.find_by(id: item_id)
+    return if found_item.nil?
+
     unless items.include? found_item
       items << found_item
       order_item = OrderItem.find_by(item_id: item_id, order_id: self.id)
@@ -35,8 +39,12 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def available_items
+    restaurant.items
+  end
+
   def subtotal
-    order_items.map(&:subtotal).inject(:+)
+    order_items.map(&:subtotal).inject(:+) || 0
   end
 
   def total_items
@@ -64,8 +72,9 @@ class Order < ActiveRecord::Base
   end
 
   def send_owner_submitted_sms
-    url = Rails.application.routes.url_helpers.admin_order_url(
-      id, host: host(Rails.env)
+    url = Rails.application.routes.url_helpers.restaurant_admin_order_url(
+      slug: restaurant.slug,
+      id: id, host: host(Rails.env)
     )
     body = "A new order was just submitted!\n"
     body << "Find more info here: #{url}"

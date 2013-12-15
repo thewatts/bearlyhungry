@@ -19,6 +19,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'i18n', github: 'svenfuchs/i18n'
+
 group :doc do
   gem 'sdoc', require: false
 end
@@ -37,6 +39,7 @@ group :development, :test do
   gem 'poltergeist'
   gem 'selenium-webdriver'
   gem 'launchy'
+  gem 'rack_session_access'
 end
 
 group :test do

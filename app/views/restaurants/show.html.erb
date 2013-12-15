@@ -1,0 +1,5 @@
+<% unless @restaurant.approved? %>
+  <h1>Sorry, this restaurant is still awaiting approval</h1>
+<% else %>
+  <h1><%= @restaurant.name %></h1>
+<% end %>

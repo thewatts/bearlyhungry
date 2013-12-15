@@ -5,7 +5,7 @@ require 'capybara/rspec'
 describe "User Signup" do
 
   it "can signup a user with correct attributes" do
-    page.visit menu_path
+    page.visit root_path 
     expect(page).not_to have_content "Account"
     within '#signupTab' do
       fill_in 'full-name',             with: 'Test User'
@@ -18,7 +18,7 @@ describe "User Signup" do
   end
 
   it "can't signup a user with incorrect attributes" do
-    page.visit menu_path
+    page.visit root_path
     expect(page).not_to have_content "Account"
     within '#signupTab' do
       fill_in 'full-name',             with: 'Test User'
