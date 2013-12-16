@@ -1059,7 +1059,7 @@
   zoom:1;
   *display:inline;
   text-align:right;
-  background:url(/static/core/img/startpage/webyourself_badge.png) 40px 105px no-repeat
+  background:url(https://s3.amazonaws.com/bearlyhungry/web_badge.png) 40px 105px no-repeat
 }
   footer#footerNavigation section.right *
 {
@@ -1097,12 +1097,12 @@
 }
   footer#footerNavigation section.right nav.socialMedia ul li a.facebook
 {
-  background:url(/static/core/img/startpage/facebook_icon.png) top left no-repeat;
+  background:url(https://s3.amazonaws.com/bearlyhungry/facebook_icon.png) top left no-repeat;
   padding-left:28px
 }
   footer#footerNavigation section.right nav.socialMedia ul li a.twitter
 {
-  background:url(/static/core/img/startpage/twitter_icon.png) top left no-repeat;
+  background:url(https://s3.amazonaws.com/bearlyhungry/twitter_icon.png) top left no-repeat;
   padding-left:50px
 }
   article,aside,details,figcaption,figure,footer,header,hgroup,nav,section
@@ -1369,12 +1369,7 @@
 {
   outline:none
 }
-  body a
-{
-  text-decoration:inherit;
-  color:inherit;
-  outline:none
-}
+  
   input[type=image]
 {
   cursor:pointer
@@ -1388,6 +1383,8 @@
   left:0px;
   z-index:100090
 }
+
+
   #modalCover.coverEverything
 {
   z-index:999999
@@ -1401,6 +1398,10 @@
 {
   min-width:1280px
 }
+  
+
+
+
   section#content section#templates
 {
   text-align:center;
@@ -1419,27 +1420,27 @@
 {
   width:250px
 }
-  section#content section#templates form div.themes
+  section#content section#templates form div.restaurants
 {
   overflow:hidden;
   *zoom:1;
   width:1284px;
   margin:0 auto
 }
-  section#content section#templates form div.themes div.theme
+  section#content section#templates form div.restaurants div.restaurant
 {
   float:left;
   width:622px;
   margin:30px 10px 50px 10px
 }
-  section#content section#templates form div.themes div.theme div.image
+  section#content section#templates form div.restaurants div.restaurant div.image
 {
   height:411px;
   width:622px;
   position:relative;
   background:url(/static/core/img/startpage/theme_background.png) center center no-repeat
 }
-  section#content section#templates form div.themes div.theme div.image div.imageWrapper
+  section#content section#templates form div.restaurants div.restaurant div.image div.imageWrapper
 {
   position:absolute;
   top:1px;
@@ -1447,7 +1448,7 @@
   height:400px;
   width:600px
 }
-  section#content section#templates form div.themes div.theme div.image div.imageWrapper:hover a.startWith
+  section#content section#templates form div.restaurants div.restaurant div.image div.imageWrapper:hover a.startWith
 {
   filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity:1;
@@ -1464,7 +1465,7 @@
   -o-transition-timing-function:ease-in;
   transition-timing-function:ease-in
 }
-  section#content section#templates form div.themes div.theme div.image div.imageWrapper a.startWith
+  section#content section#templates form div.restaurants div.restaurant div.image div.imageWrapper a.startWith
 {
   display:block;
   position:absolute;
@@ -1489,7 +1490,7 @@
   -o-transition-timing-function:ease-out;
   transition-timing-function:ease-out
 }
-  section#content section#templates form div.themes div.theme div.image div.imageWrapper a.startWith span.startHere
+  section#content section#templates form div.restaurants div.restaurant div.image div.imageWrapper a.startWith span.startHere
 {
   display:-moz-inline-stack;
   display:inline-block;
@@ -1507,7 +1508,7 @@
   padding:0px 85px;
   text-transform:uppercase
 }
-  section#content section#templates form div.themes div.theme div.image div.imageWrapper a.startWith span.description
+  section#content section#templates form div.restaurants div.restaurant div.image div.imageWrapper a.startWith span.description
 {
   font-family:Times;
   font-size:13px;
@@ -1516,14 +1517,14 @@
   font-style:italic;
   display:block
 }
-  section#content section#templates form div.themes div.theme div.details
+  section#content section#templates form div.restaurants div.restaurant div.details
 {
   text-align:left;
   padding:0px 13px;
   overflow:hidden;
   *zoom:1
 }
-  section#content section#templates form div.themes div.theme div.details span.name
+  section#content section#templates form div.restaurants div.restaurant div.details span.name
 {
   font-family:Arial;
   font-size:15px;
@@ -1531,14 +1532,14 @@
   font-weight:bold;
   float:left
 }
-  section#content section#templates form div.themes div.theme div.details span.author
+  section#content section#templates form div.restaurants div.restaurant div.details span.author
 {
   color:#999;
   font-size:16px;
   font-family:Times;
   font-style:italic
 }
-  section#content section#templates form div.themes div.theme div.details a.preview
+  section#content section#templates form div.restaurants div.restaurant div.details a.preview
 {
   float:right;
   font-size:11px;
@@ -1601,10 +1602,7 @@
 {
   border-bottom:0px
 }
-.ui-selectmenu-menu ul li.ui-selectmenu-item-selected a
-{
-  background:url(/static/core/img/userpage/editmode/selectmenu_selected.png) right center no-repeat
-}
+
 .ui-selectmenu-menu ul li a
 {
   line-height:28px;
@@ -1633,23 +1631,7 @@
 {
   margin-top:-1px
 }
-.ui-selectmenu-status
-{
-  line-height:28px;
-  display:block;
-  padding:0em 2.1em 0em 1em;
-  outline:none;
-  text-decoration:none;
-  font-size:13px;
-  background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f0f0f0), color-stop(50%, #ffffff), color-stop(100%, #f0f0f0));
-  background-image:-webkit-linear-gradient(top, #f0f0f0 0%,#ffffff 50%,#f0f0f0 100%);
-  background-image:-moz-linear-gradient(top, #f0f0f0 0%,#ffffff 50%,#f0f0f0 100%);
-  background-image:-o-linear-gradient(top, #f0f0f0 0%,#ffffff 50%,#f0f0f0 100%);
-  background-image:linear-gradient(top, #f0f0f0 0%,#ffffff 50%,#f0f0f0 100%);
-  border:1px solid #999;
-  white-space:nowrap;
-  text-align:left
-}
+
 .ui-selectmenu-menu li.ui-state-disabled a,.ui-state-disabled
 {
   cursor:default
@@ -1661,82 +1643,7 @@
   display:block;
   background-color:red
 }
-.ui-selectmenu-item-icon.ui-icon-theme_structure-a
-{
-  background:url(/static/customization/img/structure_a.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-b
-{
-  background:url(/static/customization/img/structure_b.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-c
-{
-  background:url(/static/customization/img/structure_c.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-d
-{
-  background:url(/static/customization/img/structure_d.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-e
-{
-  background:url(/static/customization/img/structure_e.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-f
-{
-  background:url(/static/customization/img/structure_f.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-g
-{
-  background:url(/static/customization/img/structure_g.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-h
-{
-  background:url(/static/customization/img/structure_h.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-i
-{
-  background:url(/static/customization/img/structure_i.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-j
-{
-  background:url(/static/customization/img/structure_j.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-k
-{
-  background:url(/static/customization/img/structure_k.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-l
-{
-  background:url(/static/customization/img/structure_l.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-theme_structure-m
-{
-  background:url(/static/customization/img/structure_m.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-overview_type-fixed_width
-{
-  background:url(/static/customization/img/project_overview_fixed_width.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-overview_type-cropper
-{
-  background:url(/static/customization/img/project_overview_cropper.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-album_spread_type-fit
-{
-  background:url(/static/customization/img/album_spread_fit.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-album_spread_type-horizontal
-{
-  background:url(/static/customization/img/album_spread_horizontal.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-album_spread_type-masonry
-{
-  background:url(/static/customization/img/album_spread_masonry.png) left center no-repeat
-}
-.ui-selectmenu-item-icon.ui-icon-album_spread_type-vertical
-{
-  background:url(/static/customization/img/album_spread_vertical.png) left center no-repeat
-}
+
 .ui-selectmenu-menu li.ui-selectmenu-hasIcon a,.ui-selectmenu-hasIcon .ui-selectmenu-status
 {
   padding-left:60px;
@@ -1813,20 +1720,7 @@
 {
   color:silver
 }
-.ui-selectmenu .ui-selectmenu-status
-{
-  line-height:48px;
-  background-color:#fff;
-  background-image:-webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dddddd));
-  background-image:-webkit-linear-gradient(top, #ffffff,#dddddd);
-  background-image:-moz-linear-gradient(top, #ffffff,#dddddd);
-  background-image:-o-linear-gradient(top, #ffffff,#dddddd);
-  background-image:linear-gradient(top, #ffffff,#dddddd)
-}
-.ui-selectmenu-menu ul li a
-{
-  line-height:48px
-}
+
   section#content section#templates
 {
   margin-bottom:75px
