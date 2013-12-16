@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 20131215193048) do
     t.string   "type_of"
   end
 
+  create_table "cities", force: true do |t|
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "item_categories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -83,6 +89,7 @@ ActiveRecord::Schema.define(version: 20131215193048) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "status",     default: "pending"
+    t.integer  "city_id"
   end
 
   add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
