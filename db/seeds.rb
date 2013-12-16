@@ -39,7 +39,25 @@ time = Benchmark.measure do
     description: "A perfect date place", slug: "ventus", 
     status: "approved", cities_id: dc.id )
 
-
+  mcdonalds, burgerking, jambajuice, luke 
+    status: "approved", #cities_id: tuscan.id )
+  nathaniel = Restaurant.create(name: "Nathaniel's Nook", 
+    
+  kat = Restaurant.create(name: "Kat's Hot Cakes", 
+    description: "A crunchy vegan smorgsenbord", slug: "kats-hot-cakes", 
+    status: "approved", #cities_id: boston.id )
+  chicago_pizza = Restaurant.create(name: "Chicago Pazzari", 
+    description: "Yum Pizza.", slug: "pazzari", 
+    status: "approved", cities_id: portland.id )
+  lukes_lobsters = Restaurant.create(name: "Luke's Lobsters", 
+    description: "Lobsters to make you poop red", slug: "lukes-lobsters", 
+    status: "approved", cities_id: portland.id )
+  taco_bell = Restaurant.create(name: "Taco Bell", 
+    description: "For the Mexican in you", slug: "taco-bell", 
+    status: "approved", cities_id: sanfran.id )
+  ventus = Restaurant.create(name: "Ventus", 
+    description: "A perfect date place", slug: "ventus", 
+    status: "approved", cities_id: dc.id )
 
   #_________________________pending restaurants_______________________________
   igloo_eats = Restaurant.create(name: "Igloo Eats", 

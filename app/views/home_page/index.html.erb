@@ -22,9 +22,8 @@
     <a itemprop="url" href="/" id="logo"><img itemprop="logo" src="https://s3.amazonaws.com/bearlyhungry/logo.png" height="60" width="233" /></a>
     <nav id="metaNavigation">
       <ul>
-      
-        <li class="login"><a href="/login">Login</a></li>
-        <li class="getStarted"><a href="/r">Sign Up</a><span>Your online restaurant</span></li>
+        <li class="login"><%= link_to "Login", new_session_path %></li>
+        <li class="getStarted"><%= link_to "Sign Up", new_user_path %><span>Your online restaurant</span></li>
       
       </ul>
     </nav>
@@ -240,15 +239,16 @@
 
   </section>
   <footer id="footerNavigation">
-    <section class="left">
+    <section class="left" />
       <h2 class="slogan">Creating your online restaurant<br />has never been that easy! &ndash; <a href="/signup"><u>Web yourself!</u></a></h2>
+
       <section class="navigation">
         <nav>
           <h3>Products</h3>
           <ul>
             <li><a href="/">Tour</a></li>
-            <li><a href="/accounts/login">Login</a></li>
-            <li><a href="/accounts/register">Sign up</a></li>
+            <li><a href="/user/update">Login</a></li>
+            <li><a href="/user/new">Sign up</a></li>
           </ul>
         </nav>
         <nav>
@@ -285,8 +285,10 @@
     <section class="right">
       <nav class="socialMedia">
         <ul>
-          <li><a href="http://www.facebook.com" target="_blank" class="facebook">|&nbsp;&nbsp;Facebook</a></li>
-          <li><a href="http://www.twitter.com" target="_blank" class="twitter">|&nbsp;&nbsp;Twitter</a></li>
+          <li><a href="http://www.facebook.com" target="_blank" class="facebook">|Facebook</a></li>
+          <li><a href="http://www.twitter.com" target="_blank" class="twitter">|&nbsp;Twitter</a></li>
+          <br>
+          <img src="https://s3.amazonaws.com/bearlyhungry/web_badge.png" height="200" width="200" />
         </ul>
       </nav>
     </section>
