@@ -33,8 +33,15 @@
                            :required => true %>
           <%= f.phone_field :phone_number, :id => "phone_number",
                             :placeholder => "Phone Number" %>
+                            How Should we contact you about your orders? (default is E-Mail)  <br/>
+          <%= f.radio_button :text, :false %> 
+            <%= f.label :text, "I'd like to get E-Mails" %>
+          <%= f.radio_button :text, :true %>
+            <%= f.label :text, "I'd like to get text messages" %>
           <%= f.submit "Signup!", id: 'signup-submit' %>
+
         <% end %>
+
       </div>
     </li>
   </ul>

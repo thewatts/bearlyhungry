@@ -14,4 +14,6 @@
 
 <% end %>
 
-<%= link_to "Main Menu", menu_path %>
+<h1><%= current_restaurant %></h1>
+
+<%= link_to "Main Menu", restaurant_menu_path(current_restaurant.slug)   %>
