@@ -1,4 +1,292 @@
-<h1>BearlyHungry</h1>
-<% @restaurants.each do |restaurant| %>
-  <%= link_to restaurant.name, restaurant_root_path(restaurant.slug) %>
-<% end %>
+<!DOCTYPE HTML>
+<html itemscope itemtype="http://schema.org/Organization">
+<head>
+  <title>Beary-Hungry:  The online restaurant store</title>
+  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="user-scalable = yes">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href='https://s3.amazonaws.com/bearlyhungry/favicon+(5).ico' media='screen' rel='shortcut icon' />
+  <link href='https://s3.amazonaws.com/bearlyhungry/favicon+(5).ico' media='screen' rel='icon' />
+   <link rel="stylesheet" type="text/css" href="/assets/template.css" />
+  <script   type="text/javascript" src="/assets/main.js" charset="utf-8"></script>
+  <script   type="text/javascript" src="/assets/compressed.js" charset="utf-8"></script>
+</head>
+
+<body class="container">
+  <header id="navigation">
+    <nav id="mainNavigation">
+      <ul>
+        <li class="getStarted"><%= link_to "Create a Restaurant", new_restaurant_path %></li>
+      </ul>
+    </nav>
+    <a itemprop="url" href="/" id="logo"><img itemprop="logo" src="https://s3.amazonaws.com/bearlyhungry/logo.png" height="60" width="233" /></a>
+    <nav id="metaNavigation">
+      <ul>
+        <li class="login"><%= link_to "Login", new_session_path %></li>
+        <li class="getStarted"><%= link_to "Sign Up", new_user_path %><span>Your online restaurant</span></li>
+      </ul>
+    </nav>
+  </header>
+  <section id="content">
+    
+  <section id="templates">
+     
+    <!-- <h1>Beary Hungry Restaurants</h1><br /> -->
+      <div class="bear" id="left"></div>
+    <!-- <hr /> -->
+    <h2>
+      Bearly Hungry is a marketplace where people around the world connect to order food at their convenience  Our mission is to re-imagine food commerce in ways that build a more fulfilling and lasting world.  We deliver, you relax. View one of the many restaurants that have created a site with us.
+    </h2>
+     <div class="bear" id="right"></div>
+<form action="/" method="GET">
+</div>
+<hr>
+ <h1>Recent Restaurants:</h1><br />
+  <div class="restaurants">
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/mcdon.jpg" height="400" width="600" />
+          <a href="/mcdonalds" class="startWith registerLink">
+            <span class="startHere">Order here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">McDonalds</span>
+        
+          <a href="/mcdonalds" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/burgerking.png" height="400" width="600" />
+          <a href="/burger-king" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Burger King</span>
+        
+          <a href="/burger-king" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+          <img src="https://s3.amazonaws.com/bearlyhungry/jamba.jpg" height="400" width="600" />
+          <a href="/jamba-juice" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Jamba Juice</span>
+        
+          <a href="/jamba-juice" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/pazzari.png" height="400" width="600" />
+          <a href="/pazzari" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Chicago Pazzari</span>
+        
+          <a href="/pazzari" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/ventus.jpg" height="400" width="600" />
+          <a href="/ventus" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Ventus</span>
+        
+          <a href="/ventus" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/lukes.png" height="400" width="600" />
+          <a href="/lukes-layover" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Luke's Layover</span>
+        
+          <a href="/lukes-layover" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/kats.png" height="400" width="600" />
+          <a href="/kats-hot-cakes" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Kat's Hot Cakes</span>
+        
+          <a href="/kats-hot-cakes" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/nath.png" height="400" width="600" />
+          <a href="/nath-nook" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Nathaniel's Nook</span>
+        
+          <a href="/nath-nook" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/luke.png" height="400" width="600" />
+          <a href="/lukes-lobster" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Luke's Lobster</span>
+        
+          <a href="/lukes-lobster" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+    
+    <div class="restaurant">
+      <div class="image">
+        <div class="imageWrapper">
+            
+          <img src="https://s3.amazonaws.com/bearlyhungry/tacobell.jpg" height="400" width="600" />
+          <a href="/taco-bell" class="startWith registerLink">
+            <span class="startHere">Start here</span>
+            <span class="description">Create your own Online Ordering System</span>
+          </a>
+        </div>
+      </div>
+      <div class="details">
+        <span class="name">Taco Bell</span>
+        
+          <a href="/taco-bell" target="_blank" class="preview">Eat Here</a>
+        
+      </div>
+    </div>
+  </div>
+</form>
+  </section>
+
+  </section>
+  <footer id="footerNavigation">
+    <section class="left" />
+      <h2 class="slogan">Creating your online restaurant<br />has never been that easy! &ndash; <%= link_to "Web Yourself", new_restaurant_path %></h2>
+
+      <section class="navigation">
+        <nav>
+          <h3>Products</h3>
+          <ul>
+            <li><a href="/">Tour</a></li>
+            <li><a href="/user/update">Login</a></li>
+            <li><a href="/user/new">Sign up</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <h3>Company</h3>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/press">Press</a></li>
+            <li><a href="/terms">Terms of service</a></li>
+          </ul>
+        </nav>
+        <nav>
+          <h3>Community</h3>
+          <ul>
+            <li><a href="http://www.facebook.com/" target="_blank">Facebook</a></li>
+            <li><a href="http://www.twitter.com/" target="_blank">Twitter</a></li>
+            <li><a href="https://plus.google.com/" target="_blank" rel="publisher">Google+</a></li>
+          </ul>
+        </nav>
+      </section>
+    <section class="newsletterSubscription">
+      <form action="/signup" method="POST">
+       <div class="inlineButton">  
+         <div class="field   " >
+            <input id="sign_up" name="email" placeholder="Email" type="text" /> 
+          </div>
+            <input type="submit" value="Sign up" />
+          </div>
+      </form>
+    </section>      <h3 class="copyright">&copy; 2013 GSCHOOL PROJECT ::AKE::NW::LM &ndash; All rights reserved</h3>
+    </section>
+    <section class="right">
+      <nav class="socialMedia">
+        <ul>
+          <li><a href="http://www.facebook.com" target="_blank" class="facebook">|Facebook</a></li>
+          <li><a href="http://www.twitter.com" target="_blank" class="twitter">|&nbsp;Twitter</a></li>
+        </ul>
+      </nav>
+    </section>
+  </footer>
+</body>
+</html>

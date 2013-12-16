@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     if current_user.guest? && !passwords_match?
       
       flash[:notice] = "Password and Password Confirmation must match"
