@@ -1,4 +1,5 @@
   @charset "UTF-8";
+
   article,aside,details,figcaption,figure,footer,header,hgroup,nav,section
 {
   display:block
@@ -31,20 +32,22 @@
 }
   body
 {
-  margin:0
+  margin:10px;
+  zoom: 75%;
 }
   body,button,input,select,textarea
 {
   font-family:sans-serif
 }
-  a:focus
+/*  a:focus
 {
-  outline:thin dotted
+  outline:thin dotted;
+  color: #FFF;
 }
   a:hover,a:active
 {
   outline:0
-}
+}*/
   h1
 {
   font-size:2em
@@ -178,22 +181,7 @@
   box-sizing:border-box;
   padding:0
 }
-  input[type="search"]
-{
-  -webkit-appearance:textfield;
-  -moz-box-sizing:content-box;
-  -webkit-box-sizing:content-box;
-  box-sizing:content-box
-}
-  input[type="search"]::-webkit-search-decoration
-{
-  -webkit-appearance:none
-}
-  button::-moz-focus-inner,input::-moz-focus-inner
-{
-  border:0;
-  padding:0
-}
+
   textarea
 {
   overflow:auto;
@@ -203,53 +191,6 @@
 {
   border-collapse:collapse;
   border-spacing:0
-}
-  a.plusButton
-{
-  height:30px;
-  line-height:30px;
-  padding-left:30px;
-  padding-right:20px;
-  color:#fff;
-  font-family:Arial;
-  font-size:11px;
-  font-weight:bold;
-  text-transform:uppercase;
-  display:-moz-inline-stack;
-  display:inline-block;
-  vertical-align:middle;
-  *vertical-align:auto;
-  zoom:1;
-  *display:inline;
-  background:#f09 url(/static/core/img/userpage/toolbar/plus_white.png) 8px 8px no-repeat;
-  -webkit-transition-property:background-color;
-  -moz-transition-property:background-color;
-  -o-transition-property:background-color;
-  transition-property:background-color;
-  -webkit-transition-duration:0.15s;
-  -moz-transition-duration:0.15s;
-  -o-transition-duration:0.15s;
-  transition-duration:0.15s;
-  -webkit-transition-timing-function:ease-out;
-  -moz-transition-timing-function:ease-out;
-  -o-transition-timing-function:ease-out;
-  transition-timing-function:ease-out
-}
-  a.plusButton:hover
-{
-  background-color:#555;
-  -webkit-transition-property:background-color;
-  -moz-transition-property:background-color;
-  -o-transition-property:background-color;
-  transition-property:background-color;
-  -webkit-transition-duration:0.15s;
-  -moz-transition-duration:0.15s;
-  -o-transition-duration:0.15s;
-  transition-duration:0.15s;
-  -webkit-transition-timing-function:ease-out;
-  -moz-transition-timing-function:ease-out;
-  -o-transition-timing-function:ease-out;
-  transition-timing-function:ease-out
 }
   body.loading
 {
@@ -347,7 +288,7 @@
   min-width:980px;
   text-align:center;
   padding-top:30px;
-  background-color:#fff;
+  background-color:#999999 ;
   z-index:100;
   font-size:0px;
   -webkit-box-shadow:rgba(0,0,0,0.25) 0px 0px 0px;
@@ -395,6 +336,7 @@
 {
   height:30px;
   width:93px;
+  position: left;
   -webkit-transition-property:height, width;
   -moz-transition-property:height, width;
   -o-transition-property:height, width;
@@ -454,25 +396,21 @@
 }
   header#navigation>nav#metaNavigation
 {
-  text-align:right
+  text-align:right;
+  color:#999;
 }
   header#navigation>nav#metaNavigation>ul>li:last-child
 {
-  padding:0px 0px 0px 26px
+  padding:0px 0px 0px 26px;
+  color: #999;
+
 }
   header#navigation>nav>ul
 {
   padding:0px;
   margin:0px
 }
-  header#navigation>nav>ul:hover>li>a.active
-{
-  color:#999
-}
-  header#navigation>nav>ul:hover>li>a.active:hover
-{
-  color:#000
-}
+
   header#navigation>nav>ul>li
 {
   border-right:1px solid #eee;
@@ -503,7 +441,7 @@
   padding:0px 26px;
   line-height:32px;
   height:32px;
-  color:#999;
+  color:#000;
   -webkit-transition-property:color;
   -moz-transition-property:color;
   -o-transition-property:color;
@@ -519,7 +457,7 @@
 }
   header#navigation>nav>ul>li>a.active,header#navigation>nav>ul>li>a:hover
 {
-  color:#000;
+  color:#FFF;
   -webkit-transition-property:color;
   -moz-transition-property:color;
   -o-transition-property:color;
@@ -636,7 +574,7 @@
 }
   header#navigation div.menu.userPanel
 {
-  position:relative;
+  position:absolute;
   top:3px;
   font-size:0
 }
@@ -648,7 +586,7 @@
 }
   header#navigation div.menu.userPanel div.context
 {
-  width:200px
+  width:100px
 }
   header#navigation div.menu:hover img.icon,header#navigation div.menu.active img.icon
 {
@@ -847,7 +785,7 @@
   footer#footerNavigation
 {
   height:480px;
-  background:#000 url(/static/core/img/startpage/footer_navigation_gradient.png) left top repeat-x;
+  background:#CCC;
   text-align:center;
   font-family:functionpromedium;
   text-transform:uppercase;
@@ -868,7 +806,7 @@
 }
   footer#footerNavigation section.left *
 {
-  color:#999;
+  color:#000;
   -webkit-transition-property:color;
   -moz-transition-property:color;
   -o-transition-property:color;
@@ -986,7 +924,7 @@
   font-size:13px;
   padding:0px 40px;
   position:absolute;
-  top:25px;
+  top:0px;
   left:330px;
   -webkit-transition-property:background-color;
   -moz-transition-property:background-color;
@@ -1097,12 +1035,12 @@
 }
   footer#footerNavigation section.right nav.socialMedia ul li a.facebook
 {
-  background:url(https://s3.amazonaws.com/bearlyhungry/facebook_icon.png) top left no-repeat;
+  background:url(/assets/facebook_icon.png) top left no-repeat;
   padding-left:28px
 }
   footer#footerNavigation section.right nav.socialMedia ul li a.twitter
 {
-  background:url(https://s3.amazonaws.com/bearlyhungry/twitter_icon.png) top left no-repeat;
+  background:url(/assets/twitter_icon.png) top left no-repeat;
   padding-left:50px
 }
   article,aside,details,figcaption,figure,footer,header,hgroup,nav,section
@@ -1143,14 +1081,7 @@
 {
   font-family:sans-serif
 }
-  a:focus
-{
-  outline:thin dotted
-}
-  a:hover,a:active
-{
-  outline:0
-}
+
   h1
 {
   font-size:2em
@@ -1310,53 +1241,7 @@
   border-collapse:collapse;
   border-spacing:0
 }
-  a.plusButton
-{
-  height:30px;
-  line-height:30px;
-  padding-left:30px;
-  padding-right:20px;
-  color:#fff;
-  font-family:Arial;
-  font-size:11px;
-  font-weight:bold;
-  text-transform:uppercase;
-  display:-moz-inline-stack;
-  display:inline-block;
-  vertical-align:middle;
-  *vertical-align:auto;
-  zoom:1;
-  *display:inline;
-  background:#f09 url(/static/core/img/userpage/toolbar/plus_white.png) 8px 8px no-repeat;
-  -webkit-transition-property:background-color;
-  -moz-transition-property:background-color;
-  -o-transition-property:background-color;
-  transition-property:background-color;
-  -webkit-transition-duration:0.15s;
-  -moz-transition-duration:0.15s;
-  -o-transition-duration:0.15s;
-  transition-duration:0.15s;
-  -webkit-transition-timing-function:ease-out;
-  -moz-transition-timing-function:ease-out;
-  -o-transition-timing-function:ease-out;
-  transition-timing-function:ease-out
-}
-  a.plusButton:hover
-{
-  background-color:#555;
-  -webkit-transition-property:background-color;
-  -moz-transition-property:background-color;
-  -o-transition-property:background-color;
-  transition-property:background-color;
-  -webkit-transition-duration:0.15s;
-  -moz-transition-duration:0.15s;
-  -o-transition-duration:0.15s;
-  transition-duration:0.15s;
-  -webkit-transition-timing-function:ease-out;
-  -moz-transition-timing-function:ease-out;
-  -o-transition-timing-function:ease-out;
-  transition-timing-function:ease-out
-}
+ 
   body.loading
 {
   cursor:wait !important
@@ -1396,16 +1281,14 @@
 }
   body
 {
-  min-width:1280px
+  min-width:100px
 }
   
-
-
-
   section#content section#templates
 {
   text-align:center;
-  min-height:500px
+  min-height:500px;
+  /*background: url(/assets/night-sky.jpeg);*/
 }
   section#content section#templates form div.field
 {
@@ -1425,7 +1308,8 @@
   overflow:hidden;
   *zoom:1;
   width:1284px;
-  margin:0 auto
+  margin:0 auto;
+/* background: url(/assets/night_sky.jpg);*/
 }
   section#content section#templates form div.restaurants div.restaurant
 {
@@ -1438,7 +1322,7 @@
   height:411px;
   width:622px;
   position:relative;
-  background:url(/static/core/img/startpage/theme_background.png) center center no-repeat
+  background:url(https://s3.amazonaws.com/bearlyhungry/theme_background.png) center center no-repeat
 }
   section#content section#templates form div.restaurants div.restaurant div.image div.imageWrapper
 {
@@ -1727,9 +1611,10 @@
 }
   section#content section#templates>h1
 {
-  font-family:functionpromedium;
+  font-family:"Helvetica Neue";
   font-weight:normal;
   font-size:32px;
+
   text-transform:uppercase;
   display:-moz-inline-stack;
   display:inline-block;
@@ -1739,7 +1624,7 @@
   *display:inline;
   line-height:1.15em;
   margin:30px 0px 0px 0px;
-  color:#19151a
+  color:#000;
 }
   section#content section#templates>hr
 {
@@ -1760,8 +1645,8 @@
   font-weight:normal;
   font-size:15px;
   line-height:1.35em;
-  color:#666;
-  margin:8px 0px 35px 0px
+  color:#000;
+  margin:20px 30% 35px 30%
 }
   section#content section#templates>h2 a
 {

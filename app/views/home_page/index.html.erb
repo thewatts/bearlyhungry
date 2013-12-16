@@ -2,6 +2,8 @@
 <html itemscope itemtype="http://schema.org/Organization">
 <head>
   <title>Beary-Hungry:  The online restaurant store</title>
+  <meta name="viewport" content="width=device-width" />
+  <meta name="viewport" content="user-scalable = yes">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link href='https://s3.amazonaws.com/bearlyhungry/favicon+(5).ico' media='screen' rel='shortcut icon' />
   <link href='https://s3.amazonaws.com/bearlyhungry/favicon+(5).ico' media='screen' rel='icon' />
@@ -10,12 +12,11 @@
   <script   type="text/javascript" src="/assets/compressed.js" charset="utf-8"></script>
 </head>
 
-<body>
+<body class="container">
   <header id="navigation">
     <nav id="mainNavigation">
       <ul>
-        <li><a href="/login" class="active"></a></li>
-        <li><a href="/" class=""></a></li>
+        <li class="getStarted"><%= link_to "Create a Restaurant", new_restaurant_path %></li>
       </ul>
     </nav>
     <a itemprop="url" href="/" id="logo"><img itemprop="logo" src="https://s3.amazonaws.com/bearlyhungry/logo.png" height="60" width="233" /></a>
@@ -23,7 +24,6 @@
       <ul>
         <li class="login"><%= link_to "Login", new_session_path %></li>
         <li class="getStarted"><%= link_to "Sign Up", new_user_path %><span>Your online restaurant</span></li>
-      
       </ul>
     </nav>
   </header>
@@ -35,9 +35,7 @@
     <h2>
       Bearly Hungry is a marketplace where people around the world connect to order food at their convenience  Our mission is to re-imagine food commerce in ways that build a more fulfilling and lasting world.  We deliver, you relax. View one of the many restaurants that have created a site with us.
     </h2>
-    
-<form action="/restaurants" method="GET">
-    
+<form action="/" method="GET">
 </div>
 <hr>
  <h1>Recent Restaurants:</h1><br />
@@ -238,7 +236,7 @@
   </section>
   <footer id="footerNavigation">
     <section class="left" />
-      <h2 class="slogan">Creating your online restaurant<br />has never been that easy! &ndash; <a href="/signup"><u>Web yourself!</u></a></h2>
+      <h2 class="slogan">Creating your online restaurant<br />has never been that easy! &ndash; <%= link_to "Web Yourself", new_restaurant_path %></h2>
 
       <section class="navigation">
         <nav>
