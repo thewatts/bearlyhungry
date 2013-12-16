@@ -10,67 +10,46 @@ time = Benchmark.measure do
 
   mcdonalds = Restaurant.create(name: "Mcdonalds", 
   description: "A task of beautiful Americano cuisine", slug: "mcdonalds", 
-  status: "approved", cities_id: denver.id )
+  status: "approved", city_id: denver.id )
   burgerking = Restaurant.create(name: "Burger King", 
     description: "Get your burger on", slug: "burger-king", 
-    status: "approved", #cities_id: seattle.id )
-  jambajuice = Restaurant.create(name: "Jamba Juice", 
+    status: "approved", city_id: seattle.id )
+  jamba_juice = Restaurant.create(name: "Jamba Juice", 
     description: "Feel health drain down your throat", slug: "jamba-juice", 
-    status: "approved", #cities_id: austin.id )
+    status: "approved", city_id: austin.id )
   luke = Restaurant.create(name: "Luke's Layover", 
     description: "The finest airport cuisine around", slug: "lukes-layover", 
-    status: "approved", #cities_id: tuscan.id )
+    status: "approved", city_id: tuscan.id )
   nathaniel = Restaurant.create(name: "Nathaniel's Nook", 
     description: "A place to get caffineated and fat", slug: "nath-nook", 
-    status: "approved", #cities_id: nyc.id )
+    status: "approved", city_id: nyc.id )
   kat = Restaurant.create(name: "Kat's Hot Cakes", 
     description: "A crunchy vegan smorgsenbord", slug: "kats-hot-cakes", 
-    status: "approved", #cities_id: boston.id )
+    status: "approved", city_id: boston.id )
   chicago_pizza = Restaurant.create(name: "Chicago Pazzari", 
     description: "Yum Pizza.", slug: "pazzari", 
-    status: "approved", cities_id: portland.id )
+    status: "approved", city_id: portland.id )
   lukes_lobsters = Restaurant.create(name: "Luke's Lobsters", 
     description: "Lobsters to make you poop red", slug: "lukes-lobsters", 
-    status: "approved", cities_id: portland.id )
+    status: "approved", city_id: portland.id )
   taco_bell = Restaurant.create(name: "Taco Bell", 
     description: "For the Mexican in you", slug: "taco-bell", 
-    status: "approved", cities_id: sanfran.id )
+    status: "approved", city_id: sanfran.id )
   ventus = Restaurant.create(name: "Ventus", 
     description: "A perfect date place", slug: "ventus", 
-    status: "approved", cities_id: dc.id )
-
-  mcdonalds, burgerking, jambajuice, luke 
-    status: "approved", #cities_id: tuscan.id )
-  nathaniel = Restaurant.create(name: "Nathaniel's Nook", 
-    
-  kat = Restaurant.create(name: "Kat's Hot Cakes", 
-    description: "A crunchy vegan smorgsenbord", slug: "kats-hot-cakes", 
-    status: "approved", #cities_id: boston.id )
-  chicago_pizza = Restaurant.create(name: "Chicago Pazzari", 
-    description: "Yum Pizza.", slug: "pazzari", 
-    status: "approved", cities_id: portland.id )
-  lukes_lobsters = Restaurant.create(name: "Luke's Lobsters", 
-    description: "Lobsters to make you poop red", slug: "lukes-lobsters", 
-    status: "approved", cities_id: portland.id )
-  taco_bell = Restaurant.create(name: "Taco Bell", 
-    description: "For the Mexican in you", slug: "taco-bell", 
-    status: "approved", cities_id: sanfran.id )
-  ventus = Restaurant.create(name: "Ventus", 
-    description: "A perfect date place", slug: "ventus", 
-    status: "approved", cities_id: dc.id )
+    status: "approved", city_id: dc.id )
 
   #_________________________pending restaurants_______________________________
   igloo_eats = Restaurant.create(name: "Igloo Eats", 
     description: "Fish and cols beverages galore", slug: "igloo-eats", 
-    status: "pending", cities_id: seattle.id )
+    status: "pending", city_id: seattle.id )
 
   #_________________________rejected restaurants_______________________________
   larrys_lobsters = Restaurant.create(name: "Larry's Lobsters", 
     description: "Lobsters to make you poop red", slug: "larry_lobsters", 
-    status: "rejected", cities_id: portland.id )
+    status: "rejected", city_id: portland.id )
   
-  restaurants = [taste_of_india, luke, nathaniel, kat, chicago_pizza, igloo_eats,
-    larry_lobsters]
+  restaurants = [ mcdonalds, burgerking, jambajuice, luke, nathaniel, kat, chicago_pizza, lukes_lobsters, taco_bell, ventus ]
 
   def clone_restaurant(restaurant, cities, count)
     count.times do |i|
@@ -80,7 +59,7 @@ time = Benchmark.measure do
         name: restaurant.name + "#{i}",
         status: restaurant.status,
         slug: restaurant.slug + "#{i}",
-        Cities: Citiess[rand(30)])
+        city_id: restaurant.city_id[rand(30)])
     end
   end
 
@@ -177,25 +156,34 @@ time = Benchmark.measure do
     end
   end
 
-  restaurants = [taste_of_india, luke, nathaniel, kat, chicago_pizza, igloo_eats,
-    larry_lobsters]
-  asian = ["Madras Sanbar", "Naan", "Saag Paneer", "Aloo Chat", "Aloo Gobi" , "Sushi" ,""]
-  taste_of_india = [ "Aloo Chat", "Idly", "Masala Chicken", "Paneer", ""
-  luke = ["Crumpy Chicken", ""]
-  nathaniel = 
+  restaurants = [ mcdonalds, burgerking, jambajuice, luke, nathaniel, kat, chicago_pizza, lukes_lobsters, taco_bell, ventus ]
+ 
+  mcdonalds = ["Apple Slices", "Bacon Buffalo Ranch McChicken",
+"Bacon Cheddar McChicken", "Bacon McDouble", "Bacon, Egg & Cheese Bagel", "Baked Holiday Pie", "Baked Hot Apple Pie", "BBQ Ranch Burger" , "Big Breakfast with Hotcakes (Regular Size Biscuit)", "Big Breakfast with Egg Whites (Large Size Biscuit)", "Big Breakfast with Egg Whites (Regular Size Biscuit)", "Big Breakfast with Hotcakes", "Big Breakfast with Hotcakes and Egg Whites (Large Biscuit)" ]
+  burgerking = ["WHOPPER Sandwich ", "Fries", "Nuggets", "Wrap", "Hamburger", "Double Cheeseburger", "French Fry Burger", "BBQ Rib Sandwich", "Chicken Nuggets- 4pc "]
+  jambajuice = ["Strawberry Bannana", "Mango Delight", "Acai Energy", "Orange Surprise", "Bannana Yum", "Peachy Keen", "Blueberry Mix", "Raspberry Smooth", "Blackberry Blend"]
+  luke = ["Crumpy Chicken", "Madras Sanbar", "Naan", "Saag Paneer", "Aloo Chat", "Aloo Gobi" , "Sushi"]
+  nathaniel = ["Blackened Chicken Muffaletta", "Buffalo Chicken", "Tuscan Chicken Pasta", ""]
   kat = ["Raw Pie", "Carmalized Cheese", "Tree Hugger", "Krip Salad", "Tofu Delight", "Light Faire", "Daily Special"]
-  chicago_pizza = ["Pepperoni Pizza", "Deep Dish Pie", "Calzone", "Chef's Pizza", "Veggie Special"]
+  chicago_pizza = ["Pepperoni Pizza", "Deep Dish Pie", "Calzone", "Chef's Pizza", "Veggie Special", "Mushroom Delight", "Hawaiian Yum", "Cheesy Cheese", "Anchove"]
+  lukes_lobsters = ["Hot Lobster", "Spicy Lobster", "Sweet Lobster", "Garlic Lobster", "Steamed Whole Lobster", "Pickled Lobster"
+    "Steak and Lobster", "Chocolate Lobster" ]
+  taco_bell = ["Burritos", "Gordita", "Salads", "Nachos", "Chalupas", "Beefy Nacho Griller", "Steak Quesadilla"]
+  ventus = ["Meatballs", "Spaghetti", "Bruschetta", "Caponata", "Spaghetti", "Bruschetta", "Arancini", "Buridda", "Osso Buco", "Calamaretti Fritti", "Seppioline in Umido", "Tortano"]
   igloo_eats = ["Salmon", "Crepe", "Tuna", "Big Tuna"]
   larrys_lobsters = ["Hot Lobster", "Spicy Lobster", "Sweet Lobster", "Garlic Lobster", "Steamed Whole Lobster", 
-    "Steak and Lobster", "Chocolate Lobster", ]
+    "Steak and Lobster", "Chocolate Lobster", "Pickled Lobster" ]
   
-  menu_lookup = { taste_of_india.slug => taste_of_india_menu, 
+  menu_lookup = { mcdonalds.slug => mcdonalds_menu,
+                  burgerking.slug => burgerking_menu,  
                   luke.slug => luke_menu,
                   nathaniel.slug => nathaniel_menu,
                   kat.slug => kat_menu,
                   chicago_pizza.slug => chicago_pizza_menu,
-                  igloo_eats.slug => igloo_eats_menu,
-                  larry_lobsters.slug => larry_lobsters_menu }
+                  lukes.slug => lukes_menu,
+                  jambajuice.slug => jamba_juice_menu,
+                  tacobell.slug => taco_bell_menu,
+                  ventus.slug => ventus_menu  }
     
   superlatives = ["great", "delicious", "moutwatering", "classy", "appetizing"]
 
@@ -203,12 +191,7 @@ time = Benchmark.measure do
 
 #____________________30 different categories (3 per restaurant)_________________
 
-  
-
-
-  categoriess = ["Appetizers", "Beverages", "Entrees", "Dessert",  "Specialties", 
-    "Soups", "Spicy Selections", "Vegetarian", "Salads", "Kids Menu", 
-    "Snacks", "Sandwiches", "Burritos", "Pizza"]
+  categoriess = ["Appetizers", "Beverages", "Entrees", "Desserts",  "Specialties", "Burgers", "Soups", "Spicy Selections", "Vegetarian", "Salads", "Kids Menu", "Snacks", "Sandwiches", "Burritos", "Pizza", "Wraps", "Chicken Dishes", "Juices", "Alcoholic Beverages", "Vegan Options", "Specials", "Ethnic", "Tacos", "Burritos", "Seafood", "Fried Food"]
 
   def seed_categories(restaurant, categories, count)
     count.times do |i|
@@ -253,7 +236,7 @@ time = Benchmark.measure do
   unencrypted_password = "password"
   encrypted_password = BCrypt::Password.create(unencrypted_password)
 
-  admin = User.create({full_name: "admin", display_name: "admin", 
+  overlord = User.create({full_name: "admin", display_name: "admin", 
     password: unencrypted_password, password_confirmation: unencrypted_password,   
     email: "admin@example.com", admin_status: true })
   
