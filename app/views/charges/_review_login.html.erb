@@ -54,6 +54,12 @@
           :placeholder => "Phone Number (if you want to receive texts)",
           :required => false %>
         <%= f.hidden_field  :guest, :value => true %>
+        How Should we contact you about your orders? (default is E-Mail)  <br/>
+          <%= f.radio_button :text, :false %> 
+            <%= f.label :text, "I'd like to get E-Mails" %>
+          <%= f.radio_button :text, :true, :phone_number, :required => true %>
+            <%= f.label :text, "I'd like to get text messages" %>
+          <%= f.submit "Signup!", id: 'signup-submit' %>
         <%= f.submit "Checkout as Guest", id: 'guest-signup-submit', class: "radius button" %>
       <% end %>
 

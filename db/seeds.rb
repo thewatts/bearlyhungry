@@ -8,6 +8,37 @@ time = Benchmark.measure do
 
   #_________________________approved restaurants_______________________________
 
+
+
+# Role.create([{ name: "Owner"}])
+
+# Restaurant.create(
+#   [
+#     { name: "McDonalds",    slug: "mcdonalds",  status: "approved" },
+#     { name: "Burger King",  slug: "burgerking" },
+#     { name: "What The Pho", slug: "whatthepho", status: "approved" },
+#     { name: "Chipotle",     slug: "chipotle" },
+#   ]
+# )
+
+# RESTAURANTS FOR JOBS
+# mcdonalds  = Restaurant.find_by(name: "McDonalds")
+# whatthepho = Restaurant.find_by(name: "What The Pho")
+
+# USERS FOR JOBS
+# luke = User.find_by(email: "lukemartinez@gmail.com")
+
+# Job.create(
+#   [
+#     {
+#       user: luke, restaurant: mcdonalds, role: Role.owner
+#     },
+#     {
+#       user: luke, restaurant: whatthepho, role: Role.owner
+#     }
+#   ]
+# )
+
   mcdonalds = Restaurant.create(name: "Mcdonalds", 
   description: "A task of beautiful Americano cuisine", slug: "mcdonalds", 
   status: "approved", city_id: denver.id )
@@ -193,6 +224,7 @@ time = Benchmark.measure do
 
   categoriess = ["Appetizers", "Beverages", "Entrees", "Desserts",  "Specialties", "Burgers", "Soups", "Spicy Selections", "Vegetarian", "Salads", "Kids Menu", "Snacks", "Sandwiches", "Burritos", "Pizza", "Wraps", "Chicken Dishes", "Juices", "Alcoholic Beverages", "Vegan Options", "Specials", "Ethnic", "Tacos", "Burritos", "Seafood", "Fried Food"]
 
+
   def seed_categories(restaurant, categories, count)
     count.times do |i|
       begin
@@ -208,7 +240,23 @@ time = Benchmark.measure do
     end
   end
 
-  Restaurant.all.each { |rest| seed_categories(rest, cats, 5) }
+#   Restaurant.all.each { |rest| seed_categories(rest, cats, 5) }
+
+#   category_object = Category.find_or_create_by(title: category, type_of: 'main_menu')
+#   item = Item.create(
+#     title: title,
+#     description: description,
+#     price: price,
+#     image_file_name: image_file_name,
+#     restaurant: whatthepho
+#   )
+
+#   ItemCategory.create(category_id: category_object.id, item_id: item.id)
+# end
+
+# category = Category.create(title: "House Specials", type_of: 'main_menu')
+
+  
 
   def seed_item_categories(restaurant, count)
     count.times do |i|
@@ -233,51 +281,86 @@ time = Benchmark.measure do
 
 #_________________________100,000 users_______________________________
   
+  puts "Creating Users"
+  user = User.create(
+  [
+    {
+      full_name: "Franklin Webber", display_name: "Franky",
+      password: unencrypted_password, password_confirmation: unencrypted_password,
+      email: "demo+franklin@jumpstartlab.com"
+    },
+    {
+      full_name: "Jeff", display_name: "j3", password: unencrypted_password,
+      password_confirmation: unencrypted_password,
+      email: "demo+jeff@jumpstartlab.com"
+    },
+    {
+      full_name: "Katrina Owen", display_name: "kytrinyx",
+      password: unencrypted_password, password_confirmation:
+      unencrypted_password, email: "demo+katrina@jumpstartlab.com",
+      admin_status: true
+    },
+    {
+      full_name: "Luke Martinez", display_name: "SKYWALKA!",
+      password: "password", password_confirmation: "password",
+      email: "lukemartinez@gmail.com"
+    }
+  ]
+)
+
+admin = User.create(
+  {
+    full_name: "admin", display_name: "admin", password: unencrypted_password,
+    password_confirmation: unencrypted_password,
+    email: "admin@example.com", admin_status: true 
+  }
+)
+
   unencrypted_password = "password"
   encrypted_password = BCrypt::Password.create(unencrypted_password)
 
-  overlord = User.create({full_name: "admin", display_name: "admin", 
-    password: unencrypted_password, password_confirmation: unencrypted_password,   
-    email: "admin@example.com", admin_status: true })
+  # overlord = User.create({full_name: "admin", display_name: "admin", 
+  #   password: unencrypted_password, password_confirmation: unencrypted_password,   
+  #   email: "admin@example.com", admin_status: true })
   
-  jorge = User.create(email: "demo+jorge@jumpstartlab.com", 
-    full_name: "Jorge", 
-    display_name: "littlemexican", 
-    password: unencrypted_password,
-    password_confirmation: unencrypted_password,
-    :overlord => true)
+  # jorge = User.create(email: "demo+jorge@jumpstartlab.com", 
+  #   full_name: "Jorge", 
+  #   display_name: "littlemexican", 
+  #   password: unencrypted_password,
+  #   password_confirmation: unencrypted_password,
+  #   :overlord => true)
 
-  jeff = User.create(email: "demo+jeff@jumpstartlab.com", 
-    full_name: "Jeff", 
-    display_name: "j3",
-    password: unencrypted_password,
-    password_confirmation: unencrypted_password,
-    :overlord => true)
+  # jeff = User.create(email: "demo+jeff@jumpstartlab.com", 
+  #   full_name: "Jeff", 
+  #   display_name: "j3",
+  #   password: unencrypted_password,
+  #   password_confirmation: unencrypted_password,
+  #   :overlord => true)
 
-  katrina = User.create(email: "demo+katrina@jumpstartlab.com", 
-    full_name: "Katrina Owen", 
-    display_name: "kytrynx", 
-    password: unencrypted_password,
-    password_confirmation: unencrypted_password,
-    :overlord => true)
+  # katrina = User.create(email: "demo+katrina@jumpstartlab.com", 
+  #   full_name: "Katrina Owen", 
+  #   display_name: "kytrynx", 
+  #   password: unencrypted_password,
+  #   password_confirmation: unencrypted_password,
+  #   :overlord => true)
 
-  katrina = User.create(email: "katrina@engelsted.co", 
-    full_name: "Katrina Engelsted", 
-    display_name: "mapppingkat", 
-    password: unencrypted_password,
-    password_confirmation: unencrypted_password,
+  # katrina = User.create(email: "katrina@engelsted.co", 
+  #   full_name: "Katrina Engelsted", 
+  #   display_name: "mapppingkat", 
+  #   password: unencrypted_password,
+  #   password_confirmation: unencrypted_password,
 
-  luke = User.create(email: "lukemartinez@gmail.com", 
-    full_name: "Luke", 
-    display_name: "Lukey", 
-    password: unencrypted_password,
-    password_confirmation: unencrypted_password)
+  # luke = User.create(email: "lukemartinez@gmail.com", 
+  #   full_name: "Luke", 
+  #   display_name: "Lukey", 
+  #   password: unencrypted_password,
+  #   password_confirmation: unencrypted_password)
 
-  nathaniel = User.create(email: "watts@nathanielwatts.com", 
-    full_name: "Nathaniel", 
-    display_name: "thewatts", 
-    password: unencrypted_password,
-    password_confirmation: unencrypted_password)
+  # nathaniel = User.create(email: "watts@nathanielwatts.com", 
+  #   full_name: "Nathaniel", 
+  #   display_name: "thewatts", 
+  #   password: unencrypted_password,
+  #   password_confirmation: unencrypted_password)
 
   def seed_users(count)
     count.times do |i|
@@ -318,7 +401,6 @@ time = Benchmark.measure do
   Restaurant.all.each { |r| seed_restaurant_users(r.id, "employee", 2) }
   Restaurant.all.each { |r| seed_restaurant_users(r.id, "owner", 2) }
 
-  
 
 #_________________________orders_______________________________
 puts "Creating Orders"
@@ -364,3 +446,4 @@ images = File.open "./app/assets/images"
 
 puts "Time to seed:"
 puts time
+
