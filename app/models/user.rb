@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def past_orders
-    @orders.sort_by {|order| order.created_at}.reverse unless guest
+    @orders.sort_by {|order| order.created_at}.reverse if @orders unless guest
   end
 
   def total_spent

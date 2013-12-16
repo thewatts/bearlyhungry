@@ -4,7 +4,7 @@
   <p>User Full Name: <%= @order.user.full_name %></p>
   <p>User ID:        <%= @order.user_id %></p>
   <p>Email: <%= @order.user.email %></p>
-  fail
+  <!-- fail -->
 <% else %>
   <p><em>There is no user assigned to this order</em></p>
 <% end %>
@@ -12,7 +12,7 @@
 <p>Status: <%= @order.status %></p>
 <p>Created At: <%= @order.created_at %></p>
 
- <%= link_to "Complete", admin_order_path(@order), method: :put } %>
+<%= link_to "Complete", restaurant_admin_order_path(id: @order.id, slug: current_restaurant.slug),  { method: :put } %>
 
 <div class="row">
   <div class="twelve columns">
@@ -43,7 +43,7 @@
         <% @order.order_items.each do |order_item| %>
           <tr>
             <td>
-              <%= link_to order_item.item.title, item_path(order_item.item) %>
+              <%= link_to order_item.item.title, restaurant_items_path(order_item.item) %>
             </td>
             <td>
               <%= number_to_currency(order_item.subtotal) %>
@@ -63,7 +63,7 @@
             </td>
 
             <td>
-              <%= link_to "Remove", admin_order_item_path(order_item), method: :delete,
+              <%= link_to "Remove", restaurant_admin_order_items_path(order_item), method: :delete,
                 data: { confirm: "Are you sure you want to delete this item from the order?" } %>
             </td>
           </tr>

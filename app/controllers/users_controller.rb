@@ -12,10 +12,8 @@ class UsersController < ApplicationController
     if params[:password] != params[:password_confirmation]
       flash[:notice] = "Password and Password Confirmation must match"
       redirect_to new_user_path
-      
     else
       user = create_new_user_with(user_params)
-     
       assign_current_user_and_update_order_for(user) if user.save
       creation_response_for(user)
     end
