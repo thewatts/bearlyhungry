@@ -1269,7 +1269,6 @@
   z-index:100090
 }
 
-
   #modalCover.coverEverything
 {
   z-index:999999
@@ -1288,7 +1287,6 @@
 {
   text-align:center;
   min-height:500px;
-  /*background: url(/assets/night-sky.jpeg);*/
 }
   section#content section#templates form div.field
 {
@@ -1309,7 +1307,7 @@
   *zoom:1;
   width:1284px;
   margin:0 auto;
-/* background: url(/assets/night_sky.jpg);*/
+  float: center;
 }
   section#content section#templates form div.restaurants div.restaurant
 {
@@ -1609,13 +1607,13 @@
 {
   margin-bottom:75px
 }
+ 
+
   section#content section#templates>h1
 {
-  font-family:"Helvetica Neue";
+  font-family:Arial;
   font-weight:normal;
-  font-size:32px;
-
-  text-transform:uppercase;
+  font-size:30%;
   display:-moz-inline-stack;
   display:inline-block;
   vertical-align:middle;
@@ -1626,6 +1624,17 @@
   margin:30px 0px 0px 0px;
   color:#000;
 }
+
+section#content section#templates div.bear {
+  background: url(/assets/beary.png) no-repeat;
+  height: 50 px;
+  width: 50 px; 
+}
+
+section#content section#templates div.bear #left {
+  margin: 0 80% 0px 0px;
+}
+
   section#content section#templates>hr
 {
   display:-moz-inline-stack;
@@ -1643,10 +1652,10 @@
 {
   font-family:Arial;
   font-weight:normal;
-  font-size:15px;
+  font-size:20px;
   line-height:1.35em;
   color:#000;
-  margin:20px 30% 35px 30%
+  margin:20px 20% 20px 20%
 }
   section#content section#templates>h2 a
 {
