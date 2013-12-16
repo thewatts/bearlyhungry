@@ -69,8 +69,8 @@ ActiveRecord::Schema.define(version: 20131215085340) do
   create_table "orders", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "status",        default: "pending"
+    t.integer  "user_id"
     t.integer  "restaurant_id"
   end
 
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20131215085340) do
     t.string   "password_digest"
     t.boolean  "admin_status",    default: false
     t.boolean  "guest",           default: false
-    t.integer  "phone_number"
+    t.decimal  "phone_number"
     t.boolean  "deleted"
   end
 
