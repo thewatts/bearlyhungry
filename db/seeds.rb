@@ -12,23 +12,33 @@ time = Benchmark.measure do
   description: "A task of beautiful Americano cuisine", slug: "mcdonalds", 
   status: "approved", cities_id: denver.id )
   burgerking = Restaurant.create(name: "Burger King", 
-    description: "Get your burger on", slug: "burgerking", 
+    description: "Get your burger on", slug: "burger-king", 
     status: "approved", #cities_id: seattle.id )
   jambajuice = Restaurant.create(name: "Jamba Juice", 
-    description: "Get your burger on", slug: "taste-of-india", 
-    status: "approved", #cities_id: seattle.id )
+    description: "Feel health drain down your throat", slug: "jamba-juice", 
+    status: "approved", #cities_id: austin.id )
   luke = Restaurant.create(name: "Luke's Layover", 
     description: "The finest airport cuisine around", slug: "lukes-layover", 
     status: "approved", #cities_id: tuscan.id )
   nathaniel = Restaurant.create(name: "Nathaniel's Nook", 
     description: "A place to get caffineated and fat", slug: "nath-nook", 
     status: "approved", #cities_id: nyc.id )
-  kat = Restaurant.create(name: "Kat's Kitchen", 
-    description: "A crunchy vegan smorgsenbord", slug: "kats-kitchen", 
+  kat = Restaurant.create(name: "Kat's Hot Cakes", 
+    description: "A crunchy vegan smorgsenbord", slug: "kats-hot-cakes", 
     status: "approved", #cities_id: boston.id )
   chicago_pizza = Restaurant.create(name: "Chicago Pazzari", 
     description: "Yum Pizza.", slug: "pazzari", 
     status: "approved", cities_id: portland.id )
+  lukes_lobsters = Restaurant.create(name: "Luke's Lobsters", 
+    description: "Lobsters to make you poop red", slug: "lukes-lobsters", 
+    status: "approved", cities_id: portland.id )
+  taco_bell = Restaurant.create(name: "Taco Bell", 
+    description: "For the Mexican in you", slug: "taco-bell", 
+    status: "approved", cities_id: sanfran.id )
+  ventus = Restaurant.create(name: "Ventus", 
+    description: "A perfect date place", slug: "ventus", 
+    status: "approved", cities_id: dc.id )
+
 
 
   #_________________________pending restaurants_______________________________
