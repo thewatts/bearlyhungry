@@ -1,5 +1,5 @@
 class HomePageController < ApplicationController
-  layout "platform"
+  layout "application" => :false
 
   def index
     @restaurants = Restaurant.limit(5)
