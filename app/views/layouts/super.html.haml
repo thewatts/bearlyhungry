@@ -45,15 +45,10 @@
       %nav.sidebar.two.columns.show-for-large-and-up
         %ul
           %li
-            %a{href: "#{restaurant_admin_root_path(current_restaurant.slug)}"}
+            %a{href: "#{super_root_path}"}
               Dashboard
           %li
-            %a{href: "#{restaurant_admin_items_path(current_restaurant.slug)}"}
-              Items
-          %li
-            %a{href: "#{restaurant_admin_customers_path(current_restaurant.slug)}"}
-              Customers
-          %li
-            %a{href: "/admin/orders"} Orders
+            %a{href: "#{super_restaurants_path}"}
+              Restaurants
       .content.ten.columns
         = yield
