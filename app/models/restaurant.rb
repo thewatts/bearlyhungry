@@ -7,6 +7,8 @@ class Restaurant < ActiveRecord::Base
   has_many :jobs
   has_many :users, through: :jobs
 
+  belongs_to :city
+
   def self.create_with_owner(restaurant_params, user)
     restaurant = Restaurant.create!(restaurant_params)
     Job.create!(:restaurant => restaurant, :user => user, :role => Role.owner)
