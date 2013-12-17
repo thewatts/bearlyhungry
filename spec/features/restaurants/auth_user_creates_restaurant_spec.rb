@@ -4,6 +4,8 @@ feature "Auth User Restaurant Creation" do
 
   before do
     FactoryGirl.create(:role, name: "Owner")
+    @admin = FactoryGirl.create(:user, :admin_status => true, :email => "admin@admin.com")
+
   end
 
   let!(:user) { FactoryGirl.create(:user) }

@@ -10,7 +10,8 @@ class Restaurant < ActiveRecord::Base
   def self.create_with_owner(restaurant_params, user)
     restaurant = Restaurant.create!(restaurant_params)
     Job.create!(:restaurant => restaurant, :user => user, :role => Role.owner)
-    send_new_restaurant_confirmation_email(user)
+    restaurant.send_new_restaurant_confirmation_email(user)
+    restaurant.send_new_restaurant_submitted_email
     restaurant
   end
 
@@ -19,8 +20,6 @@ class Restaurant < ActiveRecord::Base
   end
 
   def send_new_restaurant_confirmation_email(user)
-    ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
-
     @email_data = {
       user_email: user.email,
       user_name: user.full_name,
@@ -29,25 +28,30 @@ class Restaurant < ActiveRecord::Base
     RestaurantMailer.new_restaurant_confirmation_email(@email_data).deliver
   end
 
-  def send_new_restaurant_rejection_email
-    ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
-
+  def send_new_restaurant_rejection_email(user)
     @email_data = {
-      user_email: email,
-      user_name: full_name,
+      user_email: user.email,
+      user_name: user.full_name,
 
     }
     RestaurantMailer.new_restaurant_rejection_email(@email_data).deliver
   end
 
-  def send_new_restaurant_approval_email
-        ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
-
+  def send_new_restaurant_approval_email(user)
     @email_data = {
-      user_email: email,
-      user_name: full_name,
+      user_email: user.email,
+      user_name: user.full_name,
 
     }
     RestaurantMailer.new_restaurant_approval_email(@email_data).deliver
   end
+
+  def send_new_restaurant_submitted_email
+    @admin = User.find_by(:admin_status => true)
+    @email_data = {
+      admin_email: @admin.email
+    }
+    RestaurantMailer.new_restaurant_submitted_email(@email_data).deliver
+  end
+
 end
