@@ -11,13 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215085340) do
+ActiveRecord::Schema.define(version: 20131217174630) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
     t.string   "type_of"
+  end
+
+  create_table "cities", force: true do |t|
+    t.string   "city"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "item_categories", force: true do |t|
@@ -77,15 +83,8 @@ ActiveRecord::Schema.define(version: 20131215085340) do
   add_index "orders", ["restaurant_id"], name: "index_orders_on_restaurant_id"
   add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
-  create_table "restaurants", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "status",     default: "pending"
-  end
-
-  add_index "restaurants", ["slug"], name: "index_restaurants_on_slug"
+# Could not dump table "restaurants" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "roles", force: true do |t|
     t.string   "name"
