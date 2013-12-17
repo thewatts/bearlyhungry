@@ -12,6 +12,10 @@ class Order < ActiveRecord::Base
     where(status: "completed")
   end
 
+  def self.valid
+    where("user_id IS NOT NULL")
+  end
+
   def host(environment)
     case environment
     when "staging"
@@ -60,14 +64,14 @@ class Order < ActiveRecord::Base
   def send_customer_confirmation_sms
     body = "Thanks #{user.full_name} for your order of #{items.count} items!\n"
     body << "We'll send you another text when it's ready for pickup!"
-    
+
     SMS.send_message(user.phone_number, body)
   end
 
   def send_customer_pickup_sms
     body = "Success, #{user.full_name}!\n"
     body << "Your order is officially ready for pickup!"
-  
+
     SMS.send_message(user.phone_number, body)
   end
 
@@ -92,8 +96,8 @@ class Order < ActiveRecord::Base
         quantity: order_item.quantity
       }
     end
-    
-    @email_data = 
+
+    @email_data =
     {
       user_email: user.email,
       user_name: user.full_name,
@@ -108,14 +112,14 @@ class Order < ActiveRecord::Base
   end
 
   def send_order_ready_email
-    @email_data = 
+    @email_data =
     {
       user_email:  user.email,
       user_name: user.full_name,
       order_id: id
 
     }
-    
+
     OrderMailer.order_ready_email(@email_data).deliver
   end
 end

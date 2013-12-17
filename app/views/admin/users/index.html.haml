@@ -1,0 +1,56 @@
+.header-bar.row
+
+  %h3 Users
+  = link_to "New User",
+    new_restaurant_admin_customer_path(:slug => current_slug),
+      :class => "add button"
+
+.row
+  .twelve.columns
+    - if @users.empty?
+      .empty
+        %h2 It looks like you don't have any Customers yet.
+        %h4 Don't worry! They're on their way!
+    - else
+      %table.table
+        %thead
+          %tr
+            %th
+              Full name
+            %th
+              Signed Up
+            %th
+              Total Spent
+            %th
+              Email Address
+            %th
+              Admin?
+            %th{ colspan: "2" }
+              Edit
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = link_to user.full_name,
+                  restaurant_admin_customer_path(:id => user.id,
+                    :slug => current_slug)
+              %td
+                = user.created_at.to_s(:long)
+              %td
+                = number_to_currency(user.total_spent)
+              %td
+                = user.email
+              %td
+                - if user.admin_status?
+                  true
+                - else
+                  \--
+              %td
+                = link_to "Edit",
+                  edit_restaurant_admin_customer_path( :id => user.id,
+                    :slug => current_slug)
+              %td
+                = link_to "Delete",
+                  restaurant_admin_customer_path( :id => user.id,
+                    :slug => current_slug), :method => :delete,
+                    :data => { :confirm => "Are you sure you want to delete #{user.full_name}?" }

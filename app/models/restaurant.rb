@@ -21,7 +21,11 @@ class Restaurant < ActiveRecord::Base
     status == "approved"
   end
 
+  def valid_orders
+    Order.valid.where("restaurant_id = ?", id)
+  end
+
   def customers
-    orders.map { |order| order.user }.uniq ## ASK ABOUT THIS
+    valid_orders.map(&:user).uniq ## ASK ABOUT THIS
   end
 end
