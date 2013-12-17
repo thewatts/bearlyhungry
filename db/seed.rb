@@ -371,7 +371,6 @@ OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
  
 #_________________________images______________________________
 images = File.open "./app/assets/images"
-
+end
 puts "Time to seed:"
 puts time
-end
