@@ -1,4 +1,4 @@
-require 'spec_helper'
+require './spec/spec_helper'
 require 'capybara/rails'
 require 'capybara/rspec'
 
@@ -7,6 +7,7 @@ describe "User Signup" do
   it "can signup a user with correct attributes" do
     page.visit root_path 
     expect(page).not_to have_content "Account"
+    click_on 'Sign Up'
     within '#signupTab' do
       fill_in 'full-name',             with: 'Test User'
       fill_in 'email-address',         with: 'test@example.com'
@@ -20,6 +21,7 @@ describe "User Signup" do
   it "can't signup a user with incorrect attributes" do
     page.visit root_path
     expect(page).not_to have_content "Account"
+    click_on 'Sign Up'
     within '#signupTab' do
       fill_in 'full-name',             with: 'Test User'
       fill_in 'email-address',         with: 'test@example.com'

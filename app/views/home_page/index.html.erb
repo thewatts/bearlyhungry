@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-<html itemscope itemtype="http://schema.org/Organization">
 <head>
   <title>Beary-Hungry:  The online restaurant store</title>
   <meta name="viewport" content="width=device-width" />
@@ -7,7 +6,11 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link href='https://s3.amazonaws.com/bearlyhungry/favicon+(5).ico' media='screen' rel='shortcut icon' />
   <link href='https://s3.amazonaws.com/bearlyhungry/favicon+(5).ico' media='screen' rel='icon' />
+  <link href='http://fonts.googleapis.com/css?family=Sintony' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Podkova:700' rel='stylesheet' type='text/css'>
+
    <link rel="stylesheet" type="text/css" href="/assets/template.css" />
+
   <script   type="text/javascript" src="/assets/main.js" charset="utf-8"></script>
   <script   type="text/javascript" src="/assets/compressed.js" charset="utf-8"></script>
 </head>
@@ -22,7 +25,10 @@
     <a itemprop="url" href="/" id="logo"><img itemprop="logo" src="https://s3.amazonaws.com/bearlyhungry/logo.png" height="60" width="233" /></a>
     <nav id="metaNavigation">
       <ul>
-        <li class="login"><%= link_to "Login", new_session_path %></li>
+        <li class="login">
+          <a data-reveal-id="exampleModal" href="#" sl-processed="1">Login</a>
+           <%= render partial: "./layouts/review_login" if current_user.nil? %>
+        </li>
         <li class="getStarted"><%= link_to "Sign Up", new_user_path %><span>Your online restaurant</span></li>
       </ul>
     </nav>
@@ -32,22 +38,22 @@
   <section id="templates">
      
     <!-- <h1>Beary Hungry Restaurants</h1><br /> -->
-      <div class="bear" id="left"></div>
+    <!-- <div class="bear" id="left"></div> -->
     <!-- <hr /> -->
     <h2>
       Bearly Hungry is a marketplace where people around the world connect to order food at their convenience  Our mission is to re-imagine food commerce in ways that build a more fulfilling and lasting world.  We deliver, you relax. View one of the many restaurants that have created a site with us.
     </h2>
-     <div class="bear" id="right"></div>
+     <!-- <div class="bear" id="right"></div> -->
 <form action="/" method="GET">
-</div>
+<!-- </div> -->
 <hr>
  <h1>Recent Restaurants:</h1><br />
   <div class="restaurants">
-    
+    <!-- create a block that goes through each restaurant -->
     <div class="restaurant">
       <div class="image">
         <div class="imageWrapper">
-            
+         
           <img src="https://s3.amazonaws.com/bearlyhungry/mcdon.jpg" height="400" width="600" />
           <a href="/mcdonalds" class="startWith registerLink">
             <span class="startHere">Order here</span>
@@ -57,9 +63,8 @@
       </div>
       <div class="details">
         <span class="name">McDonalds</span>
-        
-          <a href="/mcdonalds" target="_blank" class="preview">Eat Here</a>
-        
+        <a href="/mcdonalds" target="_blank" class="preview">Eat Here</a>
+        <% end %>
       </div>
     </div>
     
