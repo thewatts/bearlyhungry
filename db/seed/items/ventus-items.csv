@@ -1,12 +1,12 @@
-title	description	price	category	image_file_name
-Fried Calamari	Breaded and fried Squid	3.95	Appetizers	calamari.jpg
-Fried Eggplant	Perfecctly crispy eggplant with dipping sauce.	6.95	Appetizers	eggplant.jpg
-Bruscetta	Toasty bread with fresh tomatoes and basil	6.95	Appetizers	bruschetta.jpg
-Kalamata Caviar	Smooth Spreadable olive and cheese caviar	7.95	Appetizers	caviar.jpg
-Prosciutto Cups	A house fav. Crispy bread cups filled with diced prosciutto and cheese.	10.95	Appetizers	Proscuitto.jpg
-Fettuccine Alfredo	Its like mac and cheese. But for grownups.	15.95	Entrees	alfredo.jpg
-Chicken Parmesan	Breaded Chicken, covered in our famous tomato sauce	22.95	Entrees	chxparm.jpg
-Filet Marsala	Tender Filet Mignon topped with our house marsala	17.95	Entrees	marsala.jpg
-Mac and cheese	Its for the kids	16.95	Entrees	marsala.jpg
-Gelato	Creamy Vanilla Gelato	6.95	Desserts	gelato.jpg
-Tiramisu	Velvety Rich house made Tiramisu	5.95	Desserts	tiramisu.jpg
+"title","description","price","category","image_file_name"
+"Fried Calamari","Breaded and fried Squid",3.95,"Appetizers","calamari.jpg"
+"Fried Eggplant","Perfecctly crispy eggplant with dipping sauce.",6.95,"Appetizers","eggplant.jpg"
+"Bruscetta","Toasty bread with fresh tomatoes and basil",6.95,"Appetizers","bruschetta.jpg"
+"Kalamata Caviar","Smooth Spreadable olive and cheese caviar",7.95,"Appetizers","caviar.jpg"
+"Prosciutto Cups","A house fav. Crispy bread cups filled with diced prosciutto and cheese.",10.95,"Appetizers","Proscuitto.jpg"
+"Fettuccine Alfredo","Its like mac and cheese. But for grownups.",15.95,"Entrees","alfredo.jpg"
+"Chicken Parmesan","Breaded Chicken, covered in our famous tomato sauce",22.95,"Entrees","chxparm.jpg"
+"Filet Marsala","Tender Filet Mignon topped with our house marsala",17.95,"Entrees","marsala.jpg"
+"Mac and cheese","Its for the kids",16.95,"Entrees","marsala.jpg"
+"Gelato","Creamy Vanilla Gelato",6.95,"Desserts","gelato.jpg"
+"Tiramisu","Velvety Rich house made Tiramisu",5.95,"Desserts","tiramisu.jpg"

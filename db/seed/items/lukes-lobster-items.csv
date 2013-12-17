@@ -1,12 +1,12 @@
-title	description	price	category	image_file_name
-Lobster Balls	Fried Balls of Lobster and cheese	3.95	Appetizers	lobsterballs.jpg
-Lobster Mac and Cheese	Delicious Lobster Mac and cheese. Topped with breadcrumbs	6.95	Appetizers	imgres.jpg
-Raw Lobster	Don't knock it till you try it.	6.95	Appetizers	rawlobster.jpg
-Lobster Cookies	Never heard of lobster cookies? Get out	7.95	Appetizers	lobstercookies.jpg
-Lobster Sliders	Fried soft shell crab served with vegetables.	10.95	Appetizers	lobstersliders.jpg
-Whole Lobster	What more can I say?	15.95	Entrees	wholelobster.jpg
-Lobster Tail	A huge lobster tail with all the fixins	22.95	Entrees	lobstertail.jpg
-Surf and Turf	Big steak and and Big  lobster	17.95	Entrees	surfturf.jpg
-Not a Lobster	The only thing on the menu that isn't a lobster	16.95	Entrees	notlobster.jpg
-Lobster Pie	Fresh baked pie...With lobster	6.95	Desserts	lobsterpie.jpg
-Lobster Ice Cream	Vanilla Ice Cream with Lobster	5.95	Desserts	lobstericecream.jpg
+"title","description","price","category","image_file_name"
+"Lobster Balls","Fried Balls of Lobster and cheese",3.95,"Appetizers","lobsterballs.jpg"
+"Lobster Mac and Cheese","Delicious Lobster Mac and cheese. Topped with breadcrumbs",6.95,"Appetizers","imgres.jpg"
+"Raw Lobster","Don't knock it till you try it.",6.95,"Appetizers","rawlobster.jpg"
+"Lobster Cookies","Never heard of lobster cookies? Get out",7.95,"Appetizers","lobstercookies.jpg"
+"Lobster Sliders","Fried soft shell crab served with vegetables.",10.95,"Appetizers","lobstersliders.jpg"
+"Whole Lobster","What more can I say?",15.95,"Entrees","wholelobster.jpg"
+"Lobster Tail","A huge lobster tail with all the fixins",22.95,"Entrees","lobstertail.jpg"
+"Surf and Turf","Big steak and and Big  lobster",17.95,"Entrees","surfturf.jpg"
+"Not a Lobster","The only thing on the menu that isn't a lobster",16.95,"Entrees","notlobster.jpg"
+"Lobster Pie","Fresh baked pie...With lobster",6.95,"Desserts","lobsterpie.jpg"
+"Lobster Ice Cream","Vanilla Ice Cream with Lobster",5.95,"Desserts","lobstericecream.jpg"
