@@ -4,11 +4,68 @@ unencrypted_password = "password"
 encrypted_password = BCrypt::Password.create(unencrypted_password)
 
 puts "Creating Users"
-user = User.create([{full_name: "Franklin Webber", display_name: "Franky", password: unencrypted_password, password_confirmation: unencrypted_password,   email: "demo+franklin@jumpstartlab.com" },
-                    {full_name: "Jeff", display_name: "j3", password: unencrypted_password, password_confirmation: unencrypted_password, email: "demo+jeff@jumpstartlab.com"},
-                    {full_name: "Katrina Owen", display_name: "kytrinyx", password: unencrypted_password, password_confirmation: unencrypted_password, email: "demo+katrina@jumpstartlab.com", admin_status: true }])
+user = User.create(
+  [
+    {
+      full_name: "Franklin Webber", display_name: "Franky",
+      password: unencrypted_password, password_confirmation: unencrypted_password,
+      email: "demo+franklin@jumpstartlab.com"
+    },
+    {
+      full_name: "Jeff", display_name: "j3", password: unencrypted_password,
+      password_confirmation: unencrypted_password,
+      email: "demo+jeff@jumpstartlab.com"
+    },
+    {
+      full_name: "Katrina Owen", display_name: "kytrinyx",
+      password: unencrypted_password, password_confirmation:
+      unencrypted_password, email: "demo+katrina@jumpstartlab.com",
+      admin_status: true
+    },
+    {
+      full_name: "Luke Martinez", display_name: "SKYWALKA!",
+      password: "password", password_confirmation: "password",
+      email: "lukemartinez@gmail.com"
+    }
+  ]
+)
 
-admin = User.create({full_name: "admin", display_name: "admin", password: unencrypted_password, password_confirmation: unencrypted_password,   email: "admin@example.com", admin_status: true })
+admin = User.create(
+  {
+    full_name: "admin", display_name: "admin", password: unencrypted_password,
+    password_confirmation: unencrypted_password,
+    email: "admin@example.com", admin_status: true 
+  }
+)
+
+Role.create([{ name: "Owner"}])
+
+Restaurant.create(
+  [
+    { name: "McDonalds",    slug: "mcdonalds",  status: "approved" },
+    { name: "Burger King",  slug: "burgerking" },
+    { name: "What The Pho", slug: "whatthepho", status: "approved" },
+    { name: "Chipotle",     slug: "chipotle" },
+  ]
+)
+
+# RESTAURANTS FOR JOBS
+mcdonalds  = Restaurant.find_by(name: "McDonalds")
+whatthepho = Restaurant.find_by(name: "What The Pho")
+
+# USERS FOR JOBS
+luke = User.find_by(email: "lukemartinez@gmail.com")
+
+Job.create(
+  [
+    {
+      user: luke, restaurant: mcdonalds, role: Role.owner
+    },
+    {
+      user: luke, restaurant: whatthepho, role: Role.owner
+    }
+  ]
+)
 
 require 'csv'
 
@@ -26,10 +83,17 @@ contents.each do |row|
   image_file_name = row[:image_file_name]
 
   category_object = Category.find_or_create_by(title: category, type_of: 'main_menu')
-  item = Item.create(title: title, description: description, price: price, image_file_name: image_file_name)
+  item = Item.create(
+    title: title,
+    description: description,
+    price: price,
+    image_file_name: image_file_name,
+    restaurant: whatthepho
+  )
 
   ItemCategory.create(category_id: category_object.id, item_id: item.id)
 end
+
 category = Category.create(title: "House Specials", type_of: 'main_menu')
 
 ItemCategory.create([{ item_id: 9, category_id: category.id},
@@ -74,5 +138,3 @@ OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
                   { item_id: 4, order_id: 10, quantity: 5},
                   { item_id: 16, order_id: 10, quantity: 3},
                   { item_id: 31, order_id: 10, quantity: 7}])
-
-Role.create([{ name: "Owner"}])

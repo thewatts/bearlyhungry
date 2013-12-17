@@ -7,14 +7,13 @@ describe "Restaurant Admin Goes to Restaurant Admin Root" do
   rest_attributes = { :name => "McDonalds", :slug => "mcdonalds" }
   let!(:mcdonalds) { FactoryGirl.create(:restaurant, rest_attributes) }
 
-  setup do
+  before do
     FactoryGirl.create(:role, name: "Owner")
-    mcdonalds.add_owner(user)
     sign_in(user)
   end
 
   it "shows the dashboard for a specific restaurant" do
-    expect(user.class).to eq User
+    mcdonalds.add_owner(user)
     visit restaurant_admin_root_path(mcdonalds.slug)
     expect(page).to have_content "#{mcdonalds.name} Dashboard"
   end

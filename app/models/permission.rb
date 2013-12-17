@@ -21,7 +21,7 @@ class Permission < Struct.new(:user)
       return true if controller == "items" && action.in?(%w(index show))
       return true if controller == "order_items"
 
-      if user.owner_of(restaurant)
+      if user.owner_of?(restaurant)
         return true if controller == "admin/restaurant_dashboard"
       end
     end

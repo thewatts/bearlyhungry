@@ -13,6 +13,10 @@ class Restaurant < ActiveRecord::Base
     restaurant
   end
 
+  def add_owner(user)
+    Job.create!(:restaurant => self, :user => user, :role => Role.owner)
+  end
+
   def approved?
     status == "approved"
   end
