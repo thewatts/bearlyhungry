@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
     if user.nil? || !user.admin?
       :back
     else user.admin?
-      overlord_items_path
+      super_root_path
     end
   end
 
