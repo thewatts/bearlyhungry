@@ -66,6 +66,8 @@ Wtpho::Application.routes.draw do
 
     # Restaurant Admin
     namespace "admin" do
+      # Dashboard
+      get '/'  => 'restaurant_dashboard#index', :as => "root"
       resources :restaurants
       resources :items
       resources :order_items

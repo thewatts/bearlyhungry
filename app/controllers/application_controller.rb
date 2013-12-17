@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_order
   helper_method :current_user
   helper_method :current_restaurant
+  helper_method :current_slug
 
   def current_user
     @current_user ||= lookup_user
@@ -20,6 +21,10 @@ class ApplicationController < ActionController::Base
     else
       @current_order = set_order if current_restaurant
     end
+  end
+
+  def current_slug
+    current_restaurant.slug if current_restaurant
   end
 
   def current_order_for_current_restaurant?
@@ -115,7 +120,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    unless current_permission.allow?(params[:controller], params[:action])
+    unless current_permission.allow?(params[:controller], params[:action], params[:slug])
       redirect_to root_or_menu_path, alert: "Not authorized."
     end
   end

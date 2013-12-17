@@ -1,6 +1,6 @@
 class Permission < Struct.new(:user)
 
-  def allow?(controller, action)
+  def allow?(controller, action, rest_slug)
     return true if controller == "home_page"
     return true if controller == "sessions"
     return true if controller == "users" && action.in?(%w(new create destroy))
@@ -12,6 +12,7 @@ class Permission < Struct.new(:user)
     return true if controller == "admin/restaurants"
 
     if user
+      restaurant = Restaurant.find_by(:slug => rest_slug) if rest_slug
       return true if user.admin?
       return true if controller == "restaurants" && action.in?( %w(new create) )
       return true if controller == "charges"
@@ -19,6 +20,12 @@ class Permission < Struct.new(:user)
       return true if controller == "users" && action.in?(%w(edit update show))
       return true if controller == "items" && action.in?(%w(index show))
       return true if controller == "order_items"
+
+      if user.owner_of?(restaurant)
+        return true if controller == "admin/restaurant_dashboard"
+        return true if controller == "admin/items"
+        return true if controller == "admin/users"
+      end
     end
 
     return false

@@ -15,10 +15,15 @@ class Restaurant < ActiveRecord::Base
     restaurant
   end
 
+  def add_owner(user)
+    Job.create!(:restaurant => self, :user => user, :role => Role.owner)
+  end
+
   def approved?
     status == "approved"
   end
 
+<<<<<<< HEAD
   def send_new_restaurant_confirmation_email(user)
     @email_data = {
       user_email: user.email,
@@ -52,6 +57,14 @@ class Restaurant < ActiveRecord::Base
       admin_email: @admin.email
     }
     RestaurantMailer.new_restaurant_submitted_email(@email_data).deliver
+  end
+
+  def valid_orders
+    Order.valid.where("restaurant_id = ?", id)
+  end
+
+  def customers
+    valid_orders.map(&:user).uniq ## ASK ABOUT THIS
   end
 
 end

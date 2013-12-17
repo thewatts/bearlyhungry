@@ -21,6 +21,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'i18n', github: 'svenfuchs/i18n'
 
+gem 'haml'
+
 group :doc do
   gem 'sdoc', require: false
 end
