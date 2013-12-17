@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   validates :full_name, presence: { message: "Please enter your full name." }
   validates :email,     presence: true
+  validates :phone_number, presence: true,  if: :text?
   validates :password,  presence: { on: :create }, 
                         confirmation: true, unless: :guest?
   validates :email,     uniqueness: true
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
   after_create :send_welcome_email
 
   def self.find_and_authenticate(session_params)
-    user = find_by(email: session_params[:email])
+    user = find_by(email: session_params[:email].downcase)
     if user && user.authenticate(session_params[:password])
       user
     end
@@ -33,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
   def past_orders
-    @orders.sort_by {|order| order.created_at}.reverse unless guest
+    @orders.sort_by {|order| order.created_at}.reverse if @orders unless guest
   end
 
   def total_spent

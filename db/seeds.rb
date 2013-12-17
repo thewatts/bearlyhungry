@@ -5,6 +5,7 @@ require 'bcrypt'
 unencrypted_password = "password"
 encrypted_password = BCrypt::Password.create(unencrypted_password)
 
+<<<<<<< HEAD
 #____________________30 different categories (3 per restaurant)_________________
  
 categories = ["Appetizers", "Beverages", "Entrees", "Desserts",  "Specialties", "Burgers", "Soups", "Spicy Selections", "Vegetarian", "Salads", "Kids Menu", "Snacks", "Sandwiches", "Burritos", "Pizza", "Wraps", "Chicken Dishes", "Juices", "Alcoholic Beverages", "Vegan Options", "Specials", "Ethnic", "Tacos", "Burritos", "Seafood", "Fried Food"]
@@ -168,6 +169,100 @@ categories = ["Appetizers", "Beverages", "Entrees", "Desserts",  "Specialties", 
 #   #                 jamba_juice.slug => jamba_juice_menu,
 #   #                 taco_bell.slug => taco_bell_menu,
 #   #                 ventus.slug => ventus_menu  }
+=======
+puts "Creating Users"
+user = User.create(
+  [
+    {
+      full_name: "Franklin Webber", display_name: "Franky",
+      password: unencrypted_password, password_confirmation: unencrypted_password,
+      email: "demo+franklin@jumpstartlab.com"
+    },
+    {
+      full_name: "Jeff", display_name: "j3", password: unencrypted_password,
+      password_confirmation: unencrypted_password,
+      email: "demo+jeff@jumpstartlab.com"
+    },
+    {
+      full_name: "Katrina Owen", display_name: "kytrinyx",
+      password: unencrypted_password, password_confirmation:
+      unencrypted_password, email: "demo+katrina@jumpstartlab.com",
+      admin_status: true
+    },
+    {
+      full_name: "Luke Martinez", display_name: "SKYWALKA!",
+      password: "password", password_confirmation: "password",
+      email: "lukemartinez@gmail.com"
+    }
+  ]
+)
+
+admin = User.create(
+  {
+    full_name: "admin", display_name: "admin", password: unencrypted_password,
+    password_confirmation: unencrypted_password,
+    email: "admin@example.com", admin_status: true 
+  }
+)
+
+Role.create([{ name: "Owner"}])
+
+Restaurant.create(
+  [
+    { name: "McDonalds",    slug: "mcdonalds",  status: "approved" },
+    { name: "Burger King",  slug: "burgerking" },
+    { name: "What The Pho", slug: "whatthepho", status: "approved" },
+    { name: "Chipotle",     slug: "chipotle" },
+  ]
+)
+
+# RESTAURANTS FOR JOBS
+mcdonalds  = Restaurant.find_by(name: "McDonalds")
+whatthepho = Restaurant.find_by(name: "What The Pho")
+
+# USERS FOR JOBS
+luke = User.find_by(email: "lukemartinez@gmail.com")
+
+Job.create(
+  [
+    {
+      user: luke, restaurant: mcdonalds, role: Role.owner
+    },
+    {
+      user: luke, restaurant: whatthepho, role: Role.owner
+    }
+  ]
+)
+
+require 'csv'
+
+images = File.open "./app/assets/images"
+
+puts "Creating Items, Categories, and ItemCategories"
+contents = CSV.open "./db/db_seed.csv", headers: true, header_converters: :symbol
+
+contents.each do |row|
+
+  title       = row[:title]
+  description = row[:description]
+  price       = row[:price]
+  category    = row[:category]
+  image_file_name = row[:image_file_name]
+
+  category_object = Category.find_or_create_by(title: category, type_of: 'main_menu')
+  item = Item.create(
+    title: title,
+    description: description,
+    price: price,
+    image_file_name: image_file_name,
+    restaurant: whatthepho
+  )
+
+  ItemCategory.create(category_id: category_object.id, item_id: item.id)
+end
+
+category = Category.create(title: "House Specials", type_of: 'main_menu')
+>>>>>>> 8500cb9e7109e79b6b078bdf245c33b976f43e46
 
 #   # superlatives = ["juicy", "delicious", "yummy", "classy", "enjoyable", "tasty", "savory", "refreshing", "disgusting"]
 
@@ -189,6 +284,7 @@ categories = ["Appetizers", "Beverages", "Entrees", "Desserts",  "Specialties", 
 #     end
 #   end
 
+<<<<<<< HEAD
 #   def seed_item_categories(restaurant, count)
 #     count.times do |i|
 #       begin
@@ -340,3 +436,29 @@ categories = ["Appetizers", "Beverages", "Entrees", "Desserts",  "Specialties", 
 # puts "Time to seed:"
 # puts time
 # end
+=======
+puts "Creating Orders Items"
+OrderItem.create([{ item_id: 1, order_id: 1, quantity: 3},
+                  { item_id: 16, order_id: 1},
+                  { item_id: 24, order_id: 1, quantity: 2},
+                  { item_id: 30, order_id: 2, quantity: 3},
+                  { item_id: 16, order_id: 2},
+                  { item_id: 12, order_id: 2, quantity: 2},
+                  { item_id: 1, order_id: 3},
+                  { item_id: 16, order_id: 3, quantity: 2},
+                  { item_id: 17, order_id: 3, quantity: 3},
+                  { item_id: 1, order_id: 4, quantity: 2},
+                  { item_id: 16, order_id: 4, quantity: 2},
+                  { item_id: 35, order_id: 4, quantity: 3},
+                  { item_id: 2, order_id: 5, quantity: 2},
+                  { item_id: 16, order_id: 5},
+                  { item_id: 3, order_id: 6},
+                  { item_id: 16, order_id: 6, quantity: 3},
+                  { item_id: 30, order_id: 6, quantity: 3},
+                  { item_id: 1, order_id: 7},
+                  { item_id: 7, order_id: 8},
+                  { item_id: 16, order_id: 9, quantity: 2},
+                  { item_id: 4, order_id: 10, quantity: 5},
+                  { item_id: 16, order_id: 10, quantity: 3},
+                  { item_id: 31, order_id: 10, quantity: 7}])
+>>>>>>> 8500cb9e7109e79b6b078bdf245c33b976f43e46

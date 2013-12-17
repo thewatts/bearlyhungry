@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131217174630) do
+ActiveRecord::Schema.define(version: 20131215193048) do
 
   create_table "categories", force: true do |t|
     t.datetime "created_at"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 20131217174630) do
     t.boolean  "guest",           default: false
     t.integer  "phone_number"
     t.boolean  "deleted"
+    t.boolean  "text",            default: false
   end
 
 end

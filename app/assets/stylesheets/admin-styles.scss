@@ -44,13 +44,29 @@ body {
         &:last-child {
           text-align: right;
         }
+        padding-bottom: 45px;
       }
     }
   }
   tbody {
-    tr:first-child {
-      td {
-        padding-top: 45px;
+    tr {
+      background: #fff;
+      -webkit-transition: background .35s ease-in-out;
+      -moz-transition: background .35s ease-in-out;
+      -o-transition: background .35s ease-in-out;
+      transition: background .35s ease-in-out;
+
+      &:hover {
+        background: #f5f5f5;
+        -webkit-transition: background .35s ease-in-out;
+        -moz-transition: background .35s ease-in-out;
+        -o-transition: background .35s ease-in-out;
+        transition: background .35s ease-in-out;
+      }
+      &:first-child {
+        td {
+          margin-top: 45px;
+        }
       }
     }
     td {

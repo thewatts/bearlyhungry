@@ -8,16 +8,12 @@ Wtpho::Application.routes.draw do
   # post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
 
   # Platform Admin // Super
-  scope :path => "admin", :as => "overlord" do
-    resources :items
-    resources :order_items
-    resource  :session
-    resources :users
-    resources :orders, as: :order
+  namespace :super do
     put '/order-status/:status' => 'orders#update_status'
-    patch '/item-availability' => 'items#toggle_availability',
+    patch '/item-availability'  => 'items#toggle_availability',
       as: 'update_item_availability'
     resources :restaurants, :param => :slug
+    get '/' => 'restaurants#index', :as => 'root'
   end
 
   # Users
@@ -66,6 +62,8 @@ Wtpho::Application.routes.draw do
 
     # Restaurant Admin
     namespace "admin" do
+      # Dashboard
+      get '/'  => 'restaurant_dashboard#index', :as => "root"
       resources :restaurants
       resources :items
       resources :order_items

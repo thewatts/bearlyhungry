@@ -23,9 +23,13 @@ class ChargesController < ApplicationController
     Your order number is '#{current_order.id}.' A receipt was sent to #{customer.email}. We'll email or text you when your order is completed."
 
     current_order.update(status: "paid", user: current_user)
-    current_order.send_customer_confirmation_sms
     current_order.send_owner_submitted_sms
-    current_order.send_order_confirmation_email
+
+    if current_user.text == true
+      current_order.send_customer_confirmation_sms
+    else
+      current_order.send_order_confirmation_email
+    end
     redirect_to restaurant_order_confirmation_path(current_restaurant.slug)
 
   rescue Stripe::CardError => e

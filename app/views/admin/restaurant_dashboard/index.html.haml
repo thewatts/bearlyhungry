@@ -1,0 +1,13 @@
+%h1 #{@restaurant.name} Dashboard
+
+- if @restaurant.status != "approved"
+  %h3 PENDING
+
+
+.dash-stats.row
+  .dash-stat
+    %h3 Today's Orders
+  .dash-stat
+    %h3 Today's Sales
+  .dash-stat
+    %h3 New Customers

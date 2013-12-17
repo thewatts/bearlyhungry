@@ -114,6 +114,8 @@ GEM
     guard-rspec (4.2.0)
       guard (>= 2.1.1)
       rspec (>= 2.14, < 4.0)
+    haml (4.0.4)
+      tilt
     hike (1.2.3)
     hirb (0.7.1)
     jazz_hands (0.5.2)
@@ -312,6 +314,7 @@ DEPENDENCIES
   guard
   guard-minitest
   guard-rspec
+  haml
   i18n!
   jazz_hands
   jbuilder (~> 1.2)

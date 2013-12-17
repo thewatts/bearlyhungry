@@ -3,7 +3,8 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
 
   def index
-    @users = User.select {|user| user.id != current_user.id}
+    #@users = User.select {|user| user.id != current_user.id}
+    @users = current_restaurant.customers
   end
 
   def new
