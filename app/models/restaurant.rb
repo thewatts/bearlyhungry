@@ -20,4 +20,8 @@ class Restaurant < ActiveRecord::Base
   def approved?
     status == "approved"
   end
+
+  def customers
+    orders.map { |order| order.user }.uniq ## ASK ABOUT THIS
+  end
 end

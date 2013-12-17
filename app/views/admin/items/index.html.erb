@@ -1,6 +1,6 @@
 <div class="header-bar row">
   <h3>Items</h3>
-  <%= link_to "New Item", new_admin_item_path, class: "add button" %>
+  <%= link_to "New Item", new_restaurant_admin_item_path, class: "add button" %>
 </div>
 
 <div class="row">
@@ -29,7 +29,8 @@
         <% @items.each do |item| %>
           <tr>
             <td>
-              <%= link_to item.title, item_path(item) %>
+              <%= link_to item.title, restaurant_item_path(id: item.id, 
+                slug: current_restaurant.slug) %>
             </td>
             <td>
               <%= number_to_currency(item.price) %>
@@ -46,7 +47,7 @@
             </td>
             <td>
               <% if item.available? %>
-                <%= link_to "Disable", admin_update_item_availability_path(item_id: item.id, available: false), method: :patch,
+                <%= link_to "Disable", restaurant_admin_update_item_availability_path(item_id: item.id, available: false, slug: current_restaurant.slug), method: :patch,
                   data: { confirm: "Are you sure you want to disable #{item.title}?" } %>
               <% else %>
                 <%= link_to "Activate", admin_update_item_availability_path(item_id: item.id, available: true), method: :patch,
@@ -54,7 +55,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to "Edit", edit_admin_item_path(item) %>
+              <%= link_to "Edit", edit_restaurant_admin_item_path(id: item.id, slug: current_restaurant.slug) %>
             </td>
           </tr>
         <% end %>

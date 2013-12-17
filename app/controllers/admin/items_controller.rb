@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
   def create
     item = Item.new(item_params)
     item.save
-    redirect_to admin_items_path
+    redirect_to restaurant_admin_items_path(current_restaurant.slug)
   end
 
   def edit
@@ -34,19 +34,19 @@ class Admin::ItemsController < ApplicationController
     end
     @item.save
     @item.update(item_params)
-    redirect_to admin_items_path
+    redirect_to restaurant_admin_items_path(current_restaurant.slug)
   end
 
   def toggle_availability
     @item = Item.find(params[:item_id])
     @item.update(available: params[:available])
     flash.now[:success] = "Success!"
-    redirect_to admin_items_path
+    redirect_to restaurant_admin_items_path(current_restaurant.slug)
   end
 
   def destroy
     item = Item.find(params[:id])
     item.destroy
-    redirect_to admin_items_path
+    redirect_to restaurant_admin_items_path(current_restaurant.slug)
   end
 end
