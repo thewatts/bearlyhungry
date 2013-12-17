@@ -27,7 +27,7 @@
                     </li>
                     <% if current_user.admin? %>
                     <li class="child">
-                      <%= link_to "Admin Dashboard", overlord_order_index_path %>
+                      <%= link_to "Admin Dashboard", restaurant_admin_restaurants_path(current_restaurant.slug) %>
                     </li>
                     <% end %>
                   </ul>

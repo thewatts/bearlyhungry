@@ -93,7 +93,8 @@ class Order < ActiveRecord::Base
       }
     end
     
-    @email_data = {
+    @email_data = 
+    {
       user_email: user.email,
       user_name: user.full_name,
       order_total: subtotal,
@@ -106,9 +107,9 @@ class Order < ActiveRecord::Base
     OrderMailer.order_confirmation_email(@email_data).deliver
   end
 
-  #TODO
   def send_order_ready_email
-    @email_data = {
+    @email_data = 
+    {
       user_email:  user.email,
       user_name: user.full_name,
       order_id: id
