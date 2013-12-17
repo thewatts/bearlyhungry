@@ -16,7 +16,7 @@ describe Order do
 
   it 'should send a restaurant confirmation email' do
 
-    @restaurant.send_new_restaurant_confirmation_email(@email_data)
+    @restaurant.send_new_restaurant_confirmation_email(@user)
     ActionMailer::Base.deliveries.first.to.should == @user.email
   end
 
