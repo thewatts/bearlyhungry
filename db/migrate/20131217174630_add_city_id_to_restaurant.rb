@@ -1,5 +1,5 @@
 class AddCityIdToRestaurant < ActiveRecord::Migration
   def change
-    add_column :restaurants, :city_id, :reference
+    add_reference :restaurants, :city, :index => true
   end
 end
