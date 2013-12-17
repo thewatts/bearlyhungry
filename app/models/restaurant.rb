@@ -23,7 +23,6 @@ class Restaurant < ActiveRecord::Base
     status == "approved"
   end
 
-<<<<<<< HEAD
   def send_new_restaurant_confirmation_email(user)
     @email_data = {
       user_email: user.email,
