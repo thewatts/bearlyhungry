@@ -7,9 +7,13 @@ class Restaurant < ActiveRecord::Base
   has_many :jobs
   has_many :users, through: :jobs
 
+  belongs_to :city
+
   def self.create_with_owner(restaurant_params, user)
     restaurant = Restaurant.create!(restaurant_params)
     Job.create!(:restaurant => restaurant, :user => user, :role => Role.owner)
+    restaurant.send_new_restaurant_confirmation_email(user)
+    restaurant.send_new_restaurant_submitted_email
     restaurant
   end
 
@@ -21,6 +25,41 @@ class Restaurant < ActiveRecord::Base
     status == "approved"
   end
 
+  def send_new_restaurant_confirmation_email(user)
+    @email_data = {
+      user_email: user.email,
+      user_name: user.full_name,
+
+    }
+    RestaurantMailer.new_restaurant_confirmation_email(@email_data).deliver
+  end
+
+  def send_new_restaurant_rejection_email(user)
+    @email_data = {
+      user_email: user.email,
+      user_name: user.full_name,
+
+    }
+    RestaurantMailer.new_restaurant_rejection_email(@email_data).deliver
+  end
+
+  def send_new_restaurant_approval_email(user)
+    @email_data = {
+      user_email: user.email,
+      user_name: user.full_name,
+
+    }
+    RestaurantMailer.new_restaurant_approval_email(@email_data).deliver
+  end
+
+  def send_new_restaurant_submitted_email
+    @admin = User.find_by(:admin_status => true)
+    @email_data = {
+      admin_email: @admin.email
+    }
+    RestaurantMailer.new_restaurant_submitted_email(@email_data).deliver
+  end
+
   def valid_orders
     Order.valid.where("restaurant_id = ?", id)
   end
@@ -28,4 +67,5 @@ class Restaurant < ActiveRecord::Base
   def customers
     valid_orders.map(&:user).uniq ## ASK ABOUT THIS
   end
+
 end

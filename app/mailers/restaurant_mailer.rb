@@ -30,4 +30,13 @@ class RestaurantMailer < ActionMailer::Base
       subject: 'Your restaurant was rejected' })
 
   end
+
+  def new_restaurant_submitted_email(email_data)
+    @admin_email = email_data[:admin_email]
+    mail({
+      to: @admin_email,
+      subject: 'Your restaurant was rejected' })
+  end
+
 end
+

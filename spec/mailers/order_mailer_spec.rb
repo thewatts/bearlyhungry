@@ -20,11 +20,11 @@ describe Order do
 
     @order.send_order_confirmation_email
     ActionMailer::Base.deliveries.first.to.should == [@user.email]
-    ActionMailer::Base.deliveries.count.should == 2
   end
 
   it 'sends an order ready email' do
     @order.send_order_ready_email
-    ActionMailer::Base.deliveries.count.should == 2
+        ActionMailer::Base.deliveries.first.to.should == [@user.email]
+
   end
 end

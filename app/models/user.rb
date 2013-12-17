@@ -51,36 +51,5 @@ class User < ActiveRecord::Base
     jobs.any? { |job| job.restaurant_id == restaurant.id }
   end
 
-  def send_new_restaurant_confirmation_email
-    ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
-
-    @email_data = {
-      user_email: email,
-      user_name: full_name,
-
-    }
-    RestaurantMailer.new_restaurant_confirmation_email(@email_data).deliver
-  end
-
-  def send_new_restaurant_rejection_email
-    ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
-
-    @email_data = {
-      user_email: email,
-      user_name: full_name,
-
-    }
-    RestaurantMailer.new_restaurant_rejection_email(@email_data).deliver
-  end
-
-  def send_new_restaurant_approval_email
-        ## NEED TO CHANGE THE EMAIL_DATA WHEN METHOD IS MOVED FROM USER TO RESTAURANT
-
-    @email_data = {
-      user_email: email,
-      user_name: full_name,
-
-    }
-    RestaurantMailer.new_restaurant_approval_email(@email_data).deliver
-  end
+  
 end
