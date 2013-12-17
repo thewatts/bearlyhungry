@@ -28,6 +28,7 @@ class RestaurantMailer < ActionMailer::Base
     mail({
       to: @user_email,
       subject: 'Your restaurant was rejected' })
-
   end
+
+  
 end
