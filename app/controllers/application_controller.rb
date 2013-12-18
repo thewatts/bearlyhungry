@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :current_restaurant
   helper_method :current_slug
+  helper_method :categories
+
+  def categories
+    current_restaurant.categories
+  end
 
   def current_user
     @current_user ||= lookup_user

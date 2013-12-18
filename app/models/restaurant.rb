@@ -74,4 +74,16 @@ class Restaurant < ActiveRecord::Base
     valid_orders.map(&:user).uniq ## ASK ABOUT THIS
   end
 
+  def find_customer(id)
+    valid_orders.where("user_id = ?", id)[0].user
+  end
+
+  def categories
+    items.map { |item| item.categories[0] }.uniq
+  end
+
+  def items_for_category(category)
+    category.items.where("restaurant_id = ?", id)
+  end
+
 end
