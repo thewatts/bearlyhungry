@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
     if current_restaurant
       @category = Category.find_by_slug(params[:category])
       if params[:category] && !@category.nil?
-        @items = @category.items.available
+        @items = current_restaurant.items_for_category(@category)
       else
         @items = current_restaurant.items.available
       end
