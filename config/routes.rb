@@ -14,6 +14,8 @@ Wtpho::Application.routes.draw do
       as: 'update_item_availability'
     resources :restaurants, :param => :slug
     get '/' => 'restaurants#index', :as => 'root'
+    get '/:slug' => 'restaurants#show'
+    put '/:slug' => 'restaurants#update'
   end
 
   # Users
