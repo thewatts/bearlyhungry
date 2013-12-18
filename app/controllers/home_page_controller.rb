@@ -9,15 +9,22 @@ class HomePageController < ApplicationController
     cities = City.all
     data = cities.map { |city|
       {
-        :name => city.city,
-        :count => city.restaurants.count,
-        :url => "http://google.com"
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [-77.03, 38.90]
+        },
+        properties: {
+          :title => city.city,
+          :count => city.restaurants.count,
+          :url => "http://google.com"
+        }
       }
     }
     respond_to do |format|
       format.json do
         render json: {
-          cities: data
+          geoJson: data
         }.to_json
       end
     end
