@@ -6,6 +6,7 @@ class Restaurant < ActiveRecord::Base
   has_many :orders
   has_many :jobs
   has_many :users, through: :jobs
+  has_many :categories, through: :items
 
   belongs_to :city
 
@@ -74,6 +75,10 @@ class Restaurant < ActiveRecord::Base
 
   def customers
     valid_orders.map(&:user).uniq ## ASK ABOUT THIS
+  end
+
+  def find_customer(id)
+    valid_orders.where("user_id = ?", id)[0].user
   end
 
 end

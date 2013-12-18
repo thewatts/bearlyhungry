@@ -3,30 +3,28 @@ class Admin::ItemsController < ApplicationController
   include Admin::ItemsHelper
 
   def index
-    @items = Item.all
+    @items = current_restaurant.items
   end
 
   def new
-    @item = Item.new
+    @item = current_restaurant.item.new
   end
 
   def show
-
   end
 
   def create
-    item = Item.new(item_params)
+    item = current_restaurant.items.new(item_params)
     item.save
     redirect_to restaurant_admin_items_path(current_restaurant.slug)
   end
 
   def edit
     @item = Item.find(params[:id])
-
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = current_restaurant.items.find(params[:id])
     if params[:item][:available] == '0'
       @item.available = false
     else
