@@ -9,7 +9,8 @@
 
 <div class="menus-nav three columns">
   <ul>
-    <% item_categories.each do |category| %>
+  
+    <% categories.each do |category| %>
       <% if category.items.count > 0 %>
       <li>
         <%= link_to category.title, restaurant_menu_category_path(category: category.slug, slug: current_restaurant.slug) if current_restaurant %>

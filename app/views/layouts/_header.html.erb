@@ -5,7 +5,7 @@
     <div class="twelve columns">
       <% if current_restaurant %>
         <a class="logo" href="/<%= current_restaurant.slug %>" title="<%= current_restaurant.name %>">
-          <%= current_restaurant.name %>
+          <%= link_to "Back", root_path, class: "radius button" %>
         </a>
       <% else %>
         <a href="/">BEARLY HUNGRY</a>
