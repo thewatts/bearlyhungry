@@ -12,7 +12,7 @@ class Super::RestaurantsController < ApplicationController
   def update
     restaurant = Restaurant.find_by(:slug => params[:slug])
     restaurant.update(status: params[:status])
-    email_for_restaurant
+    restaurant.email_response
     redirect_to :back
   end
 end

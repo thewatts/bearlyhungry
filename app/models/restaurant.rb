@@ -17,6 +17,10 @@ class Restaurant < ActiveRecord::Base
     restaurant
   end
 
+  def owners
+    jobs.is_owner.collect{|job| job.user}
+  end
+
   def add_owner(user)
     Job.create!(:restaurant => self, :user => user, :role => Role.owner)
   end
@@ -31,39 +35,6 @@ class Restaurant < ActiveRecord::Base
 
   def approved?
     status == "approved"
-  end
-
-  def send_new_restaurant_confirmation_email(user)
-    @email_data = {
-      user_email: user.email,
-      user_name: user.full_name,
-    }
-    RestaurantMailerWorker.perform(@email_data)
-  end
-
-  def send_new_restaurant_rejection_email(user)
-    @email_data = {
-      user_email: user.email,
-      user_name: user.full_name,
-
-    }
-    RestaurantMailer.new_restaurant_rejection_email(@email_data).deliver
-  end
-
-  def send_new_restaurant_approval_email(user)
-    @email_data = {
-      user_email: user.email,
-      user_name: user.full_name,
-    }
-    RestaurantMailer.new_restaurant_approval_email(@email_data).deliver
-  end
-
-  def send_new_restaurant_submitted_email
-    @admin = User.find_by(:admin_status => true)
-    @email_data = {
-      admin_email: @admin.email
-    }
-    RestaurantMailer.new_restaurant_submitted_email(@email_data).deliver
   end
 
   def valid_orders
@@ -87,5 +58,44 @@ class Restaurant < ActiveRecord::Base
   def items_for_category(category)
     category.items.where("items.restaurant_id = ?", id)
   end
+
+  def send_new_restaurant_confirmation_email
+    @owner_emails = owners.collect{|owner| owner.email}
+    @owner_emails.each do |email|
+      RestaurantMailer.new_restaurant_confirmation_email(email).deliver
+    end
+  end
+
+def send_new_restaurant_rejection_email
+  @owner_emails = owners.collect{|owner| owner.email}
+
+  @owner_emails.each do |email|
+    RestaurantMailer.new_restaurant_rejection_email(email).deliver
+  end
+end
+
+def send_new_restaurant_approval_email
+  @owner_emails = owners.collect{|owner| owner.email}
+
+  @owner_emails.each do |email|
+    RestaurantMailer.new_restaurant_approval_email(email).deliver
+  end
+end
+
+def send_new_restaurant_submitted_email
+  @admin = User.find_by(:admin_status => true)
+  @email_data = {
+    admin_email: @admin.email
+  }
+  RestaurantMailer.new_restaurant_submitted_email(@email_data).deliver
+end
+
+def email_response
+  if status == "Approved"
+    send_new_restaurant_approval_email
+  else
+    send_new_restaurant_rejection_email
+  end
+end
 
 end
