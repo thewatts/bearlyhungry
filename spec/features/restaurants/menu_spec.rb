@@ -13,6 +13,11 @@ feature "Restaurant Home Page (menu)" do
                                            :restaurant_id => @mcdonalds.id)
     @whopper   = FactoryGirl.create(:item, :title => "Whopper",
                                            :restaurant_id => @burgerking.id)
+    category  = FactoryGirl.create(:category)
+    category2 = FactoryGirl.create(:category, title: "Cat2")
+    ItemCategory.create(item: @big_mac, category: category)
+    ItemCategory.create(item: @mcnuggets, category: category)
+    ItemCategory.create(item: @whopper, category: category2)
   end
 
   scenario "user selects restaurant and sees menu" do
