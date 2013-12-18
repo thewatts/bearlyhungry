@@ -11,7 +11,7 @@ class Restaurant < ActiveRecord::Base
 
   def self.create_with_owner(restaurant_params, user)
     restaurant = Restaurant.create!(restaurant_params)
-    Job.create!(:restaurant => restaurant, :user => user, :role => Role.owner)
+    Job.create(:restaurant => restaurant, :user => user, :role => Role.owner)
     restaurant.send_new_restaurant_confirmation_email(user)
     restaurant.send_new_restaurant_submitted_email
     restaurant
@@ -72,10 +72,12 @@ class Restaurant < ActiveRecord::Base
 
   def customers
     valid_orders.map(&:user).uniq ## ASK ABOUT THIS
+
+    # SELECT DISTINCT USERS
   end
 
   def find_customer(id)
-    valid_orders.where("user_id = ?", id)[0].user
+    valid_orders.where("user_id = ?", id).limit(1).first.user
   end
 
   def categories

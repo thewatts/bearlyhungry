@@ -11,7 +11,7 @@ time = Benchmark.measure do
 # Counts for Models
 ##############################################################################
 @user_num       = 100_000
-@restaurant_num = 10_000
+@restaurant_num = 1000
 
 ##############################################################################
 # 30 Unique Locations (cities)
