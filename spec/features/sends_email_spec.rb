@@ -3,7 +3,7 @@ require 'capybara/rails'
 require 'capybara/rspec'
 
 describe "User Mail" do
-  it "should send welcoming email" do
+  xit "should send welcoming email" do
     visit root_path
     first(:link, "Login").click
      within('#exampleModal') do
