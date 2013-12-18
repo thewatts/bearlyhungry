@@ -6,7 +6,7 @@ require 'pry'
 unencrypted_password = "password"
 encrypted_password   = BCrypt::Password.create(unencrypted_password)
 
-#time = Benchmark.measure do
+time = Benchmark.measure do
 
 ##############################################################################
 # Counts for Models
@@ -284,6 +284,6 @@ end
 restaurants.each { |r| clone_restaurant(r, cities, @restaurant_num) }
 ##_________________________images______________________________
 #images = File.open "./app/assets/images"
-#end
-#puts "Time to seed:"
-#puts time
+end
+puts "Time to seed:"
+puts time
