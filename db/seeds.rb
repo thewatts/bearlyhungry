@@ -10,8 +10,8 @@ time = Benchmark.measure do
 ##############################################################################
 # Counts for Models
 ##############################################################################
-@user_num       = 10
-@restaurant_num = 10
+@user_num       = 100_000
+@restaurant_num = 10_000
 
 ##############################################################################
 # 30 Unique Locations (cities)
@@ -285,4 +285,28 @@ restaurants.each { |r| clone_restaurant(r, cities, @restaurant_num) }
 #images = File.open "./app/assets/images"
 end
 puts "Time to seed:"
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
+puts time
 puts time

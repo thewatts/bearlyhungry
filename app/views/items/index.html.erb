@@ -21,6 +21,8 @@
 
 <div class="items nine columns">
   <div class="row">
-    <%= render partial: "items/item", collection: @items %>
+    <% cache @items do %>
+      <%= render partial: "items/item", collection: @items %>
+    <% end %>
   </div>
 </div>

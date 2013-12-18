@@ -83,7 +83,7 @@ class Restaurant < ActiveRecord::Base
   end
 
   def items_for_category(category)
-    category.items.where("restaurant_id = ?", id)
+    category.items.where("items.restaurant_id = ?", id)
   end
 
 end

@@ -26,6 +26,8 @@ gem 'i18n', github: 'svenfuchs/i18n'
 
 gem 'haml'
 
+gem 'dalli'
+
 group :doc do
   gem 'sdoc', require: false
 end
@@ -59,4 +61,5 @@ end
 group :production do
   gem 'pg'
   gem 'rails_12factor'
+  gem 'memcachier'
 end

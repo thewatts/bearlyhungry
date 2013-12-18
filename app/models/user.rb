@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   has_secure_password(validations: false)
 
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
 
   def self.find_and_authenticate(session_params)
     user = find_by(email: session_params[:email].downcase)
