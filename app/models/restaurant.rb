@@ -37,9 +37,8 @@ class Restaurant < ActiveRecord::Base
     @email_data = {
       user_email: user.email,
       user_name: user.full_name,
-
     }
-    RestaurantMailer.new_restaurant_confirmation_email(@email_data).deliver
+    RestaurantMailerWorker.perform(@email_data)
   end
 
   def send_new_restaurant_rejection_email(user)

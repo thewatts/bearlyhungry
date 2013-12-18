@@ -17,14 +17,16 @@ describe Order do
   end
 
   it 'should send an order confirmation email' do
-
     @order.send_order_confirmation_email
+    @order.save
+    @user.save
     ActionMailer::Base.deliveries.first.to.should == [@user.email]
   end
 
   it 'sends an order ready email' do
     @order.send_order_ready_email
-        ActionMailer::Base.deliveries.first.to.should == [@user.email]
-
+    @order.save
+    @user.save
+    ActionMailer::Base.deliveries.first.to.should == [@user.email]
   end
 end

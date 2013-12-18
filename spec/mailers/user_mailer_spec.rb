@@ -31,7 +31,6 @@ describe User do
     it 'should have one job' do
       pending
       @user.save
-      binding.pry
       expect(UserMailerWorker).to have(1).enqueued.jobs
     end
     
