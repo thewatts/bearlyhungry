@@ -8,8 +8,18 @@ encrypted_password   = BCrypt::Password.create(unencrypted_password)
 
 #time = Benchmark.measure do
 
-#____________________30 different regions(cities)______________________________
+##############################################################################
+# Counts for Models
+##############################################################################
+@user_num       = 10
+@restaurant_num = 10
 
+##############################################################################
+# 30 Unique Locations (cities)
+##############################################################################
+#
+puts "Creating Locations"
+#
 albuquerque  = City.create!(city: "Albuquerque")
 anchorage    = City.create!(city: "Anchorage")
 atlanta      = City.create!(city: "Atlanta")
@@ -47,49 +57,31 @@ sanfran      = City.create!(city: "San Francisco")
 tucson       = City.create!(city: "Tucson")
 
 cities = [
-  albuquerque,
-  anchorage,
-  atlanta,
-  austin,
-  boston,
-  boulder,
-  burlington,
-  charlotte,
-  chicago,
-  cincinnati,
-  chicago,
-  dallas,
-  dc,
-  detroit,
-  denver,
-  honolulu,
-  la,
-  little_rock,
-  madison,
-  miami,
-  minneapolis,
-  nyc,
-  philadelphia,
-  pittsburgh,
-  portland,
-  san_diego,
-  santa_fe,
-  santa_fe,
-  seattle,
-  sanfran,
-  tucson
+  albuquerque, anchorage, atlanta, austin, boston, boulder, burlington,
+  charlotte, chicago, cincinnati, chicago, dallas, dc, detroit, denver,
+  honolulu, la, little_rock, madison, miami, minneapolis, nyc, philadelphia,
+  pittsburgh, portland, san_diego, santa_fe, santa_fe, seattle, sanfran, tucson
 ]
 
 restaurant_statuses = %w( approved pending rejected )
 
 
-########################### ROLES
+##############################################################################
+# ROLES
+##############################################################################
+#
+puts "Creating Roles"
 #
 Role.create!([{ name: "Owner"}])
 Role.create!([{ name: "Stocker"}])
 Role.create!([{ name: "Cook"}])
 
-##_________________________100,000 users_______________________________
+##############################################################################
+# USERS
+##############################################################################
+#
+puts "Creating Normal Users"
+#
 jorge = User.create!(email: "demo+jorge@jumpstartlab.com",
     full_name: "Jorge",
     display_name: "littlemexican",
@@ -133,20 +125,29 @@ nathaniel = User.create!(email: "watts@nathanielwatts.com",
   admin_status: true)
 
 def seed_users(count)
+  puts "Creating Dynagen Users"
   count.times.map do |i|
-    puts "Creating user #{i}"
+    print "."
     User.create!(
-      full_name: "user_number_#{i}",
-      display_name: "user_#{i}",
-      email: "user_#{i}@example.com",
-      password: "unencrypted_password",
-      password_confirmation: "unencrypted_password")
+      :full_name             => "user_number_#{i}",
+      :display_name          => "user_#{i}",
+      :email                 => "user_#{i}@example.com",
+      :password              => "unencrypted_password",
+      :password_confirmation => "unencrypted_password"
+    )
   end
 end
 
 #seed_users(100000)
-@all_users = seed_users(10)
-@all_users_count = @all_users.count
+@all_users       = seed_users(@user_num)
+@all_users_count = @user_num
+
+##############################################################################
+# BASE RESTAURANTS
+##############################################################################
+#
+puts "Creating Base Restaurants"
+#
 
 jamba_juice = Restaurant.create!(name: "Jamba Juice",
   description: "Feel health drain down your throat", slug: "jamba-juice",
@@ -188,9 +189,6 @@ lukes_lobster = Restaurant.create!(name: "Luke's Lobster",
   description: "Lobsters to make you poop red", slug: "lukes-lobster",
   status: "approved", city_id: portland.id, logo: "https://s3.amazonaws.com/bearlyhungry/luke.png" )
 
-#restaurants = [ mcdonalds, what_the_pho, jamba_juice, luke, nathaniels_nook,
-#                kats_hot_cakes, chicago_pizza, lukes_lobster,
-#                taco_bell, ventus ]
 restaurants = [ what_the_pho, mcdonalds, jamba_juice, chicago_pizza,
                 kats_hot_cakes, luke, nathaniels_nook, taco_bell,
                 ventus, lukes_lobster ]
@@ -198,10 +196,12 @@ restaurants = [ what_the_pho, mcdonalds, jamba_juice, chicago_pizza,
 ## ____________________20 different items per restaurant______________________
 #
 def create_items_for(restaurant)
-  puts "================================== Creating Items, Categories, and ItemCategories for #{restaurant.id}"
-  contents = CSV.open "./db/seed/items/#{restaurant.slug}-items.csv", headers: true, header_converters: :symbol
+  puts "================================== Creating Items, Categories, and ItemCategories for #{restaurant.name}"
+  filename = restaurant.slug.gsub(/-\d+/, '')
+  contents = CSV.open "./db/seed/items/#{filename}-items.csv", headers: true, header_converters: :symbol
 
    contents.each do |row|
+     print "."
      title           = row[:title]
      description     = row[:description]
      category        = row[:category]
@@ -209,11 +209,9 @@ def create_items_for(restaurant)
      image_file_name = row[:image_file_name]
 
      # create category
-     puts "finding or creating category:::: #{category}"
      category_object = Category.find_or_create_by(title: category, type_of: 'main_menu')
 
      # create item
-     puts "creating item: #{title}"
      item = Item.create!(
        title: title,
        description: description,
@@ -221,18 +219,17 @@ def create_items_for(restaurant)
        image_file_name: image_file_name,
        restaurant_id: restaurant.id
      )
-
+      
      ItemCategory.create!(category_id: category_object.id, item_id: item.id)
    end
-   puts "===================================>>>>>>>>>>"
 end
 
 def create_jobs_for(restaurant)
   2.times do
     binding.pry if !restaurant.valid?
-    restaurant.add_owner(@all_users[rand(@all_users.count)])
-    restaurant.add_stocker(@all_users[rand(@all_users.count)])
-    restaurant.add_cook(@all_users[rand(@all_users.count)])
+    restaurant.add_owner(@all_users[rand(@all_users_count)])
+    restaurant.add_stocker(@all_users[rand(@all_users_count)])
+    restaurant.add_cook(@all_users[rand(@all_users_count)])
   end
 end
 
@@ -241,32 +238,35 @@ def order_statuses
 end
 
 def create_orders_for(restaurant)
-  puts "---------> CREATING ORDERS FOR #{restaurant.name}"
-  items_count = restaurant.items.count
+  puts "Creating Orders for #{restaurant.name}"
   10.times do
     item = restaurant.items.sample
     order = restaurant.orders.create!(user: @all_users[rand(@all_users_count)])
     order.add_item(item.id, rand(5))
     order.update(status: order_statuses[rand(5)])
   end
-  puts "---------> FINISH CREATING ORDERS FOR #{restaurant.name}"
 end
 
 restaurants.each do |restaurant|
-  binding.pry if restaurant.nil?
+  puts "creating items for #{restaurant.name}"
   create_items_for(restaurant)
+  puts "creating job for #{restaurant.name}"
   create_jobs_for(restaurant)
+  puts "creating orders for #{restaurant.name}"
   create_orders_for(restaurant)
 end
 
-# RESTAURANT MASS CREATION
+##############################################################################
+# AUTO GEN RESTAURANTS
+##############################################################################
+#
+puts "Creating DYNAGEN Restaurants"
+#
 def clone_restaurant(restaurant, cities, count)
   count.times do |i|
-    puts "creating restaurant #{restaurant.name} #{i}..."
+    print "."
 
     r = restaurant.dup
-    puts "-------------------------------------------------------------- ASDF"
-    create_items_for(r)
 
     r.update(
       name: restaurant.name + " #{i}",
@@ -275,54 +275,13 @@ def clone_restaurant(restaurant, cities, count)
       city: cities[rand(30)]
     )
 
+    create_items_for(r)
     create_jobs_for(r)
-    #create_orders_for(r)
+    create_orders_for(r)
   end
 end
 
-restaurants.each { |r| clone_restaurant(r, cities, 10) }
-#restaurants.each {|r| clone_restaurant(r, cities, 1000) }
-
-
-##_________________________orders_______________________________
-#
-puts "============================================> Creating Orders"
-#Order.create!([{ status: "pending"},
-#              { status: "pending"},
-#              { status: "in progress", user_id: 1},
-#              { status: "in progress", user_id: 2},
-#              { status: "paid", user_id: 3},
-#              { status: "paid", user_id: 1},
-#              { status: "completed", user_id: 2},
-#              { status: "completed", user_id: 3},
-#              { status: "cancelled", user_id: 1},
-#              { status: "cancelled", user_id: 2}])
-#
-#puts "Creating Orders Items"
-#OrderItem.create!([{ item_id: 1, order_id: 1, quantity: 3},
-#                  { item_id: 16, order_id: 1},
-#                  { item_id: 24, order_id: 1, quantity: 2},
-#                  { item_id: 30, order_id: 2, quantity: 3},
-#                  { item_id: 16, order_id: 2},
-#                  { item_id: 12, order_id: 2, quantity: 2},
-#                  { item_id: 1, order_id: 3},
-#                  { item_id: 16, order_id: 3, quantity: 2},
-#                  { item_id: 17, order_id: 3, quantity: 3},
-#                  { item_id: 1, order_id: 4, quantity: 2},
-#                  { item_id: 16, order_id: 4, quantity: 2},
-#                  { item_id: 35, order_id: 4, quantity: 3},
-#                  { item_id: 2, order_id: 5, quantity: 2},
-#                  { item_id: 16, order_id: 5},
-#                  { item_id: 3, order_id: 6},
-#                  { item_id: 16, order_id: 6, quantity: 3},
-#                  { item_id: 30, order_id: 6, quantity: 3},
-#                  { item_id: 1, order_id: 7},
-#                  { item_id: 7, order_id: 8},
-#                  { item_id: 16, order_id: 9, quantity: 2},
-#                  { item_id: 4, order_id: 10, quantity: 5},
-#                  { item_id: 16, order_id: 10, quantity: 3},
-#                  { item_id: 31, order_id: 10, quantity: 7}])
-#
+restaurants.each { |r| clone_restaurant(r, cities, @restaurant_num) }
 ##_________________________images______________________________
 #images = File.open "./app/assets/images"
 #end
