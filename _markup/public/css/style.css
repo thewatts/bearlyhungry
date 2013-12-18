@@ -75,7 +75,22 @@ body {
   background: #efefef;
   text-align: center; }
   .restaurants .heading {
-    margin-top: 30px; }
+    font-family: "Museo300Regular"-serif;
+    margin-top: 30px;
+    margin-bottom: 40px; }
     .restaurants .heading h3 {
-      font-family: "Museo300Regular"-serif;
+      font-family: "museo_slab500"-serif;
+      font-weight: normal;
       font-size: 1.8em; }
+    .restaurants .heading span {
+      font-size: 1.2em;
+      color: #667; }
+
+.restaurant img {
+  background: #fff;
+  padding: 5px;
+  border: solid 1px #ddd; }
+.restaurant h4 {
+  font-family: "museo_slab500"-serif;
+  font-weight: normal;
+  font-size: 1.3em; }

@@ -95,11 +95,30 @@ body {
   background: #efefef;
   text-align: center;
   .heading {
+    font-family: $museo;
     margin-top: 30px;
+    margin-bottom: 40px;
     h3 {
-      font-family: $museo;
+      font-family: $museoSlab;
+      font-weight: normal;
       font-size: 1.8em;
+    }
+    span {
+      font-size: 1.2em;
+      color: #667;
     }
   }
 }
 
+.restaurant {
+  img {
+    background: #fff;
+    padding: 5px;
+    border: solid 1px #ddd;
+  }
+  h4 {
+    font-family: $museoSlab;
+    font-weight: normal;
+    font-size: 1.3em;
+  }
+}
