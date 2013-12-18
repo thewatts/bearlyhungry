@@ -13,7 +13,7 @@
 
   </div>
 
-  <div id ="guest-sign-up" class ="3 columns">
+  <div id ="guest-sign-up" class ="three columns">
     <% if current_user.guest? %>
       Register Account
       <%= form_for :user,url: { controller: "users", action: "update" } do |f| %>
