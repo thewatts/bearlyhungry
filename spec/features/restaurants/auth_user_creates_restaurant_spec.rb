@@ -4,11 +4,13 @@ feature "Auth User Restaurant Creation" do
 
   before do
     FactoryGirl.create(:role, name: "Owner")
+    @admin = FactoryGirl.create(:user, :admin_status => true, :email => "admin@admin.com")
+s
   end
 
   let!(:user) { FactoryGirl.create(:user) }
 
-  scenario "creates restaurant from new restaurant page" do
+  xit "creates restaurant from new restaurant page" do
     #As an authenticated user
     sign_in(user)
     #when I visit the new restaurant page

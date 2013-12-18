@@ -10,6 +10,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'sidekiq'
+gem 'pg'
 
 gem 'jquery-rails'
 
@@ -19,9 +21,13 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'newrelic_rpm'
+
 gem 'i18n', github: 'svenfuchs/i18n'
 
 gem 'haml'
+
+gem 'dalli'
 
 group :doc do
   gem 'sdoc', require: false
@@ -34,10 +40,10 @@ end
 
 group :development, :test do
   gem 'jazz_hands'
+  gem 'rspec-sidekiq'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'sqlite3'
   gem 'poltergeist'
   gem 'selenium-webdriver'
   gem 'launchy'
@@ -53,6 +59,6 @@ group :test do
   gem 'database_cleaner'
 end 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
+  gem 'memcachier'
 end

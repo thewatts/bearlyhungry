@@ -1,0 +1,33 @@
+"title","description","price","category","image_file_name"
+"Chicken Soft Taco","A warm, soft flour tortilla filled with shredded chicken, topped with crisp lettuce and real cheddar cheese.",3.95,"Tacos","chicken_soft_taco.jpg"
+"Crunchy Taco","A crunchy, corn taco shell filled with seasoned beef, crisp shredded lettuce, and real cheddar cheese.",6.95,"Tacos","menu_item_crunchy_taco.jpg"
+"Soft Taco Beef","
+A warm, soft, flour tortilla filled with seasoned ground beef, crisp, shredded lettuce, and real cheddar cheese.",6.95,"Tacos","menu_item_softtaco.jpg"
+"Grilled Steak Soft Taco","A warm, soft flour tortilla filled with marinated premium thick cut steak, real cheddar cheese, crisp shredded lettuce, diced ripe tomatoes, and avocado ranch sauce.",7.95,"Tacos","double_decker_taco_supreme.jpg"
+"Fresco Chicken Soft Taco","This Taco Bell Fresco taco is a warm, soft flour tortilla filled with shredded chicken, crisp shredded lettuce, and pico de gallo.",4.95,"Tacos","Taco-soft-ranchero-fresco-chick.jpg"
+"7-layer Burrito","
+A warm, soft flour tortilla wrapped around premium Latin rice, hearty beans, a three cheese blend, crisp shredded lettuce, diced ripe tomatoes, reduced-fat sour cream, and chunky guacamole.",7.95,"Burritos","menu_item_7layerburrito.jpg"
+"Black Bean Burrito","
+Enjoy premium Latin rice, flavorful black beans, a savory three-cheese blend, topped with tangy red sauce, all wrapped in a warm flour tortilla.
+",7.95,"Burritos","menu_item_black_bean_burrito.jpg"
+"Combo Burrito","A warm, soft flour tortilla loaded with a double portion** of seasoned beef filled with hearty beans, onions, real cheddar cheese, and tangy red sauce.",8.95,"Burritos","menu_item_comboburrito.jpg"
+"Chili Cheese Burrito","A warm, soft, flour tortilla wrapped around hearty beef chili and real cheddar cheese, then melted to perfection. (Not available at all locations)",5.95,"Burritos","menu_item_chilicheese.jpg"
+"Sausage & Egg Burrito","
+Flavorful sausage crumbles, fluffy scrambled eggs and melted cheddar cheese, all wrapped up in a warm flour tortilla.",6.95,"Burritos","menu_item_sausage_n_egg_burrito.jpg"
+"Cheesy Gordita Crunch","
+Warm, pillowy flatbread covered in a melted three-cheese blend, wrapped around a crunchy taco and topped with a zesty Pepper Jack sauce.
+",5.95,"Gordita","menu_item_cheesy_gordita_crunch.jpg"
+"Gordita Supreme® - Chicken","Warm, pillowy flatbread filled with all white-meat-chicken, reduced fat sour cream, crisp shredded lettuce, a three cheese blend and diced ripe tomatoes.
+",7.95,"Gordita","gordita_chicken.jpg"
+"Gordita Supreme® - Steak","Warm, pillowy flatbread filled with grilled, marinated steak, reduced fat sour cream, crisp shredded lettuce, a three cheese blend and diced ripe tomatoes.",3.75,"Gordita","menu_item_gorditasupreme_steak.jpg"
+"Gordita Supreme-- Beef","Warm, pillowy flatbread filled with seasoned beef, reduced-fat sour cream, crisp shredded lettuce, a three cheese blend and diced ripe tomatoes.
+
+You can also upgrade this item with marinated and grilled all-white-meat chicken or marinated premium thick cut steak.",3.45,"Gordita","menu_item_gorditasupreme_beef.jpg"
+"Cheesy Nachos","Crisp, freshly prepared daily tortilla chips covered in warm nacho cheese sauce.",8.95,"Nachos","TB_menu_cheese_nachos.jpg"
+"Nachos","
+Crisp, freshly prepared daily tortilla chips served with warm nacho cheese sauce on the side.",3.75,"Nachos","menu_item_nachos.jpg"
+"Nachos BellGrande","A large platter of crisp, freshly prepared daily tortilla chips covered with hearty beans, seasoned beef, warm nacho cheese sauce, diced ripe tomatoes, and reduced-fat sour cream.",8.95,"Nachos","menu_item_nachosbellgrande.jpg"
+"Nachos Supreme","
+Crisp, freshly prepared daily tortilla chips covered with seasoned beef, hearty beans, warm nacho cheese sauce, diced ripe tomatoes, and reduced-fat sour cream.",4.75,"Nachos","menu_item_nachossupreme.jpg"
+"Chalupa Supreme® - Chicken","A crispy, chewy chalupa shell filled with marinated and grilled all-white-meat chicken, reduced fat sour cream, crisp shredded lettuce, a three cheese blend and diced ripe tomatoes.",4.45,"Chalupas","menu_item_chalupasupreme_chicken.jpg"
+"Chalupa Supreme® -Beef","A crispy, chewy chalupa shell filled with seasoned beef, reduced-fat sour cream, crisp shredded lettuce, a three cheese blend and diced ripe tomatoes.  You can also upgrade this item with marinated and grilled all-white-meat chicken or marinated premium thick cut steak.",9.95,"Chalupas","menu_item_chalupasupreme.jpg"

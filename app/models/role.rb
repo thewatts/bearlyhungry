@@ -7,4 +7,12 @@ class Role < ActiveRecord::Base
   def self.owner
     find_by(name: "Owner")
   end
+
+  def self.stocker
+    find_by(name: "Stocker")
+  end
+
+  def self.cook
+    find_by(name: "Cook")
+  end
 end

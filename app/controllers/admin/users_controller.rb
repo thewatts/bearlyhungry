@@ -3,20 +3,19 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
 
   def index
-    #@users = User.select {|user| user.id != current_user.id}
     @users = current_restaurant.customers
   end
 
   def new
-    @user = User.new
+    @user = current_restaurant.users.new
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_restaurant.find_customer(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_restaurant.users.find(params[:id])
   end
 
   def create
@@ -35,13 +34,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
+    user = current_restaurant.users.find(params[:id])
     user.update(user_params)
     redirect_to admin_users_path
   end
 
   def destroy
-    user = User.find(params[:id])
+    user = current_restaurant.users.find(params[:id])
     user.destroy
     flash[:error] = ["User has successfully been deleted"]
     redirect_to admin_users_path

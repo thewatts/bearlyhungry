@@ -5,8 +5,6 @@ Wtpho::Application.routes.draw do
 
   resources :restaurants
 
-  # post 'order-confirmation' => 'users#guest_to_user', as: "guest_to_user"
-
   # Platform Admin // Super
   namespace :super do
     put '/order-status/:status' => 'orders#update_status'
@@ -50,7 +48,7 @@ Wtpho::Application.routes.draw do
     resources :orders, only: [:index, :show, :confirmation]
     get 'current-order'          => 'orders#current_order', as: "current_order"
     get 'order-history'          => 'orders#index', as: "order_history"
-    put 'order/:id'              => 'admin/orders#update'
+    put 'order/:id'              => 'admin/orders#update' #### PURGE
     put 'current-order'          => 'orders#update_current_order',
       as: "update_current_order"
     get 'clear-order'            => 'orders#clear_order'

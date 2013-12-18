@@ -10,20 +10,24 @@
 
     <h3>Order '<%= :order_id %>':</h3>
 
-    <p>User Full Name: <%= :full_name %></p>
-    <p>User ID:        <%= :user_id %></p>
-    <p>Email: <%= :user_email %></p>
-    <p>Order Subtotal: <%= :order_total %></p>
-    <p>Status: <%= :order_status %></p>
-    <p>Created At: <%= :created_at %></p>
+  <table border="1">
+    <tr><td>User Full Name: <%= :full_name %></tr></td>
+    <tr><td>User ID:        <%= :user_id %></tr></td>
+    <tr><td>Email: <%= :user_email %></tr></td>
+    <tr><td>Order Subtotal: <%= :order_total %></tr></td>
+    <tr><td>Status: <%= :order_status %></tr></td>
+    <tr><td>Created At: <%= :created_at %></tr></td>
+  </table>
 
-    <p>Items:</p>
+    <h3>Items:</h3>
     <% @order_items.each  do |order_item| %>
       <div>
-        <p>Item:         <%= order_item[:title] %></p>
-        <p>Description   <%= order_item[:description] %></p>  
-        <p>Quantity:     <%= order_item[:quantity] %></p>
-        <p>Item Price:   <%= order_item[:price] %></p>
+        <table border="1">
+        <tr><td>Item:         <%= order_item[:title] %></tr></td>
+        <tr><td>Description   <%= order_item[:description] %></tr></td>  
+        <tr><td>Quantity:     <%= order_item[:quantity] %></tr></td>
+        <tr><td>Item Price:   <%= order_item[:price] %></tr></td>
+      </table>
       </div>
     <% end %>
   </body>

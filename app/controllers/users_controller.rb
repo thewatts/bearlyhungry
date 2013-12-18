@@ -28,7 +28,6 @@ class UsersController < ApplicationController
     elsif current_user.guest? && passwords_match?
       current_user.update(password: params[:password], password_confirmation: params[:password_confirmation], guest: false)
       flash[:notice] = "Your account has been created!"
-      current_user.send_welcome_email
       redirect_to restaurant_order_confirmation_path(current_restaurant.slug)
     else
       current_user.update(user_params)

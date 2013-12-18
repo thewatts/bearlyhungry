@@ -7,6 +7,8 @@ describe "Adding an Item to the Cart" do
   before do
     @restaurant = FactoryGirl.create(:restaurant)
     @item = FactoryGirl.create(:item, title: "Item 1", restaurant: @restaurant)
+    category = FactoryGirl.create(:category)
+    ItemCategory.create(item: @item, category: category)
   end
 
   it "can add an item to the cart" do

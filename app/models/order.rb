@@ -108,18 +108,16 @@ class Order < ActiveRecord::Base
       created_at: created_at,
       order_items: @receipt_items
     }
-    OrderMailer.order_confirmation_email(@email_data).deliver
+    OrderMailerWorker.perform(@email_data)
   end
 
   def send_order_ready_email
-    @email_data =
+    @ready_confirmation =
     {
       user_email:  user.email,
       user_name: user.full_name,
       order_id: id
-
     }
-
-    OrderMailer.order_ready_email(@email_data).deliver
+    OrderMailer.order_ready_email(@ready_confirmation).deliver
   end
 end

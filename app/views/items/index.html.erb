@@ -4,21 +4,25 @@
   <% else %>
     <h2>Full Menu</h2>
   <% end %>
-  <h3>The real deal folks...</h3>
+  <h3>Please enjoy our finest cuisine...</h3>
 </div>
 
 <div class="menus-nav three columns">
   <ul>
     <% categories.each do |category| %>
+      <% if category.items.count > 0 %>
       <li>
         <%= link_to category.title, restaurant_menu_category_path(category: category.slug, slug: current_restaurant.slug) if current_restaurant %>
       </li>
+    <% end %>
     <% end %>
   </ul>
 </div>
 
 <div class="items nine columns">
   <div class="row">
-    <%= render partial: "items/item", collection: @items %>
+    <% cache @items do %>
+      <%= render partial: "items/item", collection: @items %>
+    <% end %>
   </div>
 </div>

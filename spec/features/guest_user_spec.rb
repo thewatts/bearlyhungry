@@ -6,8 +6,10 @@ describe "Guest User" do
 
   before do
     @restaurant = FactoryGirl.create(:restaurant)
-    @item = FactoryGirl.create(:item, :title => "Item 1", 
-                                      :restaurant => @restaurant)
+    @item = FactoryGirl.create(:item, :title => "Item 1",
+                                        :restaurant => @restaurant)
+    category = FactoryGirl.create(:category)
+    ItemCategory.create(item: @item, category: category)
   end
 
   it "can review order and see 'continue as guest button'" do
@@ -16,7 +18,7 @@ describe "Guest User" do
     click_on 'Add to Cart'
     click_on 'Checkout'
     expect(page.current_path).to eq(restaurant_review_order_path(@restaurant.slug))
-    
+
     expect(page).to have_button "Checkout as Guest"
   end
 

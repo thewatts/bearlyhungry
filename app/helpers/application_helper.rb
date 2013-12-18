@@ -4,8 +4,4 @@ module ApplicationHelper
     current_order.subtotal
   end
 
-  def categories
-    Category.all
-  end
-
 end
