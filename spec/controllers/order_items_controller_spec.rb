@@ -4,8 +4,8 @@ describe OrderItemsController do
 
   before do
     request.env["HTTP_REFERER"] = root_path
-    @mcdonalds  = FactoryGirl.create(:restaurant, :name => "McDonalds",
-                                                  :slug => "mcdonalds")
+    @mcdonalds  = FactoryGirl.create(:restaurant, :name => "Chick Fil'a",
+                                                  :slug => "chickfila")
     @burgerking = FactoryGirl.create(:restaurant, :name => "BK",
                                                   :slug => "bk")
 
@@ -24,8 +24,9 @@ describe OrderItemsController do
         session[@order_key] = @mcdonalds.id
         expect(@mcdonalds_order.order_items.count).to eq(0)
 
-        post :create, order_item: {item_id: @big_mac.id, quantity: 5},
+        response = post :create, order_item: {item_id: @big_mac.id, quantity: 5},
                       slug: @mcdonalds.slug
+        binding.pry
         expect(@mcdonalds_order.order_items.count).to eq(1)
       end
     end
