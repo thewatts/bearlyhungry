@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'sidekiq'
 
 gem 'jquery-rails'
 
@@ -34,6 +35,7 @@ end
 
 group :development, :test do
   gem 'jazz_hands'
+  gem 'rspec-sidekiq'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'

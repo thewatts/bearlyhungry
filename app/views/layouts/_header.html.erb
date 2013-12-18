@@ -1,24 +1,23 @@
 <%= render "layouts/login_signup" %>
-
 <header class="main-header default">
   <div class="row">
     <div class="twelve columns">
       <% if current_restaurant %>
         <a class="logo" href="/<%= current_restaurant.slug %>" title="<%= current_restaurant.name %>">
-          <%= link_to "Back", root_path, class: "radius button" %>
+          <%= link_to "Back", root_path, class: "button" %>
         </a>
       <% else %>
-        <a href="/">BEARLY HUNGRY</a>
+        <a href="/" class="button">BEARLY HUNGRY</a>
       <% end %>
       <nav class="main-nav">
         <ul>
           <li>
             <% if current_user %>
+          
               <ul>
                 <li class="parent">
                   <%= link_to "Account", user_path(current_user) %>
                   <ul class="children">
-
                     <li class="child">
                       <%= link_to "Order History", restaurant_order_history_path(slug: current_restaurant.slug) if current_restaurant %>
                     </li>
@@ -38,7 +37,7 @@
             <% end %>
           </li>
           <li>
-            <%= link_to "Menu", restaurant_menu_path(current_restaurant.slug) unless current_restaurant.nil? %>
+            <%= link_to current_restaurant.name, restaurant_menu_path(current_restaurant.slug) unless current_restaurant.nil? %>
           </li>
           <li>
             <span id="nav-order">

@@ -14,6 +14,7 @@ describe User do
                                       display_name: "A DAWG",
                                       phone_number: "7742398699"
                                       )
+
      @order = FactoryGirl.create(:order)
   end
 
@@ -21,8 +22,17 @@ describe User do
     ActionMailer::Base.deliveries.clear
   end
 
-  it 'should send a sign up email' do
-    @user.send_welcome_email
+  it 'should send a sign up email on user creation' do
+    @user.save
     ActionMailer::Base.deliveries.count.should == 1
   end
+
+  context "sidekiq is working..."
+    it 'should have one job' do
+      pending
+      @user.save
+      binding.pry
+      expect(UserMailerWorker).to have(1).enqueued.jobs
+    end
+    
 end

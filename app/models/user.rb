@@ -44,12 +44,10 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    UserMailer.welcome_email(self).deliver
+    UserMailerWorker.perform(self.id)
   end
 
   def owner_of?(restaurant)
     jobs.any? { |job| job.restaurant_id == restaurant.id }
   end
-
-  
 end
