@@ -1,7 +1,6 @@
 require 'benchmark'
 require 'csv'
 require 'bcrypt'
-require 'pry'
 
 unencrypted_password = "password"
 encrypted_password   = BCrypt::Password.create(unencrypted_password)
