@@ -108,7 +108,7 @@
     <div class="row">
       <div class="footer-logo three columns">
         <a href="/">
-          <img src="/images/footer-logo.png">
+          <img src="<%= image_url('footer-logo.png') %>">
         </a>
       </div>
       <div class="three columns">
@@ -145,8 +145,16 @@
         city
       });
 
-      var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-          .setView([38.479, -97], 5);
+      var map = L.mapbox.map('map', 'examples.map-9ijuk24y', {zoomControl: false})
+          .setView([34.479, -97], 5);
+
+      // disable drag and zoom handlers
+      map.dragging.disable();
+      map.touchZoom.disable();
+      map.doubleClickZoom.disable();
+      map.scrollWheelZoom.disable();
+      // disable tap handler, if present.
+      if (map.tap) map.tap.disable();
 
       var markerLayer = L.mapbox.markerLayer({
               type: 'FeatureCollection',
