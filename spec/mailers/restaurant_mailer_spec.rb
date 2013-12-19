@@ -2,7 +2,7 @@ require './spec/spec_helper'
 
 describe Order do
   before(:each) do
-    I18n.enforce_available_locales = false
+    # I18n.enforce_available_locales = false
     ActionMailer::Base.delivery_method = :test
     ActionMailer::Base.perform_deliveries = true
     ActionMailer::Base.deliveries = []
@@ -13,6 +13,8 @@ describe Order do
     @restaurant.add_owner(@user)
     @restaurant.add_owner(@user2)
     @admin = FactoryGirl.create(:user, :admin_status => true, :email => "admin@admin.com")
+    ActionMailer::Base.deliveries.clear
+
   end
 
   after(:each) do
