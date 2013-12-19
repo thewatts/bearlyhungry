@@ -37,6 +37,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'sinatra', '>= 1.3.0', :require => nil
+  gem 'rack' # for markup
 end
 
 group :development, :test do

@@ -344,6 +344,7 @@ DEPENDENCIES
   paperclip
   pg
   poltergeist
+  rack
   rack_session_access
   rails (= 4.0.0)
   rails_12factor

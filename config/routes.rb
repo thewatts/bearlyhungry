@@ -4,6 +4,7 @@ Wtpho::Application.routes.draw do
 
   # Home & Static Pages
   root "home_page#index"
+  get '/api/map_data' => "home_page#map_data"
 
   mount Sidekiq::Web => '/sidekiq'
 

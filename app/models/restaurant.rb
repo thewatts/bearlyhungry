@@ -17,6 +17,10 @@ class Restaurant < ActiveRecord::Base
     restaurant
   end
 
+  def owners
+    Job.where('restaurant_id = ? AND role_id = ?', id, Role.owner.id).map(&:user)
+  end
+
   def add_owner(user)
     Job.create!(:restaurant => self, :user => user, :role => Role.owner)
   end
