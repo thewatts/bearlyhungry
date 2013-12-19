@@ -1,5 +1,5 @@
 require './spec/spec_helper'
-  
+
 describe User do
   before(:each) do
     I18n.enforce_available_locales = false
@@ -27,11 +27,11 @@ describe User do
     ActionMailer::Base.deliveries.count.should == 1
   end
 
-  context "sidekiq is working..."
+  context "sidekiq is working..." do
     it 'should have one job' do
       pending
       @user.save
       expect(UserMailerWorker).to have(1).enqueued.jobs
     end
-    
+  end
 end
