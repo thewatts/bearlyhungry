@@ -1,0 +1,15 @@
+<html>
+  <div>
+    <h3>Restaurant: <%= @restaurant.name %></h3>
+    <h5> <%= @restaurant.status%> </h5>
+  </div>
+  <div>
+    <%= button_to "Reject", super_restaurant_path(slug: params[:slug], status: "rejected"), method: :put, class: "radius button", id: "restaurant-reject"%>
+    <%= button_to "Approve", super_restaurant_path(params[:slug], status: "approved"), method: :put, class: "radius button", id: "restaurant-reject", status: "accepted" %>
+  </div>
+
+  <div class="row">
+    <div class="twelve columns">
+    </div>
+  </div>
+</html>
