@@ -83,6 +83,7 @@ font-size: 25px;
   span {
     font-size: 1.2em;
   }
+  
   .notification-close {
     border: solid 1px white;
     padding: 5px 10px;
@@ -124,6 +125,10 @@ font-size: 25px;
     -o-transition: margin-left .45s ease-in-out;
     transition: margin-left .45s ease-in-out;
   }
+}
+
+#cities-list ul li{
+    display:inline-block;
 }
 
 h1,h2,h3,h4,h5 {
