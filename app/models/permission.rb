@@ -8,7 +8,7 @@ class Permission < Struct.new(:user)
     return true if controller == "orders" && action.in?(%w(show clear_order confirmation))
     return true if controller == "charges"
     return true if controller == "order_items"
-    return true if controller == "restaurants" && action.in?( %w(show) )
+    return true if controller == "restaurants" && action.in?( %w(show index) )
 
     if user
       restaurant = Restaurant.find_by(:slug => rest_slug) if rest_slug

@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 
+
 if ENV.keys.grep(/ZEUS/).any? ## this line is different
    require 'minitest/unit'
    MiniTest::Unit.class_variable_set('@@installed_at_exit', true)

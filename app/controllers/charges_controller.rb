@@ -24,12 +24,7 @@ class ChargesController < ApplicationController
 
     current_order.update(status: "paid", user: current_user)
     current_order.send_owner_submitted_sms
-
-    if current_user.text == true
-      current_order.send_customer_confirmation_sms
-    else
-      current_order.send_order_confirmation_email
-    end
+    send_order_confirmation
     redirect_to restaurant_order_confirmation_path(current_restaurant.slug)
 
   rescue Stripe::CardError => e
@@ -39,6 +34,14 @@ class ChargesController < ApplicationController
   end
 
   private
+
+  def send_order_confirmation
+    if current_user.text == true
+      current_order.send_customer_confirmation_sms
+    else
+      current_order.send_order_confirmation_email
+    end  
+  end
 
   def validate_order
     if current_order.order_items.count == 0
