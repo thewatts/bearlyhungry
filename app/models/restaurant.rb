@@ -62,6 +62,7 @@ class Restaurant < ActiveRecord::Base
   def send_new_restaurant_confirmation_email
     @owner_emails = owners.collect{|owner| owner.email}
     @owner_emails.each do |email|
+      #TOOK OUT WORKER TO MAKE TEST PASS!
       RestaurantMailer.new_restaurant_confirmation_email(email).deliver
     end
   end

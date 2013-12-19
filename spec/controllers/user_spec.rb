@@ -66,7 +66,7 @@ describe UsersController do
         password: "asdfmeh",
         password_confirmation: "asdfmeh" }
       expect(response).to be_redirect
-      user = User.find_by(@user.id)
+      user = User.find_by(id: @user.id)
       expect(user.full_name).to eq("darth vader")
       expect(:flash).to_not be_nil
     end
