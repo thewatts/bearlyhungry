@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: bearlyhungry_development
-  pool: 5
+  pool: 100
   timeout: 5000
 
 # Warning: The database defined as "test" will be erased and

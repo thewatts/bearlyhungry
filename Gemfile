@@ -21,7 +21,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'newrelic_rpm'
+#gem 'newrelic_rpm'
 
 gem 'i18n', github: 'svenfuchs/i18n'
 
@@ -36,11 +36,12 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'sinatra', '>= 1.3.0', :require => nil
 end
 
 group :development, :test do
   gem 'jazz_hands'
-  gem 'rspec-sidekiq'
+  #gem 'rspec-sidekiq'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
@@ -57,7 +58,8 @@ group :test do
   gem 'guard-rspec'
   gem 'simplecov'
   gem 'database_cleaner'
-end 
+end
+
 group :production do
   gem 'rails_12factor'
   gem 'memcachier'

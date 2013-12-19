@@ -1,7 +1,11 @@
+require 'sidekiq/web'
+
 Wtpho::Application.routes.draw do
 
   # Home & Static Pages
   root "home_page#index"
+
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :restaurants
 
