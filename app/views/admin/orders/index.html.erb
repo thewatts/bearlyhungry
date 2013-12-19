@@ -28,18 +28,17 @@
         </tr>
       </thead>
       <tbody>
+          <%= paginate @orders %>
         <% @orders.each do |order| %>
           <tr>
             <td>
-              <%= link_to order.id, admin_order_path(order) %>
+              <%= link_to order.id, restaurant_admin_orders_path(order) %>
             </td>
             <td>
-              <% if order.user %>
-                <%= link_to order.user.id, admin_user_path(order.user) %>
-              <% else %>
-                --
-              <% end %>
+              <% if order.user_id != nil %>
+              <%= order.user.full_name %>
             </td>
+            <% end %>
             <td>
               <%= order.created_at.to_s(:long) %>
             </td>
@@ -47,17 +46,15 @@
               <%= number_to_currency(order.subtotal) %>
             </td>
             <td>
+
               <%= select_tag "status", options_for_select([
                 ['Pending', 'pending'],
                 ['Paid', 'paid'],
-                ['Completed', 'completed']]) %>
+                ['Completed', 'completed']])%>
             </td>
 
             <td>
-              <%= link_to "Edit", edit_admin_order_path(order) %>
-            </td>
-            <td>
-              <%= link_to "Delete", admin_order_path(order), method: :delete,
+              <%= link_to "Delete", restaurant_admin_orders_path(order), method: :delete,
                 data: { confirm: "Are you sure you want to delete order #{order.id}?" } %>
             </td>
           </tr>

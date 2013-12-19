@@ -2,12 +2,7 @@ class Admin::OrdersController < ApplicationController
   layout "admin"
 
   def index
-    if params[:status]
-      @orders = Order.find_all_by_status(params[:status])
-    else
-      @status_counts = Order.count_by_status
-      @orders = Order.all
-    end
+    @orders = Order.all.page(params[:page])
   end
 
   def new
@@ -20,6 +15,10 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+  end
+
+  def kitchen
+    @orders = Order.all.find_by(status: "preparing").page(params[:page])
   end
 
   def destroy

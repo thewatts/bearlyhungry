@@ -25,6 +25,7 @@ class Permission < Struct.new(:user)
         return true if controller == "admin/restaurant_dashboard"
         return true if controller == "admin/items"
         return true if controller == "admin/users"
+        return true if controller == "admin/orders"
       end
     end
 
