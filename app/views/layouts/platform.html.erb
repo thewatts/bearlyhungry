@@ -20,6 +20,7 @@
 </head>
 
 <body id="platform">
+  <%= render "layouts/login_signup" %>
   <section class="header wrapper">
     <div class="row">
       <div class="logo">
@@ -31,7 +32,7 @@
       </div>
       <ul class="main-nav head-nav">
         <li>
-          <a href="/" title="Restaurants">Restaurants</a>
+          <a href="/restaurants" title="Restaurants">Restaurants</a>
         </li>
         <li>
           <a href="/" title="About">About</a>
@@ -42,10 +43,18 @@
       </ul>
       <ul class="user-action-nav head-nav">
         <li>
-          <a href="/" title="Signup / Login">Sign Up / Login</a>
+        <% if current_user %>
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Login", "#", data: { :"reveal-id" => "exampleModal" }  %>
+        <% end %>
         </li>
         <li>
-          <a class="action-button" href="/" title="About">Create a Restaurant</a>
+          <% if current_user %>
+            <a class="action-button" href="/restaurants/new" title="About">Create a Restaurant</a>
+          <% else %>
+            <span>Login to Create a Restaurant</span>
+          <% end %>
         </li>
       </ul>
     </div>
@@ -78,13 +87,16 @@
       <% @restaurants.each do |restaurant| %>
 
         <div class="restaurant three columns">
-          <img src="<%= restaurant.logo %>">
-          <h4><%= restaurant.name %></h4>
+          <a href="<%= restaurant_root_path(restaurant.slug) %>">
+            <img src="<%= restaurant.logo %>">
+          </a>
+          <h4>
+            <a href="<%= restaurant_root_path(restaurant.slug) %>">
+              <%= restaurant.name %>
+            </a>
+          </h4>
           <span class="location"><%= restaurant.city.city %></span>
           <span class="item-count"><%= restaurant.items.count %></span>
-          <div class="description">
-            <p>This is the best restaurant ever!!!!</p>
-          </div>
         </div>
 
       <% end %>
@@ -171,7 +183,7 @@
         // propertieses declared above are available under `layer.feature.properties`
 
           var label = '';
-       
+
           if (layer.feature.properties.count > 1) {
             label = 'Restaurants';
           } else {
