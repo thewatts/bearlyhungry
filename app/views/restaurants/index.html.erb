@@ -1,1 +1,42 @@
+<div id="cities-list" class="header-bar row">
+  <h4><%= link_to "All Regions", restaurants_path %><h4>
+    <hr>
+    <h6>Search Restaurants By City! </h6>
+    <tr>
+      <ul>
+      <% @cities[0..@cities.count/2-1].each do |city| %>
+        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>
+      <% end %>
+    </ul>
+    </tr>
+    <ul>
+      <% @cities[@cities.count/2..@cities.count].each do |city| %>
+        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>
+      <% end %>
+    </ul>
+    <tr>
 
+    </tr>
+  </div>
+<div class="header-bar row2">
+  <h3>All our restaurants</h3>
+</div>
+<% @restaurants.each do |restaurant| %>
+<% if restaurant.approved? %>
+  <div>
+    <div>
+      <ul>
+        <p>
+          <h5><%= restaurant.name%> </h5>
+          Member Since: <%= restaurant.created_at.strftime("%b %Y")%>
+        </br>
+          <%= link_to "Homepage", restaurant_root_path(restaurant.slug) %>
+        </p>
+      </br>
+      <hr>
+        <% end %>
+        <% end %>
+      <ul>
+    </table>
+  </div>
+</div>

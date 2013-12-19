@@ -4,6 +4,16 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new
   end
 
+  def index
+    @cities = cities_with_restaurants
+    if params[:filter]
+      @restaurants = Restaurant.where(city_id: params[:filter])
+    else
+      @restaurants = Restaurant.all
+      
+    end
+  end
+
   def show
     @restaurant = Restaurant.find_by(slug: params[:slug])
   end
@@ -21,7 +31,7 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:name, :slug)
+    params.require(:restaurant).permit(:name, :slug, :city_id)
   end
 
 end

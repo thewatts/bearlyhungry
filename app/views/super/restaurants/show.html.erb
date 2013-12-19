@@ -1,11 +1,24 @@
 <html>
   <div>
     <h3>Restaurant: <%= @restaurant.name %></h3>
+    <h6><%= @restaurant.description %><h6>
     <h5> <%= @restaurant.status%> </h5>
+
+    View their menu. <%= link_to "#{@restaurant.name}", "/#{@restaurant.slug}"%>
   </div>
+  </br>
+
   <div>
+    <% if @restaurant.status != "pending" %>
+
+    <%= button_to "Return To Pending", super_restaurant_path(slug: params[:slug], status: "pending"), method: :put, class: "radius button", id: "restaurant-reject"%>
+
+    <%else%>
     <%= button_to "Reject", super_restaurant_path(slug: params[:slug], status: "rejected"), method: :put, class: "radius button", id: "restaurant-reject"%>
+
     <%= button_to "Approve", super_restaurant_path(params[:slug], status: "approved"), method: :put, class: "radius button", id: "restaurant-reject", status: "accepted" %>
+
+    <%  end %>
   </div>
 
   <div class="row">

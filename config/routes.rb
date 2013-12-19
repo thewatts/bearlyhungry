@@ -5,6 +5,8 @@ Wtpho::Application.routes.draw do
 
   resources :restaurants
 
+    get '/all' => 'restaurants#index'
+
   # Platform Admin // Super
   namespace :super do
     put '/order-status/:status' => 'orders#update_status'
@@ -33,6 +35,7 @@ Wtpho::Application.routes.draw do
     get '/'               => 'items#index', :as => 'root'
     get '/menu'           => 'items#index', :as => 'menu'
     get '/menu/:category' => 'items#index', :as => "menu_category"
+
 
     # Items
     resources :items, only: [:index, :show]

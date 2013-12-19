@@ -2,7 +2,7 @@ class Super::RestaurantsController < ApplicationController
   layout "super"
 
   def index
-    @restaurants = Restaurant.limit(5)
+    @restaurants = Restaurant.all
   end
 
   def show
