@@ -1,22 +1,22 @@
 <div id="cities-list" class="header-bar row">
-  <h4><%= link_to "All Regions", restaurants_path %><h4>
+  <h4><%= link_to "All Cities", restaurants_path %><h4>
     <hr>
     <h6>Search Restaurants By City! </h6>
-    <tr>
       <ul>
-      <% @cities[0..@cities.count/2-1].each do |city| %>
-        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>
+      <% @cities[0..9].each do |city| %>
+        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>&bull;
       <% end %>
     </ul>
-    </tr>
     <ul>
-      <% @cities[@cities.count/2..@cities.count].each do |city| %>
-        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>
+      <% @cities[10..19].each do |city| %>
+        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>&bull;
       <% end %>
     </ul>
-    <tr>
-
-    </tr>
+    <ul>
+      <% @cities[20..29].each do |city| %>
+        <li><%= link_to "#{city.city}", restaurants_path(filter:city.id) %></li>&bull;
+      <% end %>
+    </ul>
   </div>
   <hr>
   <%= paginate @restaurants %>
