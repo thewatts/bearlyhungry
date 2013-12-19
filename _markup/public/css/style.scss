@@ -92,6 +92,7 @@ body {
 .restaurants {
   float: left;
   border-top: solid 1px #ddd;
+  padding-bottom: 40px;
   background: #efefef;
   text-align: center;
   .heading {
@@ -140,24 +141,48 @@ body {
 }
 
 .restaurant-map {
-  margin-top: 20px;
-  height: 300px;
+  margin: 0;
+  border-top: solid 1px #dedede;
+  border-bottom: solid 1px #dedede;
+  float: left;
+  height: 350px;
+  overflow: hidden;
   padding: 0;
-  border: solid 1px;
   position: relative;
   .heading {
     padding: 0;
     margin: 0;
-    border: solid 1px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
     h3 {
       margin: 0;
       color: #fff;
       background: #222;
       display: inline-block;
+      padding: 10px 20px;
     }
   }
   .map {
-    border: solid 1px;
+    text-align: center;
   }
 }
 
+.footer {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  clear: both;
+  background: #ececec;
+  .footer-logo {
+    padding-top: 20px;
+    padding-left: 0;
+    margin-left: 0;
+    p {
+      margin-top: 30px;
+    }
+  }
+  .info {
+    padding-top: 10px;
+  }
+}
