@@ -10,27 +10,166 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name="viewport" content="width=device-width" />
 
-  <title>BearlyHungry</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
+  <title>BearyHungry</title>
+
+  <link rel="stylesheet" type="text/css" href="/fonts/museo_300/stylesheet.css">
+  <link rel="stylesheet" type="text/css" href="/fonts/museoslab_500/stylesheet.css">
+  <script type="text/javascript" src="//use.typekit.net/sux2ujz.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <%= stylesheet_link_tag    "platform", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 
-<body>
-  <div class="wrapper">
-
-    <%= render "layouts/header" %>
-
-    <%= render "layouts/notifications" %>
-
-    <div class="content row">
-      <%= yield %>
+<body class="platform">
+  <section class="header wrapper">
+    <div class="row">
+      <div class="logo">
+        <h1>
+          <a href="/">
+            Beary Hungry
+          </a>
+        </h1>
+      </div>
+      <ul class="main-nav head-nav">
+        <li>
+          <a href="/" title="Restaurants">Restaurants</a>
+        </li>
+        <li>
+          <a href="/" title="About">About</a>
+        </li>
+        <li>
+          <a href="/" title="Contact">Contact</a>
+        </li>
+      </ul>
+      <ul class="user-action-nav head-nav">
+        <li>
+          <a href="/" title="Signup / Login">Sign Up / Login</a>
+        </li>
+        <li>
+          <a class="action-button" href="/" title="About">Create a Restaurant</a>
+        </li>
+      </ul>
     </div>
+    <div class="slogan row">
+      <h2>
+        Forget the lines, crowded rooms, and screaming kids...<br>
+        We're here to answer the call of your stomach - without the mess.
+      </h2>
+    </div>
+  </section><!-- //wrapper -->
 
-    <%= render "layouts/footer" %>
+  <section class="banner row">
+    <p class="text large">
+      Let's face it,<br>
+      You can't cook this good.
+    </p>
+    <p class="text small">
+      It's okay... we can't either!
+    </p>
+  </section>
 
-  </div>
+  <section class="restaurants wrapper">
+    <div class="row">
 
-  <%= render "layouts/order" if current_order %>
-</body>
-</html>
+      <div class="heading twelve columns">
+        <h3>Our Newest Restaurants</h3>
+        <span>... nom nom nom ...</span>
+      </div>
+
+      <% @restaurants.each do |restaurant| %>
+
+        <div class="restaurant three columns">
+          <img src="<%= restaurant.logo %>">
+          <h4><%= restaurant.name %></h4>
+          <span class="location"><%= restaurant.city.city %></span>
+          <span class="item-count"><%= restaurant.items.count %></span>
+          <div class="description">
+            <p>This is the best restaurant ever!!!!</p>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </section><!-- //restaurants.wrapper -->
+
+  <section class="restaurant-map wrapper">
+    <div class="heading twelve columns">
+      <h3>Restaurant Locations</h3>
+    </div >
+    <div id="map">
+    </div>
+    <div class="map twelve columns">
+      <!-- <img src="/images/map-bg.jpg"> -->
+    </div>
+  </section>
+
+
+  <section class="footer wrapper">
+    <div class="row">
+      <div class="footer-logo three columns">
+        <a href="/">
+          <img src="/images/footer-logo.png">
+        </a>
+      </div>
+      <div class="three columns">
+      </div>
+      <div class="info three columns">
+        <p>
+          BearlyHungry.net is a project by
+          <a href="https://github.com/LukeMartinez">Luke Martinez</a>,
+          <a href="https://github.com/mappingkat">Katrina Engelsted</a>,
+          <a href="https://github.com/thewatts">Nathaniel Watts</a>
+        </p>
+      </div>
+      <div class="info three columns">
+        <p>
+          More info can be found <br><a href="http://github.com/thewatts/bearlyhungry">on GitHub</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="/js/modernizr.foundation.js"></script>
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/scripts.js"></script>
+
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
+
+  <script>
+    var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+        .setView([39.12367, -76.81229], 9);
+
+    var markerLayer = L.mapbox.markerLayer({
+            type: 'FeatureCollection',
+            features: [{
+                type: 'Feature',
+                properties: {
+                    name: "Washington"
+                    size: 5,
+                    population: 10
+                },
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-77.03201, 38.90065]
+                }
+            }]
+        })
+        .addTo(map);
+
+    // note that calling `.eachLayer` here depends on setting GeoJSON _directly_
+    // above. If you're loading GeoJSON asynchronously, like from CSV or from a file,
+    // you will need to do this within a `markerLayer.on('ready'` event
+
+    markerLayer.eachLayer(function(layer) {
+      // here you call `bindPopup` with a string of HTML you create - the feature
+      // properties declared above are available under `layer.feature.properties`
+
+      var styles = '';
+      styles += '.leaflet-popup-content { };';
+
+      var content = '';
+      content += styles;
