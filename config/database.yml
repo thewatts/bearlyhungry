@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: db/bearlyhungry_development
+  database: bearlyhungry_development
   host: localhost
   pool: 5
   timeout: 5000
@@ -14,14 +14,8 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: db/bearlyhungry_testing
+  database: bearlyhungry_testing
   host: localhost
   pool: 5
   timeout: 5000
 
-production:
-  adapter: postgresql
-  database: db/bearlyhungry_production
-  host: localhost
-  pool: 5
-  timeout: 5000

@@ -21,6 +21,9 @@ body {
 .row {
   width: 100%;
 }
+#cities-list ul li{
+    display:inline-block;
+}
 
 .row .row {
   width: auto !important;

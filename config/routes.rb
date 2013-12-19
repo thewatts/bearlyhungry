@@ -5,7 +5,7 @@ Wtpho::Application.routes.draw do
 
   resources :restaurants
 
-    get '/all' => 'restaurants#index'
+  get '/all' => 'restaurants#index'
 
   # Platform Admin // Super
   namespace :super do

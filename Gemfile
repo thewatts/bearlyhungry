@@ -15,6 +15,7 @@ gem 'pg'
 gem 'kaminari'
 
 
+
 gem 'jquery-rails'
 
 gem 'turbolinks'
@@ -57,7 +58,7 @@ group :test do
   gem 'guard-minitest'
   gem 'guard-rspec', require: false
   gem 'guard-rspec'
-  gem 'simplecov'
+  gem 'simplecov', :require => false, :group => :test
   gem 'database_cleaner'
 end 
 group :production do

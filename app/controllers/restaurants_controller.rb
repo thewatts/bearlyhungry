@@ -9,8 +9,7 @@ class RestaurantsController < ApplicationController
     if params[:filter]
       @restaurants = Restaurant.where(city_id: params[:filter]).page(params[:page])
     else
-      @restaurants = Restaurant.all.page(params[:page])
-      
+      @restaurants = Restaurant.all.page(params[:page]) 
     end
   end
 

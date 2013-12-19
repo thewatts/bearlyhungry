@@ -2,7 +2,12 @@ class Super::RestaurantsController < ApplicationController
   layout "super"
 
   def index
-    @restaurants = Restaurant.all
+    @cities = cities_with_restaurants
+    if params[:filter]
+      @restaurants = Restaurant.where(city_id: params[:filter]).page(params[:page])
+    else
+      @restaurants = Restaurant.all.page(params[:page]) 
+    end
   end
 
   def show

@@ -12,7 +12,7 @@ class Restaurant < ActiveRecord::Base
   def self.create_with_owner(restaurant_params, user)
     restaurant = Restaurant.create!(restaurant_params)
     Job.create(:restaurant => restaurant, :user => user, :role => Role.owner)
-    restaurant.send_new_restaurant_confirmation_email(user)
+    restaurant.send_new_restaurant_confirmation_email
     restaurant.send_new_restaurant_submitted_email
     restaurant
   end

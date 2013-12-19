@@ -19,26 +19,22 @@
     </ul>
   </div>
   <hr>
-  <%= paginate @restaurants %>
+<%= paginate @restaurants %>
 <div class="header-bar row2">
   <h3>All our restaurants</h3>
 </div>
 <% @restaurants.each do |restaurant| %>
-
-
-<% if restaurant.approved? %>
   <div>
     <div>
       <ul>
         <p>
-          <h6><%= link_to restaurant.name, restaurant_root_path(restaurant.slug) %> </h6>
+          <h6><%= link_to restaurant.name, super_restaurant_path(restaurant.slug) %> </h6>
           <h7>Description: <%= restaurant.description %><h7>
 
         </br>
           Member Since: <%= restaurant.created_at.strftime("%b %Y")%>
         </p>
       <hr>
-        <% end %>
         <% end %>
       <ul>
     </table>
