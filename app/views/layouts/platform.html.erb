@@ -14,7 +14,9 @@
 
   <link rel="stylesheet" type="text/css" href="/fonts/museo_300/stylesheet.css">
   <link rel="stylesheet" type="text/css" href="/fonts/museoslab_500/stylesheet.css">
-  <%= stylesheet_link_tag    "application", media: "all" %>
+  <script type="text/javascript" src="//use.typekit.net/sux2ujz.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <%= stylesheet_link_tag    "platform", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -75,48 +77,19 @@
         <span>... nom nom nom ...</span>
       </div>
 
-      <div class="restaurant three columns">
-        <img src="/images/rest-image.jpg">
-        <h4>McDonalds</h4>
-        <span class="location">East Lansing</span>
-        <span class="item-count">25 Items</span>
-        <div class="description">
-          <p>This is the best restaurant ever!!!!</p>
-        </div>
-      </div>
+      <% @restaurants.each do |restaurant| %>
 
-      <div class="restaurant three columns">
-        <img src="/images/rest-image.jpg">
-        <h4>McDonalds</h4>
-        <div class="location-item-count">
-          <span class="location">East Lansing</span>
-          <span>-</span>
-          <span class="item-count">25 Items</span>
+        <div class="restaurant three columns">
+          <img src="<%= restaurant.logo %>">
+          <h4><%= restaurant.name %></h4>
+          <span class="location"><%= restaurant.city.city %></span>
+          <span class="item-count"><%= restaurant.items.count %></span>
+          <div class="description">
+            <p>This is the best restaurant ever!!!!</p>
+          </div>
         </div>
-        <div class="description">
-          <p>This is the best restaurant ever!!!!</p>
-        </div>
-      </div>
 
-      <div class="restaurant three columns">
-        <img src="/images/rest-image.jpg">
-        <h4>McDonalds</h4>
-        <span class="location">East Lansing</span>
-        <span class="item-count">25 Items</span>
-        <div class="description">
-          <p>This is the best restaurant ever!!!!</p>
-        </div>
-      </div>
-
-      <div class="restaurant three columns">
-        <img src="/images/rest-image.jpg">
-        <h4>McDonalds</h4>
-        <span class="location">East Lansing</span>
-        <span class="item-count">25 Items</span>
-        <div class="description">
-          <p>This is the best restaurant ever!!!!</p>
-        </div>
-      </div>
+      <% end %>
 
     </div>
   </section><!-- //restaurants.wrapper -->
