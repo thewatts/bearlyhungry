@@ -12,8 +12,6 @@
 
   <title>BearyHungry</title>
 
-  <link rel="stylesheet" type="text/css" href="/fonts/museo_300/stylesheet.css">
-  <link rel="stylesheet" type="text/css" href="/fonts/museoslab_500/stylesheet.css">
   <script type="text/javascript" src="//use.typekit.net/sux2ujz.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= stylesheet_link_tag    "platform", media: "all" %>
@@ -132,44 +130,54 @@
   </section>
 
   <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script src="/js/modernizr.foundation.js"></script>
-  <script src="/js/foundation.min.js"></script>
-  <script src="/js/scripts.js"></script>
 
   <script src='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
   <link href='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
-
   <script>
-    var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-        .setView([39.12367, -76.81229], 9);
+    $.getJSON('http://localhost:3000/api/map_data.json', function(data) {
+      window.mapData = data.cities;
 
-    var markerLayer = L.mapbox.markerLayer({
-            type: 'FeatureCollection',
-            features: [{
-                type: 'Feature',
-                properties: {
-                    name: "Washington"
-                    size: 5,
-                    population: 10
-                },
-                geometry: {
-                    type: 'Point',
-                    coordinates: [-77.03201, 38.90065]
-                }
-            }]
-        })
-        .addTo(map);
+      $.map( mapData, function( city ) {
+        window.coordString = city.geometry.coordinates.split(',');
+        var x = coordString[0].substring(1);
+        var y = coordString[1].substring(0, coordString[1].length-1);
+        city.geometry.coordinates = [x, y];
+        city
+      });
 
-    // note that calling `.eachLayer` here depends on setting GeoJSON _directly_
-    // above. If you're loading GeoJSON asynchronously, like from CSV or from a file,
-    // you will need to do this within a `markerLayer.on('ready'` event
+      var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+          .setView([38.479, -97], 5);
 
-    markerLayer.eachLayer(function(layer) {
-      // here you call `bindPopup` with a string of HTML you create - the feature
-      // properties declared above are available under `layer.feature.properties`
+      var markerLayer = L.mapbox.markerLayer({
+              type: 'FeatureCollection',
+              features: mapData
+      })
+      .addTo(map);
 
-      var styles = '';
-      styles += '.leaflet-popup-content { };';
+      // note that calling `.eachLayer` here depends on setting GeoJSON _directly_
+      // above. If you're loading GeoJSON asynchronously, like from CSV or from a file,
+      // you will need to do this within a `markerLayer.on('ready'` event
 
-      var content = '';
-      content += styles;
+      markerLayer.eachLayer(function(layer) {
+        // here you call `bindPopup` with a string of HTML you create - the feature
+        // properties declared above are available under `layer.feature.properties`
+
+        var styles = '';
+        styles += '.leaflet-popup-content { };';
+
+        var content = '';
+        content += styles;
+
+        content += '<h2>' + layer.feature.properties.name + "</h2>";
+        content += '<h2>' + layer.feature.properties.name + "</h2>";
+
+          var content = '<style>.leaflet-popup-content{ }</style>';
+          content += '<h1>' + layer.feature.properties.name + '</h1>';
+          content += '<h2>' + layer.feature.properties.count + ' Restaurants</h2>';
+          content += '<a href=' + layer.feature.properties.slug + '>More Info</h2>';
+          layer.bindPopup(content);
+      });
+    });
+  </script>
+</body>
+</html>
