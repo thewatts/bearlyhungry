@@ -2,7 +2,7 @@
 
 <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" id="platform-html"> <!--<![endif]-->
 
 <head>
   <meta charset="utf-8">
@@ -19,7 +19,7 @@
   <%= csrf_meta_tags %>
 </head>
 
-<body class="platform">
+<body id="platform">
   <section class="header wrapper">
     <div class="row">
       <div class="logo">
@@ -134,7 +134,7 @@
   <script src='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
   <link href='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
   <script>
-    $.getJSON('http://localhost:3000/api/map_data.json', function(data) {
+      $.getJSON('<%= request.url %>/api/map_data.json', function(data) {
       window.mapData = data.cities;
 
       $.map( mapData, function( city ) {
@@ -168,20 +168,28 @@
 
       markerLayer.eachLayer(function(layer) {
         // here you call `bindPopup` with a string of HTML you create - the feature
-        // properties declared above are available under `layer.feature.properties`
+        // propertieses declared above are available under `layer.feature.properties`
 
-        var styles = '';
-        styles += '.leaflet-popup-content { };';
+          var label = '';
+       
+          if (layer.feature.properties.count > 1) {
+            label = 'Restaurants';
+          } else {
+            label = 'Restaurant';
+          }
 
-        var content = '';
-        content += styles;
+          var styles = '';
+          styles += '.leaflet-popup-content { };';
 
-        content += '<h2>' + layer.feature.properties.name + "</h2>";
-        content += '<h2>' + layer.feature.properties.name + "</h2>";
+          var content = '';
+          content += styles;
+
+          content += '<h2>' + layer.feature.properties.name + "</h2>";
+          content += '<h2>' + layer.feature.properties.name + "</h2>";
 
           var content = '<style>.leaflet-popup-content{ }</style>';
           content += '<h1>' + layer.feature.properties.name + '</h1>';
-          content += '<h2>' + layer.feature.properties.count + ' Restaurants</h2>';
+          content += '<h2>' + layer.feature.properties.count + '' + label + '</h2>';
           content += '<a href=' + layer.feature.properties.slug + '>More Info</h2>';
           layer.bindPopup(content);
       });
