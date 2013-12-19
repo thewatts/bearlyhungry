@@ -18,10 +18,14 @@
 
     </tr>
   </div>
+  <hr>
+  <%= paginate @restaurants %>
 <div class="header-bar row2">
   <h3>All our restaurants</h3>
 </div>
 <% @restaurants.each do |restaurant| %>
+
+
 <% if restaurant.approved? %>
   <div>
     <div>
