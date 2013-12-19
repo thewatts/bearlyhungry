@@ -11,6 +11,14 @@ class BuildSeedRestaurants
     users = User.limit(500).sample(100)
     create_items_for(r, name)
     create_jobs_for(r, users)
+
+    if i % 50 == 0
+      puts " "
+      puts " "
+      puts "============================================== Made #{i} Users"
+      puts " "
+      puts " "
+    end
   end
 
   def create_items_for(r, name)

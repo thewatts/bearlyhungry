@@ -9,5 +9,12 @@ class BuildSeedUsers
       :password              => "password",
       :password_confirmation => "password"
     )
+    if num % 100 == 0
+      puts " "
+      puts " "
+      puts "============================================== Made #{num} Users"
+      puts " "
+      puts " "
+    end
   end
 end

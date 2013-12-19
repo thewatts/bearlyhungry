@@ -10,11 +10,11 @@ encrypted_password   = BCrypt::Password.create(unencrypted_password)
 ##############################################################################
 # Counts for Models
 ##############################################################################
-#@user_num       = 100_000
-#@restaurant_num = 1000
+@user_num       = 100_000
+@restaurant_num = 1000
 
-@user_num       = 10
-@restaurant_num = 10
+#@user_num       = 10
+#@restaurant_num = 10
 
 ##############################################################################
 # 30 Unique Locations (cities)
