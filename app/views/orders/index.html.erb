@@ -2,7 +2,7 @@
 
 <% if @orders.nil? %>
 
-  <em>You have no past orders on record.</em>
+  <h4><em>You have no past orders on record at <%= current_restaurant.name %></em></h4>
 
 <% else %>
 
@@ -14,6 +14,6 @@
 
 <% end %>
 
-<h1><%= current_restaurant %></h1>
+
 
 <%= link_to "Main Menu", restaurant_menu_path(current_restaurant.slug)   %>
