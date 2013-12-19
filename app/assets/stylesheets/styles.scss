@@ -40,6 +40,12 @@ body {
   background: transparent;
 }
 
+@media all and (min-width: 600px) {
+  body {
+    zoom: 75%;
+  }
+}
+
 .row {
   width: 1000px;
 }
@@ -609,6 +615,8 @@ h1,h2,h3,h4,h5 {
       }
     }
   }
+
+ 
 }
 .order-total {
   overflow: hidden;

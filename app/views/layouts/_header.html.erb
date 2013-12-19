@@ -11,11 +11,9 @@
       <% end %>
       <nav class="main-nav">
         <ul>
-
           <li>
-            <%= link_to "Back", root_path, class: "button" if current_restaurant %>
+            <%= link_to "Back", root_path, class: "button back" if current_restaurant %>
             <% if current_user %>
-          
               <ul>
                 <li class="parent">
                   <%= link_to "Account", user_path(current_user) %>
