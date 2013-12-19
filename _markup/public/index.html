@@ -123,10 +123,13 @@
     <div class="heading twelve columns">
       <h3>Restaurant Locations</h3>
     </div >
+    <div id="map">
+    </div>
     <div class="map twelve columns">
-      <img src="/images/map-bg.jpg">
+      <!-- <img src="/images/map-bg.jpg"> -->
     </div>
   </section>
+
 
   <section class="footer wrapper">
     <div class="row">
@@ -157,5 +160,52 @@
   <script src="/js/modernizr.foundation.js"></script>
   <script src="/js/foundation.min.js"></script>
   <script src="/js/scripts.js"></script>
+
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
+
+  <script>
+    var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
+        .setView([39.12367, -76.81229], 9);
+
+    var markerLayer = L.mapbox.markerLayer({
+            type: 'FeatureCollection',
+            features: [{
+                type: 'Feature',
+                properties: {
+                    name: "Washington"
+                    size: 5,
+                    population: 10
+                },
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-77.03201, 38.90065]
+                }
+            }]
+        })
+        .addTo(map);
+
+    // note that calling `.eachLayer` here depends on setting GeoJSON _directly_
+    // above. If you're loading GeoJSON asynchronously, like from CSV or from a file,
+    // you will need to do this within a `markerLayer.on('ready'` event
+
+    markerLayer.eachLayer(function(layer) {
+      // here you call `bindPopup` with a string of HTML you create - the feature
+      // properties declared above are available under `layer.feature.properties`
+
+      var styles = '';
+      styles += '.leaflet-popup-content { };';
+
+      var content = '';
+      content += styles;
+
+      content += '<h2>' + layer.feature.properties.name + "</h2>";
+      content += '<h2>' + layer.feature.properties.name + "</h2>";
+
+        var content = '<style>.leaflet-popup-content{ border: solid 20px black; }</style><h1>size: ' + layer.feature.properties.size + '<\/h1>';
+        content += '<h2>population: ' + layer.feature.properties.population + '<\/h2>';
+        layer.bindPopup(content);
+    });
+  </script>
 </body>
 </html>
