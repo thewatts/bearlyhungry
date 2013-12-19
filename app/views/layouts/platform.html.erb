@@ -196,6 +196,21 @@
           var content = '';
           content += styles;
 
+
+          var label = '';
+       
+          if (layer.feature.properties.count > 1) {
+            label = 'Restaurants';
+          } else {
+            label = 'Restaurant';
+          }
+
+          var styles = '';
+          styles += '.leaflet-popup-content { };';
+
+          var content = '';
+          content += styles;
+
           content += '<h2>' + layer.feature.properties.name + "</h2>";
           content += '<h2>' + layer.feature.properties.name + "</h2>";
 
