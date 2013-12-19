@@ -9,6 +9,13 @@ class OrderItemsController < ApplicationController
     redirect_to :back
   end
 
+  def update
+    order_item = OrderItem.find(params[:id])
+    order_item.quantity = params[:order_item][:quantity]
+    order_item.save
+    redirect_to order_path
+  end
+
   def destroy
     order_item = current_order.order_items.find_by(id: params[:id])
     if order_item
@@ -18,13 +25,6 @@ class OrderItemsController < ApplicationController
       flash[:error] = "Sorry, something went wrong."
     end
     redirect_to restaurant_menu_path(current_restaurant.slug)
-  end
-
-  def update
-    order_item = OrderItem.find(params[:id])
-    order_item.quantity = params[:order_item][:quantity]
-    order_item.save
-    redirect_to order_path
   end
 
 end

@@ -10,8 +10,8 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'resque'
-#gem 'sidekiq'
+gem 'sidekiq'
+gem 'pg'
 
 gem 'jquery-rails'
 
@@ -44,7 +44,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara'
-  gem 'sqlite3'
   gem 'poltergeist'
   gem 'selenium-webdriver'
   gem 'launchy'
@@ -60,7 +59,6 @@ group :test do
   gem 'database_cleaner'
 end 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
   gem 'memcachier'
 end
