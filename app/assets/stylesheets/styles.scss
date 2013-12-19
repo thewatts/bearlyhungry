@@ -83,6 +83,7 @@ font-size: 25px;
   span {
     font-size: 1.2em;
   }
+  
   .notification-close {
     border: solid 1px white;
     padding: 5px 10px;
@@ -124,6 +125,10 @@ font-size: 25px;
     -o-transition: margin-left .45s ease-in-out;
     transition: margin-left .45s ease-in-out;
   }
+}
+
+#cities-list ul li{
+    display:inline-block;
 }
 
 h1,h2,h3,h4,h5 {
@@ -320,10 +325,7 @@ h1,h2,h3,h4,h5 {
     margin: 0 -10px 10px;
   }
 }
-  #receipt-order-info {
-    padding-left: 300px;
-  }
-
+ 
 .full-order-item {
   padding: 0 20px 20px;
   border-bottom: solid 1px #fefefe;

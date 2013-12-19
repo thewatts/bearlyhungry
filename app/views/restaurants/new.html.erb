@@ -7,5 +7,13 @@
     <%= restaurant.label :slug, "The URL of your restaurant" %>
     <%= restaurant.text_field :slug %>
   </p>
+   <p>
+    <%= restaurant.label :description, "Describe your place" %>
+    <%= restaurant.text_field :description %>
+  </p>
+    <%= restaurant.select :city_id, options_for_select(City.cities_selection), include_blank: true %> 
+    <hr>
   <%= restaurant.submit "Start My Restaurant Now" %>
 <% end %>
+
+

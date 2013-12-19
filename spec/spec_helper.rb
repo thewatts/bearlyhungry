@@ -55,15 +55,12 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.start
   end
 
   config.before(:each, js: true) do
     DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner.start
   end
 
   # Force the driver to wait till the page finishes loading

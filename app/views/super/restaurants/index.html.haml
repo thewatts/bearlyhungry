@@ -2,6 +2,7 @@
 
 %ul
   - @restaurants.each do |restaurant|
-    %li "#{restaurant.name}" 
-
+    %li 
+      = link_to restaurant.name, super_restaurant_path(restaurant.slug)
+      %h6 Status: #{restaurant.status} 
 

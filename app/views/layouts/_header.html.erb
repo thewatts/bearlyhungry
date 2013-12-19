@@ -4,14 +4,16 @@
     <div class="twelve columns">
       <% if current_restaurant %>
         <a class="logo" href="/<%= current_restaurant.slug %>" title="<%= current_restaurant.name %>">
-          <%= link_to "Back", root_path, class: "button" %>
+          
         </a>
       <% else %>
         <a href="/" class="button">BEARLY HUNGRY</a>
       <% end %>
       <nav class="main-nav">
         <ul>
+
           <li>
+            <%= link_to "Back", root_path, class: "button" if current_restaurant %>
             <% if current_user %>
           
               <ul>
