@@ -111,6 +111,8 @@ body {
 }
 
 .restaurant {
+  font-family: $museo;
+  text-align: left;
   img {
     background: #fff;
     padding: 5px;
@@ -121,4 +123,41 @@ body {
     font-weight: normal;
     font-size: 1.3em;
   }
+  .location-item-count {
+    padding-bottom: 5px;
+    .location {
+    }
+    .item-count {
+      font-style: italic;
+    }
+  }
+
+  .description {
+    p {
+      line-height: 1.2;
+    }
+  }
 }
+
+.restaurant-map {
+  margin-top: 20px;
+  height: 300px;
+  padding: 0;
+  border: solid 1px;
+  position: relative;
+  .heading {
+    padding: 0;
+    margin: 0;
+    border: solid 1px;
+    h3 {
+      margin: 0;
+      color: #fff;
+      background: #222;
+      display: inline-block;
+    }
+  }
+  .map {
+    border: solid 1px;
+  }
+}
+

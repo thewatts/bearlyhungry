@@ -11,7 +11,7 @@
   <meta name="viewport" content="width=device-width" />
   <title>YO YO YO</title>
   <link rel="stylesheet" type="text/css" href="/css/foundation.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/reset.css">
+  <!-- <link rel="stylesheet" type="text/css" href="/css/reset.css"> -->
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" type="text/css" href="/fonts/museo_300/stylesheet.css">
   <link rel="stylesheet" type="text/css" href="/fonts/museoslab_500/stylesheet.css">
@@ -85,11 +85,14 @@
       <div class="restaurant three columns">
         <img src="/images/rest-image.jpg">
         <h4>McDonalds</h4>
-        <span class="location">East Lansing</span>
-        <span class="item-count">25 Items</span>
-        <span class="description">
-          This is the best restaurant ever!!!!
-        </span>
+        <div class="location-item-count">
+          <span class="location">East Lansing</span>
+          <span>-</span>
+          <span class="item-count">25 Items</span>
+        </div>
+        <div class="description">
+          <p>This is the best restaurant ever!!!!</p>
+        </div>
       </div>
 
       <div class="restaurant three columns">
@@ -117,9 +120,9 @@
   <section class="restaurant-map wrapper">
     <div class="heading">
       <h3>Restaurant Locations</h3>
-      <div class="map">
-        <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v3/hot.gjkj50gl5a/mm/zoompan.html?secure=1#4/38.51/-94.17'></iframe>
-      </div>
+    </div>
+    <div class="map">
+      <iframe width='100%' height='500px' frameBorder='0' src='https://a.tiles.mapbox.com/v3/hot.gjkj50gl5a/mm/zoompan.html?secure=1#4/38.51/-94.17'></iframe>
     </div>
   </section>
 

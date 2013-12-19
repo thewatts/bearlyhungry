@@ -86,11 +86,38 @@ body {
       font-size: 1.2em;
       color: #667; }
 
-.restaurant img {
-  background: #fff;
-  padding: 5px;
-  border: solid 1px #ddd; }
-.restaurant h4 {
-  font-family: "museo_slab500"-serif;
-  font-weight: normal;
-  font-size: 1.3em; }
+.restaurant {
+  font-family: "Museo300Regular"-serif;
+  text-align: left; }
+  .restaurant img {
+    background: #fff;
+    padding: 5px;
+    border: solid 1px #ddd; }
+  .restaurant h4 {
+    font-family: "museo_slab500"-serif;
+    font-weight: normal;
+    font-size: 1.3em; }
+  .restaurant .location-item-count {
+    padding-bottom: 5px; }
+    .restaurant .location-item-count .item-count {
+      font-style: italic; }
+  .restaurant .description p {
+    line-height: 1.2; }
+
+.restaurant-map {
+  margin-top: 20px;
+  height: 300px;
+  padding: 0;
+  border: solid 1px;
+  position: relative; }
+  .restaurant-map .heading {
+    padding: 0;
+    margin: 0;
+    border: solid 1px; }
+    .restaurant-map .heading h3 {
+      margin: 0;
+      color: #fff;
+      background: #222;
+      display: inline-block; }
+  .restaurant-map .map {
+    border: solid 1px; }
