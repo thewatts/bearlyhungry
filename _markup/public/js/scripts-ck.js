@@ -1,0 +1,1 @@
+$(document).ready(function(){$.getJSON("http://localhost:9292/api/map_data.json",function(e){window.data=e})});

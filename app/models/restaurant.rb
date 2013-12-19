@@ -18,7 +18,8 @@ class Restaurant < ActiveRecord::Base
   end
 
   def owners
-    jobs.is_owner.collect{|job| job.user}
+    #jobs.is_owner.collect{|job| job.user}
+    Job.where('restaurant_id = ? AND role_id = ?', id, Role.owner.id).map(&:user)
   end
 
   def add_owner(user)
