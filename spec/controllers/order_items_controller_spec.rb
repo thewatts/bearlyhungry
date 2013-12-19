@@ -26,7 +26,6 @@ describe OrderItemsController do
 
         response = post :create, order_item: {item_id: @big_mac.id, quantity: 5},
                       slug: @mcdonalds.slug
-        binding.pry
         expect(@mcdonalds_order.order_items.count).to eq(1)
       end
     end

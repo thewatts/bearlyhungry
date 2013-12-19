@@ -12,6 +12,8 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'sidekiq'
 gem 'pg'
+gem 'kaminari'
+
 
 gem 'jquery-rails'
 

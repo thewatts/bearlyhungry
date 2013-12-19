@@ -78,6 +78,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def cities_with_restaurants
+    City.includes(:restaurants)
+  end
+
   def assign_current_user_and_update_order_for(user)
     assign_current_user_to(user)
     current_order.add_user(user) if current_order
