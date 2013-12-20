@@ -14,7 +14,7 @@ time = Benchmark.measure do
 #@restaurant_num = 1000
 
 @user_num       = 10
-@restaurant_num = 10
+@restaurant_num = 1
 
 ##############################################################################
 # 30 Unique Locations (cities)
